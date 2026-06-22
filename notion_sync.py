@@ -73,8 +73,6 @@ def lead_to_properties(row: sqlite3.Row) -> dict:
         "Confidence": {"number": row["cls_confidence"]},
         "Original site": {"url": row["final_url"] or row["website"] or None},
         "Demo site": {"url": row["demo_url"] or None},
-        "Screenshot": {"url": (row["screenshot_path"]
-                       if str(row["screenshot_path"] or "").startswith("http") else None)},
         "Contact person": {"rich_text": _rt(row["contact_person"])},
         "Email address": {"email": row["email"] or None},
         "Phone": {"phone_number": row["phone"] or None},

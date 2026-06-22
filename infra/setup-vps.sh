@@ -26,7 +26,7 @@ apt-get install -y nodejs
 npm install -g @anthropic-ai/claude-code
 
 echo "==> Python deps"
-pip3 install --break-system-packages requests beautifulsoup4
+pip3 install --break-system-packages requests beautifulsoup4 lxml
 
 echo "==> firewall (SSH only; n8n stays on localhost, reached via SSH tunnel)"
 ufw allow OpenSSH && ufw --force enable

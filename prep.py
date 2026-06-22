@@ -23,9 +23,11 @@ EMAIL_STYLE = pathlib.Path("email-style.md")
 
 
 def claude(prompt: str, timeout: int = 300) -> str:
-    """Run the Claude Code CLI headless and return its final text output."""
-    r = subprocess.run([CLAUDE_CMD, "-p", prompt],
-                       capture_output=True, text=True, timeout=timeout)
+    """Run the Claude Code CLI headless, restricted to the Read tool so the agent
+    can look at the screenshot but can NOT run project scripts or other commands.
+    Prompt goes via stdin to avoid flag/arg parsing collisions."""
+    r = subprocess.run([CLAUDE_CMD, "-p", "--allowedTools", "Read"],
+                       input=prompt, capture_output=True, text=True, timeout=timeout)
     if r.returncode != 0:
         raise RuntimeError(f"claude -p failed: {r.stderr[:400]}")
     return r.stdout.strip()

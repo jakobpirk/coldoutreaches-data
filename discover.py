@@ -21,6 +21,7 @@ Output: a JSON file with normalised business records:
 """
 from __future__ import annotations
 import sys
+import os
 import json
 import argparse
 import time
@@ -29,6 +30,14 @@ from pathlib import Path
 
 USER_AGENT = "ColdOutreaches-LeadScout/0.1 (jakobwilbrandt@gmail.com)"
 OVERPASS_URL = "https://overpass-api.de/api/interpreter"
+# The main public Overpass server 504s under load — try mirrors in turn.
+# A custom endpoint in $OVERPASS_URL (if set) is tried first.
+OVERPASS_MIRRORS = [m for m in [
+    os.environ.get("OVERPASS_URL"),
+    "https://overpass-api.de/api/interpreter",
+    "https://overpass.kumi.systems/api/interpreter",
+    "https://overpass.private.coffee/api/interpreter",
+] if m]
 
 # Bounding boxes — (south, west, north, east)
 AREAS = {
@@ -142,16 +151,23 @@ def normalize(el: dict) -> dict | None:
 
 def _fetch_one_bbox(bbox, query_fn, label, timeout):
     print(f"  querying Overpass: {label} bbox={bbox}", file=sys.stderr)
-    r = requests.post(
-        OVERPASS_URL,
-        data={"data": query_fn(bbox)},
-        timeout=timeout,
-        headers={"User-Agent": USER_AGENT},
-    )
-    r.raise_for_status()
-    elements = r.json().get("elements", [])
-    print(f"    -> {len(elements)} elements", file=sys.stderr)
-    return elements
+    q = query_fn(bbox)
+    last = None
+    for url in OVERPASS_MIRRORS:
+        for attempt in range(2):
+            try:
+                r = requests.post(url, data={"data": q}, timeout=timeout,
+                                  headers={"User-Agent": USER_AGENT})
+                r.raise_for_status()
+                elements = r.json().get("elements", [])
+                print(f"    -> {len(elements)} elements (via {url})", file=sys.stderr)
+                return elements
+            except Exception as e:
+                last = e
+                print(f"    overpass {url} attempt {attempt+1} failed: {e!r}",
+                      file=sys.stderr)
+                time.sleep(3)
+    raise RuntimeError(f"all Overpass mirrors failed: {last!r}")
 
 
 def discover(area: str = "svendborg", out_path: str = None) -> list[dict]:

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jensen's Fisk & Vin · Lundeborg Havn</title>
+<meta name="description" content="Sæsonåben fiskerestaurant midt på Lundeborg havn. Friske fiskeanretninger, hyggelig havnestemning og Danmarks bedste gourmet-is fra Kastberg.">
+<meta property="og:title" content="Jensen's Fisk & Vin · Lundeborg Havn">
+<meta property="og:description" content="Friske fiskeanretninger og smagen af sommer midt på Lundeborg havn.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#10293c; --navy2:#0a1c29; --sand:#f3e9d8; --paper:#faf5ec;
+  --rust:#a73f2d; --rust-d:#82301f; --brass:#c08a3e; --sea:#3c7081;
+  --ink:#221d16; --muted:#6b6256;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Spectral',Georgia,serif;color:var(--ink);background:var(--paper);line-height:1.65;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.display{font-family:'Fraunces',Georgia,serif;font-weight:500;line-height:1.05;letter-spacing:-.01em}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.eyebrow{font-family:'Work Sans',sans-serif;text-transform:uppercase;letter-spacing:.26em;font-size:.72rem;font-weight:600;color:var(--rust)}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:50;background:rgba(250,245,236,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(34,29,22,.1)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:76px}
+.brand{display:flex;flex-direction:column;line-height:1}
+.brand b{font-family:'Fraunces',serif;font-weight:600;font-size:1.42rem;letter-spacing:-.02em;color:var(--navy)}
+.brand span{font-family:'Work Sans',sans-serif;font-size:.62rem;letter-spacing:.34em;text-transform:uppercase;color:var(--brass);margin-top:4px}
+.menu{display:flex;gap:34px;font-family:'Work Sans',sans-serif;font-size:.86rem;font-weight:500;letter-spacing:.02em}
+.menu a{position:relative;padding:4px 0;color:var(--navy)}
+.menu a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--rust);transition:width .3s}
+.menu a:hover::after,.menu a.active::after{width:100%}
+.navcta{font-family:'Work Sans',sans-serif;font-size:.8rem;font-weight:600;letter-spacing:.04em;background:var(--rust);color:#fff;padding:11px 20px;border-radius:2px;transition:background .25s}
+.navcta:hover{background:var(--rust-d)}
+
+/* HERO */
+.hero{position:relative;min-height:88vh;display:flex;align-items:flex-end;color:#fff;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('http://www.fiskogvin.dk/filer/gallery-images/Fil10_Fisk-og-vin-002.jpg') center 38%/cover no-repeat;transform:scale(1.05);animation:slowzoom 18s ease-out forwards}
+@keyframes slowzoom{to{transform:scale(1)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,28,41,.35) 0%,rgba(10,28,41,.15) 38%,rgba(10,28,41,.78) 100%)}
+.hero-in{position:relative;z-index:2;padding-bottom:74px;max-width:760px}
+.hero .eyebrow{color:#f0c98a}
+.hero h1{font-size:clamp(2.9rem,6.6vw,5.3rem);margin:.18em 0 .32em;text-shadow:0 2px 30px rgba(0,0,0,.3)}
+.hero h1 em{font-style:italic;color:#f1d4a3}
+.hero p{font-size:1.18rem;max-width:560px;color:#f4ece0;font-weight:300}
+.hero-actions{display:flex;gap:16px;margin-top:34px;flex-wrap:wrap}
+.btn{font-family:'Work Sans',sans-serif;font-size:.9rem;font-weight:600;letter-spacing:.03em;padding:15px 30px;border-radius:2px;transition:transform .2s,background .25s,box-shadow .25s;display:inline-flex;align-items:center;gap:9px;cursor:pointer}
+.btn-p{background:var(--rust);color:#fff}
+.btn-p:hover{background:var(--rust-d);transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,0,0,.28)}
+.btn-g{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.55);backdrop-filter:blur(4px)}
+.btn-g:hover{background:rgba(255,255,255,.22);transform:translateY(-2px)}
+.hero-badge{position:absolute;top:0;right:0;z-index:2;background:var(--brass);color:var(--navy2);font-family:'Work Sans',sans-serif;font-weight:600;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;padding:10px 22px;border-bottom-left-radius:14px}
+
+/* WELCOME */
+.welcome{padding:110px 0}
+.welcome-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:70px;align-items:center}
+.welcome h2{font-size:clamp(2rem,3.6vw,3rem);color:var(--navy);margin:.3em 0 .55em}
+.welcome p{font-size:1.12rem;color:var(--ink);margin-bottom:1.1em}
+.welcome p.lead{font-size:1.3rem;color:var(--rust-d);font-style:italic}
+.welcome-img{position:relative}
+.welcome-img img{border-radius:3px;box-shadow:0 30px 60px -22px rgba(16,41,60,.5);width:100%;aspect-ratio:4/3.2;object-fit:cover}
+.welcome-img .tag{position:absolute;bottom:-26px;left:-26px;background:var(--navy);color:#fff;padding:22px 26px;border-radius:3px;max-width:230px;box-shadow:0 18px 40px -16px rgba(0,0,0,.5)}
+.welcome-img .tag b{font-family:'Fraunces',serif;font-size:2rem;display:block;color:#f1d4a3;line-height:1}
+.welcome-img .tag span{font-family:'Work Sans',sans-serif;font-size:.74rem;text-transform:uppercase;letter-spacing:.14em;opacity:.85}
+
+/* HIGHLIGHTS */
+.highlights{background:var(--navy);color:#f3e9d8;padding:104px 0;position:relative}
+.highlights .eyebrow{color:#f0c98a}
+.highlights h2{font-size:clamp(1.9rem,3.4vw,2.7rem);color:#fff;margin:.25em 0 .9em;max-width:640px}
+.hl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:20px}
+.hl{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.1);border-radius:4px;overflow:hidden;transition:transform .3s,border-color .3s}
+.hl:hover{transform:translateY(-6px);border-color:var(--brass)}
+.hl-img{height:188px;background-size:cover;background-position:center}
+.hl-b{padding:26px 26px 30px}
+.hl-b h3{font-size:1.42rem;color:#fff;margin-bottom:.4em}
+.hl-b p{font-size:1rem;color:#d8cdb9;font-weight:300}
+.hl-n{font-family:'Work Sans',sans-serif;font-size:.72rem;letter-spacing:.2em;color:var(--brass);text-transform:uppercase}
+
+/* GALLERY */
+.gallery{padding:104px 0 30px}
+.gal-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:42px;flex-wrap:wrap;gap:18px}
+.gal-head h2{font-size:clamp(1.9rem,3.4vw,2.7rem);color:var(--navy)}
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:230px;gap:14px}
+.gal-grid figure{overflow:hidden;border-radius:3px;position:relative}
+.gal-grid img{width:100%;height:100%;object-fit:cover;transition:transform .7s ease}
+.gal-grid figure:hover img{transform:scale(1.08)}
+.span2{grid-column:span 2}.row2{grid-row:span 2}
+
+/* HOURS BAND */
+.band{margin:104px 0 0;background:var(--rust);color:#fff;position:relative;overflow:hidden}
+.band::before{content:"";position:absolute;inset:0;background:linear-gradient(120deg,var(--rust) 0%,var(--rust-d) 100%)}
+.band-in{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:60px;padding:80px 0;align-items:center}
+.band h2{font-size:clamp(2rem,3.6vw,3rem);margin-bottom:.3em}
+.band p{font-size:1.12rem;color:#f6e4dd;font-weight:300;max-width:440px}
+.hours-card{background:var(--paper);color:var(--ink);border-radius:5px;padding:38px 40px;box-shadow:0 30px 60px -20px rgba(0,0,0,.45)}
+.hours-card .eyebrow{color:var(--rust)}
+.hours-card .big{font-family:'Fraunces',serif;font-size:2.6rem;color:var(--navy);margin:.15em 0;line-height:1}
+.hours-card .sub{color:var(--muted);margin-bottom:18px}
+.hours-card .season{border-top:1px solid rgba(34,29,22,.14);padding-top:18px;font-size:.98rem}
+.hours-card .season b{color:var(--rust-d)}
+
+/* FOOTER */
+footer{background:var(--navy2);color:#cdbfa9;padding:80px 0 40px;font-size:.96rem}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:50px;padding-bottom:50px;border-bottom:1px solid rgba(255,255,255,.1)}
+footer .brand b{color:#fff;font-size:1.6rem}
+footer h4{font-family:'Work Sans',sans-serif;text-transform:uppercase;letter-spacing:.16em;font-size:.74rem;color:var(--brass);margin-bottom:18px}
+footer a:hover{color:#fff}
+footer .fl{display:block;margin-bottom:9px}
+.foot-bot{display:flex;justify-content:space-between;padding-top:26px;font-size:.82rem;color:#8a7e6c;flex-wrap:wrap;gap:10px;font-family:'Work Sans',sans-serif}
+.tagln{margin:16px 0 0;font-style:italic;color:#a99c87;max-width:320px}
+
+@media(max-width:900px){
+  .menu{display:none}
+  .welcome-grid,.band-in,.foot-grid{grid-template-columns:1fr;gap:46px}
+  .hl-grid{grid-template-columns:1fr}
+  .gal-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:180px}
+  .span2{grid-column:span 2}.row2{grid-row:span 1}
+  .welcome,.highlights,.gallery{padding:70px 0}
+  .welcome-img .tag{left:0}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="index.html" class="brand"><b>Jensen's Fisk &amp; Vin</b><span>Lundeborg Havn</span></a>
+    <nav class="menu">
+      <a href="index.html" class="active">Forside</a>
+      <a href="menu.html">Menu</a>
+      <a href="arrangementer.html">Arrangementer</a>
+      <a href="kontakt.html">Kontakt</a>
+    </nav>
+    <a href="kontakt.html#hours" class="navcta">Åbningstider</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-badge">Sæsonåben · Påske–September</div>
+  <div class="wrap hero-in">
+    <span class="eyebrow">Fiskehandel &amp; spisested · midt på havnen</span>
+    <h1>Smagen af <em>sommer</em><br>på Lundeborg havn</h1>
+    <p>En sæsonåben fiskerestaurant hvor friske anretninger, et glas vin og den hyggelige havnestemning følges ad — fra påske til september.</p>
+    <div class="hero-actions">
+      <a href="menu.html" class="btn btn-p">Se menuen →</a>
+      <a href="kontakt.html#hours" class="btn btn-g">Åbningstider &amp; vej</a>
+    </div>
+  </div>
+</section>
+
+<section class="welcome">
+  <div class="wrap welcome-grid">
+    <div>
+      <span class="eyebrow">Velkommen</span>
+      <h2>Hyggelige oplevelser midt på havnen</h2>
+      <p class="lead">Velkommen til vores sæsonåbne restaurant, hvor vi fra påske til 2. weekend i september byder på hyggelige oplevelser midt på Lundeborg havn.</p>
+      <p>Hos os kan du nyde lækre fiskeanretninger — og som prikken over i'et tilbyder vi Danmarks bedste gourmet-is og softice fra Kastberg.</p>
+      <p>Vi glæder os til at byde jer velkommen til god mad, hyggelig stemning og smagen af sommer!</p>
+      <a href="menu.html" class="btn btn-p" style="margin-top:8px">Udforsk menukortet</a>
+    </div>
+    <div class="welcome-img">
+      <img src="http://www.fiskogvin.dk/filer/gallery-images/Fil12_Fisk-og-vin-004.jpg" alt="Gæster nyder maden på terrassen ved Lundeborg havn">
+      <div class="tag"><b>Siden 2002</b><span>på Lundeborg havn</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="highlights">
+  <div class="wrap">
+    <span class="eyebrow">Derfor Jensen's</span>
+    <h2>Friske råvarer, ægte havnestemning og is i verdensklasse</h2>
+    <div class="hl-grid">
+      <article class="hl">
+        <div class="hl-img" style="background-image:url('http://www.fiskogvin.dk/filer/gallery-images/Fil16_Fisk-og-vin-017.jpg')"></div>
+        <div class="hl-b"><span class="hl-n">01</span><h3>Lækre fiskeanretninger</h3><p>Fiskefilet, fiskefrikadelle, varmrøget laks og stjerneskud — serveret friskt hver dag fra køkkenet på havnen.</p></div>
+      </article>
+      <article class="hl">
+        <div class="hl-img" style="background-image:url('http://www.fiskogvin.dk/filer/gallery-images/Fil11_Fisk-og-vin-003.jpg')"></div>
+        <div class="hl-b"><span class="hl-n">02</span><h3>Danmarks bedste is</h3><p>Gourmet-is og softice fra Kastberg — prikken over i'et til en sommerdag ved vandet.</p></div>
+      </article>
+      <article class="hl">
+        <div class="hl-img" style="background-image:url('http://www.fiskogvin.dk/filer/gallery-images/Fil13_Fisk-og-vin-006.jpg')"></div>
+        <div class="hl-b"><span class="hl-n">03</span><h3>Hyggelig havnestemning</h3><p>Sid under den overdækkede terrasse med udsigt over Lundeborg havn — solen, vandet og et glas koldt vin.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="gallery">
+  <div class="wrap">
+    <div class="gal-head">
+      <div><span class="eyebrow">Galleri</span><h2>Et kig forbi havnen</h2></div>
+      <a href="kontakt.html" class="btn btn-p">Find vej til os</a>
+    </div>
+    <div class="gal-grid">
+      <figure class="span2 row2"><img src="http://www.fiskogvin.dk/filer/gallery-images/Fil9_Fisk-og-vin-010.jpg" alt="Jensen's Fisk & Vin — Fiskehandel & Spisested skilt"></figure>
+      <figure><img src="http://www.fiskogvin.dk/filer/gallery-images/Fil14_Fisk-og-vin-009.jpg" alt="Restauranten set udefra med hvid overdækning"></figure>
+      <figure><img src="http://www.fiskogvin.dk/filer/gallery-images/Fil15_Fisk-og-vin-014.jpg" alt="Den overdækkede terrasse med havnedekoration"></figure>
+      <figure class="span2"><img src="http://www.fiskogvin.dk/filer/gallery-images/Fil10_Fisk-og-vin-002.jpg" alt="Jensen's Fisk & Vin på Lundeborg havn en solskinsdag"></figure>
+      <figure><img src="http://www.fiskogvin.dk/filer/gallery-images/Fil12_Fisk-og-vin-004.jpg" alt="Gæster der spiser på terrassen"></figure>
+      <figure><img src="http://www.fiskogvin.dk/filer/gallery-images/Fil16_Fisk-og-vin-017.jpg" alt="Hyggelig stemning under overdækningen"></figure>
+    </div>
+  </div>
+</section>
+
+<section class="band" id="hours">
+  <div class="wrap band-in">
+    <div>
+      <span class="eyebrow" style="color:#f0c98a">Åbningstider</span>
+      <h2>Vi ses på Lundeborg havn</h2>
+      <p>Kig forbi alle ugens dage hen over sommeren. Vi glæder os til at se jer til god mad og hyggelig stemning.</p>
+    </div>
+    <div class="hours-card">
+      <span class="eyebrow">Åbent alle dage</span>
+      <div class="big">11.30 – 19.00</div>
+      <div class="sub">Frokost &amp; sandwich serveres til kl. 16.00 · varme retter hele dagen</div>
+      <div class="season">Sæson: <b>påske til 2. weekend i september</b><br>Havnevej 1D, Lundeborg · 5874 Hesselager</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand"><b>Jensen's Fisk &amp; Vin</b><span style="color:var(--brass);font-family:'Work Sans',sans-serif;font-size:.62rem;letter-spacing:.34em;text-transform:uppercase">Lundeborg Havn</span></div>
+        <p class="tagln">Sæsonåben fiskehandel &amp; spisested midt på Lundeborg havn — smagen af sommer siden 2002.</p>
+      </div>
+      <div>
+        <h4>Find os</h4>
+        <span class="fl">Havnevej 1D</span>
+        <span class="fl">Lundeborg</span>
+        <span class="fl">5874 Hesselager</span>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <a class="fl" href="tel:+4562281929">Tlf. 6228 1929</a>
+        <a class="fl" href="tel:+4531188385">Mob. 3118 8385</a>
+        <a class="fl" href="mailto:mr.poxy@hotmail.com">mr.poxy@hotmail.com</a>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 Jensen's Fisk &amp; Vin · Lundeborg</span>
+      <span>Forside · <a href="menu.html">Menu</a> · <a href="arrangementer.html">Arrangementer</a> · <a href="kontakt.html">Kontakt</a></span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

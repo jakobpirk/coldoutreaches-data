@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tåsinge Camping &amp; Grill — Grillbar &amp; Takeaway på Tåsinge</title>
+<meta name="description" content="Grillbar og takeaway på Tåsinge ved Svendborg. Saftige burgere, hotdogs og pølser — ring og bestil på 29 86 63 70. Familievenlig campingplads tæt på skov og strand.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Familjen+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --char:#1c1410; --char2:#2a1d15; --char3:#372619;
+  --cream:#faf3e6; --cream2:#f1e2cb; --paper:#fbf6ec;
+  --ember:#e2571d; --ember-d:#c2440f; --flame:#f59324; --gold:#eec25a;
+  --sea:#2c6b5f; --sea-d:#1f4e45; --sea-l:#e3efe9;
+  --ink:#241a12; --ink-soft:#5c4a3a;
+  --line:rgba(36,26,18,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Familjen Grotesk',sans-serif;color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Fraunces',serif;line-height:1.04;font-weight:900;letter-spacing:-.01em}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.eyebrow{font-family:'Familjen Grotesk';font-weight:700;text-transform:uppercase;letter-spacing:.28em;font-size:.72rem;color:var(--ember)}
+
+/* ---------- HEADER ---------- */
+header{position:fixed;top:0;left:0;right:0;z-index:50;transition:.35s ease}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:18px 28px;max-width:1180px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:12px;color:var(--cream)}
+.brand .mark{width:42px;height:42px;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--flame),var(--ember-d));display:grid;place-items:center;font-size:1.2rem;box-shadow:0 4px 16px rgba(226,87,29,.45)}
+.brand b{font-family:'Fraunces';font-weight:900;font-size:1.08rem;line-height:1;letter-spacing:.01em}
+.brand span{display:block;font-family:'Familjen Grotesk';font-weight:600;font-size:.6rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);margin-top:3px}
+.menu{display:flex;align-items:center;gap:30px}
+.menu a.lnk{color:var(--cream);font-weight:600;font-size:.96rem;position:relative;opacity:.92}
+.menu a.lnk::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--ember);transition:.3s}
+.menu a.lnk:hover{opacity:1}
+.menu a.lnk:hover::after{width:100%}
+.cta-tel{display:inline-flex;align-items:center;gap:8px;background:var(--ember);color:#fff;padding:11px 20px;border-radius:40px;font-weight:700;font-size:.95rem;box-shadow:0 6px 18px rgba(226,87,29,.4);transition:.25s}
+.cta-tel:hover{background:var(--ember-d);transform:translateY(-2px)}
+header.solid{background:rgba(24,18,14,.92);backdrop-filter:blur(12px);box-shadow:0 10px 40px rgba(0,0,0,.35)}
+header.solid .nav{padding:12px 28px}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:0;padding:6px}
+.burger span{width:26px;height:2.5px;background:var(--cream);border-radius:2px;transition:.3s}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;color:var(--cream);overflow:hidden;background:var(--char)}
+.hero-bg{position:absolute;inset:0;background-image:url('https://impro.usercontent.one/appid/oneComWsb/domain/taasingecamping.com/media/taasingecamping.com/onewebmedia/356795955_781064427054731_5486743502329387836_n.jpg?etag=W%2F%2233a05-69d15802%22&sourceContentType=image%2Fjpeg&quality=85');background-size:cover;background-position:center;transform:scale(1.06);filter:saturate(1.05)}
+.hero-bg::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,rgba(20,14,10,.93) 0%,rgba(20,14,10,.78) 38%,rgba(20,14,10,.45) 70%,rgba(20,14,10,.6) 100%)}
+.hero-grain{position:absolute;inset:0;opacity:.5;mix-blend-mode:overlay;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.hero-inner{position:relative;z-index:2;padding-top:120px;padding-bottom:80px}
+.hero-inner{max-width:1180px;margin:0 auto;padding-left:28px;padding-right:28px;width:100%}
+.flag{display:inline-flex;align-items:center;gap:10px;background:rgba(245,147,36,.14);border:1px solid rgba(238,194,90,.4);padding:7px 16px;border-radius:40px;font-weight:600;font-size:.82rem;letter-spacing:.04em;color:var(--gold);margin-bottom:26px}
+.hero h1{font-size:clamp(3rem,9vw,6.6rem);color:var(--cream)}
+.hero h1 .ember{color:var(--flame);font-style:italic;font-weight:500;display:block;font-size:.42em;letter-spacing:.18em;text-transform:uppercase;margin-bottom:14px;color:var(--gold)}
+.hero p.lead{max-width:540px;font-size:1.18rem;color:rgba(250,243,230,.82);margin:26px 0 38px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--ember);color:#fff;padding:17px 30px;border-radius:46px;font-weight:700;font-size:1.05rem;box-shadow:0 12px 30px rgba(226,87,29,.45);transition:.25s}
+.btn-primary:hover{background:var(--ember-d);transform:translateY(-3px)}
+.btn-ghost{display:inline-flex;align-items:center;gap:9px;padding:16px 26px;border-radius:46px;border:1.5px solid rgba(250,243,230,.4);color:var(--cream);font-weight:600;transition:.25s}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.hero-strip{position:absolute;bottom:0;left:0;right:0;z-index:3;background:var(--ember);color:#fff;padding:14px 0}
+.hero-strip .wrap{display:flex;flex-wrap:wrap;gap:26px;justify-content:center;align-items:center;font-weight:600;font-size:.96rem;text-align:center}
+.hero-strip b{font-family:'Fraunces';font-weight:900}
+.dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.55)}
+
+/* ---------- SECTION SHELL ---------- */
+section{position:relative}
+.sec{padding:96px 0}
+.sec-head{max-width:680px;margin-bottom:56px}
+.sec-head h2{font-size:clamp(2.2rem,5vw,3.6rem);margin-top:14px}
+.sec-head p{color:var(--ink-soft);font-size:1.1rem;margin-top:18px}
+
+/* ---------- MENU HIGHLIGHTS ---------- */
+.menu-sec{background:var(--char);color:var(--cream)}
+.menu-sec .eyebrow{color:var(--flame)}
+.menu-sec .sec-head h2{color:var(--cream)}
+.menu-sec .sec-head p{color:rgba(250,243,230,.7)}
+.hl-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:26px}
+.hl-feature{position:relative;border-radius:22px;overflow:hidden;min-height:440px;display:flex;align-items:flex-end;background:var(--char2)}
+.hl-feature img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hl-feature .glass{position:relative;z-index:2;width:100%;padding:34px;background:linear-gradient(to top,rgba(18,12,8,.95),rgba(18,12,8,.2) 70%,transparent)}
+.tag-pop{display:inline-block;background:var(--gold);color:var(--char);font-weight:700;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;padding:6px 14px;border-radius:30px;margin-bottom:16px}
+.hl-feature h3{font-size:2.4rem;color:var(--cream)}
+.hl-feature .price{font-family:'Fraunces';font-weight:900;font-size:2.2rem;color:var(--flame);margin-top:6px}
+.hl-list{display:flex;flex-direction:column;gap:18px}
+.hl-card{background:var(--char2);border:1px solid rgba(238,194,90,.14);border-radius:18px;padding:24px 26px;display:flex;align-items:center;justify-content:space-between;gap:18px;transition:.3s}
+.hl-card:hover{border-color:rgba(238,194,90,.45);transform:translateY(-3px);background:var(--char3)}
+.hl-card .info h4{font-family:'Fraunces';font-size:1.4rem;color:var(--cream)}
+.hl-card .info span{font-size:.92rem;color:rgba(250,243,230,.6)}
+.hl-card .price{font-family:'Fraunces';font-weight:900;font-size:1.6rem;color:var(--flame);white-space:nowrap}
+.menu-foot{margin-top:40px;text-align:center}
+.btn-gold{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--char);padding:15px 32px;border-radius:44px;font-weight:700;transition:.25s}
+.btn-gold:hover{background:var(--flame);transform:translateY(-2px)}
+
+/* ---------- ORDER STEPS ---------- */
+.steps-sec{background:var(--cream)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.step{position:relative;padding:36px 30px;background:var(--paper);border-radius:20px;border:1px solid var(--line);transition:.3s}
+.step:hover{transform:translateY(-5px);box-shadow:0 20px 40px rgba(36,26,18,.1)}
+.step .num{font-family:'Fraunces';font-weight:900;font-size:3rem;color:var(--ember);opacity:.32;line-height:1}
+.step h3{font-size:1.35rem;margin:8px 0 10px}
+.step p{color:var(--ink-soft)}
+
+/* ---------- CAMPING BAND ---------- */
+.camp-sec{background:var(--sea);color:var(--cream);overflow:hidden}
+.camp-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.camp-sec .eyebrow{color:var(--gold)}
+.camp-sec h2{font-size:clamp(2.2rem,5vw,3.4rem);color:#fff;margin:14px 0 20px}
+.camp-sec p{color:rgba(255,255,255,.85);font-size:1.08rem;margin-bottom:16px}
+.camp-feats{list-style:none;margin:24px 0 32px;display:flex;flex-direction:column;gap:14px}
+.camp-feats li{display:flex;gap:14px;align-items:flex-start;font-weight:500}
+.camp-feats svg{flex:none;margin-top:3px}
+.camp-photos{position:relative;height:480px}
+.camp-photos img{position:absolute;border-radius:18px;object-fit:cover;box-shadow:0 24px 50px rgba(0,0,0,.35);border:5px solid rgba(255,255,255,.1)}
+.cp1{width:64%;height:62%;top:0;left:0;z-index:2}
+.cp2{width:54%;height:54%;bottom:0;right:0;z-index:3}
+.cp3{width:38%;height:32%;bottom:18%;left:8%;z-index:4}
+.btn-cream{display:inline-flex;align-items:center;gap:10px;background:var(--cream);color:var(--sea-d);padding:15px 30px;border-radius:44px;font-weight:700;transition:.25s}
+.btn-cream:hover{background:#fff;transform:translateY(-2px)}
+
+/* ---------- LOCATION / CONTACT STRIP ---------- */
+.loc-sec{background:var(--char);color:var(--cream)}
+.loc-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.loc-sec h2{font-size:clamp(2rem,4.5vw,3rem);color:var(--cream);margin:14px 0 18px}
+.loc-sec p{color:rgba(250,243,230,.72);margin-bottom:28px}
+.loc-list{list-style:none;display:flex;flex-direction:column;gap:20px}
+.loc-list li{display:flex;gap:16px;align-items:center}
+.loc-list .ic{width:46px;height:46px;flex:none;border-radius:12px;background:var(--char3);display:grid;place-items:center;color:var(--flame)}
+.loc-list .lab{font-size:.78rem;text-transform:uppercase;letter-spacing:.16em;color:rgba(250,243,230,.5)}
+.loc-list .val{font-weight:600;font-size:1.08rem}
+.map-card{border-radius:22px;overflow:hidden;border:1px solid rgba(238,194,90,.2);box-shadow:0 24px 50px rgba(0,0,0,.4);min-height:380px}
+.map-card iframe{width:100%;height:100%;min-height:380px;border:0;filter:grayscale(.2) contrast(1.05)}
+
+/* ---------- FOOTER ---------- */
+footer{background:#140e0a;color:rgba(250,243,230,.7);padding:64px 0 30px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:40px;border-bottom:1px solid rgba(250,243,230,.1)}
+.foot-brand b{font-family:'Fraunces';font-weight:900;font-size:1.5rem;color:var(--cream);display:block;margin-bottom:14px}
+.foot-col h4{font-family:'Familjen Grotesk';font-weight:700;font-size:.8rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+.foot-col a,.foot-col p{display:block;color:rgba(250,243,230,.7);margin-bottom:10px;font-size:.96rem}
+.foot-col a:hover{color:var(--flame)}
+.pay{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.06);padding:8px 14px;border-radius:10px;margin-top:6px;font-size:.85rem}
+.pay img{height:20px}
+.foot-bot{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;padding-top:24px;font-size:.85rem;color:rgba(250,243,230,.45)}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(28px);transition:.8s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:900px){
+  .menu .lnk,.menu .cta-tel{display:none}
+  .burger{display:flex}
+  .menu.open{display:flex;position:absolute;top:100%;right:0;left:0;flex-direction:column;background:rgba(24,18,14,.98);backdrop-filter:blur(12px);padding:24px 28px;gap:20px;align-items:flex-start}
+  .menu.open .lnk,.menu.open .cta-tel{display:inline-flex}
+  .hl-grid,.camp-grid,.loc-grid,.steps,.foot-grid{grid-template-columns:1fr}
+  .camp-photos{height:360px;margin-top:20px}
+  .hero h1{font-size:clamp(2.6rem,12vw,4rem)}
+}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="nav">
+    <a href="index.html" class="brand">
+      <span class="mark">🔥</span>
+      <span><b>Tåsinge Camping &amp; Grill</b><span>Grillbar &amp; Takeaway</span></span>
+    </a>
+    <nav class="menu" id="menu">
+      <a class="lnk" href="index.html">Forside</a>
+      <a class="lnk" href="menu.html">Menukort</a>
+      <a class="lnk" href="camping.html">Camping &amp; Priser</a>
+      <a class="lnk" href="kontakt.html">Kontakt</a>
+      <a class="cta-tel" href="tel:+4529866370">📞 29 86 63 70</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grain"></div>
+  <div class="hero-inner">
+    <span class="flag">🇩🇰 Sundbrovej 130 · Tåsinge ved Svendborg</span>
+    <h1><span class="ember">Grillbar &amp; Takeaway</span>Røgvarme<br>burgere &amp;<br>sprøde pølser</h1>
+    <p class="lead">Saftige håndlavede burgere, klassiske hotdogs og grillpølser — lavet med kærlighed midt i det Sydfynske Øhav. Ring, bestil, og hent når det passer dig.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="tel:+4529866370">📞 Bestil på 29 86 63 70</a>
+      <a class="btn-ghost" href="menu.html">Se hele menukortet →</a>
+    </div>
+  </div>
+  <div class="hero-strip">
+    <div class="wrap">
+      <span>⭐ Mest populære: <b>Jumbo Burger 74 kr</b></span>
+      <span class="dot"></span>
+      <span>Betal nemt med <b>MobilePay</b></span>
+      <span class="dot"></span>
+      <span>Grill · Camping · Familievenligt</span>
+    </div>
+  </div>
+</section>
+
+<!-- MENU HIGHLIGHTS -->
+<section class="sec menu-sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Fra grillen</span>
+      <h2>Det folk vender tilbage for</h2>
+      <p>Alt grilles efter bestilling. Her er nogle af favoritterne — se hele udvalget af burgere, hotdogs og pølser på menukortet.</p>
+    </div>
+    <div class="hl-grid">
+      <div class="hl-feature reveal">
+        <img src="https://impro.usercontent.one/appid/oneComWsb/domain/taasingecamping.com/media/taasingecamping.com/onewebmedia/file_000000009da07243af5410acd87721d6%20(1)_v1.jpg?etag=%22220895-69d11229%22&sourceContentType=image%2Fjpeg&quality=85" alt="Jumbo Burger fra Tåsinge Grill">
+        <div class="glass">
+          <span class="tag-pop">★ Mest populær</span>
+          <h3>Jumbo Burger</h3>
+          <div class="price">74 kr</div>
+        </div>
+      </div>
+      <div class="hl-list">
+        <div class="hl-card reveal"><div class="info"><h4>Kylling Burger</h4><span>Sprød kyllingefilet &amp; frisk salat</span></div><div class="price">65 kr</div></div>
+        <div class="hl-card reveal"><div class="info"><h4>Bacon Cheese Burger</h4><span>Bacon, smelteost &amp; oksebøf</span></div><div class="price">65 kr</div></div>
+        <div class="hl-card reveal"><div class="info"><h4>Ristet Hotdog</h4><span>Klassikeren med det hele</span></div><div class="price">34 kr</div></div>
+        <div class="hl-card reveal"><div class="info"><h4>Kæmpe Fransk Hotdog</h4><span>Den store udgave</span></div><div class="price">45 kr</div></div>
+      </div>
+    </div>
+    <div class="menu-foot reveal"><a class="btn-gold" href="menu.html">Se hele menukortet →</a></div>
+  </div>
+</section>
+
+<!-- ORDER STEPS -->
+<section class="sec steps-sec">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Sådan gør du</span>
+      <h2>Mad på tre nemme trin</h2>
+    </div>
+    <div class="steps">
+      <div class="step reveal"><div class="num">01</div><h3>Ring &amp; bestil</h3><p>Ring til os på 29 86 63 70 og bestil det, du har lyst til. Vi fyrer op for grillen med det samme.</p></div>
+      <div class="step reveal"><div class="num">02</div><h3>Vi griller friskt</h3><p>Din mad bliver lavet frisk efter bestilling — intet står og venter under varmelamper.</p></div>
+      <div class="step reveal"><div class="num">03</div><h3>Hent &amp; nyd</h3><p>Kør forbi Sundbrovej 130, betal nemt med MobilePay, og tag den varme mad med hjem eller til pladsen.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- CAMPING BAND -->
+<section class="sec camp-sec">
+  <div class="wrap">
+    <div class="camp-grid">
+      <div class="reveal">
+        <span class="eyebrow">Mere end en grillbar</span>
+        <h2>En hyggelig campingplads tæt på skov &amp; strand</h2>
+        <p>Tåsinge Camping er en lille, familie- og dyrevenlig étstjernet campingplads i smukke omgivelser i det Sydfynske Øhav — perfekt til et roligt afbræk fra hverdagens travlhed.</p>
+        <ul class="camp-feats">
+          <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#eec25a" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Naturskønt område med skov og strand lige uden for døren</li>
+          <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#eec25a" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Familie- og dyrevenlig atmosfære</li>
+          <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#eec25a" stroke-width="2.4"><path d="M20 6L9 17l-5-5"/></svg> Hytteudlejning samt plads til telt og campingvogn</li>
+        </ul>
+        <a class="btn-cream" href="camping.html">Se camping &amp; priser →</a>
+      </div>
+      <div class="camp-photos reveal">
+        <img class="cp1" src="https://impro.usercontent.one/appid/oneComWsb/domain/taasingecamping.com/media/taasingecamping.com/onewebmedia/taasinge-camping.dk%20027.jpg-for-web-normal_v3.jpg?etag=W%2F%22d8ea8-69cac848%22&sourceContentType=image%2Fpng&quality=85" alt="Tåsinge Camping">
+        <img class="cp2" src="https://impro.usercontent.one/appid/oneComWsb/domain/taasingecamping.com/media/taasingecamping.com/onewebmedia/1000003104.jpg?etag=%223f0e5-686a66c7%22&sourceContentType=image%2Fjpeg&quality=85" alt="Faciliteter på campingpladsen">
+        <img class="cp3" src="https://impro.usercontent.one/appid/oneComWsb/domain/taasingecamping.com/media/taasingecamping.com/onewebmedia/1000003108_v1.jpg?etag=W%2F%2215fcb6-69d15d4c%22&sourceContentType=image%2Fjpeg&quality=85" alt="Natur ved Tåsinge">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOCATION -->
+<section class="sec loc-sec">
+  <div class="wrap">
+    <div class="loc-grid">
+      <div class="reveal">
+        <span class="eyebrow">Find os</span>
+        <h2>Vi ligger på Tåsinge ved Svendborg</h2>
+        <p>Lige ved Sundbrovej, kort fra Svendborgsundbroen. Ring og bestil — så er maden klar, når du kommer.</p>
+        <ul class="loc-list">
+          <li><span class="ic">📍</span><div><div class="lab">Adresse</div><a class="val" href="https://maps.google.com/?q=Sundbrovej+130,+5700+Svendborg,+Danmark" target="_blank" rel="noopener">Sundbrovej 130, 5700 Svendborg</a></div></li>
+          <li><span class="ic">📞</span><div><div class="lab">Bestilling af mad</div><a class="val" href="tel:+4529866370">29 86 63 70</a></div></li>
+          <li><span class="ic">✉️</span><div><div class="lab">E-mail</div><a class="val" href="mailto:taasingecamping@hotmail.com">taasingecamping@hotmail.com</a></div></li>
+        </ul>
+      </div>
+      <div class="map-card reveal">
+        <iframe src="https://www.google.com/maps?q=Sundbrovej+130,+5700+Svendborg,+Danmark&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Kort til Tåsinge Camping &amp; Grill"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <b>🔥 Tåsinge Camping &amp; Grill</b>
+        <p>Grillbar, takeaway og familievenlig campingplads midt i det Sydfynske Øhav. Røgvarm mad og ægte dansk campingliv.</p>
+        <div class="pay"><img src="https://impro.usercontent.one/appid/oneComWsb/domain/taasingecamping.com/media/taasingecamping.com/onewebmedia/Preview-MP-logo-and-type-horizontal-blue___serialized1.png?etag=%22136da-5e5c5719%22&sourceContentType=image%2Fpng&quality=85" alt="MobilePay"> Betal nemt med MobilePay</div>
+      </div>
+      <div class="foot-col">
+        <h4>Genveje</h4>
+        <a href="index.html">Forside</a>
+        <a href="menu.html">Menukort</a>
+        <a href="camping.html">Camping &amp; Priser</a>
+        <a href="kontakt.html">Kontakt</a>
+      </div>
+      <div class="foot-col">
+        <h4>Kontakt</h4>
+        <a href="tel:+4529866370">+45 29 86 63 70</a>
+        <a href="mailto:taasingecamping@hotmail.com">taasingecamping@hotmail.com</a>
+        <a href="https://maps.google.com/?q=Sundbrovej+130,+5700+Svendborg,+Danmark" target="_blank" rel="noopener">Sundbrovej 130, 5700 Svendborg</a>
+        <a href="https://facebook.com/TaasingeCampingogGrill/" target="_blank" rel="noopener">Find os på Facebook</a>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>CVR nr.: 28637276 · Copyright © Tåsinge Camping &amp; Grill — Alle rettigheder forbeholdes</span>
+      <span>Sundbrovej 130 · 5700 Svendborg · Danmark</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+const hdr=document.getElementById('hdr');
+addEventListener('scroll',()=>hdr.classList.toggle('solid',scrollY>40));
+document.getElementById('burger').addEventListener('click',()=>document.getElementById('menu').classList.toggle('open'));
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*70)+'ms';io.observe(el)});
+</script>
+</body>
+</html>

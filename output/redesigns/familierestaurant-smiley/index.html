@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Familierestaurant Smiley · Pizza, burger & grill i Ringe</title>
+<meta name="description" content="Familierestaurant Smiley på Algade 53 i Ringe. Hjemmelavet pizza, Smiley-burgere, grillretter og dürum. Bestil online eller ring 62 62 44 27. Åbent alle dage 11–21.">
+<meta property="og:title" content="Familierestaurant Smiley · Pizza, burger & grill i Ringe">
+<meta property="og:description" content="Hjemmelavet pizza, burgere og grill midt i Ringe. Åbent alle dage 11–21.">
+<meta property="og:type" content="restaurant">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,900;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1c140e;
+    --espresso:#2a1d13;
+    --cream:#f8f1e3;
+    --paper:#fdf9f0;
+    --tomato:#cf3b25;
+    --tomato-deep:#a82c19;
+    --gold:#e3a13a;
+    --olive:#5d6b3e;
+    --muted:#7c6f60;
+    --line:rgba(28,20,14,.12);
+    --display:'Fraunces',Georgia,serif;
+    --body:'Hanken Grotesk',system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--body);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+
+  /* ---------- NAV ---------- */
+  header.nav{position:sticky;top:0;z-index:60;background:rgba(253,249,240,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .brand{display:flex;align-items:center;gap:11px;font-family:var(--display);font-weight:900;font-size:1.5rem;letter-spacing:-.02em}
+  .brand .dot{width:34px;height:34px;border-radius:50%;background:var(--gold);display:grid;place-items:center;flex:none;box-shadow:inset 0 -3px 0 rgba(0,0,0,.08)}
+  .brand .dot svg{width:22px;height:22px}
+  .brand small{display:block;font-family:var(--body);font-weight:600;font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--tomato);margin-top:-2px}
+  nav.links{display:flex;align-items:center;gap:30px}
+  nav.links a{font-weight:600;font-size:.95rem;color:var(--espresso);transition:color .2s}
+  nav.links a:hover{color:var(--tomato)}
+  .btn{display:inline-flex;align-items:center;gap:8px;background:var(--tomato);color:var(--cream);font-weight:700;font-size:.95rem;padding:12px 22px;border-radius:999px;transition:transform .15s,background .2s;border:none;cursor:pointer}
+  .btn:hover{background:var(--tomato-deep);transform:translateY(-2px)}
+  .btn.ghost{background:transparent;color:var(--espresso);border:1.5px solid var(--line)}
+  .btn.ghost:hover{border-color:var(--tomato);color:var(--tomato);background:transparent}
+  .menu-toggle{display:none;background:none;border:none;font-size:1.6rem;cursor:pointer;color:var(--espresso)}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;background:var(--espresso);color:var(--cream);overflow:hidden}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;min-height:640px}
+  .hero-copy{padding:80px 60px 80px 0;display:flex;flex-direction:column;justify-content:center;position:relative;z-index:2}
+  .hero .wrap{position:relative}
+  .eyebrow{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:26px}
+  .eyebrow::before{content:"";width:34px;height:1.5px;background:var(--gold)}
+  h1{font-family:var(--display);font-weight:900;font-size:clamp(2.9rem,6vw,5.3rem);line-height:.98;letter-spacing:-.025em}
+  h1 em{font-style:italic;font-weight:500;color:var(--gold)}
+  .hero p.lead{font-size:1.2rem;color:rgba(248,241,227,.82);max-width:30em;margin:26px 0 36px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .hero-meta{display:flex;gap:30px;margin-top:42px;flex-wrap:wrap}
+  .hero-meta div{font-size:.9rem;color:rgba(248,241,227,.7)}
+  .hero-meta strong{display:block;font-family:var(--display);font-size:1.3rem;color:var(--cream);font-weight:600;margin-bottom:2px}
+  .hero-photo{position:relative}
+  .hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,var(--espresso) 0%,rgba(42,29,19,.35) 30%,transparent 60%)}
+  .badge-open{position:absolute;left:32px;bottom:32px;z-index:3;background:var(--cream);color:var(--espresso);border-radius:14px;padding:14px 18px;display:flex;align-items:center;gap:12px;box-shadow:0 18px 40px rgba(0,0,0,.25)}
+  .badge-open .pulse{width:11px;height:11px;border-radius:50%;background:#3fae62;box-shadow:0 0 0 0 rgba(63,174,98,.5);animation:pulse 2s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(63,174,98,.5)}70%{box-shadow:0 0 0 10px rgba(63,174,98,0)}100%{box-shadow:0 0 0 0 rgba(63,174,98,0)}}
+  .badge-open b{font-family:var(--display)}
+  .badge-open span{font-size:.78rem;color:var(--muted)}
+
+  /* fade-in */
+  .fade{opacity:0;transform:translateY(20px);animation:rise .8s forwards}
+  @keyframes rise{to{opacity:1;transform:none}}
+  .d1{animation-delay:.05s}.d2{animation-delay:.15s}.d3{animation-delay:.25s}.d4{animation-delay:.35s}.d5{animation-delay:.45s}
+
+  /* ---------- STRIP ---------- */
+  .strip{background:var(--tomato);color:var(--cream)}
+  .strip-inner{display:flex;flex-wrap:wrap;justify-content:center;gap:14px 48px;padding:18px 28px;font-family:var(--display);font-weight:600;font-size:1.05rem;letter-spacing:.01em}
+  .strip-inner span{display:inline-flex;align-items:center;gap:14px}
+  .strip-inner span::after{content:"●";color:var(--gold);font-size:.6rem}
+
+  /* ---------- SECTION ---------- */
+  section{padding:96px 0}
+  .sec-head{max-width:640px;margin-bottom:54px}
+  .kicker{font-weight:700;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--tomato);margin-bottom:16px;display:block}
+  h2{font-family:var(--display);font-weight:900;font-size:clamp(2rem,4vw,3.1rem);line-height:1.04;letter-spacing:-.02em}
+  h2 em{font-style:italic;font-weight:500;color:var(--tomato)}
+  .sec-head p{font-size:1.12rem;color:var(--muted);margin-top:18px}
+
+  /* signature cards */
+  .signatures{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .sig{background:var(--cream);border-radius:20px;overflow:hidden;border:1px solid var(--line);transition:transform .25s,box-shadow .25s}
+  .sig:hover{transform:translateY(-6px);box-shadow:0 24px 46px rgba(28,20,14,.13)}
+  .sig-img{height:230px;position:relative;overflow:hidden}
+  .sig-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+  .sig:hover .sig-img img{transform:scale(1.06)}
+  .sig-tag{position:absolute;top:14px;left:14px;background:var(--espresso);color:var(--cream);font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;border-radius:999px}
+  .sig-body{padding:24px 24px 28px}
+  .sig-body h3{font-family:var(--display);font-size:1.4rem;font-weight:600;margin-bottom:8px}
+  .sig-body p{color:var(--muted);font-size:.95rem;min-height:3em}
+  .sig-price{display:flex;align-items:baseline;justify-content:space-between;margin-top:18px;padding-top:16px;border-top:1px dashed var(--line)}
+  .sig-price b{font-family:var(--display);font-size:1.5rem;color:var(--tomato)}
+  .sig-price span{font-size:.82rem;color:var(--muted)}
+
+  /* lunch banner */
+  .lunch{background:var(--espresso);color:var(--cream);border-radius:26px;overflow:hidden;display:grid;grid-template-columns:1.1fr .9fr}
+  .lunch-copy{padding:58px 56px}
+  .lunch-copy .price-pill{display:inline-block;background:var(--gold);color:var(--espresso);font-family:var(--display);font-weight:900;font-size:1.05rem;padding:8px 18px;border-radius:999px;margin-bottom:22px}
+  .lunch-copy h2{color:var(--cream)}
+  .lunch-copy h2 em{color:var(--gold)}
+  .lunch-copy p{color:rgba(248,241,227,.8);margin:18px 0 30px;font-size:1.08rem;max-width:30em}
+  .lunch-photo{position:relative;min-height:340px}
+  .lunch-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+  /* about split */
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+  .about-photos{position:relative;height:480px}
+  .about-photos .p1{position:absolute;width:72%;height:78%;top:0;left:0;border-radius:18px;object-fit:cover;box-shadow:0 20px 50px rgba(28,20,14,.18)}
+  .about-photos .p2{position:absolute;width:52%;height:50%;bottom:0;right:0;border-radius:18px;object-fit:cover;border:7px solid var(--paper);box-shadow:0 16px 40px rgba(28,20,14,.2)}
+  .about-text h2{margin-bottom:22px}
+  .about-text p{color:var(--muted);font-size:1.08rem;margin-bottom:18px}
+  .feat{display:flex;gap:16px;margin-top:26px}
+  .feat .f{flex:1;background:var(--cream);border:1px solid var(--line);border-radius:14px;padding:18px}
+  .feat .f b{font-family:var(--display);font-size:1.7rem;color:var(--tomato);display:block}
+  .feat .f span{font-size:.85rem;color:var(--muted)}
+
+  /* categories */
+  .cats-sec{background:var(--cream)}
+  .cats{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+  .cats a{background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:11px 20px;font-weight:600;font-size:.92rem;color:var(--espresso);transition:all .2s}
+  .cats a:hover{background:var(--tomato);color:var(--cream);border-color:var(--tomato);transform:translateY(-2px)}
+
+  /* visit / hours + contact */
+  .visit{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+  .card{background:var(--cream);border:1px solid var(--line);border-radius:22px;padding:42px}
+  .card h3{font-family:var(--display);font-size:1.7rem;font-weight:600;margin-bottom:24px;display:flex;align-items:center;gap:12px}
+  .card h3 svg{width:24px;height:24px;color:var(--tomato)}
+  .hours-row{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--line);font-size:1rem}
+  .hours-row:last-child{border-bottom:none}
+  .hours-row b{font-weight:600}
+  .hours-row.today{color:var(--tomato);font-weight:700}
+  .hours-row .t{font-variant-numeric:tabular-nums}
+  .contact-line{display:flex;align-items:center;gap:16px;padding:14px 0;border-bottom:1px solid var(--line)}
+  .contact-line:last-child{border-bottom:none}
+  .contact-line .ic{width:42px;height:42px;border-radius:50%;background:var(--tomato);color:var(--cream);display:grid;place-items:center;flex:none}
+  .contact-line .ic svg{width:20px;height:20px}
+  .contact-line small{display:block;color:var(--muted);font-size:.78rem;text-transform:uppercase;letter-spacing:.1em}
+  .contact-line b{font-size:1.08rem;font-family:var(--display);font-weight:600}
+
+  /* CTA band */
+  .cta-band{background:var(--tomato);color:var(--cream);text-align:center;border-radius:26px;padding:72px 30px;position:relative;overflow:hidden}
+  .cta-band h2{color:var(--cream)}
+  .cta-band p{color:rgba(255,255,255,.85);font-size:1.15rem;margin:18px auto 32px;max-width:34em}
+  .cta-band .btn{background:var(--cream);color:var(--tomato)}
+  .cta-band .btn:hover{background:var(--espresso);color:var(--cream)}
+  .cta-band::before,.cta-band::after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.07)}
+  .cta-band::before{width:280px;height:280px;top:-120px;left:-80px}
+  .cta-band::after{width:340px;height:340px;bottom:-160px;right:-100px}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--espresso);color:var(--cream);padding:70px 0 30px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:50px;padding-bottom:46px;border-bottom:1px solid rgba(248,241,227,.14)}
+  .foot-grid p{color:rgba(248,241,227,.62);margin-top:18px;max-width:30em}
+  .foot-grid h4{font-family:var(--display);font-size:1.05rem;margin-bottom:18px;color:var(--gold)}
+  .foot-grid ul{list-style:none}
+  .foot-grid ul li{margin-bottom:11px;color:rgba(248,241,227,.7);font-size:.95rem}
+  .foot-grid ul li a:hover{color:var(--cream)}
+  .foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:24px;font-size:.83rem;color:rgba(248,241,227,.5)}
+  .foot-bottom a{color:var(--gold)}
+
+  @media(max-width:900px){
+    nav.links{position:fixed;inset:74px 0 auto 0;background:var(--paper);flex-direction:column;gap:0;padding:10px 0;border-bottom:1px solid var(--line);transform:translateY(-130%);transition:transform .3s;box-shadow:0 20px 40px rgba(0,0,0,.1)}
+    nav.links.open{transform:none}
+    nav.links a{padding:14px 28px;width:100%}
+    nav.links .btn{margin:10px 28px;justify-content:center}
+    .menu-toggle{display:block}
+    .hero-grid{grid-template-columns:1fr;min-height:auto}
+    .hero-copy{padding:60px 0 50px}
+    .hero-photo{height:360px;position:relative}
+    .hero-photo img{position:absolute}
+    .hero-photo::after{background:linear-gradient(180deg,transparent 40%,var(--espresso))}
+    .signatures{grid-template-columns:1fr}
+    .lunch,.about,.visit{grid-template-columns:1fr}
+    .lunch-photo{min-height:240px}
+    .about-photos{height:360px;margin-bottom:20px}
+    .lunch-copy{padding:42px 30px}
+    .card{padding:30px}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a href="index.html" class="brand">
+      <span class="dot">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="8.5" cy="9" r="1.6" fill="#2a1d13"/><circle cx="15.5" cy="9" r="1.6" fill="#2a1d13"/><path d="M6.5 14c1.4 2.2 3.4 3.3 5.5 3.3S16.1 16.2 17.5 14" stroke="#2a1d13" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </span>
+      <span>Smiley<small>Familierestaurant · Ringe</small></span>
+    </a>
+    <nav class="links" id="navlinks">
+      <a href="index.html">Forside</a>
+      <a href="menu.html">Menukort</a>
+      <a href="index.html#om">Om os</a>
+      <a href="kontakt.html">Find os</a>
+      <a href="https://www.smiley-ringe.dk/" class="btn">Bestil online</a>
+    </nav>
+    <button class="menu-toggle" onclick="document.getElementById('navlinks').classList.toggle('open')">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="wrap" style="display:contents">
+      <div class="hero-copy" style="margin-left:max(28px,calc((100vw - 1200px)/2 + 28px))">
+        <span class="eyebrow fade d1">Algade 53 · 5750 Ringe</span>
+        <h1 class="fade d2">Hjemmelavet pizza,<br><em>burgere</em> & grill<br>midt i Ringe</h1>
+        <p class="lead fade d3">Familierestaurant Smiley laver alt fra bunden — sprøde pizzaer, saftige Smiley-burgere, dürum og grillretter. Spis i byen eller bestil med hjem. Åbent alle ugens dage.</p>
+        <div class="hero-cta fade d4">
+          <a href="https://www.smiley-ringe.dk/" class="btn">Bestil online &nbsp;→</a>
+          <a href="tel:+4562624427" class="btn ghost" style="color:var(--cream);border-color:rgba(248,241,227,.3)">Ring 62 62 44 27</a>
+        </div>
+        <div class="hero-meta fade d5">
+          <div><strong>11–21</strong>Åbent hver dag</div>
+          <div><strong>27+</strong>Pizzaer på kortet</div>
+          <div><strong>★ Smiley</strong>Kontrolrapport: elite</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-photo fade d3">
+      <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=1500&q=80" alt="Friskbagt pizza med smeltet ost">
+      <div class="badge-open">
+        <span class="pulse"></span>
+        <div><b>Der er åbent nu</b><br><span>Lukker kl. 21:00</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="strip-inner">
+    <span>Frisk dej hver dag</span>
+    <span>Smiley-burgere 150 g</span>
+    <span>Dürum & grill</span>
+    <span>Afhentning & udbringning</span>
+    <span>Forudbestil hele døgnet</span>
+  </div>
+</div>
+
+<!-- SIGNATURES -->
+<section id="favoritter">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Husets favoritter</span>
+      <h2>Det folk i Ringe <em>bestiller igen</em></h2>
+      <p>Et udpluk fra kortet — fra vores egen Ringe Special til de hjemmelavede Smiley-burgere, der har gjort os til en fast frokost- og fredagsfavorit.</p>
+    </div>
+    <div class="signatures">
+      <article class="sig">
+        <div class="sig-img"><span class="sig-tag">Husets pizza</span><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=900&q=80" alt="Ringe Special pizza"></div>
+        <div class="sig-body">
+          <h3>01. Ringe Special</h3>
+          <p>Oksekød, champignon, rød peber, skinke og løg på vores egen tomatbund.</p>
+          <div class="sig-price"><b>83 kr</b><span>alm. · fam. 240 kr</span></div>
+        </div>
+      </article>
+      <article class="sig">
+        <div class="sig-img"><span class="sig-tag">Hjemmelavet</span><img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=900&q=80" alt="Smiley cheese bacon burger"></div>
+        <div class="sig-body">
+          <h3>95. Smiley Cheese Bacon</h3>
+          <p>150 g bøf, salat, løg, tomat, agurk og vores tivoli-dressing i blødt bolle.</p>
+          <div class="sig-price"><b>69 kr</b><span>m. menu 95 kr</span></div>
+        </div>
+      </article>
+      <article class="sig">
+        <div class="sig-img"><span class="sig-tag">Frokost 11–?</span><img src="https://images.unsplash.com/photo-1633321088355-d0f81134ca3b?w=900&q=80" alt="Dürum rulle"></div>
+        <div class="sig-body">
+          <h3>Dürum & grill</h3>
+          <p>Saftig dürum med kebab eller kylling, friske grøntsager og hjemmelavet dressing.</p>
+          <div class="sig-price"><b>Fra 60 kr</b><span>se hele kortet</span></div>
+        </div>
+      </article>
+    </div>
+    <div style="text-align:center;margin-top:46px">
+      <a href="menu.html" class="btn">Se hele menukortet &nbsp;→</a>
+    </div>
+  </div>
+</section>
+
+<!-- LUNCH -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="lunch">
+      <div class="lunch-copy">
+        <span class="price-pill">Frokostmenu · 93 kr</span>
+        <h2>Pizza + <em>0,4 L sodavand</em></h2>
+        <p>Hver dag fra åbningstid tilbyder vi frokostmenuer: vælg din favoritpizza med en kold sodavand til fast pris. Eller tag en ½ kylling med pommes, remoulade og agurkesalat for 99 kr.</p>
+        <a href="menu.html#frokost" class="btn">Se frokostmenuerne &nbsp;→</a>
+      </div>
+      <div class="lunch-photo">
+        <img src="https://images.unsplash.com/photo-1571066811602-716837d681de?w=900&q=80" alt="Frokostmenu pizza og sodavand">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="om" class="">
+  <div class="wrap about">
+    <div class="about-photos">
+      <img class="p1" src="https://images.unsplash.com/photo-1542528180-a1208c5169a5?w=900&q=80" alt="Restaurantkøkken med pizzaovn">
+      <img class="p2" src="https://images.unsplash.com/photo-1579751626657-72bc17010498?w=700&q=80" alt="Friske råvarer til pizza">
+    </div>
+    <div class="about-text">
+      <span class="kicker">Om Familierestaurant Smiley</span>
+      <h2>En lokal <em>familierestaurant</em> på Algade</h2>
+      <p>Smiley er pizzeriaet og grillen midt i Ringe, hvor naboer, familier og frokostgæster ved, hvad de får: rigeligt fyld, frisk dej og venlig betjening — hver dag fra kl. 11 til 21.</p>
+      <p>Vi laver vores burgere, pita og dürum i hånden og bager pizzaerne efter bestilling. Kom forbi på Algade 53, eller bestil online og hent med hjem.</p>
+      <div class="feat">
+        <div class="f"><b>Elite</b><span>Smiley-kontrolrapport</span></div>
+        <div class="f"><b>7/7</b><span>Åbent alle dage</span></div>
+        <div class="f"><b>100%</b><span>Lavet fra bunden</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="cats-sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Hele kortet</span>
+      <h2>Der er noget til <em>hele familien</em></h2>
+      <p>Fra klassiske pizzaer og indbagte specialiteter til burgere, pasta, salater og grillretter.</p>
+    </div>
+    <div class="cats">
+      <a href="menu.html#frokost">Frokostmenuer</a>
+      <a href="menu.html#pizza">Pizzaer</a>
+      <a href="menu.html">Salatpizzaer</a>
+      <a href="menu.html">Pizza m. pommes frites</a>
+      <a href="menu.html">Indbagte pizzaer</a>
+      <a href="menu.html">Børnepizzaer</a>
+      <a href="menu.html">Luxus pizzaer</a>
+      <a href="menu.html">Mexicanske pizzaer</a>
+      <a href="menu.html">Vegetar pizzaer</a>
+      <a href="menu.html">Hjemmelavet pitabrød</a>
+      <a href="menu.html">Dürum ruller</a>
+      <a href="menu.html">Pizzasandwich</a>
+      <a href="menu.html">Baguette</a>
+      <a href="menu.html">Pastaretter</a>
+      <a href="menu.html">A la carte</a>
+      <a href="menu.html">Salater m. hvidløgsbrød</a>
+      <a href="menu.html#burger">Smiley-burgere</a>
+      <a href="menu.html">Mexicanske burgere</a>
+      <a href="menu.html">Børnemenu</a>
+      <a href="menu.html">Grillretter</a>
+      <a href="menu.html">Pommes frites</a>
+      <a href="menu.html">Pølser</a>
+      <a href="menu.html">Sandwich</a>
+      <a href="menu.html">Drikkevarer</a>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">Besøg os</span>
+      <h2>Åbningstider & <em>kontakt</em></h2>
+    </div>
+    <div class="visit">
+      <div class="card">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round"/></svg>Åbningstider</h3>
+        <div class="hours-row"><b>Mandag</b><span class="t">11:00 – 21:00</span></div>
+        <div class="hours-row"><b>Tirsdag</b><span class="t">11:00 – 21:00</span></div>
+        <div class="hours-row"><b>Onsdag</b><span class="t">11:00 – 21:00</span></div>
+        <div class="hours-row"><b>Torsdag</b><span class="t">11:00 – 21:00</span></div>
+        <div class="hours-row"><b>Fredag</b><span class="t">11:00 – 21:00</span></div>
+        <div class="hours-row"><b>Lørdag</b><span class="t">11:00 – 21:00</span></div>
+        <div class="hours-row"><b>Søndag</b><span class="t">11:00 – 21:00</span></div>
+        <p style="margin-top:18px;color:var(--muted);font-size:.92rem">Du kan forudbestille hele døgnet — vi gør vores bedste for at ramme det ønskede tidspunkt.</p>
+      </div>
+      <div class="card">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Sådan finder du os</h3>
+        <a class="contact-line" href="https://maps.google.com/?q=Algade+53+5750+Ringe" target="_blank">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11a7 7 0 0114 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+          <span><small>Adresse</small><b>Algade 53, 5750 Ringe</b></span>
+        </a>
+        <a class="contact-line" href="tel:+4562624427">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L20 13l-1 4a2 2 0 01-2 1.5A15 15 0 014 6 2 2 0 015 4z"/></svg></span>
+          <span><small>Telefon</small><b>62 62 44 27</b></span>
+        </a>
+        <a class="contact-line" href="mailto:kontakt@smiley-ringe.dk">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+          <span><small>E-mail</small><b>kontakt@smiley-ringe.dk</b></span>
+        </a>
+        <a class="contact-line" href="https://www.facebook.com/Smiley-Ringe-123844544369228/" target="_blank">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9V7c0-1 .5-1.5 1.6-1.5H17V2.5h-2.4C11.8 2.5 11 4 11 6.3V9H9v3h2v9h3v-9h2.2l.4-3H14z"/></svg></span>
+          <span><small>Følg os</small><b>Smiley Ringe på Facebook</b></span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="cta-band">
+      <h2>Sulten? Vi bager den klar.</h2>
+      <p>Bestil online til afhentning eller udbringning — eller ring direkte til os på Algade 53.</p>
+      <div class="hero-cta" style="justify-content:center">
+        <a href="https://www.smiley-ringe.dk/" class="btn">Bestil online &nbsp;→</a>
+        <a href="tel:+4562624427" class="btn" style="background:transparent;color:var(--cream);border:1.5px solid rgba(255,255,255,.5)">Ring 62 62 44 27</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a href="index.html" class="brand" style="color:var(--cream)">
+          <span class="dot"><svg viewBox="0 0 24 24" fill="none"><circle cx="8.5" cy="9" r="1.6" fill="#2a1d13"/><circle cx="15.5" cy="9" r="1.6" fill="#2a1d13"/><path d="M6.5 14c1.4 2.2 3.4 3.3 5.5 3.3S16.1 16.2 17.5 14" stroke="#2a1d13" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+          <span>Smiley<small>Familierestaurant · Ringe</small></span>
+        </a>
+        <p>Familierestaurant Smiley — hjemmelavet pizza, burgere, dürum og grill midt i Ringe. Åbent alle dage 11–21.</p>
+      </div>
+      <div>
+        <h4>Menu</h4>
+        <ul>
+          <li><a href="menu.html#pizza">Pizzaer</a></li>
+          <li><a href="menu.html#burger">Smiley-burgere</a></li>
+          <li><a href="menu.html#frokost">Frokostmenuer</a></li>
+          <li><a href="menu.html">Grill & dürum</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <ul>
+          <li>Algade 53, 5750 Ringe</li>
+          <li><a href="tel:+4562624427">62 62 44 27</a></li>
+          <li><a href="mailto:kontakt@smiley-ringe.dk">kontakt@smiley-ringe.dk</a></li>
+          <li>CVR: 35959599</li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Familierestaurant Smiley · Algade 53, Ringe</span>
+      <span>Mockup-redesign udarbejdet af <a href="#">WilbrandtWorks</a></span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

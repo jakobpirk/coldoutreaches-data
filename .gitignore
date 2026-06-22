@@ -1,0 +1,25 @@
+# secrets — never commit
+.env
+infra/.env
+.netlify-token
+*.token
+
+# python / node junk
+__pycache__/
+*.pyc
+node_modules/
+.npm-cache/
+.npm-global/
+
+# local scratch / large artifacts
+output/screenshots/
+output/sites/
+output/*.zip
+output/archive/
+output/dashboard.html
+output/run.log
+output/run.done
+
+# keep the lead database (state persists across nightly runs)
+!data/
+!data/leads.db

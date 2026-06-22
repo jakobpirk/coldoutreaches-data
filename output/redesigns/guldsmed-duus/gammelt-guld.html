@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Køb af gammelt guld og sølv — Guldsmed Duus, Faaborg</title>
+<meta name="description" content="Har du gamle smykker, guldtænder eller sølvtøj? Vi vurderer og køber ædelmetaller til dagspris. Kom ind og få et tilbud hos Guldsmed Duus i Faaborg.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--ivory:#F5EFE4;--ivory-2:#EFE7D8;--ink:#1A1814;--ink-soft:#3A352D;--gold:#B0883F;--gold-light:#C9A24B;--gold-deep:#8A6A2E;--line:rgba(26,24,20,.14);--serif:"Fraunces",Georgia,serif;--sans:"Jost",system-ui,sans-serif}
+  *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--ivory);line-height:1.65;font-weight:300;font-size:17px;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 28px}.narrow{max-width:860px}
+  header{position:sticky;top:0;z-index:50;background:rgba(245,239,228,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:84px}
+  .brand{display:flex;flex-direction:column;line-height:1}
+  .brand .name{font-family:var(--serif);font-size:25px;font-weight:500;letter-spacing:.02em}
+  .brand .sub{font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-deep);margin-top:5px}
+  nav.menu{display:flex;gap:34px;align-items:center}
+  nav.menu a{font-size:13.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-soft);transition:color .25s;position:relative}
+  nav.menu a:after{content:"";position:absolute;left:0;bottom:-7px;width:0;height:1px;background:var(--gold);transition:width .3s}
+  nav.menu a:hover:after,nav.menu a.active:after{width:100%}
+  nav.menu a.active,nav.menu a:hover{color:var(--ink)}
+  .cta-call{border:1px solid var(--ink);padding:11px 20px;border-radius:30px;font-size:12.5px !important;letter-spacing:.12em;transition:all .3s}
+  .cta-call:hover{background:var(--ink);color:var(--ivory)}.cta-call:after{display:none}
+  .burger{display:none;font-size:24px;background:none;border:none;cursor:pointer;color:var(--ink)}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border-radius:34px;font-size:13.5px;letter-spacing:.12em;text-transform:uppercase;transition:all .3s;cursor:pointer}
+  .btn-gold{background:var(--gold);color:#fff}.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px)}
+  .btn-ghost{border:1px solid rgba(245,239,228,.55);color:var(--ivory)}.btn-ghost:hover{background:rgba(245,239,228,.12)}
+  .phero{position:relative;min-height:58vh;display:flex;align-items:flex-end;overflow:hidden}
+  .phero-bg{position:absolute;inset:0;background-size:cover;background-position:center 45%}
+  .phero-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(16,14,11,.85),rgba(16,14,11,.35) 60%,rgba(16,14,11,.5))}
+  .phero-inner{position:relative;z-index:2;color:var(--ivory);padding-bottom:7vh}
+  .crumbs{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-light);margin-bottom:18px}
+  .crumbs a{color:rgba(245,239,228,.7)}
+  .phero h1{font-family:var(--serif);font-weight:300;font-size:clamp(2.3rem,5.4vw,4.4rem);line-height:1.03;max-width:16ch}
+  .phero h1 em{font-style:italic;color:var(--gold-light)}
+  .phero p{margin-top:20px;max-width:48ch;color:rgba(245,239,228,.85)}
+  section{padding:96px 0}
+  .kicker{font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:18px}
+  h2.title{font-family:var(--serif);font-weight:300;font-size:clamp(1.9rem,3.6vw,3rem);line-height:1.1}
+  h2.title em{font-style:italic;color:var(--gold)}
+  .lead-p{font-family:var(--serif);font-size:1.5rem;line-height:1.45;font-weight:300;color:var(--ink)}
+  .prose p{margin-bottom:20px;color:var(--ink-soft);font-size:1.07rem}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:10px}
+  .step{position:relative;background:var(--ivory-2);padding:40px 32px 34px;border-radius:4px}
+  .step .n{font-family:var(--serif);font-size:2.6rem;color:var(--gold);line-height:1;margin-bottom:14px}
+  .step h3{font-family:var(--serif);font-size:1.35rem;font-weight:400;margin-bottom:10px}
+  .step p{color:var(--ink-soft);font-size:.98rem}
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+  .split .pic img{width:100%;height:480px;object-fit:cover;border-radius:4px}
+  .note{background:var(--ink);color:var(--ivory);border-radius:5px;padding:48px 52px}
+  .note h3{font-family:var(--serif);font-weight:400;font-size:1.7rem;margin-bottom:14px;color:var(--gold-light)}
+  .note p{color:rgba(245,239,228,.85);max-width:62ch}
+  .note p+p{margin-top:14px}
+  .band{position:relative;text-align:center;color:var(--ivory);overflow:hidden}
+  .band-bg{position:absolute;inset:0;background-size:cover;background-position:center}
+  .band-bg:after{content:"";position:absolute;inset:0;background:rgba(16,14,11,.74)}
+  .band .wrap{position:relative;z-index:2;padding:108px 28px}
+  .band h2{font-family:var(--serif);font-weight:300;font-size:clamp(2rem,4.2vw,3.2rem);max-width:20ch;margin:0 auto}
+  .band h2 em{font-style:italic;color:var(--gold-light)}
+  .band p{margin:20px auto 0;max-width:48ch;color:rgba(245,239,228,.85)}
+  footer{background:var(--ink);color:rgba(245,239,228,.78);padding:78px 0 34px}
+  .fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;padding-bottom:52px;border-bottom:1px solid rgba(245,239,228,.14)}
+  .fbrand .name{font-family:var(--serif);font-size:1.7rem;color:var(--ivory)}
+  .fbrand .sub{font-size:10.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-light);margin-top:6px}
+  .fbrand p{margin-top:20px;font-size:.96rem;max-width:34ch}
+  .fcol h4{font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-light);margin-bottom:20px}
+  .fcol a,.fcol p{display:block;font-size:.98rem;margin-bottom:11px;color:rgba(245,239,228,.78);transition:color .25s}
+  .fcol a:hover{color:var(--ivory)}
+  .fbot{display:flex;justify-content:space-between;align-items:center;padding-top:26px;font-size:.85rem;color:rgba(245,239,228,.5);flex-wrap:wrap;gap:12px}
+  @media(max-width:900px){nav.menu{display:none}.burger{display:block}.steps,.split{grid-template-columns:1fr}.split .pic img{height:340px}.fgrid{grid-template-columns:1fr 1fr;gap:36px}}
+  @media(max-width:600px){section{padding:64px 0}.fgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html"><span class="name">Guldsmed Duus</span><span class="sub">Faaborg · siden 1908</span></a>
+    <nav class="menu">
+      <a href="index.html">Forside</a>
+      <a href="vaerksteder.html">Værkstederne</a>
+      <a href="gammelt-guld.html" class="active">Gammelt guld</a>
+      <a href="om-os.html">Om os</a>
+      <a href="kontakt.html">Kontakt</a>
+      <a href="tel:+4526243500" class="cta-call">26 24 35 00</a>
+    </nav>
+    <button class="burger" onclick="document.querySelector('nav.menu').style.display='flex';this.style.display='none'">☰</button>
+  </div>
+</header>
+
+<section class="phero" style="padding:0">
+  <div class="phero-bg" style="background-image:url('https://impro.usercontent.one/appid/oneComWsb/domain/guldsmedduus.dk/media/guldsmedduus.dk/onewebmedia/gammelt.gulds%C3%B8lv.webp?sourceContentType=image%2Fwebp&resize=1800%2B1100&quality=85')"></div>
+  <div class="wrap phero-inner">
+    <div class="crumbs"><a href="index.html">Forside</a> &nbsp;/&nbsp; Gammelt guld</div>
+    <h1>Vi køber alt gammelt guld og sølv — til <em>fair priser</em></h1>
+    <p>Lige fra bestik til tænder. Når du sælger til os, er du sikker på, at alt bliver genbrugt.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap narrow prose">
+    <p class="kicker">Køb af gammelt guld og sølv</p>
+    <p class="lead-p">Vi køber alt i guld og sølv — lige fra bestik til tænder.</p>
+    <p>Når du sælger til os, er du sikker på, at alt bliver genbrugt. Ved at genbruge guldet reducerer vi behovet for minedrift og bidrager til en grønnere og mere ansvarlig smykkebranche.</p>
+    <p>Har du skuffen fuld af gamle smykker, ure og bestik? Mange kommer ind med bedsteforældrenes vielsesringe og andre gamle smykker med henblik på salg til smelt, fordi guldkursen er høj. Men vi opfordrer gerne til at få lavet nye smykker af det gamle guld — på den måde bevares affektionsværdien, og familiens historie kan gå i arv.</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="kicker" style="text-align:center">Sådan foregår det</div>
+    <h2 class="title" style="text-align:center;margin-bottom:46px">Enkelt, trygt og <em>gennemsigtigt</em></h2>
+    <div class="steps">
+      <div class="step"><div class="n">01</div><h3>Kom forbi</h3><p>Tag dine gamle smykker, ure, bestik eller guldtænder med i butikken på Mellemgade 7. En snak er altid gratis.</p></div>
+      <div class="step"><div class="n">02</div><h3>Vurdering</h3><p>Vi vurderer dine ædelmetaller til dagspris. Du kan også vælge at bruge guldets værdi som betaling for et nyt smykke.</p></div>
+      <div class="step"><div class="n">03</div><h3>Udbetaling</h3><p>Du får et fair tilbud. Det er helt op til dig, om du tager imod det — eller hellere vil bevare guldet i et nyt smykke.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap split">
+    <div class="pic"><img src="https://impro.usercontent.one/appid/oneComWsb/domain/guldsmedduus.dk/media/guldsmedduus.dk/onewebmedia/gl.guld.2.jpg?sourceContentType=image%2Fjpeg&resize=900%2B900&quality=85" alt="Bunke af gammelt guld"></div>
+    <div class="prose">
+      <p class="kicker">Bevar historien</p>
+      <h2 class="title">Lad guldet leve <em>videre</em></h2>
+      <p>Et godt eksempel er ”Marias hjerte”: et vedhæng lavet af gammelt guld og givet i gave til konfirmanden, studenten eller den vordende mor. Sammen med en af vores ansatte — eller med guldsmeden selv — skitserer vi dit drømmesmykke af det guld, du allerede har.</p>
+      <p style="margin-top:8px"><a href="vaerksteder.html" class="btn btn-gold" style="margin-top:8px">Se hvad værkstedet kan skabe</a></p>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="note">
+      <h3>Godt at vide om dokumentation</h3>
+      <p>Dokumentation er et lovkrav uanset udbetalingsløsning, med mindre beløbet er under 1.500 kr.</p>
+      <p>Dokumentation skal fremvises på forlangende uanset beløb. Vi hjælper dig naturligvis trygt igennem det hele.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band" style="padding:0">
+  <div class="band-bg" style="background-image:url('https://impro.usercontent.one/appid/oneComWsb/domain/guldsmedduus.dk/media/guldsmedduus.dk/onewebmedia/gl.guld.2.jpg?sourceContentType=image%2Fjpeg&resize=1800%2B1100&quality=85')"></div>
+  <div class="wrap">
+    <h2>Har du gammelt guld liggende? <em>Få et tilbud</em></h2>
+    <p>Kom ind og hils på. Vi vurderer gerne dine smykker, ure og bestik — helt uforpligtende.</p>
+    <div style="margin-top:32px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+      <a href="tel:+4526243500" class="btn btn-gold">Ring 26 24 35 00</a>
+      <a href="kontakt.html" class="btn btn-ghost">Find vej til butikken</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fbrand"><div class="name">Guldsmed Duus</div><div class="sub">En anderledes guldsmed</div><p>Faaborgs ældste butik — og så vidt vi ved Danmarks ældste guldsmed i de samme lokaler. Grundlagt 1908.</p></div>
+      <div class="fcol"><h4>Butikken</h4><a href="vaerksteder.html">Værkstederne</a><a href="gammelt-guld.html">Gammelt guld</a><a href="om-os.html">Om os</a><a href="https://detgamleguld.dk" target="_blank" rel="noopener">Vintage — Det Gamle Guld</a></div>
+      <div class="fcol"><h4>Kontakt</h4><p>Mellemgade 7<br>5600 Faaborg</p><a href="tel:+4526243500">26 24 35 00</a><a href="mailto:info@guldsmedduus.dk">info@guldsmedduus.dk</a><a href="https://facebook.com/GuldsmedDuus" target="_blank" rel="noopener">Facebook</a><a href="https://instagram.com/guldsmed_duus/" target="_blank" rel="noopener">Instagram</a></div>
+    </div>
+    <div class="fbot"><span>© 1908–2026 Guldsmed Duus · Faaborg</span><span>Mandag–Fredag 10–17.30 · Lørdag 10–14</span></div>
+  </div>
+</footer>
+
+</body>
+</html>

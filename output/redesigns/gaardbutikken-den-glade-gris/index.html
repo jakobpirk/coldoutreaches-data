@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gårdbutikken Den Glade Gris | Hjemmelavet kød & mad i Svendborg på Sydfyn</title>
+<meta name="description" content="Gårdbutikken Den Glade Gris i Svendborg – hjemmelavet kød, pålæg, grill og mad ud af huset. Kvalitet til discountpriser. Ring 22 58 73 10.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --oxblood:#6e1d24; --oxblood-deep:#4a1217; --oxblood-soft:#8a2c33;
+  --cream:#f6efe2; --cream-2:#efe4cf; --paper:#fffaf1;
+  --ink:#241f1b; --ink-soft:#5a4f44; --line:#e3d6bf;
+  --gold:#c98a3c; --gold-deep:#a96f29; --green:#4c5a38;
+  --shadow:0 18px 40px -22px rgba(50,20,10,.55);
+  --maxw:1180px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Mulish',system-ui,sans-serif; color:var(--ink);
+  background:var(--cream);
+  line-height:1.65; -webkit-font-smoothing:antialiased;
+  position:relative;
+}
+body::before{
+  content:""; position:fixed; inset:0; z-index:-1; pointer-events:none; opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+}
+h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif; line-height:1.08; font-weight:600; color:var(--ink); letter-spacing:-.01em}
+a{color:inherit; text-decoration:none}
+img{display:block; max-width:100%}
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 28px}
+.eyebrow{font-family:'Mulish'; font-weight:800; font-size:.74rem; letter-spacing:.22em; text-transform:uppercase; color:var(--gold-deep)}
+
+/* ---------- Header ---------- */
+.topbar{background:var(--oxblood-deep); color:#f3e6d6; font-size:.82rem; font-weight:600}
+.topbar .wrap{display:flex; justify-content:space-between; align-items:center; gap:16px; padding-top:8px; padding-bottom:8px; flex-wrap:wrap}
+.topbar a{color:#f3e6d6}
+.topbar .tline{display:flex; gap:22px; align-items:center; flex-wrap:wrap}
+.topbar .tline span{opacity:.85}
+.topbar .phone{color:#fff; letter-spacing:.02em}
+header.site{position:sticky; top:0; z-index:50; background:rgba(246,239,226,.92); backdrop-filter:blur(8px); border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex; align-items:center; justify-content:space-between; padding-top:16px; padding-bottom:16px; gap:20px}
+.brand{display:flex; align-items:center; gap:13px}
+.brand .mark{width:46px; height:46px; border-radius:50%; background:radial-gradient(circle at 35% 30%,var(--oxblood-soft),var(--oxblood-deep)); display:grid; place-items:center; color:#f6d9c2; font-size:1.4rem; box-shadow:inset 0 0 0 2px rgba(255,255,255,.12)}
+.brand .bt{display:flex; flex-direction:column; line-height:1}
+.brand .bt .k{font-size:.62rem; letter-spacing:.28em; text-transform:uppercase; color:var(--gold-deep); font-weight:800}
+.brand .bt .n{font-family:'Fraunces'; font-weight:700; font-size:1.32rem; color:var(--oxblood); letter-spacing:-.01em}
+nav.main{display:flex; align-items:center; gap:6px}
+nav.main a{font-weight:700; font-size:.93rem; color:var(--ink-soft); padding:9px 13px; border-radius:8px; transition:.2s}
+nav.main a:hover{color:var(--oxblood); background:rgba(110,29,36,.07)}
+nav.main a.active{color:var(--oxblood)}
+nav.main a.active::after{content:""; display:block; height:2px; background:var(--gold); border-radius:2px; margin-top:3px}
+.nav-cta{background:var(--oxblood); color:#fff!important; padding:11px 18px!important; border-radius:999px; box-shadow:var(--shadow)}
+.nav-cta:hover{background:var(--oxblood-deep)!important}
+.nav-toggle,.nav-burger{display:none}
+
+/* ---------- Buttons ---------- */
+.btn{display:inline-flex; align-items:center; gap:9px; font-weight:800; font-size:.95rem; padding:14px 26px; border-radius:999px; cursor:pointer; transition:.22s; border:2px solid transparent}
+.btn-primary{background:var(--gold); color:#2a1505; box-shadow:var(--shadow)}
+.btn-primary:hover{transform:translateY(-2px); background:#d99a4d}
+.btn-ghost{border-color:rgba(255,255,255,.6); color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.12)}
+.btn-dark{background:var(--oxblood); color:#fff}
+.btn-dark:hover{background:var(--oxblood-deep); transform:translateY(-2px)}
+
+/* ---------- Hero ---------- */
+.hero{position:relative; min-height:88vh; display:flex; align-items:flex-end; color:#fff; overflow:hidden}
+.hero .bg{position:absolute; inset:0; background:url('https://www.xn--grdbutikkendengladegris-k8b.dk/CustomerData/Files/Images/Banner/forside_28/86_465.jpg') center 30%/cover no-repeat; transform:scale(1.04); animation:slowzoom 18s ease-out forwards}
+@keyframes slowzoom{to{transform:scale(1.13)}}
+.hero::after{content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(40,12,10,.42) 0%,rgba(40,12,10,.15) 35%,rgba(35,10,8,.82) 100%)}
+.hero .wrap{position:relative; z-index:2; padding-bottom:72px; padding-top:90px}
+.hero .inner{max-width:760px}
+.hero .eyebrow{color:#f4c98e}
+.hero h1{font-size:clamp(2.7rem,6.4vw,5rem); font-weight:700; color:#fff; margin:.4em 0 .35em; text-shadow:0 4px 28px rgba(0,0,0,.4)}
+.hero h1 em{font-style:italic; color:#f4c98e}
+.hero p.lead{font-size:clamp(1.05rem,1.7vw,1.32rem); max-width:560px; color:#f3e7da; font-weight:500}
+.hero .cta{display:flex; gap:14px; margin-top:30px; flex-wrap:wrap}
+.fade{opacity:0; transform:translateY(22px); animation:fup .9s cubic-bezier(.2,.7,.2,1) forwards}
+.d1{animation-delay:.1s}.d2{animation-delay:.25s}.d3{animation-delay:.4s}.d4{animation-delay:.55s}
+@keyframes fup{to{opacity:1; transform:none}}
+.hero-badge{position:absolute; z-index:3; right:32px; top:40px; background:rgba(255,250,241,.95); color:var(--ink); border-radius:16px; padding:18px 22px; box-shadow:var(--shadow); max-width:230px; transform:rotate(2deg)}
+.hero-badge .h{font-family:'Fraunces'; font-weight:700; color:var(--oxblood); font-size:1.05rem}
+.hero-badge .r{font-size:.86rem; color:var(--ink-soft); margin-top:4px}
+
+/* ---------- Strip / USP ---------- */
+.usp{background:var(--oxblood); color:#fbeede; text-align:center; padding:46px 0}
+.usp h2{color:#fff; font-size:clamp(1.6rem,3vw,2.4rem); font-style:italic}
+.usp h2 span{color:#f4c98e}
+.usp p{max-width:620px; margin:14px auto 0; color:#f0dcc8; font-weight:500}
+.usp .pills{display:flex; gap:14px; justify-content:center; flex-wrap:wrap; margin-top:24px}
+.usp .pill{background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.22); border-radius:999px; padding:9px 18px; font-weight:700; font-size:.9rem}
+
+/* ---------- Section ---------- */
+section.block{padding:84px 0}
+.sec-head{max-width:680px; margin-bottom:46px}
+.sec-head h2{font-size:clamp(2rem,4vw,3rem); margin:.25em 0 .3em}
+.sec-head p{color:var(--ink-soft); font-size:1.06rem}
+
+/* About split */
+.split{display:grid; grid-template-columns:1.05fr .95fr; gap:54px; align-items:center}
+.split .imgwrap{position:relative}
+.split img{border-radius:18px; box-shadow:var(--shadow); width:100%; height:100%; object-fit:cover; aspect-ratio:4/3}
+.split .tag{position:absolute; left:-18px; bottom:-18px; background:var(--gold); color:#2a1505; font-family:'Fraunces'; font-weight:700; padding:14px 20px; border-radius:14px; box-shadow:var(--shadow); font-size:1.05rem}
+.about-list{list-style:none; margin-top:22px; display:grid; gap:14px}
+.about-list li{display:flex; gap:13px; align-items:flex-start; font-weight:600; color:var(--ink-soft)}
+.about-list .ic{flex:none; width:30px; height:30px; border-radius:50%; background:rgba(110,29,36,.1); color:var(--oxblood); display:grid; place-items:center; font-size:.9rem; margin-top:2px}
+
+/* Cards */
+.cards{display:grid; grid-template-columns:repeat(4,1fr); gap:26px}
+.card{background:var(--paper); border-radius:18px; overflow:hidden; box-shadow:var(--shadow); border:1px solid var(--line); transition:.25s; display:flex; flex-direction:column}
+.card:hover{transform:translateY(-6px)}
+.card .ph{aspect-ratio:4/3; overflow:hidden}
+.card .ph img{width:100%; height:100%; object-fit:cover; transition:.5s}
+.card:hover .ph img{transform:scale(1.07)}
+.card .body{padding:22px 22px 26px; display:flex; flex-direction:column; flex:1}
+.card h3{font-size:1.28rem; color:var(--oxblood)}
+.card p{color:var(--ink-soft); font-size:.94rem; margin:8px 0 16px; flex:1}
+.card .lnk{font-weight:800; color:var(--gold-deep); font-size:.9rem; letter-spacing:.02em}
+.card .lnk::after{content:" →"}
+
+/* charcuterie strip */
+.strip{display:grid; grid-template-columns:repeat(4,1fr); gap:0}
+.strip img{width:100%; height:230px; object-fit:cover; filter:saturate(1.02)}
+
+/* Featured prices */
+.featband{background:var(--cream-2)}
+.feat{display:grid; grid-template-columns:repeat(3,1fr); gap:24px}
+.pricecard{background:var(--paper); border:1px solid var(--line); border-radius:18px; padding:28px; box-shadow:var(--shadow); position:relative; overflow:hidden}
+.pricecard .kg{font-family:'Fraunces'; font-weight:700; font-size:1.05rem; color:var(--ink-soft)}
+.pricecard h3{font-size:1.5rem; color:var(--oxblood); margin:6px 0 14px}
+.pricecard .price{font-family:'Fraunces'; font-weight:900; font-size:2.4rem; color:var(--ink)}
+.pricecard .price small{font-size:1rem; font-weight:600; color:var(--ink-soft)}
+.pricecard .ribbon{position:absolute; top:16px; right:-34px; background:var(--green); color:#fff; font-weight:800; font-size:.72rem; letter-spacing:.12em; padding:5px 40px; transform:rotate(45deg)}
+
+/* hours / cta band */
+.hours-band{background:var(--oxblood-deep); color:#f4e6d6}
+.hours-grid{display:grid; grid-template-columns:1.1fr 1fr; gap:50px; align-items:center}
+.hourbox{background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.14); border-radius:18px; padding:30px 32px}
+.hourbox h3{color:#fff; font-size:1.5rem; margin-bottom:18px}
+.hr{display:flex; justify-content:space-between; padding:11px 0; border-bottom:1px dashed rgba(255,255,255,.16); font-weight:600}
+.hr:last-child{border-bottom:none}
+.hr .day{color:#f4e6d6}
+.hr .t{color:#f4c98e; font-weight:800}
+.hr .closed{color:#d79a9a}
+.hours-band h2{color:#fff; font-size:clamp(1.9rem,3.6vw,2.8rem)}
+.hours-band .note{color:#f0d9c4; margin:14px 0 26px; font-weight:500}
+
+/* footer */
+footer.site{background:var(--ink); color:#d9cdbe; padding:64px 0 30px}
+.fgrid{display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:40px}
+footer.site h4{color:#fff; font-family:'Fraunces'; font-size:1.15rem; margin-bottom:16px}
+footer.site a{color:#d9cdbe; transition:.2s}
+footer.site a:hover{color:var(--gold)}
+footer.site .fbrand .n{font-family:'Fraunces'; font-size:1.5rem; color:#fff; font-weight:700}
+footer.site .fbrand p{margin-top:12px; font-size:.92rem; max-width:280px; color:#b6a999}
+.flist{list-style:none; display:grid; gap:9px; font-size:.94rem}
+.smiley{display:inline-block; margin-top:8px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.16); padding:8px 14px; border-radius:10px; font-weight:700; font-size:.85rem; color:#fff}
+.fbot{border-top:1px solid rgba(255,255,255,.12); margin-top:46px; padding-top:22px; display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; font-size:.82rem; color:#9d9183}
+
+/* ---------- Responsive ---------- */
+@media(max-width:980px){
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .feat{grid-template-columns:1fr}
+  .split,.hours-grid{grid-template-columns:1fr; gap:34px}
+  .strip{grid-template-columns:repeat(2,1fr)}
+  .fgrid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:760px){
+  nav.main{position:fixed; inset:0 0 0 auto; width:min(80vw,320px); background:var(--cream); flex-direction:column; align-items:stretch; padding:90px 22px 30px; gap:6px; transform:translateX(100%); transition:.3s; box-shadow:var(--shadow); z-index:60}
+  nav.main a{padding:13px 14px; border-radius:10px; font-size:1.05rem}
+  .nav-toggle:checked ~ nav.main{transform:none}
+  .nav-burger{display:flex; flex-direction:column; gap:5px; width:42px; height:42px; justify-content:center; align-items:center; cursor:pointer; z-index:70; position:relative}
+  .nav-burger span{width:24px; height:2px; background:var(--oxblood); transition:.3s}
+  .nav-toggle:checked ~ .nav-burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .nav-toggle:checked ~ .nav-burger span:nth-child(2){opacity:0}
+  .nav-toggle:checked ~ .nav-burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .hero-badge{display:none}
+  .hero{min-height:78vh}
+  .strip{grid-template-columns:1fr 1fr}
+  .fgrid{grid-template-columns:1fr}
+  section.block{padding:60px 0}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="wrap">
+  <div class="tline"><span>📍 Gammel Skårupvej 164, 5700 Svendborg</span><span>🧾 Kvalitet til discountpriser</span></div>
+  <div class="tline"><a class="phone" href="tel:+4522587310">📞 22 58 73 10</a></div>
+</div></div>
+
+<header class="site"><div class="wrap">
+  <a class="brand" href="index.html">
+    <span class="mark">🐷</span>
+    <span class="bt"><span class="k">Gårdbutikken</span><span class="n">Den Glade Gris</span></span>
+  </a>
+  <input type="checkbox" id="nt" class="nav-toggle">
+  <label for="nt" class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></label>
+  <nav class="main">
+    <a href="index.html" class="active">Forside</a>
+    <a href="sortiment.html">Sortiment</a>
+    <a href="grill.html">Grill &amp; Events</a>
+    <a href="mad-ud-af-huset.html">Mad ud af huset</a>
+    <a href="galleri.html">Galleri</a>
+    <a href="kontakt.html">Kontakt</a>
+    <a href="tel:+4522587310" class="nav-cta">Ring &amp; bestil</a>
+  </nav>
+</div></header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="bg"></div>
+  <div class="hero-badge fade d3">
+    <div class="h">Åbent for mad &amp; grill</div>
+    <div class="r">Bestillinger modtages alle ugens dage</div>
+  </div>
+  <div class="wrap"><div class="inner">
+    <div class="eyebrow fade d1">Hjemmelavet · Lokalt · På Sydfyn</div>
+    <h1 class="fade d2">Ægte gårdbutik med <em>hjemmelavet</em> kød &amp; lækker mad</h1>
+    <p class="lead fade d3">Fra friskhakket oksekød og hjemmelavede pølser til helstegt pattegris og smørrebrød — alt sammen lavet med håndværk og leveret til discountpriser midt i Svendborg.</p>
+    <div class="cta fade d4">
+      <a href="tel:+4522587310" class="btn btn-primary">📞 Ring &amp; bestil 22 58 73 10</a>
+      <a href="sortiment.html" class="btn btn-ghost">Se sortiment &amp; priser</a>
+    </div>
+  </div></div>
+</section>
+
+<!-- USP -->
+<div class="usp"><div class="wrap">
+  <h2>Velkommen hos <span>Den Glade Gris</span></h2>
+  <p>Vi har alt i okse og gris til rene discountpriser — hjemmelavede rullepølser, leverpostej, medister og meget mere. Kvalitet, du kan smage, til priser, der får hele Sydfyn til at smile.</p>
+  <div class="pills">
+    <span class="pill">🥩 Eget slagterhåndværk</span>
+    <span class="pill">🔥 Grill &amp; helstegt pattegris</span>
+    <span class="pill">🥪 Smørrebrød ud af huset</span>
+    <span class="pill">💳 Vi modtager Dankort</span>
+  </div>
+</div></div>
+
+<!-- ABOUT -->
+<section class="block"><div class="wrap split">
+  <div class="imgwrap">
+    <img src="https://www.xn--grdbutikkendengladegris-k8b.dk/CustomerData/Files/Images/Banner/forside_28/banner-helegris_439.jpg" alt="Helstegt pattegris på grillen hos Den Glade Gris">
+    <span class="tag">Helstegt pattegris fra 189,-</span>
+  </div>
+  <div>
+    <div class="eyebrow">Gårdbutik på Sydfyn</div>
+    <h2>Hjemmelavet håndværk — fra vores gård til dit bord</h2>
+    <p style="color:var(--ink-soft); font-size:1.06rem">Hos Gårdbutikken Den Glade Gris laver vi det meste selv. Pålægget er hjemmelavet, kødet er friskt, og vi kender vores varer. Uanset om du skal bruge aftensmad til familien, kød-pakker til fryseren eller mad til den store fest, hjælper vi dig gerne.</p>
+    <ul class="about-list">
+      <li><span class="ic">✓</span><span>Hjemmelavet pålæg: leverpostej, rullepølse, medister &amp; spegepølser</span></li>
+      <li><span class="ic">✓</span><span>Friskhakket okse- og skinkekød — også i store kød-pakker</span></li>
+      <li><span class="ic">✓</span><span>Grill-events med grillmester, buffet &amp; smørrebrød ud af huset</span></li>
+      <li><span class="ic">✓</span><span>Bestillinger modtages alle ugens dage på tlf. 22 58 73 10</span></li>
+    </ul>
+    <div style="margin-top:26px"><a href="kontakt.html" class="btn btn-dark">Find os i Svendborg</a></div>
+  </div>
+</div></section>
+
+<!-- CARDS -->
+<section class="block" style="padding-top:0"><div class="wrap">
+  <div class="sec-head">
+    <div class="eyebrow">Det tilbyder vi</div>
+    <h2>Lige fra køledisken til den store fest</h2>
+    <p>Et udvalg af det vi er kendt for. Det hele kan bestilles og afhentes efter aftale.</p>
+  </div>
+  <div class="cards">
+    <a class="card" href="sortiment.html">
+      <div class="ph"><img src="https://www.xn--grdbutikkendengladegris-k8b.dk/CustomerData/Files/Images/Gallery/galleri_8608/dsc00256_64.jpg" alt="Hjemmelavede spegepølser"></div>
+      <div class="body"><h3>Sortiment &amp; priser</h3><p>Okse, gris, lam, hjemmelavet pålæg og pølser — alt til discountpriser.</p><span class="lnk">Se prislisten</span></div>
+    </a>
+    <a class="card" href="grill.html">
+      <div class="ph"><img src="https://www.xn--grdbutikkendengladegris-k8b.dk/CustomerData/Files/Images/Banner/forside_28/banner-helegris_439.jpg" alt="Grill event med helstegt pattegris"></div>
+      <div class="body"><h3>Grill &amp; events</h3><p>Helstegt pattegris og blandet grill med grillmester — bestil i god tid.</p><span class="lnk">Læs mere</span></div>
+    </a>
+    <a class="card" href="mad-ud-af-huset.html">
+      <div class="ph"><img src="https://www.xn--grdbutikkendengladegris-k8b.dk/CustomerData/Files/Images/Archive/2-billeder-19/11_392.jpg" alt="Højtbelagt smørrebrød"></div>
+      <div class="body"><h3>Smørrebrød</h3><p>Pænt og luksus smørrebrød med hjemmelavet pålæg — ud af huset.</p><span class="lnk">Se udvalget</span></div>
+    </a>
+    <a class="card" href="mad-ud-af-huset.html">
+      <div class="ph"><img src="https://www.xn--grdbutikkendengladegris-k8b.dk/CustomerData/Files/Images/Banner/forside_28/banner-salatbar_254.jpg" alt="Buffet og salatbar"></div>
+      <div class="body"><h3>Buffet</h3><p>Lækker buffet med kød, sovs, kartofler og friske salater til selskaber.</p><span class="lnk">Se buffet</span></div>
+    </a>
+  </div>
+</div></section>
+
+<!-- CHARCUTERIE STRIP -->
+<div class="strip">
+  <img src="https://www.xn--grdbutikkendengladegris-k8b.dk/CustomerData/Files/Images/Gallery/galleri_8608/dsc00258_68.jpg" alt="Hjemmelavede pølser">
+  <img src="https://www.xn--grdbutikkendengladegris-k8b.dk/CustomerData/Files/Images/Gallery/galleri_8608/dsc00301_240.jpg" alt="Kødudvalg i butikken">
+  <img src="https://www.xn--grdbutikkendengladegris-k8b.dk/CustomerData/Files/Images/Archive/2-billeder-19/8_371.jpg" alt="Buffet med kød">
+  <img src="https://www.xn--grdbutikkendengladegris-k8b.dk/CustomerData/Files/Images/Gallery/galleri_8608/dsc00266_100.jpg" alt="Frisk pålæg">
+</div>
+
+<!-- FEATURED PRICES -->
+<section class="block featband"><div class="wrap">
+  <div class="sec-head">
+    <div class="eyebrow">Populære kød-pakker</div>
+    <h2>Fyld fryseren — spar penge</h2>
+    <p>Friskhakket kød i store pakker. Kan bestilles hele ugen og afhentes efter aftale.</p>
+  </div>
+  <div class="feat">
+    <div class="pricecard">
+      <div class="ribbon">Populær</div>
+      <div class="kg">5 kg · friskhakket</div>
+      <h3>Hakket oksekød</h3>
+      <p style="color:var(--ink-soft); margin-bottom:10px">Max 10–12 % fedt</p>
+      <div class="price">545,- <small>/ 5 kg</small></div>
+    </div>
+    <div class="pricecard">
+      <div class="kg">5 kg · friskhakket</div>
+      <h3>Hakket skinkekød</h3>
+      <p style="color:var(--ink-soft); margin-bottom:10px">Max 10–12 % fedt</p>
+      <div class="price">295,- <small>/ 5 kg</small></div>
+    </div>
+    <div class="pricecard">
+      <div class="ribbon">Nyt</div>
+      <div class="kg">10 middage · til 4 pers.</div>
+      <h3>Stor kød-pakke</h3>
+      <p style="color:var(--ink-soft); margin-bottom:10px">Okse, skinke, medister, mørbrad m.m.</p>
+      <div class="price">790,- <small>/ pakke</small></div>
+    </div>
+  </div>
+  <div style="margin-top:34px"><a href="sortiment.html" class="btn btn-primary">Se alle kød-pakker &amp; priser</a></div>
+</div></section>
+
+<!-- HOURS + CTA -->
+<section class="block hours-band"><div class="wrap hours-grid">
+  <div>
+    <div class="eyebrow" style="color:#f4c98e">Åbningstider</div>
+    <h2>Kig forbi i Svendborg</h2>
+    <p class="note">Butikken har åbent onsdag og torsdag — men bestillinger på mad og grill modtages <strong>alle ugens dage</strong>. Ring blot, så aftaler vi afhentning.</p>
+    <a href="tel:+4522587310" class="btn btn-primary">📞 Ring 22 58 73 10</a>
+  </div>
+  <div class="hourbox">
+    <h3>Sådan er vi åbne</h3>
+    <div class="hr"><span class="day">Onsdag</span><span class="t">10 – 15</span></div>
+    <div class="hr"><span class="day">Torsdag</span><span class="t">10 – 16</span></div>
+    <div class="hr"><span class="day">Fredag</span><span class="closed">Lukket</span></div>
+    <div class="hr"><span class="day">Mad &amp; grill</span><span class="t">Alle dage</span></div>
+    <p style="margin-top:16px; font-size:.9rem; color:#e9d3bf">Bestilte varer kan afhentes til kl. 17 efter aftale.</p>
+  </div>
+</div></section>
+
+<!-- FOOTER -->
+<footer class="site"><div class="wrap">
+  <div class="fgrid">
+    <div class="fbrand">
+      <div class="n">🐷 Den Glade Gris</div>
+      <p>Gårdbutik i Svendborg på Sydfyn med hjemmelavet kød, pålæg og mad ud af huset — kvalitet til discountpriser.</p>
+      <a class="smiley" href="https://www.findsmiley.dk/131909" target="_blank" rel="noopener">★ Se vores Smiley-rapport</a>
+    </div>
+    <div>
+      <h4>Kontakt</h4>
+      <ul class="flist">
+        <li>Gammel Skårupvej 164</li>
+        <li>5700 Svendborg</li>
+        <li><a href="tel:+4522587310">Tlf. 22 58 73 10</a></li>
+        <li>CVR 32774172</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Åbningstider</h4>
+      <ul class="flist">
+        <li>Onsdag 10 – 15</li>
+        <li>Torsdag 10 – 16</li>
+        <li>Fredag lukket</li>
+        <li>Mad &amp; grill alle dage</li>
+      </ul>
+    </div>
+    <div>
+      <h4>Genveje</h4>
+      <ul class="flist">
+        <li><a href="sortiment.html">Sortiment</a></li>
+        <li><a href="grill.html">Grill &amp; events</a></li>
+        <li><a href="mad-ud-af-huset.html">Mad ud af huset</a></li>
+        <li><a href="galleri.html">Galleri</a></li>
+        <li><a href="https://www.facebook.com/G%C3%A5rdbutikken-Den-Glade-Gris-226392164387244/" target="_blank" rel="noopener">Facebook</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="fbot">
+    <span>© 2026 Gårdbutikken Den Glade Gris · Svendborg</span>
+    <span>Bestillinger modtages alle ugens dage</span>
+  </div>
+</div></footer>
+
+</body>
+</html>

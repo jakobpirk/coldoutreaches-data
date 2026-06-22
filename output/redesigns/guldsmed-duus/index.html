@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guldsmed Duus — Vintage, guldsmed og urmager i Faaborg</title>
+<meta name="description" content="Guldsmed Duus i Faaborg er en anderledes guldsmed. Vintagesmykker, nye smykker og ure samt guldsmed- og urmagerværksted i butikken. Grundlagt 1908 — Faaborgs ældste butik.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ivory:#F5EFE4;
+    --ivory-2:#EFE7D8;
+    --ink:#1A1814;
+    --ink-soft:#3A352D;
+    --gold:#B0883F;
+    --gold-light:#C9A24B;
+    --gold-deep:#8A6A2E;
+    --line:rgba(26,24,20,.14);
+    --serif:"Fraunces",Georgia,serif;
+    --sans:"Jost",system-ui,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    color:var(--ink);
+    background:var(--ivory);
+    line-height:1.65;
+    font-weight:300;
+    font-size:17px;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 28px}
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(245,239,228,.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{display:flex;align-items:center;justify-content:space-between;height:84px}
+  .brand{display:flex;flex-direction:column;line-height:1}
+  .brand .name{font-family:var(--serif);font-size:25px;font-weight:500;letter-spacing:.02em}
+  .brand .sub{font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-deep);margin-top:5px;font-weight:400}
+  nav.menu{display:flex;gap:34px;align-items:center}
+  nav.menu a{font-size:13.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-soft);transition:color .25s;position:relative}
+  nav.menu a:after{content:"";position:absolute;left:0;bottom:-7px;width:0;height:1px;background:var(--gold);transition:width .3s}
+  nav.menu a:hover{color:var(--ink)}
+  nav.menu a:hover:after,nav.menu a.active:after{width:100%}
+  nav.menu a.active{color:var(--ink)}
+  .cta-call{border:1px solid var(--ink);padding:11px 20px;border-radius:30px;font-size:12.5px !important;letter-spacing:.12em;transition:all .3s}
+  .cta-call:hover{background:var(--ink);color:var(--ivory)}
+  .cta-call:after{display:none}
+  .burger{display:none;font-size:24px;background:none;border:none;cursor:pointer;color:var(--ink)}
+
+  /* ---------- HERO ---------- */
+  .hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;background-size:cover;background-position:center 38%;}
+  .hero-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(16,14,11,.86) 0%,rgba(16,14,11,.4) 45%,rgba(16,14,11,.55) 100%)}
+  .hero-inner{position:relative;z-index:2;color:var(--ivory);padding-bottom:9vh;width:100%}
+  .hero .eyebrow{font-size:12.5px;letter-spacing:.42em;text-transform:uppercase;color:var(--gold-light);margin-bottom:26px;opacity:0;animation:rise .9s .15s forwards}
+  .hero h1{font-family:var(--serif);font-weight:300;font-size:clamp(2.7rem,6.4vw,5.6rem);line-height:1.02;letter-spacing:-.01em;max-width:15ch;opacity:0;animation:rise 1s .3s forwards}
+  .hero h1 em{font-style:italic;color:var(--gold-light)}
+  .hero p.lead{margin-top:26px;font-size:clamp(1rem,1.5vw,1.22rem);max-width:46ch;color:rgba(245,239,228,.86);font-weight:300;opacity:0;animation:rise 1s .5s forwards}
+  .hero-actions{margin-top:38px;display:flex;gap:16px;flex-wrap:wrap;opacity:0;animation:rise 1s .7s forwards}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border-radius:34px;font-size:13.5px;letter-spacing:.12em;text-transform:uppercase;transition:all .3s;cursor:pointer}
+  .btn-gold{background:var(--gold);color:#fff}
+  .btn-gold:hover{background:var(--gold-light);transform:translateY(-2px)}
+  .btn-ghost{border:1px solid rgba(245,239,228,.55);color:var(--ivory)}
+  .btn-ghost:hover{background:rgba(245,239,228,.12);border-color:var(--ivory)}
+  .scroll-hint{position:absolute;right:28px;bottom:9vh;z-index:2;color:rgba(245,239,228,.7);font-size:11px;letter-spacing:.3em;text-transform:uppercase;writing-mode:vertical-rl;display:flex;align-items:center;gap:14px}
+  .scroll-hint:before{content:"";width:1px;height:46px;background:rgba(245,239,228,.5)}
+  @keyframes rise{to{opacity:1;transform:translateY(0)}}
+  @keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
+  /* ---------- INTRO STRIP ---------- */
+  .est{background:var(--ink);color:var(--ivory);text-align:center;padding:20px}
+  .est span{font-family:var(--serif);font-style:italic;font-size:18px;letter-spacing:.02em}
+  .est .dot{color:var(--gold-light);margin:0 14px}
+
+  /* ---------- SECTION BASICS ---------- */
+  section{padding:104px 0}
+  .sec-head{max-width:680px;margin-bottom:58px}
+  .sec-head.center{margin-left:auto;margin-right:auto;text-align:center}
+  .kicker{font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:20px}
+  h2.title{font-family:var(--serif);font-weight:300;font-size:clamp(2rem,4vw,3.3rem);line-height:1.08;letter-spacing:-.01em}
+  h2.title em{font-style:italic;color:var(--gold)}
+  .sec-head p{margin-top:20px;color:var(--ink-soft);font-size:1.08rem}
+
+  /* ---------- INTRO / STORY ---------- */
+  .story{display:grid;grid-template-columns:1.05fr .95fr;gap:72px;align-items:center}
+  .story-img{position:relative}
+  .story-img img{width:100%;height:560px;object-fit:cover;border-radius:3px}
+  .story-img .frame{position:absolute;inset:14px;border:1px solid rgba(245,239,228,.5);pointer-events:none;mix-blend-mode:overlay}
+  .story-img .badge{position:absolute;left:-30px;bottom:40px;background:var(--ivory);padding:24px 30px;border-radius:3px;box-shadow:0 24px 60px rgba(26,24,20,.18);text-align:center}
+  .story-img .badge .num{font-family:var(--serif);font-size:42px;color:var(--gold);line-height:1}
+  .story-img .badge .lab{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);margin-top:8px}
+  .story-body p{margin-bottom:20px;color:var(--ink-soft);font-size:1.07rem}
+  .story-body p.firstline{font-family:var(--serif);font-size:1.5rem;line-height:1.4;color:var(--ink);font-weight:300}
+  .sign{font-family:var(--serif);font-style:italic;font-size:1.3rem;color:var(--gold-deep);margin-top:6px}
+
+  /* ---------- SERVICES GRID ---------- */
+  .services{background:var(--ivory-2)}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+  .card{background:var(--ivory);border-radius:4px;overflow:hidden;transition:transform .4s,box-shadow .4s;display:flex;flex-direction:column}
+  .card:hover{transform:translateY(-6px);box-shadow:0 30px 60px rgba(26,24,20,.14)}
+  .card .ph{height:240px;overflow:hidden}
+  .card .ph img{width:100%;height:100%;object-fit:cover;transition:transform .8s}
+  .card:hover .ph img{transform:scale(1.06)}
+  .card .body{padding:30px 28px 34px;flex:1;display:flex;flex-direction:column}
+  .card h3{font-family:var(--serif);font-size:1.5rem;font-weight:400;margin-bottom:12px}
+  .card p{color:var(--ink-soft);font-size:.98rem;flex:1}
+  .card .more{margin-top:20px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-deep);display:inline-flex;align-items:center;gap:8px}
+  .card .more span{transition:transform .3s}
+  .card:hover .more span{transform:translateX(5px)}
+
+  /* ---------- FEATURE SPLIT ---------- */
+  .feature{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;background:var(--ink);color:var(--ivory);border-radius:5px;overflow:hidden}
+  .feature .pic{min-height:480px;background-size:cover;background-position:center}
+  .feature .txt{padding:72px 64px}
+  .feature .kicker{color:var(--gold-light)}
+  .feature h2{font-family:var(--serif);font-weight:300;font-size:clamp(1.9rem,3.4vw,2.9rem);line-height:1.1}
+  .feature h2 em{font-style:italic;color:var(--gold-light)}
+  .feature p{margin-top:22px;color:rgba(245,239,228,.82)}
+  .feature .btn{margin-top:34px}
+
+  /* ---------- HOURS / TEAM ---------- */
+  .hours-team{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:start}
+  .hours{border:1px solid var(--line);border-radius:5px;padding:44px 44px 38px}
+  .hours h3{font-family:var(--serif);font-size:1.9rem;font-weight:400;margin-bottom:26px}
+  .hrow{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid var(--line);font-size:1.02rem}
+  .hrow:last-child{border-bottom:none}
+  .hrow span:first-child{color:var(--ink-soft)}
+  .hrow span:last-child{font-weight:400}
+  .hrow.closed span:last-child{color:var(--gold-deep)}
+  .staff-note{margin-top:26px;font-size:.95rem;color:var(--ink-soft);line-height:1.7}
+  .staff-note strong{font-weight:500;color:var(--ink)}
+  .team-intro h3{font-family:var(--serif);font-size:1.9rem;font-weight:400;margin-bottom:18px}
+  .team-intro p{color:var(--ink-soft);margin-bottom:22px}
+  .team-row{display:flex;gap:18px;flex-wrap:wrap;margin-top:28px}
+  .member{text-align:center;width:110px}
+  .member img{width:96px;height:96px;border-radius:50%;object-fit:cover;margin:0 auto 12px;filter:grayscale(.15)}
+  .member .mn{font-family:var(--serif);font-size:1.05rem}
+  .member .mr{font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-deep);margin-top:3px}
+
+  /* ---------- FAQ ---------- */
+  .faq{background:var(--ivory-2)}
+  .faq-list{max-width:820px;margin:0 auto}
+  details{border-bottom:1px solid var(--line);padding:6px 0}
+  summary{list-style:none;cursor:pointer;padding:24px 0;font-family:var(--serif);font-size:1.35rem;font-weight:400;display:flex;justify-content:space-between;align-items:center;gap:20px}
+  summary::-webkit-details-marker{display:none}
+  summary .ic{font-size:1.5rem;color:var(--gold);transition:transform .3s;flex-shrink:0}
+  details[open] summary .ic{transform:rotate(45deg)}
+  details p{padding:0 0 26px;color:var(--ink-soft);max-width:64ch}
+  details a{color:var(--gold-deep);border-bottom:1px solid var(--gold-light)}
+
+  /* ---------- CTA BAND ---------- */
+  .band{position:relative;text-align:center;color:var(--ivory);overflow:hidden}
+  .band-bg{position:absolute;inset:0;background-size:cover;background-position:center}
+  .band-bg:after{content:"";position:absolute;inset:0;background:rgba(16,14,11,.72)}
+  .band .wrap{position:relative;z-index:2;padding:118px 28px}
+  .band h2{font-family:var(--serif);font-weight:300;font-size:clamp(2rem,4.4vw,3.5rem);line-height:1.1;max-width:18ch;margin:0 auto}
+  .band h2 em{font-style:italic;color:var(--gold-light)}
+  .band p{margin:22px auto 0;max-width:48ch;color:rgba(245,239,228,.85)}
+  .band .hint{margin-top:14px;font-family:var(--serif);font-style:italic;color:var(--gold-light);font-size:1.15rem}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:rgba(245,239,228,.78);padding:78px 0 34px}
+  .fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;padding-bottom:52px;border-bottom:1px solid rgba(245,239,228,.14)}
+  .fbrand .name{font-family:var(--serif);font-size:1.7rem;color:var(--ivory)}
+  .fbrand .sub{font-size:10.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-light);margin-top:6px}
+  .fbrand p{margin-top:20px;font-size:.96rem;max-width:34ch}
+  .fcol h4{font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-light);margin-bottom:20px}
+  .fcol a,.fcol p{display:block;font-size:.98rem;margin-bottom:11px;color:rgba(245,239,228,.78);transition:color .25s}
+  .fcol a:hover{color:var(--ivory)}
+  .fbot{display:flex;justify-content:space-between;align-items:center;padding-top:26px;font-size:.85rem;color:rgba(245,239,228,.5);flex-wrap:wrap;gap:12px}
+  .fbot a{color:rgba(245,239,228,.6)}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:900px){
+    nav.menu{display:none}
+    .burger{display:block}
+    .story,.feature,.hours-team{grid-template-columns:1fr}
+    .grid{grid-template-columns:1fr 1fr}
+    .feature .pic{min-height:300px}
+    .feature .txt{padding:48px 34px}
+    .fgrid{grid-template-columns:1fr 1fr;gap:36px}
+    .story-img .badge{left:14px}
+  }
+  @media(max-width:600px){
+    .grid{grid-template-columns:1fr}
+    section{padding:72px 0}
+    .fgrid{grid-template-columns:1fr}
+    .hero{min-height:88vh}
+    .scroll-hint{display:none}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html">
+      <span class="name">Guldsmed Duus</span>
+      <span class="sub">Faaborg · siden 1908</span>
+    </a>
+    <nav class="menu">
+      <a href="index.html" class="active">Forside</a>
+      <a href="vaerksteder.html">Værkstederne</a>
+      <a href="gammelt-guld.html">Gammelt guld</a>
+      <a href="om-os.html">Om os</a>
+      <a href="kontakt.html">Kontakt</a>
+      <a href="tel:+4526243500" class="cta-call">26 24 35 00</a>
+    </nav>
+    <button class="burger" onclick="document.querySelector('nav.menu').style.display='flex';this.style.display='none'">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" style="padding:0">
+  <div class="hero-bg" style="background-image:url('https://impro.usercontent.one/appid/oneComWsb/domain/guldsmedduus.dk/media/guldsmedduus.dk/onewebmedia/facade.jpg?sourceContentType=image%2Fjpeg&resize=2000%2B1300&quality=85')"></div>
+  <div class="wrap hero-inner">
+    <p class="eyebrow">Vintage · Guldsmed · Urmager — lige midt i Faaborg</p>
+    <h1>Hvor gammelt guld får <em>nyt liv</em></h1>
+    <p class="lead">En anderledes guldsmed med både guldsmed- og urmagerværksted i butikken. Vintagesmykker, nye smykker og ure — pakket ind i uovertruffen service siden 1908.</p>
+    <div class="hero-actions">
+      <a href="vaerksteder.html" class="btn btn-gold">Se værkstederne</a>
+      <a href="kontakt.html" class="btn btn-ghost">Besøg butikken</a>
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</section>
+
+<div class="est"><span>Grundlagt af Christian Nonius Duus<span class="dot">◆</span>11. april 1908<span class="dot">◆</span>Faaborgs ældste butik</span></div>
+
+<!-- STORY -->
+<section>
+  <div class="wrap story">
+    <div class="story-img">
+      <img src="https://impro.usercontent.one/appid/oneComWsb/domain/guldsmedduus.dk/media/guldsmedduus.dk/onewebmedia/FFA89EB0-0E92-45A5-B896-455329BAFCE1_1_105_c.jpeg?sourceContentType=image%2Fjpeg&resize=1200%2B1000&quality=85" alt="Guldsmed Duus — Faaborgs ældste butik">
+      <div class="frame"></div>
+      <div class="badge"><div class="num">117</div><div class="lab">års håndværk</div></div>
+    </div>
+    <div class="story-body">
+      <p class="kicker">Velkommen hos Duus</p>
+      <p class="firstline">Her efterleves den gamle kongstanke om genbrug og uovertruffen service.</p>
+      <p>Bygget på et fundament af professionalisme og integritet. Kort sagt er mantraet <em>ordentlighed</em>. Vi er en rigtig guldsmed — med både guldsmedværksted og urmagerværksted i butikken, ganske som i gamle dage.</p>
+      <p>”Brug og smid ud”-kulturen er fortid, og fremtiden er bæredygtig. Hos os er der fokus på kvalitet, holdbarhed, æstetik, affektion og historie. Reparér — ikke kassér. Det var holdningen, da butikken blev grundlagt, og det er stadig vores holdning i dag.</p>
+      <p class="sign">— Familien Duus, Mellemgade 7, Faaborg</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services">
+  <div class="wrap">
+    <div class="sec-head center">
+      <p class="kicker">Det butikken tilbyder</p>
+      <h2 class="title">Alt det vi <em>nørder</em> i</h2>
+      <p>Fra knækkede kæder og standsede ure til unikasmykker og vintageskatte — her er ingen opgave for lille eller for stor.</p>
+    </div>
+    <div class="grid">
+      <a class="card" href="vaerksteder.html">
+        <div class="ph"><img src="https://impro.usercontent.one/appid/oneComWsb/domain/guldsmedduus.dk/media/guldsmedduus.dk/onewebmedia/guld.v%C3%A6rksted.webp?sourceContentType=image%2Fwebp&resize=900%2B720&quality=85" alt="Guldsmedværksted"></div>
+        <div class="body">
+          <h3>Værkstederne</h3>
+          <p>Vi er en rigtig guldsmed med både guldsmed- og urmagerværksted i butikken. Reparation, polering og nyt liv til dine ting.</p>
+          <span class="more">Læs mere <span>→</span></span>
+        </div>
+      </a>
+      <a class="card" href="gammelt-guld.html">
+        <div class="ph"><img src="https://impro.usercontent.one/appid/oneComWsb/domain/guldsmedduus.dk/media/guldsmedduus.dk/onewebmedia/gl.guld.2.jpg?sourceContentType=image%2Fjpeg&resize=900%2B720&quality=85" alt="Bunke af gammelt guld"></div>
+        <div class="body">
+          <h3>Gammelt guld</h3>
+          <p>Skuffen fuld af gamle smykker, ure og bestik? Vi køber alt i guld og sølv til dagspris — og alt bliver genbrugt.</p>
+          <span class="more">Se opkøbspolitik <span>→</span></span>
+        </div>
+      </a>
+      <a class="card" href="https://detgamleguld.dk" target="_blank" rel="noopener">
+        <div class="ph"><img src="https://impro.usercontent.one/appid/oneComWsb/domain/guldsmedduus.dk/media/guldsmedduus.dk/onewebmedia/vin.ring.webp?sourceContentType=image%2Fwebp&resize=900%2B720&quality=85" alt="Vintagering med stor safir"></div>
+        <div class="body">
+          <h3>Vintage</h3>
+          <p>Vores vintagesmykker har deres helt egen hjemmeside — ”Det Gamle Guld”. Gamle skatte med historie og sjæl.</p>
+          <span class="more">Besøg Det Gamle Guld <span>→</span></span>
+        </div>
+      </a>
+      <a class="card" href="om-os.html">
+        <div class="ph"><img src="https://impro.usercontent.one/appid/oneComWsb/domain/guldsmedduus.dk/media/guldsmedduus.dk/onewebmedia/IMG_4431.jpeg?sourceContentType=image%2Fjpeg&resize=900%2B720&quality=85" alt="Holdet hos Guldsmed Duus"></div>
+        <div class="body">
+          <h3>Om os</h3>
+          <p>Læs om holdet bag Guldsmed Duus, der blev grundlagt i 1908. Vi kalder os nørder — og det er vi stolte af.</p>
+          <span class="more">Mød holdet <span>→</span></span>
+        </div>
+      </a>
+      <a class="card" href="kontakt.html">
+        <div class="ph"><img src="https://impro.usercontent.one/appid/oneComWsb/domain/guldsmedduus.dk/media/guldsmedduus.dk/onewebmedia/vielsesringe.webp?sourceContentType=image%2Fwebp&resize=900%2B720&quality=85" alt="Brede vielsesringe i guld"></div>
+        <div class="body">
+          <h3>Livets store dage</h3>
+          <p>Vielse, barnedåb, konfirmation. Vielsesringe, gaver og inspiration til de øjeblikke, der skal huskes for altid.</p>
+          <span class="more">Tal med os <span>→</span></span>
+        </div>
+      </a>
+      <a class="card" href="vaerksteder.html">
+        <div class="ph"><img src="https://impro.usercontent.one/appid/oneComWsb/domain/guldsmedduus.dk/media/guldsmedduus.dk/onewebmedia/IMG_7628.jpg?sourceContentType=image%2Fjpeg&resize=900%2B720&quality=85" alt="Vintage Omega guldur"></div>
+        <div class="body">
+          <h3>Urmager i Faaborg</h3>
+          <p>Fra batteriskift mens du venter til renovering af antikke standure. Dine ure er i gode hænder hos urmageren.</p>
+          <span class="more">Mød urmageren <span>→</span></span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURE -->
+<section>
+  <div class="wrap">
+    <div class="feature">
+      <div class="pic" style="background-image:url('https://impro.usercontent.one/appid/oneComWsb/domain/guldsmedduus.dk/media/guldsmedduus.dk/onewebmedia/bladring.jpg?sourceContentType=image%2Fjpeg&resize=1000%2B1000&quality=85')"></div>
+      <div class="txt">
+        <p class="kicker">Unika af dit eget guld</p>
+        <h2>Gammelt guld bliver til et <em>nyt minde</em></h2>
+        <p>Går du med en lille smykkedesigner i maven? Sammen skitserer vi dit drømmesmykke. Har du gammelt guld, kan det bruges i det nye smykke — så affektionsværdien bevares, og familiens historie kan gå i arv.</p>
+        <p>Et godt eksempel er ”Marias hjerte”: et vedhæng lavet af gammelt guld og givet i gave til konfirmanden, studenten eller den vordende mor.</p>
+        <a href="vaerksteder.html" class="btn btn-gold">Se hvad vi kan skabe</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS + TEAM -->
+<section style="padding-top:40px">
+  <div class="wrap hours-team">
+    <div class="hours">
+      <h3>Åbningstider</h3>
+      <div class="hrow"><span>Mandag – Torsdag</span><span>10.00 – 17.30</span></div>
+      <div class="hrow"><span>Fredag</span><span>10.00 – 18.00</span></div>
+      <div class="hrow"><span>Lørdag</span><span>10.00 – 14.00</span></div>
+      <div class="hrow closed"><span>Søndag</span><span>Lukket</span></div>
+      <p class="staff-note">
+        <strong>Alexander</strong>, urmager, er i butikken alle hverdage undtaget tirsdag.<br>
+        <strong>Birthe</strong>, ekspert i bytteserier og perlesmykker, er her alle hverdage undtaget onsdag.<br>
+        <strong>Maria</strong>, ekspert i vintage og vurderinger, er her alle hverdage undtaget mandag.
+      </p>
+    </div>
+    <div class="team-intro">
+      <p class="kicker">Os der nørder i butikken</p>
+      <h3>Et hold der elsker guld, sten, perler & ure</h3>
+      <p>Detail handler i dag mere om rådgivning og vejledning end om selve salget. At give kunderne det rigtige med hjem — det er det, der driver os. Ønsker du et personligt møde med tid til en grundig gennemgang af dine effekter, så skriv til os på <a href="mailto:info@guldsmedduus.dk" style="color:var(--gold-deep);border-bottom:1px solid var(--gold-light)">info@guldsmedduus.dk</a>.</p>
+      <div class="team-row">
+        <div class="member">
+          <img src="https://impro.usercontent.one/appid/oneComWsb/domain/guldsmedduus.dk/media/guldsmedduus.dk/onewebmedia/duus.png?sourceContentType=image%2Fpng&resize=300%2B300" alt="Mikael Duus">
+          <div class="mn">Mikael</div><div class="mr">Indehaver</div>
+        </div>
+        <div class="member">
+          <img src="https://impro.usercontent.one/appid/oneComWsb/domain/guldsmedduus.dk/media/guldsmedduus.dk/onewebmedia/maria___serialized1.png?sourceContentType=image%2Fpng&resize=300%2B300" alt="Maria Drud">
+          <div class="mn">Maria</div><div class="mr">Vintage</div>
+        </div>
+        <div class="member">
+          <img src="https://impro.usercontent.one/appid/oneComWsb/domain/guldsmedduus.dk/media/guldsmedduus.dk/onewebmedia/Sarah.jpg?sourceContentType=image%2Fjpeg&resize=300%2B300&quality=85" alt="Sarah Andersen">
+          <div class="mn">Sarah</div><div class="mr">Guldsmed</div>
+        </div>
+        <div class="member">
+          <img src="https://impro.usercontent.one/appid/oneComWsb/domain/guldsmedduus.dk/media/guldsmedduus.dk/onewebmedia/alexander.png?sourceContentType=image%2Fpng&resize=300%2B300" alt="Alexander Tvede">
+          <div class="mn">Alexander</div><div class="mr">Urmager</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="wrap">
+    <div class="sec-head center">
+      <p class="kicker">Godt at vide</p>
+      <h2 class="title">Ofte stillede spørgsmål</h2>
+    </div>
+    <div class="faq-list">
+      <details open>
+        <summary>Køber I guld og sølv? <span class="ic">+</span></summary>
+        <p>Ja, det gør vi. Både smykker, bestik, guldtænder og meget andet. <a href="gammelt-guld.html">Læs om køb af gammelt guld og sølv.</a></p>
+      </details>
+      <details>
+        <summary>Skifter I batteri i ure? <span class="ic">+</span></summary>
+        <p>Ja. Langt de fleste urmærker kan vi skifte batteriet på inden for en halv time. <a href="vaerksteder.html">Læs mere om værkstederne.</a></p>
+      </details>
+      <details>
+        <summary>Kan I vurdere ud fra fotos? <span class="ic">+</span></summary>
+        <p>Ja, det kan vi godt. Kontakt os, så fortæller vi, hvad du skal gøre i forhold til forsikring og vurdering.</p>
+      </details>
+      <details>
+        <summary>Kan I gravere? <span class="ic">+</span></summary>
+        <p>Ja. Vi kan gravere i næsten alt — lige fra glas til metal. Vi har både flag, pokaler, smykker og glas i butikken.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<section class="band" style="padding:0">
+  <div class="band-bg" style="background-image:url('https://impro.usercontent.one/appid/oneComWsb/domain/guldsmedduus.dk/media/guldsmedduus.dk/onewebmedia/facade___serialized1.jpg?sourceContentType=image%2Fjpeg&resize=1800%2B1000&quality=85')"></div>
+  <div class="wrap">
+    <h2>Kom ind og hils på — vi har <em>kaffe på kanden</em></h2>
+    <p>En snak er altid gratis. Et tilbud om reparation er altid gratis. Og vi vil altid gerne snakke om smykker og ure.</p>
+    <p class="hint">Mellemgade 7 · 5600 Faaborg</p>
+    <div style="margin-top:34px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+      <a href="tel:+4526243500" class="btn btn-gold">Ring 26 24 35 00</a>
+      <a href="kontakt.html" class="btn btn-ghost">Find vej</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fbrand">
+        <div class="name">Guldsmed Duus</div>
+        <div class="sub">En anderledes guldsmed</div>
+        <p>Faaborgs ældste butik — og så vidt vi ved Danmarks ældste guldsmed i de samme lokaler. Grundlagt 1908.</p>
+      </div>
+      <div class="fcol">
+        <h4>Butikken</h4>
+        <a href="vaerksteder.html">Værkstederne</a>
+        <a href="gammelt-guld.html">Gammelt guld</a>
+        <a href="om-os.html">Om os</a>
+        <a href="https://detgamleguld.dk" target="_blank" rel="noopener">Vintage — Det Gamle Guld</a>
+      </div>
+      <div class="fcol">
+        <h4>Kontakt</h4>
+        <p>Mellemgade 7<br>5600 Faaborg</p>
+        <a href="tel:+4526243500">26 24 35 00</a>
+        <a href="mailto:info@guldsmedduus.dk">info@guldsmedduus.dk</a>
+        <a href="https://facebook.com/GuldsmedDuus" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://instagram.com/guldsmed_duus/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+    <div class="fbot">
+      <span>© 1908–2026 Guldsmed Duus · Faaborg</span>
+      <span>Mandag–Fredag 10–17.30 · Lørdag 10–14</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

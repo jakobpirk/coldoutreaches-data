@@ -1,0 +1,553 @@
+<!doctype html><meta charset=utf-8>
+<title>Lead classification review</title>
+<style>
+ body{font:15px/1.5 -apple-system,Segoe UI,Roboto,sans-serif;margin:0;background:#f4f5f7;color:#1a1a1a}
+ header{padding:20px 28px;background:#fff;border-bottom:1px solid #e3e3e3;position:sticky;top:0}
+ h1{margin:0 0 6px;font-size:20px} .sum{font-size:14px;color:#333}
+ .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(420px,1fr));gap:16px;padding:20px 28px}
+ .card{background:#fff;border:1px solid #e3e3e3;border-radius:10px;overflow:hidden;display:flex;flex-direction:column}
+ .card img{width:100%;height:230px;object-fit:cover;object-position:top;background:#eee;border-bottom:1px solid #eee}
+ .meta{padding:12px 14px} .row{display:flex;gap:8px;align-items:center;margin-bottom:6px;flex-wrap:wrap}
+ .badge{color:#fff;padding:2px 9px;border-radius:20px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em}
+ .conf,.score,.id{font-size:12px;color:#777}
+ .name{font-weight:700;font-size:16px;margin:2px 0} a{font-size:12px;color:#2563c9;word-break:break-all}
+ .meta p{margin:8px 0 0;font-size:13.5px;color:#333}
+</style>
+<header>
+  <h1>Lead classification review — 38 qualified leads</h1>
+  <div class="sum"><b style='color:#c0392b'>ugly: 7</b> · <b style='color:#d68910'>borderline: 11</b> · <b style='color:#7d3c98'>blocked: 5</b> · <b style='color:#7f8c8d'>parked: 1</b> · <b style='color:#1e8449'>fine: 14</b></div>
+  <div class="sum" style="margin-top:4px;color:#777">Sorted: ugly → borderline → blocked → parked → fine. "heur" = old heuristic score. Correct me by lead # and I'll log it to classification-feedback.md.</div>
+</header>
+<div class="grid">
+        <div class="card">
+          <img src="screenshots/jensens-fisk-og-vin.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#c0392b">ugly</span>
+              <span class="conf">conf 0.95</span>
+              <span class="score">heur 34</span>
+              <span class="id">#2</span>
+            </div>
+            <div class="name">Jensens Fisk og Vin</div>
+            <a href="http://www.fiskogvin.dk/" target="_blank">http://www.fiskogvin.dk/</a>
+            <p>Cramped centered text, clip-art crab logo, a tiny thumbnail photo grid, no hierarchy — classic early-2000s site. Strong target.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/aeroe-gaardbutik-uldgaarden.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#c0392b">ugly</span>
+              <span class="conf">conf 0.70</span>
+              <span class="score">heur 24</span>
+              <span class="id">#7</span>
+            </div>
+            <div class="name">Ærø Gårdbutik Uldgården</div>
+            <a href="https://oen.dk/" target="_blank">https://oen.dk/</a>
+            <p>Dated banner-collage layout with several small shop logos, cluttered 2010s style, weak structure. Target.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/vinfruen.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#c0392b">ugly</span>
+              <span class="conf">conf 0.90</span>
+              <span class="score">heur 23</span>
+              <span class="id">#9</span>
+            </div>
+            <div class="name">Vinfruen</div>
+            <a href="https://vinfruen.dk/" target="_blank">https://vinfruen.dk/</a>
+            <p>Dated green template, cramped multi-column body, old typography, clip-art grape logo. Strong target.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/malund-ost.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#c0392b">ugly</span>
+              <span class="conf">conf 0.90</span>
+              <span class="score">heur 20</span>
+              <span class="id">#12</span>
+            </div>
+            <div class="name">Malund Ost</div>
+            <a href="https://malund-ost.dk/" target="_blank">https://malund-ost.dk/</a>
+            <p>Essentially unstyled: plain stacked text (address, hours) and a raw photo, no branding or layout. Strong target.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/mikado.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#c0392b">ugly</span>
+              <span class="conf">conf 0.80</span>
+              <span class="score">heur 18</span>
+              <span class="id">#20</span>
+            </div>
+            <div class="name">Mikado</div>
+            <a href="https://www.mikado-faaborg.dk/" target="_blank">https://www.mikado-faaborg.dk/</a>
+            <p>Sparse, dated single page: red wordmark, one storefront photo, tiny centered contact text, lots of empty space. Target.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/familierestaurant-smiley.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#c0392b">ugly</span>
+              <span class="conf">conf 0.90</span>
+              <span class="score">heur 15</span>
+              <span class="id">#24</span>
+            </div>
+            <div class="name">Familierestaurant Smiley</div>
+            <a href="https://www.smiley-ringe.dk/" target="_blank">https://www.smiley-ringe.dk/</a>
+            <p>Dated 2000s template: left sidebar pizza menu, clip-art smiley logo, cluttered, Facebook box. Strong target.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/gaardbutikken-den-glade-gris.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#c0392b">ugly</span>
+              <span class="conf">conf 0.80</span>
+              <span class="score">heur 14</span>
+              <span class="id">#25</span>
+            </div>
+            <div class="name">Gårdbutikken Den Glade Gris</div>
+            <a href="https://www.xn--grdbutikkendengladegris-k8b.dk/" target="_blank">https://www.xn--grdbutikkendengladegris-k8b.dk/</a>
+            <p>Cluttered, dense dated template — red nav, cramped text blocks, poor hierarchy. Target.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/antikhjoernet.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#d68910">borderline</span>
+              <span class="conf">conf 0.65</span>
+              <span class="score">heur 25</span>
+              <span class="id">#4</span>
+            </div>
+            <div class="name">Antikhjørnet</div>
+            <a href="https://www.m.antikvitet.net/apudstiller.asp?kunr=192" target="_blank">https://www.m.antikvitet.net/apudstiller.asp?kunr=192</a>
+            <p>A listing on the shared antikvitet.net marketplace (m.antikvitet.net), not the business&#x27;s own site. Dated catalog look, but not a clean redesign target.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/paskram.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#d68910">borderline</span>
+              <span class="conf">conf 0.60</span>
+              <span class="score">heur 25</span>
+              <span class="id">#5</span>
+            </div>
+            <div class="name">Paskram</div>
+            <a href="https://www.paskram.dk/" target="_blank">https://www.paskram.dk/</a>
+            <p>Plain, low-effort single page — generic layout, raw machine photo, weak hierarchy. Bland; an upgrade candidate.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/taasinge-camping-grill.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#d68910">borderline</span>
+              <span class="conf">conf 0.60</span>
+              <span class="score">heur 25</span>
+              <span class="id">#6</span>
+            </div>
+            <div class="name">Tåsinge Camping Grill</div>
+            <a href="https://taasingecamping.com/grill-1.html" target="_blank">https://taasingecamping.com/grill-1.html</a>
+            <p>Functional modern nav, but a dense two-column menu on a dark wood background. Cluttered rather than dated.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/strandlyst.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#d68910">borderline</span>
+              <span class="conf">conf 0.60</span>
+              <span class="score">heur 23</span>
+              <span class="id">#8</span>
+            </div>
+            <div class="name">Strandlyst</div>
+            <a href="https://strandlystsvendborg.dk/" target="_blank">https://strandlystsvendborg.dk/</a>
+            <p>Dated serif header with a clip-art sailing ship and a big embedded video; generic layout. Refresh candidate.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/verningelund.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#d68910">borderline</span>
+              <span class="conf">conf 0.55</span>
+              <span class="score">heur 20</span>
+              <span class="id">#13</span>
+            </div>
+            <div class="name">Verningelund</div>
+            <a href="http://verningelund.dk/" target="_blank">http://verningelund.dk/</a>
+            <p>Clean white layout, clover logo, clear type — simple but tidy. Light upgrade at most.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/guldsmed-duus.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#d68910">borderline</span>
+              <span class="conf">conf 0.60</span>
+              <span class="score">heur 18</span>
+              <span class="id">#18</span>
+            </div>
+            <div class="name">Guldsmed Duus</div>
+            <a href="https://guldsmedduus.dk/" target="_blank">https://guldsmedduus.dk/</a>
+            <p>Styled (teal + gold script) but very traditional, centered, dated typography. Upgrade candidate.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/svendborg-vingaard.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#d68910">borderline</span>
+              <span class="conf">conf 0.60</span>
+              <span class="score">heur 17</span>
+              <span class="id">#21</span>
+            </div>
+            <div class="name">Svendborg Vingård</div>
+            <a href="http://svendborgvingaard.dk/" target="_blank">http://svendborgvingaard.dk/</a>
+            <p>Plain green template, table-like product listing, weak hierarchy. Functional but dated-ish; polish target.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/la-pupa.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#d68910">borderline</span>
+              <span class="conf">conf 0.60</span>
+              <span class="score">heur 12</span>
+              <span class="id">#29</span>
+            </div>
+            <div class="name">La Pupa</div>
+            <a href="https://lapupa.dk/" target="_blank">https://lapupa.dk/</a>
+            <p>Dated photo-overlay header, italic serif over a building photo, generic Italian-restaurant template. Refresh candidate.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/azzurra-vino.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#d68910">borderline</span>
+              <span class="conf">conf 0.60</span>
+              <span class="score">heur 11</span>
+              <span class="id">#31</span>
+            </div>
+            <div class="name">Azzurra Vino</div>
+            <a href="http://www.azzurravino.dk/en/" target="_blank">http://www.azzurravino.dk/en/</a>
+            <p>Dated yellow/blue template, generic &#x27;Welcome&#x27; hero, weak hierarchy. Refresh target.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/hoebbet.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#d68910">borderline</span>
+              <span class="conf">conf 0.55</span>
+              <span class="score">heur 10</span>
+              <span class="id">#34</span>
+            </div>
+            <div class="name">Høbbet</div>
+            <a href="https://hobbet.dk/" target="_blank">https://hobbet.dk/</a>
+            <p>Fairly modern dark hero (naturkvæg) but some clutter and a cookie bar. Low priority.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/faaborg-roegeri-caf.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#d68910">borderline</span>
+              <span class="conf">conf 0.50</span>
+              <span class="score">heur 9</span>
+              <span class="id">#35</span>
+            </div>
+            <div class="name">Faaborg Røgeri Café</div>
+            <a href="https://faaborgroegericafe.dk/" target="_blank">https://faaborgroegericafe.dk/</a>
+            <p>Dated red dropdown nav and a large empty hero area (image failed to load in capture). Re-shot would help.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/blomstervaerkstedet-tine-p.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#7d3c98">blocked</span>
+              <span class="conf">conf 0.40</span>
+              <span class="score">heur 19</span>
+              <span class="id">#14</span>
+            </div>
+            <div class="name">Blomsterværkstedet Tine P</div>
+            <a href="https://tine-p.dk/" target="_blank">https://tine-p.dk/</a>
+            <p>Duplicate of lead 15 (Blomsterværkstedet Tine P) — same cookie-modal capture. Needs a re-shot.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/blomstervaerkstedet-tine-p.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#7d3c98">blocked</span>
+              <span class="conf">conf 0.40</span>
+              <span class="score">heur 19</span>
+              <span class="id">#15</span>
+            </div>
+            <div class="name">Blomsterværkstedet Tine P.</div>
+            <a href="https://tine-p.dk/" target="_blank">https://tine-p.dk/</a>
+            <p>Screenshot dominated by a cookie-consent modal; visible header looks somewhat dated. Needs a re-shot. (Lead 14 is the same business.)</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/svendborg-oejenklinik.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#7d3c98">blocked</span>
+              <span class="conf">conf 0.40</span>
+              <span class="score">heur 12</span>
+              <span class="id">#30</span>
+            </div>
+            <div class="name">Svendborg Øjenklinik</div>
+            <a href="https://xn--svendborgjenklinik-o4b.dk/" target="_blank">https://xn--svendborgjenklinik-o4b.dk/</a>
+            <p>Cookie modal covers most of the page; visible parts look plain/dated. Re-shot needed.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/det-soede-liv.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#7d3c98">blocked</span>
+              <span class="conf">conf 0.40</span>
+              <span class="score">heur 11</span>
+              <span class="id">#32</span>
+            </div>
+            <div class="name">Det Søde Liv</div>
+            <a href="https://aromaland.dk/shop/34-det-soede-liv/" target="_blank">https://aromaland.dk/shop/34-det-soede-liv/</a>
+            <p>Cookie modal blocks view; behind it a dated candy webshop catalog (aromaland.dk). Re-shot needed.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/frydendahls-dk.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#7d3c98">blocked</span>
+              <span class="conf">conf 0.30</span>
+              <span class="score">heur 8</span>
+              <span class="id">#38</span>
+            </div>
+            <div class="name">Frydendahls.dk</div>
+            <a href="https://www.frydendahls.dk/" target="_blank">https://www.frydendahls.dk/</a>
+            <p>Age-verification modal blocks the page; visible parts look like a standard webshop. Re-shot needed.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/china-house.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#7f8c8d">parked</span>
+              <span class="conf">conf 0.92</span>
+              <span class="score">heur 50</span>
+              <span class="id">#1</span>
+            </div>
+            <div class="name">China House</div>
+            <a href="http://chinahouse-marstal.dk/" target="_blank">http://chinahouse-marstal.dk/</a>
+            <p>Screenshot shows a generic accommodation/flights booking affiliate page (&#x27;Offers count 11205&#x27;), not the restaurant — the domain looks parked/hijacked. Not a redesign target.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/bang-s-mad-vinbar.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#1e8449">fine</span>
+              <span class="conf">conf 0.80</span>
+              <span class="score">heur 26</span>
+              <span class="id">#3</span>
+            </div>
+            <div class="name">Bang&#x27;s Mad &amp; Vinbar</div>
+            <a href="https://bangsvinbar.dk/" target="_blank">https://bangsvinbar.dk/</a>
+            <p>Modern hero photo, clean nav, &#x27;Book dit bord&#x27; CTA — a current template. Heuristic over-flagged it; not a priority.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/cafe-elmelund.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#1e8449">fine</span>
+              <span class="conf">conf 0.70</span>
+              <span class="score">heur 20</span>
+              <span class="id">#10</span>
+            </div>
+            <div class="name">Cafe Elmelund</div>
+            <a href="https://www.cafeelmelund.dk/" target="_blank">https://www.cafeelmelund.dk/</a>
+            <p>Clean modern card grid with food photos and a dark nav. Looks current.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/faaborg-fodpleje-og-velvaere.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#1e8449">fine</span>
+              <span class="conf">conf 0.75</span>
+              <span class="score">heur 20</span>
+              <span class="id">#11</span>
+            </div>
+            <div class="name">Faaborg Fodpleje og Velvære</div>
+            <a href="https://www.faaborgfodpleje.dk/" target="_blank">https://www.faaborgfodpleje.dk/</a>
+            <p>Modern template — clean hero with a foot-care photo, &#x27;Book online&#x27; CTA. Current.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/casa-ghiorsi.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#1e8449">fine</span>
+              <span class="conf">conf 0.70</span>
+              <span class="score">heur 18</span>
+              <span class="id">#17</span>
+            </div>
+            <div class="name">Casa Ghiorsi</div>
+            <a href="https://casaghiorsi.dk/" target="_blank">https://casaghiorsi.dk/</a>
+            <p>Modern photo-driven template — family/animals hero, clean nav. Current.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/hos-bageren.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#1e8449">fine</span>
+              <span class="conf">conf 0.70</span>
+              <span class="score">heur 18</span>
+              <span class="id">#19</span>
+            </div>
+            <div class="name">Hos Bageren</div>
+            <a href="https://www.hosbageren.dk/" target="_blank">https://www.hosbageren.dk/</a>
+            <p>Modern warm template — hero pretzel-sign photo, clean nav, CTA. Current.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/gaardbutikken-noerresoe.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#1e8449">fine</span>
+              <span class="conf">conf 0.65</span>
+              <span class="score">heur 16</span>
+              <span class="id">#22</span>
+            </div>
+            <div class="name">Gårdbutikken Nørresø</div>
+            <a href="https://noerresoe.dk/" target="_blank">https://noerresoe.dk/</a>
+            <p>Modern hero (cattle photo), scroll cue, two-column text. Current template.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/rask-klip.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#1e8449">fine</span>
+              <span class="conf">conf 0.75</span>
+              <span class="score">heur 16</span>
+              <span class="id">#23</span>
+            </div>
+            <div class="name">Rask Klip</div>
+            <a href="https://raskklip.dk/" target="_blank">https://raskklip.dk/</a>
+            <p>Clean modern minimal — salon photo, tidy nav, opening hours on white. Current.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/pippaluk.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#1e8449">fine</span>
+              <span class="conf">conf 0.65</span>
+              <span class="score">heur 14</span>
+              <span class="id">#26</span>
+            </div>
+            <div class="name">Pippaluk</div>
+            <a href="https://pippaluk.dk/" target="_blank">https://pippaluk.dk/</a>
+            <p>Clean modern minimal with a charming hand-drawn logo. Sparse but current.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/sejl-kalechemageren.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#1e8449">fine</span>
+              <span class="conf">conf 0.80</span>
+              <span class="score">heur 14</span>
+              <span class="id">#27</span>
+            </div>
+            <div class="name">Sejl &amp; Kalechemageren</div>
+            <a href="https://kalechemageren.dk/" target="_blank">https://kalechemageren.dk/</a>
+            <p>Sleek modern dark template — serif hero, clean CTAs. Current; not a target.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/thuroe-bageri.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#1e8449">fine</span>
+              <span class="conf">conf 0.70</span>
+              <span class="score">heur 14</span>
+              <span class="id">#28</span>
+            </div>
+            <div class="name">Thurø Bageri</div>
+            <a href="https://www.thuroebageri.dk/" target="_blank">https://www.thuroebageri.dk/</a>
+            <p>Modern warm bakery template — bread hero, icon row. Current.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/v-aaby-slagterforretning.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#1e8449">fine</span>
+              <span class="conf">conf 0.65</span>
+              <span class="score">heur 11</span>
+              <span class="id">#33</span>
+            </div>
+            <div class="name">V. Åby Slagterforretning</div>
+            <a href="https://aabyslagterforretning.dk/" target="_blank">https://aabyslagterforretning.dk/</a>
+            <p>Reasonably modern dark hero with icon row. Current-ish; low priority.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/vinbanken-faaborg.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#1e8449">fine</span>
+              <span class="conf">conf 0.70</span>
+              <span class="score">heur 9</span>
+              <span class="id">#36</span>
+            </div>
+            <div class="name">Vinbanken Faaborg</div>
+            <a href="https://www.vinbankenfaaborg.dk/" target="_blank">https://www.vinbankenfaaborg.dk/</a>
+            <p>Modern faded-hero template, clean logo and CTA. Current.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/det-hvide-pakhus.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#1e8449">fine</span>
+              <span class="conf">conf 0.75</span>
+              <span class="score">heur 8</span>
+              <span class="id">#37</span>
+            </div>
+            <div class="name">Det Hvide Pakhus</div>
+            <a href="https://www.dethvidepakhus.dk/" target="_blank">https://www.dethvidepakhus.dk/</a>
+            <p>Modern atmospheric restaurant template — dark lamp hero, gold nav, booking CTA. Current.</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="screenshots/gen-brug-svendborg.png" loading="lazy">
+          <div class="meta">
+            <div class="row">
+              <span class="badge" style="background:#1e8449">fine</span>
+              <span class="conf">conf 0.75</span>
+              <span class="score">heur 8</span>
+              <span class="id">#39</span>
+            </div>
+            <div class="name">Gen&amp;brug Svendborg</div>
+            <a href="https://genogbrug.dk/" target="_blank">https://genogbrug.dk/</a>
+            <p>Clean, current minimal design — photo collage, soft palette, tidy. Not a target.</p>
+          </div>
+        </div></div>

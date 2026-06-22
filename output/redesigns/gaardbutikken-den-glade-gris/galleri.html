@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Galleri | Gårdbutikken Den Glade Gris i Svendborg</title>
+<meta name="description" content="Se billeder fra Gårdbutikken Den Glade Gris i Svendborg — hjemmelavet pålæg, pølser, kød og lækker mad ud af huset.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--oxblood:#6e1d24;--oxblood-deep:#4a1217;--oxblood-soft:#8a2c33;--cream:#f6efe2;--cream-2:#efe4cf;--paper:#fffaf1;--ink:#241f1b;--ink-soft:#5a4f44;--line:#e3d6bf;--gold:#c98a3c;--gold-deep:#a96f29;--green:#4c5a38;--shadow:0 18px 40px -22px rgba(50,20,10,.55);--maxw:1180px}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{font-family:'Mulish',system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.65;-webkit-font-smoothing:antialiased;position:relative}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E")}
+h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;line-height:1.1;font-weight:600;color:var(--ink);letter-spacing:-.01em}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.eyebrow{font-weight:800;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-deep)}
+.topbar{background:var(--oxblood-deep);color:#f3e6d6;font-size:.82rem;font-weight:600}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:8px 28px;flex-wrap:wrap}
+.topbar a{color:#f3e6d6}.topbar .tline{display:flex;gap:22px;align-items:center;flex-wrap:wrap}.topbar .phone{color:#fff}
+header.site{position:sticky;top:0;z-index:50;background:rgba(246,239,226,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px;gap:20px}
+.brand{display:flex;align-items:center;gap:13px}
+.brand .mark{width:46px;height:46px;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--oxblood-soft),var(--oxblood-deep));display:grid;place-items:center;color:#f6d9c2;font-size:1.4rem;box-shadow:inset 0 0 0 2px rgba(255,255,255,.12)}
+.brand .bt{display:flex;flex-direction:column;line-height:1}
+.brand .bt .k{font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-deep);font-weight:800}
+.brand .bt .n{font-family:'Fraunces';font-weight:700;font-size:1.32rem;color:var(--oxblood)}
+nav.main{display:flex;align-items:center;gap:6px}
+nav.main a{font-weight:700;font-size:.93rem;color:var(--ink-soft);padding:9px 13px;border-radius:8px;transition:.2s}
+nav.main a:hover{color:var(--oxblood);background:rgba(110,29,36,.07)}nav.main a.active{color:var(--oxblood)}
+nav.main a.active::after{content:"";display:block;height:2px;background:var(--gold);border-radius:2px;margin-top:3px}
+.nav-cta{background:var(--oxblood);color:#fff!important;padding:11px 18px!important;border-radius:999px;box-shadow:var(--shadow)}
+.nav-cta:hover{background:var(--oxblood-deep)!important}.nav-toggle,.nav-burger{display:none}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:800;font-size:.95rem;padding:14px 26px;border-radius:999px;cursor:pointer;transition:.22s;border:2px solid transparent}
+.btn-primary{background:var(--gold);color:#2a1505;box-shadow:var(--shadow)}.btn-primary:hover{transform:translateY(-2px);background:#d99a4d}
+.subhero{position:relative;color:#fff;padding:74px 0 60px;overflow:hidden;background:var(--oxblood-deep)}
+.subhero .bg{position:absolute;inset:0;background-size:cover;background-position:center 35%;opacity:.32}
+.subhero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(74,18,23,.55),rgba(74,18,23,.85))}
+.subhero .wrap{position:relative;z-index:2}
+.crumb{font-size:.82rem;color:#f4c98e;font-weight:700}.crumb a{color:#f0d9c4}
+.subhero h1{font-size:clamp(2.2rem,5vw,3.6rem);color:#fff;margin:.25em 0 .2em}
+.subhero p{max-width:600px;color:#f1ddc9;font-weight:500;font-size:1.05rem}
+section.block{padding:64px 0}
+.gallery{columns:3;column-gap:18px}
+.gallery figure{break-inside:avoid;margin:0 0 18px;border-radius:14px;overflow:hidden;box-shadow:var(--shadow);position:relative;background:var(--paper)}
+.gallery img{width:100%;display:block;transition:.5s}
+.gallery figure:hover img{transform:scale(1.05)}
+.gallery figcaption{position:absolute;left:0;right:0;bottom:0;padding:26px 16px 12px;color:#fff;font-weight:700;font-size:.9rem;background:linear-gradient(transparent,rgba(40,12,10,.78));opacity:0;transition:.3s}
+.gallery figure:hover figcaption{opacity:1}
+.ctaband{background:var(--oxblood);color:#fbeede;text-align:center;padding:60px 0;margin-top:10px}
+.ctaband h2{color:#fff;font-size:clamp(1.7rem,3.4vw,2.4rem)}
+.ctaband p{max-width:540px;margin:12px auto 24px;color:#f0dcc8;font-weight:500}
+footer.site{background:var(--ink);color:#d9cdbe;padding:64px 0 30px}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+footer.site h4{color:#fff;font-family:'Fraunces';font-size:1.15rem;margin-bottom:16px}
+footer.site a{color:#d9cdbe;transition:.2s}footer.site a:hover{color:var(--gold)}
+footer.site .fbrand .n{font-family:'Fraunces';font-size:1.5rem;color:#fff;font-weight:700}
+footer.site .fbrand p{margin-top:12px;font-size:.92rem;max-width:280px;color:#b6a999}
+.flist{list-style:none;display:grid;gap:9px;font-size:.94rem}
+.smiley{display:inline-block;margin-top:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);padding:8px 14px;border-radius:10px;font-weight:700;font-size:.85rem;color:#fff}
+.fbot{border-top:1px solid rgba(255,255,255,.12);margin-top:46px;padding-top:22px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.82rem;color:#9d9183}
+@media(max-width:980px){.gallery{columns:2}.fgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){
+ nav.main{position:fixed;inset:0 0 0 auto;width:min(80vw,320px);background:var(--cream);flex-direction:column;align-items:stretch;padding:90px 22px 30px;gap:6px;transform:translateX(100%);transition:.3s;box-shadow:var(--shadow);z-index:60}
+ nav.main a{padding:13px 14px;border-radius:10px;font-size:1.05rem}
+ .nav-toggle:checked ~ nav.main{transform:none}
+ .nav-burger{display:flex;flex-direction:column;gap:5px;width:42px;height:42px;justify-content:center;align-items:center;cursor:pointer;z-index:70;position:relative}
+ .nav-burger span{width:24px;height:2px;background:var(--oxblood);transition:.3s}
+ .nav-toggle:checked ~ .nav-burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+ .nav-toggle:checked ~ .nav-burger span:nth-child(2){opacity:0}
+ .nav-toggle:checked ~ .nav-burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+ .gallery{columns:1}.fgrid{grid-template-columns:1fr}section.block{padding:48px 0}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="wrap">
+  <div class="tline"><span>📍 Gammel Skårupvej 164, 5700 Svendborg</span><span>🧾 Kvalitet til discountpriser</span></div>
+  <div class="tline"><a class="phone" href="tel:+4522587310">📞 22 58 73 10</a></div>
+</div></div>
+
+<header class="site"><div class="wrap">
+  <a class="brand" href="index.html"><span class="mark">🐷</span><span class="bt"><span class="k">Gårdbutikken</span><span class="n">Den Glade Gris</span></span></a>
+  <input type="checkbox" id="nt" class="nav-toggle">
+  <label for="nt" class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></label>
+  <nav class="main">
+    <a href="index.html">Forside</a>
+    <a href="sortiment.html">Sortiment</a>
+    <a href="grill.html">Grill &amp; Events</a>
+    <a href="mad-ud-af-huset.html">Mad ud af huset</a>
+    <a href="galleri.html" class="active">Galleri</a>
+    <a href="kontakt.html">Kontakt</a>
+    <a href="tel:+4522587310" class="nav-cta">Ring &amp; bestil</a>
+  </nav>
+</div></header>
+
+<section class="subhero">
+  <div class="bg" style="background-image:url('https://www.xn--grdbutikkendengladegris-k8b.dk/CustomerData/Files/Images/Gallery/galleri_8608/dsc00258_68.jpg')"></div>
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">Forside</a> / Galleri</div>
+    <h1>Et kig ind i gårdbutikken</h1>
+    <p>Hjemmelavet pålæg, friske pølser, lækkert kød og veltillavet mad — direkte fra vores køkken i Svendborg.</p>
+  </div>
+</section>
+
+<section class="block"><div class="wrap">
+  <div class="gallery">
+    <figure><img src="https://www.xn--grdbutikkendengladegris-k8b.dk/CustomerData/Files/Images/Gallery/galleri_8608/dsc00256_64.jpg" alt="Hjemmelavede spegepølser" loading="lazy"><figcaption>Hjemmelavede spegepølser</figcaption></figure>
+    <figure><img src="https://www.xn--grdbutikkendengladegris-k8b.dk/CustomerData/Files/Images/Gallery/galleri_8608/dsc00258_68.jpg" alt="Pølser på række" loading="lazy"><figcaption>Eget pølsemageri</figcaption></figure>
+    <figure><img src="https://www.xn--grdbutikkendengladegris-k8b.dk/CustomerData/Files/Images/Gallery/galleri_8608/dsc00260_76.jpg" alt="Udvalg i butikken" loading="lazy"><figcaption>I gårdbutikken</figcaption></figure>
+    <figure><img src="https://www.xn--grdbutikkendengladegris-k8b.dk/CustomerData/Files/Images/Gallery/galleri_8608/dsc00266_100.jpg" alt="Frisk pålæg" loading="lazy"><figcaption>Frisk pålæg</figcaption></figure>
+    <figure><img src="https://www.xn--grdbutikkendengladegris-k8b.dk/CustomerData/Files/Images/Gallery/galleri_8608/dsc00273_128.jpg" alt="Hjemmelavet mad" loading="lazy"><figcaption>Lavet i eget køkken</figcaption></figure>
+    <figure><img src="https://www.xn--grdbutikkendengladegris-k8b.dk/CustomerData/Files/Images/Gallery/galleri_8608/dsc00280_156.jpg" alt="Kødudvalg" loading="lazy"><figcaption>Friskt kød</figcaption></figure>
+    <figure><img src="https://www.xn--grdbutikkendengladegris-k8b.dk/CustomerData/Files/Images/Gallery/galleri_8608/dsc00282_164.jpg" alt="Anretning" loading="lazy"><figcaption>Anretning</figcaption></figure>
+    <figure><img src="https://www.xn--grdbutikkendengladegris-k8b.dk/CustomerData/Files/Images/Gallery/galleri_8608/dsc00285_176.jpg" alt="Hjemmelavet pålæg" loading="lazy"><figcaption>Hjemmelavet pålæg</figcaption></figure>
+    <figure><img src="https://www.xn--grdbutikkendengladegris-k8b.dk/CustomerData/Files/Images/Gallery/galleri_8608/dsc00288_188.jpg" alt="Lækkerier" loading="lazy"><figcaption>Lækkerier</figcaption></figure>
+    <figure><img src="https://www.xn--grdbutikkendengladegris-k8b.dk/CustomerData/Files/Images/Gallery/galleri_8608/dsc00291_200.jpg" alt="Smørrebrød" loading="lazy"><figcaption>Smørrebrød</figcaption></figure>
+    <figure><img src="https://www.xn--grdbutikkendengladegris-k8b.dk/CustomerData/Files/Images/Gallery/galleri_8608/dsc00292_204.jpg" alt="Friske varer" loading="lazy"><figcaption>Friske varer</figcaption></figure>
+    <figure><img src="https://www.xn--grdbutikkendengladegris-k8b.dk/CustomerData/Files/Images/Gallery/galleri_8608/dsc00294_212.jpg" alt="Kød og pålæg" loading="lazy"><figcaption>Kød &amp; pålæg</figcaption></figure>
+    <figure><img src="https://www.xn--grdbutikkendengladegris-k8b.dk/CustomerData/Files/Images/Gallery/galleri_8608/dsc00296_220.jpg" alt="I disken" loading="lazy"><figcaption>I disken</figcaption></figure>
+    <figure><img src="https://www.xn--grdbutikkendengladegris-k8b.dk/CustomerData/Files/Images/Gallery/galleri_8608/dsc00301_240.jpg" alt="Butikken" loading="lazy"><figcaption>Butikken</figcaption></figure>
+    <figure><img src="https://www.xn--grdbutikkendengladegris-k8b.dk/CustomerData/Files/Images/Gallery/galleri_8608/dsc00303_248.jpg" alt="Udvalget" loading="lazy"><figcaption>Udvalget</figcaption></figure>
+  </div>
+</div></section>
+
+<div class="ctaband"><div class="wrap">
+  <h2>Fik du lyst til et besøg?</h2>
+  <p>Kom forbi i Svendborg eller ring og bestil — vi glæder os til at se dig.</p>
+  <a href="tel:+4522587310" class="btn btn-primary">📞 Ring 22 58 73 10</a>
+</div></div>
+
+<footer class="site"><div class="wrap">
+  <div class="fgrid">
+    <div class="fbrand"><div class="n">🐷 Den Glade Gris</div><p>Gårdbutik i Svendborg på Sydfyn med hjemmelavet kød, pålæg og mad ud af huset — kvalitet til discountpriser.</p><a class="smiley" href="https://www.findsmiley.dk/131909" target="_blank" rel="noopener">★ Se vores Smiley-rapport</a></div>
+    <div><h4>Kontakt</h4><ul class="flist"><li>Gammel Skårupvej 164</li><li>5700 Svendborg</li><li><a href="tel:+4522587310">Tlf. 22 58 73 10</a></li><li>CVR 32774172</li></ul></div>
+    <div><h4>Åbningstider</h4><ul class="flist"><li>Onsdag 10 – 15</li><li>Torsdag 10 – 16</li><li>Fredag lukket</li><li>Mad &amp; grill alle dage</li></ul></div>
+    <div><h4>Genveje</h4><ul class="flist"><li><a href="index.html">Forside</a></li><li><a href="sortiment.html">Sortiment</a></li><li><a href="grill.html">Grill &amp; events</a></li><li><a href="mad-ud-af-huset.html">Mad ud af huset</a></li><li><a href="kontakt.html">Kontakt</a></li></ul></div>
+  </div>
+  <div class="fbot"><span>© 2026 Gårdbutikken Den Glade Gris · Svendborg</span><span>Bestillinger modtages alle ugens dage</span></div>
+</div></footer>
+
+</body>
+</html>

@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Malund Ost &amp; Specialiteter — Svendborg</title>
+<meta name="description" content="Ulla og Preben Malund sælger oste, tapas og specialiteter i Gerritsgade midt i Svendborg. Et halvt liv på torvet — nu i butik på strøget." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Manrope:wght@300;400;500;600;700&family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --parchment:#F2E6CC;
+    --parchment-2:#EADBB7;
+    --cream:#FBF3DE;
+    --mustard:#C28028;
+    --mustard-deep:#8E5A18;
+    --rind:#E5B85C;
+    --wine:#6B1D26;
+    --wine-deep:#4A1119;
+    --moss:#2F3A24;
+    --ink:#1A1410;
+    --ink-soft:#3A2E25;
+    --line:rgba(26,20,16,.18);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--parchment);color:var(--ink);font-family:"Manrope",sans-serif;font-weight:400;line-height:1.55;-webkit-font-smoothing:antialiased}
+  body{
+    background:
+      radial-gradient(1200px 700px at 90% -10%, rgba(194,128,40,.18), transparent 60%),
+      radial-gradient(900px 600px at -10% 110%, rgba(107,29,38,.12), transparent 60%),
+      var(--parchment);
+    position:relative;overflow-x:hidden;
+  }
+  /* grain overlay */
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:1000;mix-blend-mode:multiply;opacity:.35;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1  0 0 0 0 0.08  0 0 0 0 0.06  0 0 0 .35 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+  ::selection{background:var(--wine);color:var(--cream)}
+
+  .display{font-family:"Fraunces",serif;font-variation-settings:"opsz" 144, "SOFT" 30, "WONK" 0;font-weight:500;letter-spacing:-.02em;line-height:.92}
+  .script{font-family:"Caveat",cursive;font-weight:500;color:var(--wine)}
+  .eyebrow{font-family:"Manrope",sans-serif;font-weight:600;font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--mustard-deep)}
+
+  /* ─── Top bar ─── */
+  .topbar{display:flex;justify-content:space-between;align-items:center;padding:14px 40px;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);border-bottom:1px solid var(--line)}
+  .topbar a{color:inherit;text-decoration:none}
+  .topbar a:hover{color:var(--wine)}
+  .topbar .dot{display:inline-block;width:6px;height:6px;background:var(--moss);border-radius:999px;margin:0 10px;vertical-align:middle}
+
+  /* ─── Nav ─── */
+  nav.main{display:flex;align-items:center;justify-content:space-between;padding:22px 40px;position:relative;z-index:5}
+  nav .brand{display:flex;align-items:baseline;gap:14px}
+  nav .brand .mark{font-family:"Fraunces",serif;font-weight:600;font-size:1.4rem;letter-spacing:-.01em}
+  nav .brand .est{font-size:.68rem;letter-spacing:.3em;color:var(--mustard-deep);text-transform:uppercase}
+  nav .links{display:flex;gap:34px;align-items:center;font-size:.82rem;letter-spacing:.18em;text-transform:uppercase}
+  nav .links a{color:var(--ink);text-decoration:none;position:relative;padding:6px 0}
+  nav .links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--wine)}
+  nav .links a:hover{color:var(--wine)}
+  .cta{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--cream);padding:13px 22px;border-radius:999px;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;text-decoration:none;transition:transform .25s ease, background .25s}
+  .cta:hover{background:var(--wine);transform:translateY(-1px)}
+  .cta .arrow{font-family:"Fraunces",serif;font-size:1.05rem}
+
+  /* ─── Hero ─── */
+  .hero{position:relative;padding:30px 40px 90px}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:end;position:relative}
+  .hero h1{font-family:"Fraunces",serif;font-variation-settings:"opsz" 144, "SOFT" 100, "WONK" 1;font-weight:400;font-size:clamp(3.2rem,9vw,8.4rem);line-height:.88;letter-spacing:-.035em;color:var(--ink)}
+  .hero h1 .italic{font-style:italic;color:var(--wine);font-variation-settings:"opsz" 144, "SOFT" 100, "WONK" 1}
+  .hero h1 .underline{position:relative;display:inline-block}
+  .hero h1 .underline svg{position:absolute;left:0;right:0;bottom:-.08em;width:100%;height:.22em}
+  .hero .lede{margin-top:34px;max-width:520px;font-size:1.08rem;line-height:1.7;color:var(--ink-soft)}
+  .hero .meta{display:flex;gap:28px;margin-top:42px;align-items:center;flex-wrap:wrap}
+  .hero .meta .since{display:flex;flex-direction:column}
+  .hero .meta .since b{font-family:"Fraunces",serif;font-size:1.6rem;font-weight:600}
+  .hero .meta .since span{font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--mustard-deep)}
+  .hero .meta .div{width:1px;height:36px;background:var(--line)}
+
+  .hero-visual{position:relative;align-self:stretch;display:flex;align-items:center;justify-content:center;min-height:480px}
+  .photo{position:absolute;border-radius:6px;overflow:hidden;box-shadow:0 24px 48px rgba(26,20,16,.18), 0 4px 10px rgba(26,20,16,.1);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+  .photo img{display:block;width:100%;height:100%;object-fit:cover;filter:saturate(.95) contrast(1.02)}
+  .photo.p1{top:0;right:30px;width:78%;height:78%;transform:rotate(-3deg);z-index:2}
+  .photo.p2{bottom:0;left:0;width:48%;height:46%;transform:rotate(4deg);z-index:3;border:6px solid var(--cream)}
+  .photo:hover{transform:rotate(0) scale(1.02)}
+  .stamp{position:absolute;width:170px;height:170px;border-radius:999px;background:var(--wine);color:var(--cream);display:flex;align-items:center;justify-content:center;text-align:center;z-index:5;transform:rotate(-12deg);box-shadow:0 8px 18px rgba(26,20,16,.25);right:-10px;bottom:30px}
+  .stamp::before{content:"";position:absolute;inset:8px;border:1px dashed rgba(255,247,228,.55);border-radius:999px}
+  .stamp .inner{font-family:"Fraunces",serif;font-style:italic;font-weight:500;line-height:1.05;padding:0 14px}
+  .stamp .inner b{display:block;font-size:1.9rem;font-style:normal;letter-spacing:.02em;margin-bottom:4px}
+  .stamp .inner em{display:block;font-style:normal;font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;margin-top:6px;opacity:.85}
+
+  /* tape pieces */
+  .tape{position:absolute;width:90px;height:22px;background:rgba(229,184,92,.6);box-shadow:0 1px 2px rgba(0,0,0,.08);z-index:4;border-left:1px dotted rgba(0,0,0,.08);border-right:1px dotted rgba(0,0,0,.08)}
+
+  /* ─── Marquee ─── */
+  .marquee{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--cream);overflow:hidden;padding:18px 0;position:relative}
+  .marquee-track{display:flex;gap:60px;animation:scroll 38s linear infinite;white-space:nowrap;font-family:"Fraunces",serif;font-size:1.45rem;font-style:italic;color:var(--ink-soft)}
+  .marquee-track span{display:inline-flex;align-items:center;gap:60px}
+  .marquee-track .sep{font-family:"Manrope",sans-serif;color:var(--mustard);font-style:normal;font-weight:700}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ─── Sortiment section ─── */
+  section.range{padding:120px 40px 80px;position:relative}
+  .section-head{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:end;margin-bottom:70px}
+  .section-head h2{font-family:"Fraunces",serif;font-variation-settings:"opsz" 144, "SOFT" 60;font-size:clamp(2.4rem,5.5vw,5rem);line-height:.95;letter-spacing:-.025em;font-weight:500}
+  .section-head h2 em{font-style:italic;color:var(--wine)}
+  .section-head .sub{color:var(--ink-soft);font-size:1.02rem;max-width:440px;justify-self:end;line-height:1.7}
+
+  .range-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  .card{position:relative;background:var(--cream);border:1px solid var(--line);border-radius:4px;padding:36px 30px 32px;display:flex;flex-direction:column;min-height:380px;overflow:hidden;transition:transform .35s, box-shadow .35s}
+  .card:hover{transform:translateY(-4px);box-shadow:0 22px 40px rgba(26,20,16,.12)}
+  .card .num{position:absolute;top:22px;right:26px;font-family:"Fraunces",serif;font-size:1rem;letter-spacing:.12em;color:var(--mustard-deep)}
+  .card .icon{width:64px;height:64px;border-radius:999px;background:var(--mustard);display:flex;align-items:center;justify-content:center;color:var(--cream);font-family:"Fraunces",serif;font-size:1.8rem;font-style:italic;margin-bottom:32px}
+  .card.wine .icon{background:var(--wine)}
+  .card.moss .icon{background:var(--moss)}
+  .card h3{font-family:"Fraunces",serif;font-size:1.9rem;font-weight:500;letter-spacing:-.01em;margin-bottom:14px}
+  .card p{color:var(--ink-soft);font-size:.96rem;line-height:1.65;margin-bottom:22px}
+  .card ul{list-style:none;margin-top:auto;border-top:1px solid var(--line);padding-top:18px;display:flex;flex-direction:column;gap:8px}
+  .card ul li{font-size:.86rem;color:var(--ink-soft);display:flex;justify-content:space-between;gap:12px}
+  .card ul li span:last-child{font-family:"Fraunces",serif;font-style:italic;color:var(--mustard-deep)}
+
+  /* ─── Story strip ─── */
+  .story{padding:120px 40px;background:linear-gradient(180deg,transparent,rgba(229,184,92,.18) 30%, rgba(229,184,92,.05));position:relative}
+  .story-inner{display:grid;grid-template-columns:.9fr 1.1fr;gap:80px;align-items:center;max-width:1280px;margin:0 auto}
+  .story-photo{position:relative;aspect-ratio:4/5;background:var(--cream);border-radius:4px;overflow:hidden;box-shadow:0 18px 40px rgba(26,20,16,.18)}
+  .story-photo img{width:100%;height:100%;object-fit:cover;filter:contrast(1.03)}
+  .story-photo .quote{position:absolute;left:-30px;bottom:30px;background:var(--ink);color:var(--cream);padding:22px 26px;max-width:300px;font-family:"Fraunces",serif;font-style:italic;font-size:1.05rem;line-height:1.4;box-shadow:0 12px 28px rgba(26,20,16,.3)}
+  .story-photo .quote::before{content:"\201C";position:absolute;top:-22px;left:18px;font-size:5rem;font-family:"Fraunces",serif;color:var(--mustard);line-height:1}
+
+  .story h2{font-family:"Fraunces",serif;font-size:clamp(2.2rem,4.5vw,4rem);font-weight:500;letter-spacing:-.025em;line-height:1;margin-bottom:28px}
+  .story h2 em{font-style:italic;color:var(--wine)}
+  .story p{font-size:1.08rem;line-height:1.75;color:var(--ink-soft);margin-bottom:18px;max-width:540px}
+  .story .signature{margin-top:34px;display:flex;align-items:center;gap:18px}
+  .story .signature .name{font-family:"Caveat",cursive;font-size:2.1rem;color:var(--wine);line-height:1}
+  .story .signature .role{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--mustard-deep)}
+
+  /* ─── Info row (hours + visit) ─── */
+  .info{padding:120px 40px;position:relative}
+  .info-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;max-width:1280px;margin:0 auto}
+  .panel{background:var(--cream);border-radius:4px;border:1px solid var(--line);padding:50px 44px;position:relative;overflow:hidden}
+  .panel.dark{background:var(--moss);color:var(--cream);border-color:transparent}
+  .panel h3{font-family:"Fraunces",serif;font-size:2.4rem;font-weight:500;letter-spacing:-.02em;margin-bottom:8px;line-height:1}
+  .panel .eyebrow{margin-bottom:14px;display:block}
+  .panel.dark .eyebrow{color:var(--rind)}
+  .panel.dark h3{color:var(--cream)}
+  .panel p{color:var(--ink-soft);margin-top:14px;line-height:1.7}
+  .panel.dark p{color:rgba(251,243,222,.85)}
+
+  .hours{margin-top:32px;display:flex;flex-direction:column;gap:0}
+  .hours .row{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px dashed var(--line);font-size:1rem}
+  .hours .row.closed{color:var(--mustard-deep);font-style:italic}
+  .hours .row b{font-family:"Fraunces",serif;font-weight:500;letter-spacing:.01em}
+  .hours .row span{font-family:"Fraunces",serif;font-feature-settings:"tnum" 1}
+  .hours .row.today{position:relative;color:var(--wine);font-weight:600}
+  .hours .row.today::before{content:"i dag";position:absolute;right:-4px;top:50%;transform:translate(100%,-50%);background:var(--wine);color:var(--cream);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;padding:4px 8px;border-radius:3px;font-family:"Manrope",sans-serif;font-weight:600}
+  .closed-note{margin-top:22px;padding:14px 18px;background:rgba(107,29,38,.08);border-left:3px solid var(--wine);font-size:.92rem;color:var(--wine-deep);font-family:"Fraunces",serif;font-style:italic}
+
+  .address{display:flex;flex-direction:column;gap:8px;margin-top:30px;font-family:"Fraunces",serif;font-size:1.4rem;line-height:1.35}
+  .panel.dark .address{color:var(--cream)}
+  .phones{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+  .phones a{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border:1px solid rgba(251,243,222,.35);border-radius:999px;color:var(--cream);text-decoration:none;font-size:.92rem;font-family:"Fraunces",serif;letter-spacing:.04em;transition:background .2s}
+  .phones a:hover{background:var(--cream);color:var(--moss)}
+  .phones a::before{content:"";width:7px;height:7px;background:var(--rind);border-radius:999px}
+
+  .smiley{margin-top:36px;display:flex;flex-direction:column;gap:10px;padding-top:24px;border-top:1px solid rgba(251,243,222,.2)}
+  .smiley a{color:var(--rind);text-decoration:none;font-size:.88rem;letter-spacing:.04em;display:inline-flex;align-items:center;gap:10px;font-family:"Fraunces",serif;font-style:italic}
+  .smiley a:hover{color:var(--cream)}
+  .smiley a::after{content:"→";font-style:normal;transition:transform .2s}
+  .smiley a:hover::after{transform:translateX(4px)}
+
+  /* ─── Footer ─── */
+  footer{background:var(--ink);color:var(--cream);padding:80px 40px 30px;position:relative;overflow:hidden}
+  footer::before{content:"OST · OST · OST · OST · OST · OST · OST · OST · OST";position:absolute;top:-30px;left:0;right:0;font-family:"Fraunces",serif;font-style:italic;font-size:9rem;line-height:1;color:rgba(194,128,40,.06);white-space:nowrap;letter-spacing:.1em;pointer-events:none}
+  .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:60px;max-width:1280px;margin:0 auto;position:relative;z-index:2}
+  .footer-grid h4{font-family:"Fraunces",serif;font-size:2rem;font-weight:500;margin-bottom:16px;letter-spacing:-.01em}
+  .footer-grid p{color:rgba(251,243,222,.7);line-height:1.7;margin-bottom:8px;font-size:.95rem}
+  .footer-grid ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:8px}
+  .footer-grid ul a{color:rgba(251,243,222,.75);text-decoration:none;font-size:.95rem;transition:color .2s}
+  .footer-grid ul a:hover{color:var(--rind)}
+  .footer-grid .eyebrow{color:var(--rind);margin-bottom:14px}
+  .footer-bot{display:flex;justify-content:space-between;align-items:center;max-width:1280px;margin:60px auto 0;padding-top:24px;border-top:1px solid rgba(251,243,222,.1);font-size:.78rem;color:rgba(251,243,222,.5);letter-spacing:.12em;text-transform:uppercase;position:relative;z-index:2}
+
+  /* ─── responsive ─── */
+  @media (max-width:920px){
+    .topbar{display:none}
+    nav.main{padding:18px 22px}
+    nav .links{display:none}
+    .hero{padding:20px 22px 60px}
+    .hero-grid{grid-template-columns:1fr;gap:30px}
+    .hero-visual{min-height:380px;order:-1}
+    .stamp{width:130px;height:130px;right:0;bottom:10px}
+    .stamp .inner b{font-size:1.5rem}
+    .section-head{grid-template-columns:1fr;gap:24px}
+    .section-head .sub{justify-self:start}
+    .range,.story,.info{padding:70px 22px}
+    .range-grid{grid-template-columns:1fr;gap:18px}
+    .story-inner{grid-template-columns:1fr;gap:50px}
+    .info-grid{grid-template-columns:1fr}
+    .footer-grid{grid-template-columns:1fr;gap:34px}
+    footer{padding:60px 22px 22px}
+    .footer-bot{flex-direction:column;gap:12px;text-align:center}
+    .panel{padding:36px 28px}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div>Velkommen i butikken<span class="dot"></span>Gerritsgade 4-6, 5700 Svendborg</div>
+  <div>Tirsdag — fredag 09.30–17.30<span class="dot"></span>Lørdag 09.00–14.00</div>
+</div>
+
+<nav class="main">
+  <div class="brand">
+    <span class="mark">Malund Ost</span>
+    <span class="est">Est. 2007</span>
+  </div>
+  <div class="links">
+    <a href="index.html" class="active">Forside</a>
+    <a href="butikken.html">Butikken</a>
+    <a href="index.html#sortiment">Sortiment</a>
+    <a href="index.html#kontakt">Find os</a>
+  </div>
+  <a href="tel:26292576" class="cta">Ring 26 29 25 76 <span class="arrow">→</span></a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-text">
+      <span class="eyebrow">Ost &amp; Specialiteter · Svendborg</span>
+      <h1 style="margin-top:24px">
+        Ost med<br>
+        <span class="italic">karakter</span>,<br>
+        skåret med <span class="underline">kærlighed<svg viewBox="0 0 300 20" preserveAspectRatio="none"><path d="M2 13 Q 80 2, 150 11 T 298 8" fill="none" stroke="#C28028" stroke-width="3" stroke-linecap="round"/></svg></span>.
+      </h1>
+      <p class="lede">
+        Efter tyve år på torvet i Ulla og Prebens ostebil, har en gammel drøm fået et hjem. Træd indenfor i Gerritsgade og mød et udvalg af håndskårne oste, tapas og specialiteter, vi har samlet med tid og tæft.
+      </p>
+      <div class="meta">
+        <div class="since">
+          <b>2007</b>
+          <span>Siden</span>
+        </div>
+        <div class="div"></div>
+        <div class="since">
+          <b>Sydfyn</b>
+          <span>Lokalt forankret</span>
+        </div>
+        <div class="div"></div>
+        <a href="butikken.html" class="cta" style="background:var(--wine)">Læs vores historie <span class="arrow">→</span></a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <span class="tape" style="top:8%;left:14%;transform:rotate(-12deg)"></span>
+      <span class="tape" style="bottom:22%;right:14%;transform:rotate(8deg)"></span>
+      <div class="photo p1">
+        <img src="https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?auto=format&fit=crop&w=1100&q=80" alt="Hånd skærer ost" onerror="this.style.background='linear-gradient(135deg,#E5B85C,#C28028)';this.removeAttribute('src')">
+      </div>
+      <div class="photo p2">
+        <img src="https://images.unsplash.com/photo-1452195100486-9cc805987862?auto=format&fit=crop&w=700&q=80" alt="Osteudvalg" onerror="this.style.background='linear-gradient(135deg,#6B1D26,#4A1119)';this.removeAttribute('src')">
+      </div>
+      <div class="stamp">
+        <div class="inner">
+          <em>Fra ostebilen</em>
+          <b>til strøget</b>
+          <em>· Svendborg ·</em>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>
+      Modnet i ro <span class="sep">✦</span>
+      Tapas &amp; specialiteter <span class="sep">✦</span>
+      Smagsprøver tilbydes <span class="sep">✦</span>
+      Lavet med tid <span class="sep">✦</span>
+      Gerritsgade 4-6 <span class="sep">✦</span>
+      Skåret efter mål <span class="sep">✦</span>
+    </span>
+    <span>
+      Modnet i ro <span class="sep">✦</span>
+      Tapas &amp; specialiteter <span class="sep">✦</span>
+      Smagsprøver tilbydes <span class="sep">✦</span>
+      Lavet med tid <span class="sep">✦</span>
+      Gerritsgade 4-6 <span class="sep">✦</span>
+      Skåret efter mål <span class="sep">✦</span>
+    </span>
+  </div>
+</div>
+
+<!-- SORTIMENT -->
+<section class="range" id="sortiment">
+  <div class="section-head">
+    <div>
+      <span class="eyebrow">Sortiment</span>
+      <h2 style="margin-top:18px">Tre diske,<br><em>én besættelse</em> — at smage videre.</h2>
+    </div>
+    <p class="sub">Vi har bygget butikken op omkring det, vi selv ville gå efter: rigtige oste, marinerede småting og dansk-europæiske specialiteter, vi har fundet undervejs.</p>
+  </div>
+
+  <div class="range-grid">
+    <div class="card">
+      <span class="num">N° 01</span>
+      <div class="icon">O</div>
+      <h3>Oste</h3>
+      <p>Friskskåret efter ønske, fra blide tørmodnede til de mere insisterende. Vi sætter os tid til at finde den, der passer til lige din anledning.</p>
+      <ul>
+        <li><span>Hårde &amp; halvfaste</span><span>Stykvis</span></li>
+        <li><span>Bløde &amp; modnede</span><span>Stykvis</span></li>
+        <li><span>Smagskasser</span><span>Efter ønske</span></li>
+      </ul>
+    </div>
+
+    <div class="card wine">
+      <span class="num">N° 02</span>
+      <div class="icon">T</div>
+      <h3>Tapas</h3>
+      <p>Marinerede oliven, lufttørrede pølser, paté, sennep, syltede sager. Den slags, der gør en almindelig torsdag aften til et lille festmåltid.</p>
+      <ul>
+        <li><span>Charcuteri</span><span>Skåret efter mål</span></li>
+        <li><span>Marinader &amp; oliven</span><span>I løs vægt</span></li>
+        <li><span>Paté &amp; pølser</span><span>Friskt udvalg</span></li>
+      </ul>
+    </div>
+
+    <div class="card moss">
+      <span class="num">N° 03</span>
+      <div class="icon">S</div>
+      <h3>Specialiteter</h3>
+      <p>Det, der ikke står på den almindelige hylde: små producenter, syltetøj med karakter, kiks, honning og det sæsonens fund vi ikke kunne lade ligge.</p>
+      <ul>
+        <li><span>Syltetøj &amp; chutney</span><span>Krukke</span></li>
+        <li><span>Honning &amp; sirupper</span><span>Glas</span></li>
+        <li><span>Kiks &amp; tilbehør</span><span>Pose</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story">
+  <div class="story-inner">
+    <div class="story-photo">
+      <img src="https://images.unsplash.com/photo-1559561853-08451507cbe7?auto=format&fit=crop&w=900&q=80" alt="Inde i osteforretningen" onerror="this.style.background='linear-gradient(135deg,#E5B85C,#8E5A18)';this.removeAttribute('src')">
+      <div class="quote">En gammel drøm gik i opfyldelse, da vi for første gang lukkede døren op til butikken på Gerritsgade.</div>
+    </div>
+    <div>
+      <span class="eyebrow">Om Malund Ost</span>
+      <h2 style="margin-top:16px">Tyve år <em>på farten</em>.<br>Et hjem på strøget.</h2>
+      <p>I to årtier har Ulla og Preben Malund haft ostebilen ud til torve over hele Fyn — i regn, blæst og varmegrader, der fik ostene til at sukke. Hver lørdag igennem 18 år stod Preben på torvet i Svendborg.</p>
+      <p>I 2025 byttede vi den mobile disk ud med et fast hjem i den tidligere blomsterhandel i Gerritsgade 4-6. Samme oste, samme folk, men nu med ro til at folde et endnu større sortiment ud — og tid til en ordentlig snak ved disken.</p>
+      <div class="signature">
+        <span class="name">Ulla &amp; Preben</span>
+        <span class="role">Indehavere</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INFO -->
+<section class="info" id="kontakt">
+  <div class="section-head" style="max-width:1280px;margin:0 auto 60px">
+    <div>
+      <span class="eyebrow">Find os</span>
+      <h2 style="margin-top:16px">Kig forbi —<br><em>vi skærer gerne</em> en smagsprøve.</h2>
+    </div>
+    <p class="sub">Vi ligger lige på strøget i Gerritsgade, midt i Svendborg. Lukket mandag og søndag — alle andre dage står vi klar bag disken.</p>
+  </div>
+
+  <div class="info-grid">
+    <div class="panel">
+      <span class="eyebrow">Åbningstider</span>
+      <h3>Ugen i butikken</h3>
+      <div class="hours">
+        <div class="row closed"><b>Mandag</b><span>Lukket</span></div>
+        <div class="row"><b>Tirsdag</b><span>09.30 — 17.30</span></div>
+        <div class="row"><b>Onsdag</b><span>09.30 — 17.30</span></div>
+        <div class="row today"><b>Torsdag</b><span>09.30 — 17.30</span></div>
+        <div class="row"><b>Fredag</b><span>09.30 — 17.30</span></div>
+        <div class="row"><b>Lørdag</b><span>09.00 — 14.00</span></div>
+        <div class="row closed"><b>Søndag</b><span>Lukket</span></div>
+      </div>
+      <div class="closed-note">Bemærk: Lukket fredag den 5. juni, Grundlovsdag.</div>
+    </div>
+
+    <div class="panel dark">
+      <span class="eyebrow">Adresse &amp; Kontakt</span>
+      <h3>Mød os i butikken</h3>
+      <div class="address">
+        Gerritsgade 4-6<br>
+        5700 Svendborg
+      </div>
+      <div class="phones">
+        <a href="tel:26292576">26 29 25 76</a>
+        <a href="tel:61261300">61 26 13 00</a>
+      </div>
+      <div class="smiley">
+        <a href="https://www.findsmiley.dk/1484416" target="_blank" rel="noopener">Kontrolrapport — Gerritsgade</a>
+        <a href="https://www.findsmiley.dk/130670" target="_blank" rel="noopener">Kontrolrapport — Lager</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h4>Malund Ost <span style="font-style:italic;color:var(--mustard)">&amp; Specialiteter</span></h4>
+      <p>En lille, ærlig butik på strøget i Svendborg. Vi sælger den ost vi selv ville købe — og fortæller gerne historien bag.</p>
+      <p style="margin-top:18px;font-family:'Caveat',cursive;font-size:1.4rem;color:var(--rind)">— Ulla &amp; Preben Malund</p>
+    </div>
+    <div>
+      <span class="eyebrow">Besøg os</span>
+      <p>Gerritsgade 4-6<br>5700 Svendborg</p>
+      <ul>
+        <li><a href="tel:26292576">26 29 25 76</a></li>
+        <li><a href="tel:61261300">61 26 13 00</a></li>
+      </ul>
+    </div>
+    <div>
+      <span class="eyebrow">Naviger</span>
+      <ul>
+        <li><a href="index.html">Forside</a></li>
+        <li><a href="butikken.html">Vores historie</a></li>
+        <li><a href="index.html#sortiment">Sortiment</a></li>
+        <li><a href="index.html#kontakt">Åbningstider</a></li>
+        <li><a href="https://www.findsmiley.dk/1484416" target="_blank">FindSmiley</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bot">
+    <div>© Malund Ost · CVR 30938860</div>
+    <div>Svendborg · Sydfyn</div>
+  </div>
+</footer>
+
+</body>
+</html>

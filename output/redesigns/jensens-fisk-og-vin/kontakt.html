@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kontakt · Jensen's Fisk & Vin · Lundeborg</title>
+<meta name="description" content="Kontakt Jensen's Fisk & Vin på Lundeborg havn. Havnevej 1D, 5874 Hesselager. Tlf. 6228 1929 · Mob. 3118 8385.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#10293c;--navy2:#0a1c29;--sand:#f3e9d8;--paper:#faf5ec;--rust:#a73f2d;--rust-d:#82301f;--brass:#c08a3e;--sea:#3c7081;--ink:#221d16;--muted:#6b6256}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Spectral',Georgia,serif;color:var(--ink);background:var(--paper);line-height:1.66;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:500;line-height:1.06;letter-spacing:-.01em}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+.eyebrow{font-family:'Work Sans',sans-serif;text-transform:uppercase;letter-spacing:.26em;font-size:.72rem;font-weight:600;color:var(--rust)}
+.nav{position:sticky;top:0;z-index:50;background:rgba(250,245,236,.92);backdrop-filter:blur(10px);border-bottom:1px solid rgba(34,29,22,.1)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:76px}
+.brand{display:flex;flex-direction:column;line-height:1}
+.brand b{font-family:'Fraunces',serif;font-weight:600;font-size:1.42rem;letter-spacing:-.02em;color:var(--navy)}
+.brand span{font-family:'Work Sans',sans-serif;font-size:.62rem;letter-spacing:.34em;text-transform:uppercase;color:var(--brass);margin-top:4px}
+.menu{display:flex;gap:34px;font-family:'Work Sans',sans-serif;font-size:.86rem;font-weight:500}
+.menu a{position:relative;padding:4px 0;color:var(--navy)}
+.menu a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--rust);transition:width .3s}
+.menu a:hover::after,.menu a.active::after{width:100%}
+.navcta{font-family:'Work Sans',sans-serif;font-size:.8rem;font-weight:600;background:var(--rust);color:#fff;padding:11px 20px;border-radius:2px;transition:background .25s}
+.navcta:hover{background:var(--rust-d)}
+.btn{font-family:'Work Sans',sans-serif;font-size:.9rem;font-weight:600;padding:14px 26px;border-radius:2px;display:inline-flex;gap:9px;transition:transform .2s,background .25s,box-shadow .25s}
+.btn-p{background:var(--rust);color:#fff}
+.btn-p:hover{background:var(--rust-d);transform:translateY(-2px);box-shadow:0 12px 26px rgba(0,0,0,.25)}
+
+.phead{position:relative;color:#fff;padding:96px 0 88px;overflow:hidden}
+.phead-bg{position:absolute;inset:0;background:url('http://www.fiskogvin.dk/filer/gallery-images/Fil15_Fisk-og-vin-014.jpg') center 45%/cover no-repeat}
+.phead::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,28,41,.55),rgba(10,28,41,.82))}
+.phead-in{position:relative;z-index:2;text-align:center}
+.phead .eyebrow{color:#f0c98a}
+.phead h1{font-size:clamp(2.6rem,5.4vw,4.2rem);margin:.2em 0 .25em}
+.phead p{color:#e7dcc9;font-weight:300;font-size:1.1rem;max-width:560px;margin:0 auto}
+
+.contact{padding:96px 0}
+.c-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+.c-block{margin-bottom:38px}
+.c-block h3{font-size:1.3rem;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.c-block h3 .dot{width:8px;height:8px;background:var(--rust);border-radius:50%}
+.c-line{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px dotted rgba(34,29,22,.2);font-size:1.08rem}
+.c-line span:first-child{color:var(--muted);font-family:'Work Sans',sans-serif;font-size:.84rem;letter-spacing:.06em;text-transform:uppercase}
+.c-line a,.c-line b{color:var(--ink);font-weight:500}
+.c-line a:hover{color:var(--rust)}
+.intro{font-size:1.18rem;color:var(--rust-d);font-style:italic;margin-bottom:30px}
+.hours-card{background:var(--navy);color:#f3e9d8;border-radius:6px;padding:36px 40px;margin-top:8px}
+.hours-card .eyebrow{color:#f0c98a}
+.hours-card .big{font-family:'Fraunces',serif;font-size:2.4rem;color:#fff;margin:.12em 0;line-height:1}
+.hours-card .sub{color:#cdbfa9;font-weight:300}
+.hours-card .season{border-top:1px solid rgba(255,255,255,.14);margin-top:18px;padding-top:16px;font-size:.96rem;color:#d8cdb9}
+.hours-card .season b{color:#f1d4a3}
+.mapwrap{border-radius:6px;overflow:hidden;box-shadow:0 30px 60px -26px rgba(16,41,60,.5);border:1px solid rgba(34,29,22,.12)}
+.mapwrap iframe{display:block;width:100%;height:420px;border:0;filter:saturate(.92)}
+.mapcap{font-family:'Work Sans',sans-serif;font-size:.8rem;color:var(--muted);text-align:center;padding:14px;background:#fff}
+
+footer{background:var(--navy2);color:#cdbfa9;padding:80px 0 40px;font-size:.96rem}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:50px;padding-bottom:50px;border-bottom:1px solid rgba(255,255,255,.1)}
+footer .brand b{color:#fff;font-size:1.6rem}
+footer h4{font-family:'Work Sans',sans-serif;text-transform:uppercase;letter-spacing:.16em;font-size:.74rem;color:var(--brass);margin-bottom:18px}
+footer a:hover{color:#fff}
+footer .fl{display:block;margin-bottom:9px}
+.foot-bot{display:flex;justify-content:space-between;padding-top:26px;font-size:.82rem;color:#8a7e6c;flex-wrap:wrap;gap:10px;font-family:'Work Sans',sans-serif}
+.tagln{margin:16px 0 0;font-style:italic;color:#a99c87;max-width:320px}
+
+@media(max-width:900px){
+  .menu{display:none}
+  .c-grid,.foot-grid{grid-template-columns:1fr;gap:40px}
+  .contact{padding:60px 0}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-in">
+    <a href="index.html" class="brand"><b>Jensen's Fisk &amp; Vin</b><span>Lundeborg Havn</span></a>
+    <nav class="menu">
+      <a href="index.html">Forside</a>
+      <a href="menu.html">Menu</a>
+      <a href="arrangementer.html">Arrangementer</a>
+      <a href="kontakt.html" class="active">Kontakt</a>
+    </nav>
+    <a href="#hours" class="navcta">Åbningstider</a>
+  </div>
+</header>
+
+<section class="phead">
+  <div class="phead-bg"></div>
+  <div class="wrap phead-in">
+    <span class="eyebrow">Kontakt</span>
+    <h1>Vi ses på havnen</h1>
+    <p>Ring, skriv eller kig forbi — vi glæder os til at byde jer velkommen til Lundeborg havn.</p>
+  </div>
+</section>
+
+<section class="contact">
+  <div class="wrap c-grid">
+    <div>
+      <p class="intro">Du kan kontakte os på mobil, telefon eller email.</p>
+
+      <div class="c-block">
+        <h3><span class="dot"></span>Kontakt</h3>
+        <div class="c-line"><span>Mobil</span><a href="tel:+4531188385">3118 8385</a></div>
+        <div class="c-line"><span>Forretning</span><a href="tel:+4562281929">6228 1929</a></div>
+        <div class="c-line"><span>Email</span><a href="mailto:mr.poxy@hotmail.com">mr.poxy@hotmail.com</a></div>
+      </div>
+
+      <div class="c-block">
+        <h3><span class="dot"></span>Adresse</h3>
+        <div class="c-line"><span>Gade</span><b>Havnevej 1D</b></div>
+        <div class="c-line"><span>By</span><b>Lundeborg</b></div>
+        <div class="c-line"><span>Post</span><b>5874 Hesselager</b></div>
+      </div>
+
+      <div class="hours-card" id="hours">
+        <span class="eyebrow">Åbningstider · alle dage</span>
+        <div class="big">11.30 – 19.00</div>
+        <div class="sub">Frokost &amp; sandwich til kl. 16.00 · varme retter hele dagen</div>
+        <div class="season">Sæson: <b>påske til 2. weekend i september</b></div>
+      </div>
+    </div>
+
+    <div>
+      <div class="mapwrap">
+        <iframe loading="lazy" title="Kort over Lundeborg havn" src="https://www.openstreetmap.org/export/embed.html?bbox=10.6980%2C55.1600%2C10.7360%2C55.1760&amp;layer=mapnik&amp;marker=55.1680%2C10.7170"></iframe>
+        <div class="mapcap">Jensen's Fisk &amp; Vin · Havnevej 1D · Lundeborg havn &nbsp;·&nbsp; <a href="https://www.openstreetmap.org/?mlat=55.1680&amp;mlon=10.7170#map=15/55.1680/10.7170" target="_blank" rel="noopener" style="color:var(--rust)">Åbn i kort →</a></div>
+      </div>
+      <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Havnevej+1D+5874+Hesselager" target="_blank" rel="noopener" class="btn btn-p" style="margin-top:22px">Få rutevejledning →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="brand"><b>Jensen's Fisk &amp; Vin</b><span style="color:var(--brass);font-family:'Work Sans',sans-serif;font-size:.62rem;letter-spacing:.34em;text-transform:uppercase">Lundeborg Havn</span></div>
+        <p class="tagln">Sæsonåben fiskehandel &amp; spisested midt på Lundeborg havn — smagen af sommer siden 2002.</p>
+      </div>
+      <div>
+        <h4>Find os</h4>
+        <span class="fl">Havnevej 1D</span>
+        <span class="fl">Lundeborg</span>
+        <span class="fl">5874 Hesselager</span>
+      </div>
+      <div>
+        <h4>Kontakt</h4>
+        <a class="fl" href="tel:+4562281929">Tlf. 6228 1929</a>
+        <a class="fl" href="tel:+4531188385">Mob. 3118 8385</a>
+        <a class="fl" href="mailto:mr.poxy@hotmail.com">mr.poxy@hotmail.com</a>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span>© 2026 Jensen's Fisk &amp; Vin · Lundeborg</span>
+      <span><a href="index.html">Forside</a> · <a href="menu.html">Menu</a> · <a href="arrangementer.html">Arrangementer</a> · Kontakt</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

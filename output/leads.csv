@@ -1,0 +1,7 @@
+score,name,subcategory,category,website,final_url,status,city,postcode,phone,email,title,top_signals,error
+14,Thurø Bageri,bakery,shop,https://www.thuroebageri.dk/,https://www.thuroebageri.dk/,200,,,,,Traditionelt bageri i Svendborg,old_jquery(+6); fixed_width(+5); no_og_or_jsonld(+3),
+0,Circle K,fuel,amenity,https://www.circlek.dk/station/circle-k-svendborg,https://www.circlek.dk/station/circle-k-svendborg,200,,,,,"Tankstation på Grusvig 1, Svendborg | Circle K",,
+0,Sankt Nicolai Apotek,pharmacy,healthcare,https://www.apoteket.dk/apoteker/svendborg-sct-nicolai-apotek,https://www.apoteket.dk/apoteker/rudkoebing-apotek/svendborg-sct-nicolai-apotek,200,,,,,Svendborg Sct. Nicolai Apotek - Danmarks Apotekerforening | apoteket.dk,,
+0,Under Uret,cafe,amenity,https://www.under-uret.com/,https://under-uret.com/,200,,,+45 62218308,,Restaurant i Svendborg | Lækre smage og god stemning | Under Uret,,
+0,Vesterport Bageri,bakery,shop,https://www.vesterportbageri.dk/,https://vesterportbageri.dk/,200,,,,,"Håndværk, Smag og Særlige Øjeblikke | BRIAN BRØNDUM ApS",,
+0,Årslev Dyreklinik,veterinary,amenity,https://www.aarslevdyreklinik.dk/,https://www.aarslevdyreklinik.dk/,0,,,+45 65 99 12 11,,,,net: ReadTimeout

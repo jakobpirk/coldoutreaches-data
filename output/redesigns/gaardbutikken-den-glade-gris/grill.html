@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grill &amp; events | Helstegt pattegris i Svendborg — Den Glade Gris</title>
+<meta name="description" content="Grill-events med grillmester: helstegt pattegris, blandet grill og grill selv. Bestil dit grill-arrangement i god tid hos Den Glade Gris i Svendborg.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700;9..144,900&family=Mulish:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--oxblood:#6e1d24;--oxblood-deep:#4a1217;--oxblood-soft:#8a2c33;--cream:#f6efe2;--cream-2:#efe4cf;--paper:#fffaf1;--ink:#241f1b;--ink-soft:#5a4f44;--line:#e3d6bf;--gold:#c98a3c;--gold-deep:#a96f29;--green:#4c5a38;--shadow:0 18px 40px -22px rgba(50,20,10,.55);--maxw:1180px}
+*{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{font-family:'Mulish',system-ui,sans-serif;color:var(--ink);background:var(--cream);line-height:1.65;-webkit-font-smoothing:antialiased;position:relative}
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.5;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E")}
+h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;line-height:1.1;font-weight:600;color:var(--ink);letter-spacing:-.01em}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.eyebrow{font-weight:800;font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-deep)}
+.topbar{background:var(--oxblood-deep);color:#f3e6d6;font-size:.82rem;font-weight:600}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:8px 28px;flex-wrap:wrap}
+.topbar a{color:#f3e6d6}.topbar .tline{display:flex;gap:22px;align-items:center;flex-wrap:wrap}.topbar .phone{color:#fff}
+header.site{position:sticky;top:0;z-index:50;background:rgba(246,239,226,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px;gap:20px}
+.brand{display:flex;align-items:center;gap:13px}
+.brand .mark{width:46px;height:46px;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--oxblood-soft),var(--oxblood-deep));display:grid;place-items:center;color:#f6d9c2;font-size:1.4rem;box-shadow:inset 0 0 0 2px rgba(255,255,255,.12)}
+.brand .bt{display:flex;flex-direction:column;line-height:1}
+.brand .bt .k{font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold-deep);font-weight:800}
+.brand .bt .n{font-family:'Fraunces';font-weight:700;font-size:1.32rem;color:var(--oxblood)}
+nav.main{display:flex;align-items:center;gap:6px}
+nav.main a{font-weight:700;font-size:.93rem;color:var(--ink-soft);padding:9px 13px;border-radius:8px;transition:.2s}
+nav.main a:hover{color:var(--oxblood);background:rgba(110,29,36,.07)}nav.main a.active{color:var(--oxblood)}
+nav.main a.active::after{content:"";display:block;height:2px;background:var(--gold);border-radius:2px;margin-top:3px}
+.nav-cta{background:var(--oxblood);color:#fff!important;padding:11px 18px!important;border-radius:999px;box-shadow:var(--shadow)}
+.nav-cta:hover{background:var(--oxblood-deep)!important}.nav-toggle,.nav-burger{display:none}
+.btn{display:inline-flex;align-items:center;gap:9px;font-weight:800;font-size:.95rem;padding:14px 26px;border-radius:999px;cursor:pointer;transition:.22s;border:2px solid transparent}
+.btn-primary{background:var(--gold);color:#2a1505;box-shadow:var(--shadow)}.btn-primary:hover{transform:translateY(-2px);background:#d99a4d}
+.btn-ghost{border-color:rgba(255,255,255,.6);color:#fff}.btn-ghost:hover{background:rgba(255,255,255,.12)}
+.btn-dark{background:var(--oxblood);color:#fff}.btn-dark:hover{background:var(--oxblood-deep);transform:translateY(-2px)}
+.subhero{position:relative;color:#fff;padding:90px 0 80px;overflow:hidden;background:var(--oxblood-deep)}
+.subhero .bg{position:absolute;inset:0;background-size:cover;background-position:center 40%;opacity:.4}
+.subhero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(74,18,23,.4),rgba(74,18,23,.82))}
+.subhero .wrap{position:relative;z-index:2;max-width:760px}
+.crumb{font-size:.82rem;color:#f4c98e;font-weight:700}.crumb a{color:#f0d9c4}
+.subhero h1{font-size:clamp(2.4rem,5.5vw,4rem);color:#fff;margin:.25em 0 .25em}
+.subhero h1 em{font-style:italic;color:#f4c98e}
+.subhero p{max-width:600px;color:#f1ddc9;font-weight:500;font-size:1.1rem}
+.subhero .cta{margin-top:28px;display:flex;gap:14px;flex-wrap:wrap}
+section.block{padding:74px 0}
+.sec-head{max-width:680px;margin-bottom:44px}
+.sec-head h2{font-size:clamp(1.9rem,3.8vw,2.8rem);margin:.2em 0 .3em}
+.sec-head p{color:var(--ink-soft);font-size:1.05rem}
+.offers{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.offer{background:var(--paper);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
+.offer .ph{height:210px;overflow:hidden}.offer .ph img{width:100%;height:100%;object-fit:cover;transition:.5s}.offer:hover .ph img{transform:scale(1.06)}
+.offer .body{padding:26px}
+.offer .body .row{display:flex;justify-content:space-between;align-items:baseline;gap:14px;margin-bottom:10px}
+.offer h3{font-size:1.5rem;color:var(--oxblood)}
+.offer .pr{font-family:'Fraunces';font-weight:900;font-size:1.6rem;color:var(--ink);white-space:nowrap}
+.offer .pr small{font-size:.8rem;font-weight:600;color:var(--ink-soft)}
+.offer p{color:var(--ink-soft);font-size:.96rem}
+.offer .min{display:inline-block;margin-top:14px;background:rgba(76,90,56,.12);color:var(--green);font-weight:800;font-size:.78rem;letter-spacing:.04em;padding:6px 12px;border-radius:999px}
+.meatband{background:var(--cream-2)}
+.chips{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px}
+.chip{background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:11px 20px;font-weight:700;color:var(--ink);font-size:.92rem;box-shadow:0 6px 16px -12px rgba(50,20,10,.5)}
+.chip span{color:var(--gold-deep);margin-right:7px}
+.ctaband{background:var(--oxblood);color:#fbeede;text-align:center;padding:64px 0}
+.ctaband h2{color:#fff;font-size:clamp(1.8rem,3.6vw,2.6rem)}
+.ctaband p{max-width:560px;margin:12px auto 26px;color:#f0dcc8;font-weight:500}
+footer.site{background:var(--ink);color:#d9cdbe;padding:64px 0 30px}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
+footer.site h4{color:#fff;font-family:'Fraunces';font-size:1.15rem;margin-bottom:16px}
+footer.site a{color:#d9cdbe;transition:.2s}footer.site a:hover{color:var(--gold)}
+footer.site .fbrand .n{font-family:'Fraunces';font-size:1.5rem;color:#fff;font-weight:700}
+footer.site .fbrand p{margin-top:12px;font-size:.92rem;max-width:280px;color:#b6a999}
+.flist{list-style:none;display:grid;gap:9px;font-size:.94rem}
+.smiley{display:inline-block;margin-top:8px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);padding:8px 14px;border-radius:10px;font-weight:700;font-size:.85rem;color:#fff}
+.fbot{border-top:1px solid rgba(255,255,255,.12);margin-top:46px;padding-top:22px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.82rem;color:#9d9183}
+@media(max-width:980px){.offers{grid-template-columns:1fr}.fgrid{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){
+ nav.main{position:fixed;inset:0 0 0 auto;width:min(80vw,320px);background:var(--cream);flex-direction:column;align-items:stretch;padding:90px 22px 30px;gap:6px;transform:translateX(100%);transition:.3s;box-shadow:var(--shadow);z-index:60}
+ nav.main a{padding:13px 14px;border-radius:10px;font-size:1.05rem}
+ .nav-toggle:checked ~ nav.main{transform:none}
+ .nav-burger{display:flex;flex-direction:column;gap:5px;width:42px;height:42px;justify-content:center;align-items:center;cursor:pointer;z-index:70;position:relative}
+ .nav-burger span{width:24px;height:2px;background:var(--oxblood);transition:.3s}
+ .nav-toggle:checked ~ .nav-burger span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+ .nav-toggle:checked ~ .nav-burger span:nth-child(2){opacity:0}
+ .nav-toggle:checked ~ .nav-burger span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+ .fgrid{grid-template-columns:1fr}section.block{padding:54px 0}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="wrap">
+  <div class="tline"><span>📍 Gammel Skårupvej 164, 5700 Svendborg</span><span>🔥 Bestil dit grill-arrangement i god tid</span></div>
+  <div class="tline"><a class="phone" href="tel:+4522587310">📞 22 58 73 10</a></div>
+</div></div>
+
+<header class="site"><div class="wrap">
+  <a class="brand" href="index.html"><span class="mark">🐷</span><span class="bt"><span class="k">Gårdbutikken</span><span class="n">Den Glade Gris</span></span></a>
+  <input type="checkbox" id="nt" class="nav-toggle">
+  <label for="nt" class="nav-burger" aria-label="Menu"><span></span><span></span><span></span></label>
+  <nav class="main">
+    <a href="index.html">Forside</a>
+    <a href="sortiment.html">Sortiment</a>
+    <a href="grill.html" class="active">Grill &amp; Events</a>
+    <a href="mad-ud-af-huset.html">Mad ud af huset</a>
+    <a href="galleri.html">Galleri</a>
+    <a href="kontakt.html">Kontakt</a>
+    <a href="tel:+4522587310" class="nav-cta">Ring &amp; bestil</a>
+  </nav>
+</div></header>
+
+<section class="subhero">
+  <div class="bg" style="background-image:url('https://www.xn--grdbutikkendengladegris-k8b.dk/CustomerData/Files/Images/Banner/forside_28/banner-helegris_439.jpg')"></div>
+  <div class="wrap">
+    <div class="crumb"><a href="index.html">Forside</a> / Grill &amp; events</div>
+    <h1>Helstegt <em>pattegris</em> &amp; grill med grillmester</h1>
+    <p>Skal I holde fest, firmaarrangement eller familiekomsammen? Vi sørger for kødet, grillen og grillmesteren — I nyder bare maden. Bestil i god tid.</p>
+    <div class="cta">
+      <a href="tel:+4522587310" class="btn btn-primary">📞 Bestil grill-event</a>
+      <a href="#udvalg" class="btn btn-ghost">Se kød-udvalget</a>
+    </div>
+  </div>
+</section>
+
+<section class="block"><div class="wrap">
+  <div class="sec-head">
+    <div class="eyebrow">Grill-events med grillmester</div>
+    <h2>Vi griller — I hygger</h2>
+    <p>Alle vores grill-events leveres med stor salatbar, flødekartofler, dressing og flutes.</p>
+  </div>
+  <div class="offers">
+    <div class="offer">
+      <div class="ph"><img src="https://www.xn--grdbutikkendengladegris-k8b.dk/CustomerData/Files/Images/Banner/forside_28/banner-helegris_439.jpg" alt="Helstegt pattegris"></div>
+      <div class="body">
+        <div class="row"><h3>Helstegt pattegris</h3><span class="pr">189,- <small>/ kuvert</small></span></div>
+        <p>Saftig helstegt pattegris med salatbar, flødekartofler, dressing og flutes. Inkl. grillmester der står for hele herligheden.</p>
+        <span class="min">Min. 50 kuverter · inkl. grillmester</span>
+      </div>
+    </div>
+    <div class="offer">
+      <div class="ph"><img src="https://www.xn--grdbutikkendengladegris-k8b.dk/CustomerData/Files/Images/Banner/forside_28/89_463.jpg" alt="Blandet grill"></div>
+      <div class="body">
+        <div class="row"><h3>Blandet grill</h3><span class="pr">fra 169,- <small>/ kuvert</small></span></div>
+        <p>3 slags kød samt grillmedister med salatbar, flødekartofler, dressing og flutes. Sammensæt selv jeres favoritter.</p>
+        <span class="min">Min. 40 kuverter · inkl. grillmester</span>
+      </div>
+    </div>
+    <div class="offer">
+      <div class="ph"><img src="https://www.xn--grdbutikkendengladegris-k8b.dk/CustomerData/Files/Images/Archive/2-billeder-19/10_385.jpg" alt="Grill selv pakke"></div>
+      <div class="body">
+        <div class="row"><h3>Grill selv</h3><span class="pr">fra 129,- <small>/ kuvert</small></span></div>
+        <p>3 slags kød: hjemmelavet grillmedister, marinerede nakkekoteletter og marineret kyllingefilet — med salatbar, kartofler, flutes og dressing.</p>
+        <span class="min">Min. 20 kuverter</span>
+      </div>
+    </div>
+    <div class="offer">
+      <div class="ph"><img src="https://www.xn--grdbutikkendengladegris-k8b.dk/CustomerData/Files/Images/Banner/forside_28/88_461.jpg" alt="Luksus grill selv"></div>
+      <div class="body">
+        <div class="row"><h3>Luksus grill selv</h3><span class="pr">169,- <small>/ kuvert</small></span></div>
+        <p>4 slags kød: grillmedister, marinerede nakkekoteletter, marineret kyllingefilet og garantimøre bøffer — med salatbar, kartofler, flutes og dressing.</p>
+        <span class="min">Min. 20 kuverter</span>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<section class="block meatband" id="udvalg"><div class="wrap">
+  <div class="sec-head">
+    <div class="eyebrow">Vælg jeres kød</div>
+    <h2>Kød til blandet grill</h2>
+    <p>Sammensæt jeres grill-event med vores marinerede og hjemmelavede specialiteter.</p>
+  </div>
+  <div class="chips">
+    <div class="chip"><span>🔥</span>Marineret kamfilet</div>
+    <div class="chip"><span>🔥</span>Marinerede nakkekoteletter</div>
+    <div class="chip"><span>🔥</span>Honningmarineret kalkunbryst</div>
+    <div class="chip"><span>🔥</span>Hjemmelavet grillmedister</div>
+    <div class="chip"><span>🔥</span>Marineret svinemørbrad</div>
+    <div class="chip"><span>🔥</span>Honningmarineret skinkeculotte</div>
+    <div class="chip"><span>🔥</span>Kalvefilet</div>
+    <div class="chip"><span>🔥</span>Oksefilet</div>
+    <div class="chip"><span>🔥</span>Lammeculotter</div>
+    <div class="chip"><span>🔥</span>Culottesteg</div>
+    <div class="chip"><span>🔥</span>Marineret kyllingebryst</div>
+  </div>
+</div></section>
+
+<div class="ctaband"><div class="wrap">
+  <h2>Klar til at planlægge jeres grill-fest?</h2>
+  <p>Ring og fortæl os om jeres arrangement — så finder vi den helt rigtige løsning. Husk at bestille i god tid.</p>
+  <a href="tel:+4522587310" class="btn btn-primary">📞 Ring 22 58 73 10</a>
+</div></div>
+
+<footer class="site"><div class="wrap">
+  <div class="fgrid">
+    <div class="fbrand"><div class="n">🐷 Den Glade Gris</div><p>Gårdbutik i Svendborg på Sydfyn med hjemmelavet kød, pålæg og mad ud af huset — kvalitet til discountpriser.</p><a class="smiley" href="https://www.findsmiley.dk/131909" target="_blank" rel="noopener">★ Se vores Smiley-rapport</a></div>
+    <div><h4>Kontakt</h4><ul class="flist"><li>Gammel Skårupvej 164</li><li>5700 Svendborg</li><li><a href="tel:+4522587310">Tlf. 22 58 73 10</a></li><li>CVR 32774172</li></ul></div>
+    <div><h4>Åbningstider</h4><ul class="flist"><li>Onsdag 10 – 15</li><li>Torsdag 10 – 16</li><li>Fredag lukket</li><li>Mad &amp; grill alle dage</li></ul></div>
+    <div><h4>Genveje</h4><ul class="flist"><li><a href="index.html">Forside</a></li><li><a href="sortiment.html">Sortiment</a></li><li><a href="mad-ud-af-huset.html">Mad ud af huset</a></li><li><a href="galleri.html">Galleri</a></li><li><a href="https://www.facebook.com/G%C3%A5rdbutikken-Den-Glade-Gris-226392164387244/" target="_blank" rel="noopener">Facebook</a></li></ul></div>
+  </div>
+  <div class="fbot"><span>© 2026 Gårdbutikken Den Glade Gris · Svendborg</span><span>Bestillinger modtages alle ugens dage</span></div>
+</div></footer>
+
+</body>
+</html>

@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mikado — Mode til piger i alle aldre · Faaborg</title>
+<meta name="description" content="Mikado er Faaborgs hyggelige modebutik på Østergade 30. Siden 2006 har vi samlet skønne mærker til piger i alle aldre — midt i den charmerende gågade.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#F4EEE3;
+    --cream-deep:#EBE2D2;
+    --ink:#221E1A;
+    --ink-soft:#4A433B;
+    --taupe:#9C8E7A;
+    --brick:#C0392B;       /* nod to their red logo */
+    --brick-deep:#9E2E22;
+    --line:rgba(34,30,26,.14);
+    --shadow:0 26px 60px -28px rgba(34,30,26,.45);
+    --serif:'Fraunces',Georgia,serif;
+    --sans:'Hanken Grotesk',-apple-system,sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);
+    background:var(--cream);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--brick);color:var(--cream)}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  .wrap{max-width:1240px;margin:0 auto;padding:0 32px}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:20px 40px;
+    transition:background .4s ease, padding .4s ease, box-shadow .4s ease;
+  }
+  header.nav.scrolled{
+    background:rgba(244,238,227,.92);
+    backdrop-filter:blur(12px);
+    padding:14px 40px;
+    box-shadow:0 1px 0 var(--line);
+  }
+  .brand{
+    font-family:var(--serif);
+    font-weight:600;
+    font-size:1.65rem;
+    letter-spacing:.22em;
+    color:var(--brick);
+    transition:color .4s ease;
+  }
+  .nav.hero-light:not(.scrolled) .brand,
+  .nav.hero-light:not(.scrolled) .nav-links a{color:var(--cream)}
+  .nav-links{display:flex;gap:34px;align-items:center}
+  .nav-links a{
+    font-size:.82rem;letter-spacing:.14em;text-transform:uppercase;
+    font-weight:500;position:relative;transition:color .25s;
+  }
+  .nav-links a::after{
+    content:"";position:absolute;left:0;bottom:-6px;height:1px;width:0;
+    background:currentColor;transition:width .3s ease;
+  }
+  .nav-links a:hover::after{width:100%}
+  .nav-cta{
+    border:1px solid currentColor;padding:9px 18px;border-radius:40px;
+    font-size:.78rem;letter-spacing:.12em;
+  }
+  .nav-cta:hover{background:var(--brick);border-color:var(--brick);color:var(--cream)!important}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+  .burger span{width:26px;height:2px;background:currentColor;transition:.3s}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;min-height:100vh;display:flex;align-items:flex-end;
+    color:var(--cream);overflow:hidden;
+  }
+  .hero-bg{position:absolute;inset:0;z-index:-2}
+  .hero-bg img{width:100%;height:100%;object-fit:cover;
+    animation:slowzoom 18s ease-out forwards}
+  @keyframes slowzoom{from{transform:scale(1.08)}to{transform:scale(1)}}
+  .hero::after{
+    content:"";position:absolute;inset:0;z-index:-1;
+    background:linear-gradient(180deg,rgba(34,30,26,.42) 0%,rgba(34,30,26,.1) 40%,rgba(34,30,26,.72) 100%);
+  }
+  .hero-inner{padding-bottom:9vh;max-width:920px}
+  .hero .eyebrow{
+    font-size:.8rem;letter-spacing:.34em;text-transform:uppercase;
+    margin-bottom:26px;opacity:0;animation:rise .9s .2s forwards;
+    display:flex;align-items:center;gap:14px;
+  }
+  .hero .eyebrow::before{content:"";width:46px;height:1px;background:var(--cream);opacity:.7}
+  .hero h1{
+    font-family:var(--serif);
+    font-weight:300;
+    font-size:clamp(3rem,8.5vw,7rem);
+    line-height:.98;
+    letter-spacing:-.01em;
+  }
+  .hero h1 .ital{font-style:italic;color:#f0d9c4}
+  .hero h1 span{display:block;opacity:0;animation:rise 1s forwards}
+  .hero h1 span:nth-child(1){animation-delay:.32s}
+  .hero h1 span:nth-child(2){animation-delay:.46s}
+  .hero p.sub{
+    margin-top:30px;max-width:520px;font-size:1.12rem;font-weight:300;
+    color:rgba(244,238,227,.9);opacity:0;animation:rise 1s .62s forwards;
+  }
+  .hero-actions{margin-top:40px;display:flex;gap:16px;flex-wrap:wrap;
+    opacity:0;animation:rise 1s .76s forwards}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:15px 30px;border-radius:44px;font-size:.86rem;
+    letter-spacing:.08em;font-weight:500;transition:.3s;cursor:pointer;
+  }
+  .btn-solid{background:var(--brick);color:var(--cream)}
+  .btn-solid:hover{background:var(--cream);color:var(--ink);transform:translateY(-2px)}
+  .btn-ghost{border:1px solid rgba(244,238,227,.55);color:var(--cream)}
+  .btn-ghost:hover{background:rgba(244,238,227,.14);border-color:var(--cream)}
+  @keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:translateY(0)}}
+
+  .scroll-hint{
+    position:absolute;right:40px;bottom:36px;writing-mode:vertical-rl;
+    font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;
+    opacity:0;animation:rise 1s 1s forwards;display:flex;align-items:center;gap:14px;
+  }
+  .scroll-hint::after{content:"";width:1px;height:54px;background:var(--cream);
+    animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:.3;transform:scaleY(.6)}50%{opacity:1;transform:scaleY(1)}}
+
+  /* ---------- MARQUEE STRIP ---------- */
+  .strip{background:var(--ink);color:var(--cream);overflow:hidden;padding:16px 0}
+  .strip-track{display:flex;gap:60px;white-space:nowrap;animation:scroll 28s linear infinite;width:max-content}
+  .strip-track span{font-family:var(--serif);font-style:italic;font-size:1.15rem;
+    display:flex;align-items:center;gap:60px;opacity:.92}
+  .strip-track span::after{content:"✦";color:var(--brick);font-style:normal}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ---------- SECTION SHARED ---------- */
+  section{position:relative}
+  .pad{padding:clamp(80px,11vw,150px) 0}
+  .tag{
+    font-size:.78rem;letter-spacing:.28em;text-transform:uppercase;
+    color:var(--brick);font-weight:600;display:flex;align-items:center;gap:12px;
+  }
+  .tag::before{content:"";width:30px;height:1px;background:var(--brick)}
+  .h2{font-family:var(--serif);font-weight:300;
+    font-size:clamp(2.1rem,4.6vw,3.5rem);line-height:1.05;letter-spacing:-.01em}
+  .h2 em{font-style:italic;color:var(--brick)}
+
+  .reveal{opacity:0;transform:translateY(34px);transition:opacity .9s ease,transform .9s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- INTRO / ABOUT ---------- */
+  .intro{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(40px,6vw,90px);align-items:center}
+  .intro-copy .tag{margin-bottom:24px}
+  .intro-copy h2{margin-bottom:26px}
+  .intro-copy p{color:var(--ink-soft);font-size:1.06rem;margin-bottom:18px;max-width:46ch}
+  .intro-since{
+    display:flex;align-items:baseline;gap:16px;margin-top:34px;
+    padding-top:28px;border-top:1px solid var(--line);
+  }
+  .intro-since .num{font-family:var(--serif);font-size:3.2rem;line-height:1;color:var(--brick)}
+  .intro-since .lbl{font-size:.92rem;color:var(--taupe);letter-spacing:.04em;max-width:18ch}
+  .intro-visual{position:relative}
+  .intro-visual img{width:100%;height:560px;object-fit:cover;border-radius:4px;box-shadow:var(--shadow)}
+  .intro-visual .badge{
+    position:absolute;left:-28px;bottom:40px;background:var(--cream);
+    padding:22px 26px;border-radius:4px;box-shadow:var(--shadow);max-width:230px;
+    border-left:3px solid var(--brick);
+  }
+  .intro-visual .badge strong{font-family:var(--serif);font-style:italic;font-size:1.2rem;display:block;margin-bottom:4px}
+  .intro-visual .badge span{font-size:.84rem;color:var(--ink-soft)}
+
+  /* ---------- COLLECTIONS ---------- */
+  .col-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;margin-bottom:54px;flex-wrap:wrap}
+  .col-head .h2{max-width:16ch}
+  .col-head p{color:var(--ink-soft);max-width:34ch;font-size:1.02rem}
+  .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:22px}
+  .card{position:relative;overflow:hidden;border-radius:4px;background:var(--cream-deep);
+    min-height:320px;display:flex;align-items:flex-end}
+  .card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+  .card:hover img{transform:scale(1.06)}
+  .card::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,transparent 35%,rgba(34,30,26,.78) 100%)}
+  .card-body{position:relative;z-index:2;padding:28px;color:var(--cream)}
+  .card-body h3{font-family:var(--serif);font-weight:400;font-size:1.5rem;margin-bottom:6px}
+  .card-body p{font-size:.9rem;opacity:.88;letter-spacing:.02em}
+  .card.lg{grid-column:span 7;min-height:440px}
+  .card.sm{grid-column:span 5;min-height:440px}
+  .card.t{grid-column:span 4}
+  @media(max-width:820px){.card.lg,.card.sm,.card.t{grid-column:span 12}}
+
+  /* ---------- VISIT / STOREFRONT (own photo) ---------- */
+  .visit{background:var(--ink);color:var(--cream)}
+  .visit-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch}
+  .visit-photo{position:relative;min-height:560px}
+  .visit-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .visit-photo .stamp{
+    position:absolute;top:26px;left:26px;background:var(--brick);color:var(--cream);
+    font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;padding:8px 16px;border-radius:40px;
+  }
+  .visit-copy{padding:clamp(48px,6vw,90px)}
+  .visit-copy .tag{color:#e7a99f}
+  .visit-copy .tag::before{background:#e7a99f}
+  .visit-copy h2{font-family:var(--serif);font-weight:300;font-size:clamp(2rem,4vw,3rem);
+    margin:22px 0 18px;line-height:1.06}
+  .visit-copy h2 em{font-style:italic;color:#e7a99f}
+  .visit-copy>p{color:rgba(244,238,227,.78);max-width:42ch;margin-bottom:34px}
+  .info-row{display:flex;gap:18px;padding:18px 0;border-top:1px solid rgba(244,238,227,.16)}
+  .info-row:last-of-type{border-bottom:1px solid rgba(244,238,227,.16)}
+  .info-row .k{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:#c9a99f;min-width:96px;padding-top:3px}
+  .info-row .v{font-size:1.04rem}
+  .info-row .v a:hover{color:#e7a99f}
+  .visit-cta{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
+
+  /* ---------- HOURS ---------- */
+  .hours-wrap{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(40px,6vw,90px);align-items:center}
+  .hours-head .tag{margin-bottom:22px}
+  .hours-head h2{margin-bottom:20px}
+  .hours-head p{color:var(--ink-soft);max-width:34ch}
+  .hours-logo{margin-top:36px}
+  .hours-logo img{height:54px;width:auto;filter:saturate(1.05)}
+  .hours-list{border-top:1px solid var(--line)}
+  .hrow{display:flex;justify-content:space-between;align-items:baseline;
+    padding:20px 6px;border-bottom:1px solid var(--line);transition:padding .3s, background .3s}
+  .hrow:hover{background:var(--cream-deep);padding-left:18px;padding-right:18px}
+  .hrow .day{font-family:var(--serif);font-size:1.3rem}
+  .hrow .time{font-size:1rem;color:var(--ink-soft);letter-spacing:.03em}
+  .hrow.closed .time{color:var(--brick);font-style:italic}
+  .hrow.today{background:var(--ink);color:var(--cream);padding-left:18px;padding-right:18px;border-radius:4px}
+  .hrow.today .time{color:rgba(244,238,227,.85)}
+  .hrow.today .day::after{content:" · i dag";font-family:var(--sans);font-size:.7rem;
+    letter-spacing:.2em;text-transform:uppercase;color:#e7a99f;vertical-align:middle}
+
+  /* ---------- CTA BANNER ---------- */
+  .cta-banner{text-align:center;background:
+    radial-gradient(120% 120% at 50% 0%, var(--cream-deep), var(--cream))}
+  .cta-banner h2{font-family:var(--serif);font-weight:300;
+    font-size:clamp(2.2rem,5.5vw,4.2rem);line-height:1.02;margin-bottom:24px}
+  .cta-banner h2 em{font-style:italic;color:var(--brick)}
+  .cta-banner p{color:var(--ink-soft);max-width:42ch;margin:0 auto 38px;font-size:1.08rem}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--ink);color:var(--cream);padding:80px 0 36px}
+  .foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;
+    padding-bottom:50px;border-bottom:1px solid rgba(244,238,227,.16)}
+  .foot-brand{font-family:var(--serif);font-size:2rem;letter-spacing:.2em;color:var(--cream);margin-bottom:18px}
+  .foot-brand span{color:var(--brick)}
+  .foot-top p{color:rgba(244,238,227,.66);max-width:34ch;font-size:.96rem}
+  .foot-col h4{font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:#c9a99f;margin-bottom:18px}
+  .foot-col a,.foot-col p{display:block;color:rgba(244,238,227,.82);font-size:.96rem;margin-bottom:10px;transition:color .25s}
+  .foot-col a:hover{color:#e7a99f}
+  .foot-bottom{display:flex;justify-content:space-between;align-items:center;
+    padding-top:28px;flex-wrap:wrap;gap:14px}
+  .foot-bottom small{color:rgba(244,238,227,.5);font-size:.82rem;letter-spacing:.04em}
+  .foot-bottom .socials{display:flex;gap:18px}
+  .foot-bottom .socials a{font-size:.82rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(244,238,227,.7)}
+  .foot-bottom .socials a:hover{color:#e7a99f}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:900px){
+    .intro,.visit-grid,.hours-wrap{grid-template-columns:1fr}
+    .intro-visual{order:-1}
+    .intro-visual img{height:420px}
+    .visit-photo{min-height:380px}
+    .foot-top{grid-template-columns:1fr;gap:30px}
+  }
+  @media(max-width:680px){
+    header.nav{padding:16px 22px}
+    .wrap{padding:0 22px}
+    .nav-links{
+      position:fixed;inset:0;background:var(--ink);flex-direction:column;
+      justify-content:center;gap:30px;transform:translateY(-100%);
+      transition:transform .5s cubic-bezier(.6,0,.2,1);z-index:60;
+    }
+    .nav-links.open{transform:translateY(0)}
+    .nav-links a{color:var(--cream)!important;font-size:1.1rem}
+    .burger{display:flex;z-index:70}
+    .burger.open span{background:var(--cream)}
+    .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .burger.open span:nth-child(2){opacity:0}
+    .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .scroll-hint{display:none}
+    .intro-visual .badge{left:0}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav hero-light" id="nav">
+  <a href="#top" class="brand">MIKADO</a>
+  <nav class="nav-links" id="menu">
+    <a href="#om">Butikken</a>
+    <a href="#udvalg">Udvalg</a>
+    <a href="#besog">Besøg os</a>
+    <a href="#tider">Åbningstider</a>
+    <a href="#besog" class="nav-cta">Find os i Faaborg</a>
+  </nav>
+  <div class="burger" id="burger"><span></span><span></span><span></span></div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg">
+    <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=2000&auto=format&fit=crop" alt="Skønne mærker hænger klar i butikken">
+  </div>
+  <div class="wrap hero-inner">
+    <p class="eyebrow">Østergade 30 · Faaborg · Siden 2006</p>
+    <h1><span>Mode til piger</span><span>i <span class="ital">alle</span> aldre.</span></h1>
+    <p class="sub">En lille perle midt i Faaborgs hyggelige gågade — fyldt med skønne mærker, gode råd og plads til hele garderoben.</p>
+    <div class="hero-actions">
+      <a href="#besog" class="btn btn-solid">Besøg butikken →</a>
+      <a href="#tider" class="btn btn-ghost">Se åbningstider</a>
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-track">
+    <span>Hverdagstøj</span><span>Festkjoler</span><span>Strik &amp; overtøj</span><span>Accessories</span><span>Personlig styling</span><span>Skønne mærker</span>
+    <span>Hverdagstøj</span><span>Festkjoler</span><span>Strik &amp; overtøj</span><span>Accessories</span><span>Personlig styling</span><span>Skønne mærker</span>
+  </div>
+</div>
+
+<!-- INTRO / ABOUT -->
+<section class="pad" id="om">
+  <div class="wrap intro">
+    <div class="intro-copy reveal">
+      <p class="tag">Om Mikado</p>
+      <h2 class="h2">En butik med <em>hjerte</em> midt i den gamle købstad</h2>
+      <p>Mikado ligger i den charmerende, gamle del af Faaborgs gågade — et par trin ned fra brostenene på Østergade 30. Siden 2006 har vi gjort det til vores fornemste opgave at finde det tøj, der klæder dig.</p>
+      <p>Hos os handler mode ikke om at følge med strømmen, men om at føle sig godt tilpas. Vi fører skønne mærker til piger i alle aldre, og vi tager os altid tid til en ærlig snak om, hvad der passer netop dig.</p>
+      <div class="intro-since">
+        <span class="num">2006</span>
+        <span class="lbl">Drevet med personlig betjening af Jan Rasmussen</span>
+      </div>
+    </div>
+    <div class="intro-visual reveal">
+      <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1400&auto=format&fit=crop" alt="Udvalg af tøj på bøjlestang">
+      <div class="badge">
+        <strong>Mød os i butikken</strong>
+        <span>Vi hjælper gerne med at sammensætte et helt nyt look.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COLLECTIONS -->
+<section class="pad" id="udvalg" style="background:var(--cream-deep)">
+  <div class="wrap">
+    <div class="col-head reveal">
+      <h2 class="h2">Et udvalg, der <em>klæder</em> hverdagen</h2>
+      <p>Fra det afslappede hverdagstøj til den helt rigtige kjole til festen — find det hos Mikado, hvor der er noget for enhver smag og anledning.</p>
+    </div>
+    <div class="grid">
+      <div class="card lg reveal">
+        <img src="https://images.unsplash.com/photo-1567401893414-76b7b1e5a7a5?q=80&w=1400&auto=format&fit=crop" alt="Farverigt udvalg i butikken">
+        <div class="card-body"><h3>Hverdagstøj</h3><p>Behagelige favoritter til hver dag</p></div>
+      </div>
+      <div class="card sm reveal">
+        <img src="https://images.unsplash.com/photo-1521577352947-9bb58764b69a?q=80&w=1200&auto=format&fit=crop" alt="Model i lyst tøj">
+        <div class="card-body"><h3>Fest &amp; lejlighed</h3><p>Kjoler til den særlige dag</p></div>
+      </div>
+      <div class="card t reveal">
+        <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?q=80&w=1100&auto=format&fit=crop" alt="Overtøj på stativ">
+        <div class="card-body"><h3>Strik &amp; overtøj</h3><p>Lune lag til den danske vinter</p></div>
+      </div>
+      <div class="card t reveal">
+        <img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?q=80&w=1100&auto=format&fit=crop" alt="Accessories og detaljer">
+        <div class="card-body"><h3>Accessories</h3><p>Detaljerne, der samler looket</p></div>
+      </div>
+      <div class="card t reveal">
+        <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=1100&auto=format&fit=crop" alt="Personlig styling">
+        <div class="card-body"><h3>Personlig styling</h3><p>Vi finder det, der passer dig</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISIT / OWN STOREFRONT PHOTO -->
+<section class="visit" id="besog">
+  <div class="visit-grid">
+    <div class="visit-photo reveal">
+      <span class="stamp">Vores butik</span>
+      <img src="https://impro.usercontent.one/appid/oneComWsb/domain/mikado-faaborg.dk/media/mikado-faaborg.dk/www/Images/butik.jpg?etag=%2239ab3-46475ca2%22&sourceContentType=image%2Fjpeg" alt="Mikados facade på Østergade 30 i Faaborg med danske flag">
+    </div>
+    <div class="visit-copy reveal">
+      <p class="tag">Find vej</p>
+      <h2>Kig forbi på <em>Østergade 30</em></h2>
+      <p>Du finder os bag den hyggelige facade med de danske flag — midt i Faaborgs gågade. Der er altid tid til en snak og et godt råd, når du kommer indenfor.</p>
+      <div class="info-row"><div class="k">Adresse</div><div class="v">Østergade 30<br>5600 Faaborg</div></div>
+      <div class="info-row"><div class="k">Telefon</div><div class="v"><a href="tel:+4562612317">+45 62 61 23 17</a></div></div>
+      <div class="info-row"><div class="k">E-mail</div><div class="v"><a href="mailto:info@mikado-faaborg.dk">info@mikado-faaborg.dk</a></div></div>
+      <div class="visit-cta">
+        <a href="https://www.google.com/maps/search/?api=1&query=Mikado+Østergade+30+5600+Faaborg" target="_blank" rel="noopener" class="btn btn-solid">Vis på kort →</a>
+        <a href="https://www.facebook.com/Mikadofaaborg/" target="_blank" rel="noopener" class="btn btn-ghost">Følg på Facebook</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS -->
+<section class="pad" id="tider">
+  <div class="wrap hours-wrap">
+    <div class="hours-head reveal">
+      <p class="tag">Åbningstider</p>
+      <h2 class="h2">Hvornår vi har <em>åbent</em></h2>
+      <p>Kig forbi i løbet af ugen — vi glæder os til at se dig. Husk, at vi holder lukket om mandagen.</p>
+      <div class="hours-logo">
+        <img src="https://impro.usercontent.one/appid/oneComWsb/domain/mikado-faaborg.dk/media/mikado-faaborg.dk/www/Images/logo.gif?etag=%221624-46475ca3%22&sourceContentType=image%2Fgif" alt="Mikado logo">
+      </div>
+    </div>
+    <div class="hours-list reveal" id="hours">
+      <div class="hrow closed" data-day="1"><span class="day">Mandag</span><span class="time">Lukket</span></div>
+      <div class="hrow" data-day="2"><span class="day">Tirsdag</span><span class="time">10.00 – 17.30</span></div>
+      <div class="hrow" data-day="3"><span class="day">Onsdag</span><span class="time">10.00 – 17.30</span></div>
+      <div class="hrow" data-day="4"><span class="day">Torsdag</span><span class="time">10.00 – 17.30</span></div>
+      <div class="hrow" data-day="5"><span class="day">Fredag</span><span class="time">10.00 – 17.30</span></div>
+      <div class="hrow" data-day="6"><span class="day">Lørdag</span><span class="time">10.00 – 14.00</span></div>
+      <div class="hrow closed" data-day="0"><span class="day">Søndag</span><span class="time">Lukket</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="pad cta-banner">
+  <div class="wrap reveal">
+    <h2>Kom forbi og find <em>din næste favorit</em></h2>
+    <p>Et par trin ned fra brostenene venter et udvalg, der er sammensat med omhu. Vi ses i Faaborg.</p>
+    <a href="#besog" class="btn btn-solid">Sådan finder du os →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand">MIKAD<span>O</span></div>
+        <p>Din lokale modebutik midt i Faaborgs gågade. Skønne mærker til piger i alle aldre — siden 2006.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Besøg os</h4>
+        <p>Østergade 30</p>
+        <p>5600 Faaborg</p>
+        <a href="https://www.google.com/maps/search/?api=1&query=Mikado+Østergade+30+5600+Faaborg" target="_blank" rel="noopener">Vis på kort →</a>
+      </div>
+      <div class="foot-col">
+        <h4>Kontakt</h4>
+        <a href="tel:+4562612317">+45 62 61 23 17</a>
+        <a href="mailto:info@mikado-faaborg.dk">info@mikado-faaborg.dk</a>
+        <a href="https://www.facebook.com/Mikadofaaborg/" target="_blank" rel="noopener">facebook.com/Mikadofaaborg</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <small>© 2026 Mikado v/ Jan Rasmussen · Østergade 30, 5600 Faaborg</small>
+      <div class="socials">
+        <a href="https://www.facebook.com/Mikadofaaborg/" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.instagram.com/mikado_faaborg/" target="_blank" rel="noopener">Instagram</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Nav scroll state
+  const nav=document.getElementById('nav');
+  const onScroll=()=>{nav.classList.toggle('scrolled',window.scrollY>60)};
+  window.addEventListener('scroll',onScroll);onScroll();
+
+  // Mobile menu
+  const burger=document.getElementById('burger'),menu=document.getElementById('menu');
+  burger.addEventListener('click',()=>{burger.classList.toggle('open');menu.classList.toggle('open')});
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{burger.classList.remove('open');menu.classList.remove('open')}));
+
+  // Reveal on scroll
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.16});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*0.07)+'s';io.observe(el)});
+
+  // Highlight today's opening hours
+  const today=new Date().getDay();
+  const row=document.querySelector('.hrow[data-day="'+today+'"]');
+  if(row)row.classList.add('today');
+</script>
+</body>
+</html>

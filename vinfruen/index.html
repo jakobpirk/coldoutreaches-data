@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vinfruen — Danmarks største udvalg af Frankenvine</title>
+<meta name="description" content="Vinfruen importerer og sælger vin fra små unikke vinproducenter i Franken i Sydtyskland. Tørre og halvtørre mineralske hvidvine. Svendborg." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..700&family=Hanken+Grotesk:ital,wght@0,300..700;1,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<style>
+  /* hero (homepage only) */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:center;background:radial-gradient(120% 120% at 80% 0%,#6e1d31 0%,var(--wine) 32%,var(--wine-deep) 70%,var(--wine-dark) 100%);color:var(--cream);overflow:hidden;padding-top:90px}
+  .hero .vignette{position:absolute;inset:0;background:radial-gradient(80% 80% at 25% 60%,transparent 40%,rgba(0,0,0,.4) 100%);pointer-events:none}
+  .hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center;width:100%;position:relative;z-index:3}
+  .hero .kicker{color:var(--brass-light);margin-bottom:1.6rem;opacity:0}
+  .hero h1{font-size:clamp(3rem,8.5vw,7.2rem);font-weight:340;letter-spacing:-.025em;margin-bottom:1.6rem}
+  .hero h1 .line{display:block;overflow:hidden}
+  .hero h1 .line span{display:block;transform:translateY(110%);transition:transform 1.05s var(--ease)}
+  .hero.in h1 .line span{transform:translateY(0)}
+  .hero .lede{font-size:clamp(1.05rem,1.5vw,1.28rem);max-width:30em;color:rgba(248,241,228,.84);font-weight:300;margin-bottom:2.4rem;opacity:0}
+  .hero .actions{display:flex;gap:14px;flex-wrap:wrap;opacity:0}
+  .hero.in .kicker{animation:fadeUp .9s var(--ease) .15s forwards}
+  .hero.in .lede{animation:fadeUp 1s var(--ease) .85s forwards}
+  .hero.in .actions{animation:fadeUp 1s var(--ease) 1.05s forwards}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+  .bottle-stage{position:relative;display:flex;justify-content:center;align-items:center;height:100%}
+  .bottle-stage .halo{position:absolute;width:78%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(217,180,106,.32) 0%,transparent 65%);filter:blur(8px)}
+  .bocksbeutel{width:min(340px,70%);filter:drop-shadow(0 30px 50px rgba(0,0,0,.45));opacity:0;transform:translateY(30px) rotate(-3deg)}
+  .hero.in .bocksbeutel{animation:bottleIn 1.4s var(--ease) .5s forwards}
+  @keyframes bottleIn{to{opacity:1;transform:translateY(0) rotate(0)}}
+  .float{animation:float 7s ease-in-out infinite}
+  @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+  .hero .scrollcue{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:4;font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(248,241,228,.6);display:flex;flex-direction:column;align-items:center;gap:10px;opacity:0}
+  .hero.in .scrollcue{animation:fadeUp 1s ease 1.3s forwards}
+  .scrollcue .ln{width:1px;height:38px;background:linear-gradient(rgba(217,180,106,.8),transparent);animation:cue 2s ease-in-out infinite}
+  @keyframes cue{0%,100%{transform:scaleY(.4);transform-origin:top}50%{transform:scaleY(1)}}
+  .strip{background:var(--wine-dark);color:var(--brass-light);overflow:hidden;border-top:1px solid rgba(217,180,106,.16);border-bottom:1px solid rgba(217,180,106,.16)}
+  .strip .track{display:flex;gap:3rem;white-space:nowrap;padding:.9rem 0;animation:scroll 38s linear infinite;font-family:"Fraunces";font-style:italic;font-size:1.05rem}
+  .strip .track span{display:inline-flex;align-items:center;gap:3rem}
+  .strip .track span::after{content:"✦";color:rgba(217,180,106,.5);font-style:normal}
+  @keyframes scroll{to{transform:translateX(-50%)}}
+  /* explore cards */
+  .explore{background:var(--cream)}
+  .exgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .ex{display:block;background:var(--parchment);border:1px solid var(--line);border-radius:14px;padding:32px 30px;transition:all .5s var(--ease);position:relative;overflow:hidden}
+  .ex::before{content:"";position:absolute;top:0;left:0;width:100%;height:3px;background:var(--brass);transform:scaleX(0);transform-origin:left;transition:transform .5s var(--ease)}
+  .ex:hover{transform:translateY(-8px);box-shadow:0 30px 50px -28px rgba(42,10,19,.4)}
+  .ex:hover::before{transform:scaleX(1)}
+  .ex .ic{width:42px;height:42px;color:var(--wine);margin-bottom:18px}
+  .ex h3{font-size:1.45rem;color:var(--wine);margin-bottom:.5rem;display:flex;align-items:center;justify-content:space-between}
+  .ex h3 .arr{font-size:1rem;color:var(--brass);transition:transform .4s var(--ease)}
+  .ex:hover h3 .arr{transform:translateX(5px)}
+  .ex p{font-size:.94rem;color:rgba(35,25,20,.72);font-weight:300}
+  @media(max-width:900px){.hero-grid{grid-template-columns:1fr}.bottle-stage{display:none}.exgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7a2336"/><stop offset=".45" stop-color="#4a1320"/><stop offset="1" stop-color="#2a0a13"/></linearGradient>
+  <linearGradient id="shine" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="rgba(248,241,228,.55)"/><stop offset=".5" stop-color="rgba(248,241,228,0)"/></linearGradient>
+  <linearGradient id="brassG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e7c884"/><stop offset="1" stop-color="#a87a30"/></linearGradient>
+</defs></svg>
+
+<template id="bottleTpl">
+  <svg class="bocksbeutel" viewBox="0 0 200 300" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <rect x="86" y="6" width="28" height="58" rx="4" fill="url(#glass)"/>
+    <rect x="83" y="2" width="34" height="12" rx="3" fill="url(#brassG)"/>
+    <path d="M100 60 C150 60 188 110 188 175 C188 245 150 292 100 292 C50 292 12 245 12 175 C12 110 50 60 100 60 Z" fill="url(#glass)"/>
+    <ellipse cx="100" cy="178" rx="58" ry="78" fill="none" stroke="rgba(217,180,106,.45)" stroke-width="1.4"/>
+    <ellipse cx="100" cy="178" rx="40" ry="56" fill="none" stroke="rgba(217,180,106,.22)" stroke-width="1"/>
+    <rect x="64" y="150" width="72" height="58" rx="3" fill="rgba(248,241,228,.92)"/>
+    <text x="100" y="172" text-anchor="middle" font-family="Fraunces,serif" font-style="italic" font-size="15" fill="#5a1626">Vinfruen</text>
+    <line x1="74" y1="180" x2="126" y2="180" stroke="#b88a3e" stroke-width="1"/>
+    <text x="100" y="195" text-anchor="middle" font-family="Hanken Grotesk,sans-serif" font-size="7" letter-spacing="1.5" fill="#3a4a40">FRANKEN · SVENDBORG</text>
+    <path d="M70 80 C55 110 52 160 60 210" stroke="url(#shine)" stroke-width="8" fill="none" stroke-linecap="round" opacity=".5"/>
+  </svg>
+</template>
+
+<header class="nav" id="nav">
+  <a class="brand" href="index.html"><span class="dot"></span>Vinfruen</a>
+  <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  <nav>
+    <a href="index.html" class="active">Forside</a>
+    <a href="hvidvine.html">Hvidvine</a>
+    <a href="andre-vine.html">Andre vine</a>
+    <a href="producenter.html">Producenter</a>
+    <a href="druer.html">Druer</a>
+    <a href="vinsmagninger.html">Vinsmagninger</a>
+    <a href="om-franken.html">Om Franken</a>
+    <a href="om-vinfruen.html">Om Vinfruen</a>
+    <a href="opskrifter.html">Opskrifter</a>
+    <a class="navcta" href="om-vinfruen.html#kontakt">Kontakt</a>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="hero">
+    <div class="vignette"></div>
+    <div class="wrap hero-grid">
+      <div class="hero-text">
+        <div class="kicker eyebrow">Franken · Sydtyskland → Svendborg</div>
+        <h1>
+          <span class="line"><span>Danmarks største</span></span>
+          <span class="line"><span>udvalg af <span class="it">Franken&shy;vine</span></span></span>
+        </h1>
+        <p class="lede">Importeret direkte fra små, unikke vinproducenter i Franken. Tørre og halvtørre mineralske hvidvine — udvalgt med kærlighed, smagt igennem med omhu.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="hvidvine.html">Se hvidvinene <span class="arr">→</span></a>
+          <a class="btn btn-ghost" href="om-vinfruen.html#kontakt">Besøg vinkælderen</a>
+        </div>
+      </div>
+      <div class="bottle-stage"><div class="halo"></div><div class="float" id="heroBottle"></div></div>
+    </div>
+    <a class="scrollcue" href="#explore"><span>Scroll</span><span class="ln"></span></a>
+  </section>
+
+  <div class="strip" aria-hidden="true">
+    <div class="track">
+      <span>Tørre mineralske hvidvine</span><span>10 små producenter</span><span>Bocksbeutel</span><span>Cittaslow certificeret</span><span>Gratis lokal levering</span><span>Zum Wohl!</span>
+      <span>Tørre mineralske hvidvine</span><span>10 små producenter</span><span>Bocksbeutel</span><span>Cittaslow certificeret</span><span>Gratis lokal levering</span><span>Zum Wohl!</span>
+    </div>
+  </div>
+
+  <!-- INTRO -->
+  <section class="pad" style="background:var(--parchment)">
+    <div class="wrap">
+      <div class="sec-head reveal" style="max-width:54rem">
+        <div class="eyebrow">Velkommen</div>
+        <h2>Vin fra <span class="it">Franken</span> — én af Europas mest oversete vinregioner</h2>
+        <p>Vinfruen importerer og sælger vin fra små unikke vinproducenter i Franken i Sydtyskland. Jeg har en tæt kontakt til de enkelte producenter og besøger dem et par gange om året. Hovedfokus er de tørre og halvtørre mineralske hvidvine — men der er også rødt, rosé, bobler og dessertvin i sortimentet. Jeg sælger til både private, restauranter og virksomheder.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPLORE -->
+  <section class="explore pad" id="explore">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <div class="eyebrow">Udforsk</div>
+        <h2>Find rundt i <span class="it">sortimentet</span></h2>
+      </div>
+      <div class="exgrid">
+        <a class="ex reveal" href="hvidvine.html">
+          <svg class="ic" viewBox="0 0 60 90" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 4h16v3l-2 4v22c8 4 12 12 12 22 0 18-12 30-18 30S12 67 12 55c0-10 4-18 12-22V11l-2-4z"/></svg>
+          <h3>Hvidvine <span class="arr">→</span></h3>
+          <p>Tørre og halvtørre, mineralske og aromatiske. Silvaner, Scheurebe, Riesling, Bacchus og mange flere — hjertet af sortimentet.</p>
+        </a>
+        <a class="ex reveal d1" href="andre-vine.html">
+          <svg class="ic" viewBox="0 0 60 90" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M14 20h32M18 20c-2 14 2 24 12 24s14-10 12-24M30 44v24M22 68h16"/></svg>
+          <h3>Andre vine <span class="arr">→</span></h3>
+          <p>Rosé og Rotling, fyldige rødvine, perlende bobler, en sjælden Eiswein og en krydret Glühwein til julen.</p>
+        </a>
+        <a class="ex reveal d2" href="producenter.html">
+          <svg class="ic" viewBox="0 0 60 90" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M30 8l20 12v18c0 16-10 28-20 32C20 66 10 54 10 38V20z"/></svg>
+          <h3>Producenter <span class="arr">→</span></h3>
+          <p>Ti små, dedikerede vinhuse — fra Kilian i Güntersleben til Schömig på Kobersberg. Mennesker og marker bag hver flaske.</p>
+        </a>
+        <a class="ex reveal" href="druer.html">
+          <svg class="ic" viewBox="0 0 60 90" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="30" cy="22" r="7"/><circle cx="20" cy="36" r="7"/><circle cx="40" cy="36" r="7"/><circle cx="30" cy="50" r="7"/><path d="M30 4v11"/></svg>
+          <h3>Druer <span class="arr">→</span></h3>
+          <p>En lille ordbog over Frankens druer — Silvaner, Müller-Thurgau, Scheurebe, Bacchus, Spätburgunder og flere endnu.</p>
+        </a>
+        <a class="ex reveal d1" href="vinsmagninger.html">
+          <svg class="ic" viewBox="0 0 60 90" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M16 14h28l-3 22c-1 8-6 12-11 12s-10-4-11-12zM30 48v24M20 72h20"/></svg>
+          <h3>Vinsmagninger <span class="arr">→</span></h3>
+          <p>Smag seks vine i godt selskab — med gode historier og nyttig viden om tysk vindyrkning. Hjemme hos jer eller i kælderen.</p>
+        </a>
+        <a class="ex reveal d2" href="opskrifter.html">
+          <svg class="ic" viewBox="0 0 60 90" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 10v22M26 10v22M22 32v48M22 10v10M42 10c-4 0-6 6-6 14s2 12 6 12v34"/></svg>
+          <h3>Opskrifter <span class="arr">→</span></h3>
+          <p>Frankiske favoritter til vinen — Flammkuchen, Frangria, frankiske pebernødder og "det sædvanlige".</p>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- DELIVERY -->
+  <section class="delivery">
+    <div class="wrap">
+      <div class="big">Alle bestillinger — uanset størrelse — leveres <span class="it">gratis</span> lokalt.</div>
+      <div class="places"><span>Svendborg by</span><span>Rantzausminde</span><span>Tåsinge</span><span>Thurø</span></div>
+    </div>
+  </section>
+
+  <!-- ABOUT teaser -->
+  <section class="pad" style="background:var(--cream)">
+    <div class="wrap split">
+      <div class="portrait reveal">
+        <div class="frame"><img src="assets/anette.jpg" alt="Anette Jensen, Vinfruen" /><div class="cap">Anette Jensen</div></div>
+        <div class="badge">Siden<b>2015</b>Vinfruen</div>
+      </div>
+      <div class="prose reveal d1">
+        <div class="sec-head" style="margin-bottom:1.4rem"><div class="eyebrow">Om Vinfruen</div><h2>En passion født i <span class="it">Franken</span></h2></div>
+        <p class="lead">Efter flere somre i Tyskland landede jeg i 2013 i Franken — og fandt vine, der <span class="it">begejstrede</span> mig.</p>
+        <p>I 2015 startede jeg Vinfruen for at dele den oplevelse. Jeg vælger små, passionerede producenter, smager alt grundigt igennem og blev i 2016 Cittaslow-certificeret — et stempel på kvalitet og en handel bygget på værdier.</p>
+        <a class="btn btn-dark" href="om-vinfruen.html" style="margin-top:.6rem">Læs hele historien <span class="arr">→</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="ftop">
+      <div>
+        <div class="fbrand">Vinfruen</div>
+        <p>Danmarks største udvalg af Frankenvine. Importeret direkte fra små producenter i Sydtyskland, solgt fra vinkælderen i Svendborg.</p>
+      </div>
+      <div>
+        <h5>Sortiment</h5>
+        <ul>
+          <li><a href="hvidvine.html">Hvidvine</a></li>
+          <li><a href="andre-vine.html">Andre vine</a></li>
+          <li><a href="producenter.html">Producenter</a></li>
+          <li><a href="druer.html">Druer</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Mere</h5>
+        <ul>
+          <li><a href="vinsmagninger.html">Vinsmagninger</a></li>
+          <li><a href="om-franken.html">Om Franken</a></li>
+          <li><a href="om-vinfruen.html">Om Vinfruen</a></li>
+          <li><a href="opskrifter.html">Opskrifter</a></li>
+          <li><a href="https://www.facebook.com/pages/Vinfruen/1430462053916777" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://instagram.com/vinfruens" target="_blank" rel="noopener">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>Vinfruen v/ Anette Jensen · CVR 36351454 · Eggertsvej 23, 5700 Svendborg · 42 60 57 00</span>
+      <span>Zum Wohl! 🍷</span>
+    </div>
+  </div>
+</footer>
+
+<div class="mock">Designudkast · ikke den live side</div>
+
+<script>
+  var tpl=document.getElementById('bottleTpl');
+  if(tpl){document.getElementById('heroBottle').appendChild(tpl.content.cloneNode(true));}
+  requestAnimationFrame(function(){document.getElementById('hero').classList.add('in');});
+</script>
+<script src="app.js"></script>
+</body>
+</html>

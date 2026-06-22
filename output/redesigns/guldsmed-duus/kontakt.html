@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kontakt — Guldsmed Duus, Mellemgade 7, Faaborg</title>
+<meta name="description" content="Find adresse, telefonnumre, e-mail og åbningstider for Guldsmed Duus i Faaborg. Vi glæder os til at høre fra dig — vi har kaffe på kanden.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{--ivory:#F5EFE4;--ivory-2:#EFE7D8;--ink:#1A1814;--ink-soft:#3A352D;--gold:#B0883F;--gold-light:#C9A24B;--gold-deep:#8A6A2E;--line:rgba(26,24,20,.14);--serif:"Fraunces",Georgia,serif;--sans:"Jost",system-ui,sans-serif}
+  *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+  body{font-family:var(--sans);color:var(--ink);background:var(--ivory);line-height:1.65;font-weight:300;font-size:17px;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 28px}.narrow{max-width:860px}
+  header{position:sticky;top:0;z-index:50;background:rgba(245,239,228,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:84px}
+  .brand{display:flex;flex-direction:column;line-height:1}
+  .brand .name{font-family:var(--serif);font-size:25px;font-weight:500;letter-spacing:.02em}
+  .brand .sub{font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-deep);margin-top:5px}
+  nav.menu{display:flex;gap:34px;align-items:center}
+  nav.menu a{font-size:13.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-soft);transition:color .25s;position:relative}
+  nav.menu a:after{content:"";position:absolute;left:0;bottom:-7px;width:0;height:1px;background:var(--gold);transition:width .3s}
+  nav.menu a:hover:after,nav.menu a.active:after{width:100%}
+  nav.menu a.active,nav.menu a:hover{color:var(--ink)}
+  .cta-call{border:1px solid var(--ink);padding:11px 20px;border-radius:30px;font-size:12.5px !important;letter-spacing:.12em;transition:all .3s}
+  .cta-call:hover{background:var(--ink);color:var(--ivory)}.cta-call:after{display:none}
+  .burger{display:none;font-size:24px;background:none;border:none;cursor:pointer;color:var(--ink)}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:16px 30px;border-radius:34px;font-size:13.5px;letter-spacing:.12em;text-transform:uppercase;transition:all .3s;cursor:pointer}
+  .btn-gold{background:var(--gold);color:#fff}.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px)}
+  .phero{position:relative;min-height:54vh;display:flex;align-items:flex-end;overflow:hidden}
+  .phero-bg{position:absolute;inset:0;background-size:cover;background-position:center 50%}
+  .phero-bg:after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(16,14,11,.85),rgba(16,14,11,.35) 60%,rgba(16,14,11,.5))}
+  .phero-inner{position:relative;z-index:2;color:var(--ivory);padding-bottom:7vh}
+  .crumbs{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-light);margin-bottom:18px}
+  .crumbs a{color:rgba(245,239,228,.7)}
+  .phero h1{font-family:var(--serif);font-weight:300;font-size:clamp(2.3rem,5.4vw,4.4rem);line-height:1.03;max-width:18ch}
+  .phero h1 em{font-style:italic;color:var(--gold-light)}
+  .phero p{margin-top:20px;max-width:50ch;color:rgba(245,239,228,.85)}
+  section{padding:90px 0}
+  .kicker{font-size:12px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:18px}
+  .lead-p{font-family:var(--serif);font-size:1.45rem;line-height:1.5;font-weight:300;color:var(--ink)}
+  .cgrid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  .ci{background:var(--ivory-2);border-radius:5px;padding:30px 28px;border-top:2px solid var(--gold)}
+  .ci .lab{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-deep);margin-bottom:10px}
+  .ci .val{font-family:var(--serif);font-size:1.3rem;line-height:1.3}
+  .ci .val a{transition:color .25s}.ci .val a:hover{color:var(--gold-deep)}
+  .ci .small{font-size:.92rem;color:var(--ink-soft);margin-top:8px}
+  .hours{margin-top:24px;border:1px solid var(--line);border-radius:5px;padding:32px 32px 26px}
+  .hours h3{font-family:var(--serif);font-size:1.6rem;font-weight:400;margin-bottom:18px}
+  .hrow{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--line);font-size:1rem}
+  .hrow:last-child{border-bottom:none}
+  .hrow span:first-child{color:var(--ink-soft)}
+  .hrow.closed span:last-child{color:var(--gold-deep)}
+  .mapwrap{border-radius:5px;overflow:hidden;border:1px solid var(--line);height:100%}
+  .mapwrap iframe{width:100%;height:100%;min-height:520px;border:0;display:block;filter:grayscale(.2) contrast(1.02)}
+  .imgrow{margin-top:28px;border-radius:5px;overflow:hidden}
+  .imgrow img{width:100%;height:300px;object-fit:cover}
+  footer{background:var(--ink);color:rgba(245,239,228,.78);padding:78px 0 34px}
+  .fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:48px;padding-bottom:52px;border-bottom:1px solid rgba(245,239,228,.14)}
+  .fbrand .name{font-family:var(--serif);font-size:1.7rem;color:var(--ivory)}
+  .fbrand .sub{font-size:10.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-light);margin-top:6px}
+  .fbrand p{margin-top:20px;font-size:.96rem;max-width:34ch}
+  .fcol h4{font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-light);margin-bottom:20px}
+  .fcol a,.fcol p{display:block;font-size:.98rem;margin-bottom:11px;color:rgba(245,239,228,.78);transition:color .25s}
+  .fcol a:hover{color:var(--ivory)}
+  .fbot{display:flex;justify-content:space-between;align-items:center;padding-top:26px;font-size:.85rem;color:rgba(245,239,228,.5);flex-wrap:wrap;gap:12px}
+  @media(max-width:900px){nav.menu{display:none}.burger{display:block}.cgrid{grid-template-columns:1fr}.mapwrap iframe{min-height:360px}.fgrid{grid-template-columns:1fr 1fr;gap:36px}}
+  @media(max-width:600px){section{padding:60px 0}.cards{grid-template-columns:1fr}.fgrid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="index.html"><span class="name">Guldsmed Duus</span><span class="sub">Faaborg · siden 1908</span></a>
+    <nav class="menu">
+      <a href="index.html">Forside</a>
+      <a href="vaerksteder.html">Værkstederne</a>
+      <a href="gammelt-guld.html">Gammelt guld</a>
+      <a href="om-os.html">Om os</a>
+      <a href="kontakt.html" class="active">Kontakt</a>
+      <a href="tel:+4526243500" class="cta-call">26 24 35 00</a>
+    </nav>
+    <button class="burger" onclick="document.querySelector('nav.menu').style.display='flex';this.style.display='none'">☰</button>
+  </div>
+</header>
+
+<section class="phero" style="padding:0">
+  <div class="phero-bg" style="background-image:url('https://impro.usercontent.one/appid/oneComWsb/domain/guldsmedduus.dk/media/guldsmedduus.dk/onewebmedia/facade___serialized1.jpg?sourceContentType=image%2Fjpeg&resize=1800%2B1100&quality=85')"></div>
+  <div class="wrap phero-inner">
+    <div class="crumbs"><a href="index.html">Forside</a> &nbsp;/&nbsp; Kontakt</div>
+    <h1>Du finder os lige midt i <em>Faaborg</em></h1>
+    <p>Et hav i forhaven, bakker og bjerge i baghaven — og Guldsmed Duus midt i de brostensbelagte stræder.</p>
+  </div>
+</section>
+
+<section style="padding-bottom:40px">
+  <div class="wrap narrow">
+    <p class="kicker">Kom og hils på</p>
+    <p class="lead-p">Er du nysgerrig på vores vintagesmykker? Søger du et bestemt smykke eller ur? Vil du have os til at tjekke dit ur eller smykke? En snak er altid gratis. Et tilbud om reparation er altid gratis. Kom ind og hils på — vi har kaffe på kanden.</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap cgrid">
+    <div>
+      <div class="cards">
+        <div class="ci"><div class="lab">Adresse</div><div class="val"><a href="https://maps.google.com/maps?cid=14578779430055274372" target="_blank" rel="noopener">Mellemgade 7<br>5600 Faaborg</a></div></div>
+        <div class="ci"><div class="lab">Butik · tlf & sms</div><div class="val"><a href="tel:+4526243500">26 24 35 00</a></div><div class="small">Skriv også gerne en sms til os</div></div>
+        <div class="ci"><div class="lab">E-mail</div><div class="val"><a href="mailto:info@guldsmedduus.dk">info@guldsmedduus.dk</a></div><div class="small">Til personligt møde & vurderinger</div></div>
+        <div class="ci"><div class="lab">Urmageren · tlf & sms</div><div class="val"><a href="tel:+4528688189">28 68 81 89</a></div><div class="small">Direkte til urmageren</div></div>
+      </div>
+      <div class="hours">
+        <h3>Åbningstider</h3>
+        <div class="hrow"><span>Mandag – Torsdag</span><span>10.00 – 17.30</span></div>
+        <div class="hrow"><span>Fredag</span><span>10.00 – 18.00</span></div>
+        <div class="hrow"><span>Lørdag</span><span>10.00 – 14.00</span></div>
+        <div class="hrow closed"><span>Søndag</span><span>Lukket</span></div>
+      </div>
+      <div class="imgrow"><img src="https://impro.usercontent.one/appid/oneComWsb/domain/guldsmedduus.dk/media/guldsmedduus.dk/onewebmedia/facade___serialized1.jpg?sourceContentType=image%2Fjpeg&resize=1200%2B700&quality=85" alt="Guldsmed Duus, Faaborgs ældste butik"></div>
+    </div>
+    <div class="mapwrap">
+      <iframe src="https://maps.google.com/maps?q=Mellemgade+7,+5600+Faaborg,+Danmark&hl=da&z=15&output=embed" loading="lazy" title="Kort — Guldsmed Duus, Mellemgade 7, Faaborg"></iframe>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div class="fbrand"><div class="name">Guldsmed Duus</div><div class="sub">En anderledes guldsmed</div><p>Faaborgs ældste butik — og så vidt vi ved Danmarks ældste guldsmed i de samme lokaler. Grundlagt 1908.</p></div>
+      <div class="fcol"><h4>Butikken</h4><a href="vaerksteder.html">Værkstederne</a><a href="gammelt-guld.html">Gammelt guld</a><a href="om-os.html">Om os</a><a href="https://detgamleguld.dk" target="_blank" rel="noopener">Vintage — Det Gamle Guld</a></div>
+      <div class="fcol"><h4>Kontakt</h4><p>Mellemgade 7<br>5600 Faaborg</p><a href="tel:+4526243500">26 24 35 00</a><a href="mailto:info@guldsmedduus.dk">info@guldsmedduus.dk</a><a href="https://facebook.com/GuldsmedDuus" target="_blank" rel="noopener">Facebook</a><a href="https://instagram.com/guldsmed_duus/" target="_blank" rel="noopener">Instagram</a></div>
+    </div>
+    <div class="fbot"><span>© 1908–2026 Guldsmed Duus · Faaborg</span><span>Mandag–Fredag 10–17.30 · Lørdag 10–14</span></div>
+  </div>
+</footer>
+
+</body>
+</html>

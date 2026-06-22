@@ -1,0 +1,26 @@
+# n8n — the event-driven orchestrator (email send-on-approval + reply-read).
+# Bound to localhost only; reach the editor via an SSH tunnel:
+#   ssh -L 5678:localhost:5678 root@<vps-ip>   then open http://localhost:5678
+# The nightly Python/Claude pipeline runs via host cron, not here (it needs
+# Python + the Claude CLI on the host). See INFRA_SETUP.md.
+services:
+  n8n:
+    image: n8nio/n8n:latest
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:5678:5678"
+    env_file:
+      - .env
+    environment:
+      - GENERIC_TIMEZONE=Europe/Copenhagen
+      - TZ=Europe/Copenhagen
+      - N8N_HOST=localhost
+      - N8N_PORT=5678
+      - N8N_PROTOCOL=http
+      - N8N_DIAGNOSTICS_ENABLED=false
+      - N8N_RUNNERS_ENABLED=true
+    volumes:
+      - n8n_data:/home/node/.n8n
+
+volumes:
+  n8n_data:

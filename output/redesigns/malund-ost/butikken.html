@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Butikken &amp; Vores Historie — Malund Ost</title>
+<meta name="description" content="Tyve år med ostebilen på Fyns torve, før Ulla og Preben Malund i 2025 åbnede en fast butik på Gerritsgade 4-6 i Svendborg." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Manrope:wght@300;400;500;600;700&family=Caveat:wght@400..700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --parchment:#F2E6CC;
+    --parchment-2:#EADBB7;
+    --cream:#FBF3DE;
+    --mustard:#C28028;
+    --mustard-deep:#8E5A18;
+    --rind:#E5B85C;
+    --wine:#6B1D26;
+    --wine-deep:#4A1119;
+    --moss:#2F3A24;
+    --ink:#1A1410;
+    --ink-soft:#3A2E25;
+    --line:rgba(26,20,16,.18);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--parchment);color:var(--ink);font-family:"Manrope",sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+  body{
+    background:
+      radial-gradient(900px 600px at 110% 10%, rgba(107,29,38,.12), transparent 60%),
+      radial-gradient(900px 600px at -10% 90%, rgba(194,128,40,.16), transparent 60%),
+      var(--parchment);
+    position:relative;overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;pointer-events:none;z-index:1000;mix-blend-mode:multiply;opacity:.35;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.1  0 0 0 0 0.08  0 0 0 0 0.06  0 0 0 .35 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+  ::selection{background:var(--wine);color:var(--cream)}
+
+  .eyebrow{font-family:"Manrope",sans-serif;font-weight:600;font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--mustard-deep)}
+
+  /* Top bar / nav */
+  .topbar{display:flex;justify-content:space-between;align-items:center;padding:14px 40px;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);border-bottom:1px solid var(--line)}
+  .topbar a{color:inherit;text-decoration:none}
+  .topbar .dot{display:inline-block;width:6px;height:6px;background:var(--moss);border-radius:999px;margin:0 10px;vertical-align:middle}
+
+  nav.main{display:flex;align-items:center;justify-content:space-between;padding:22px 40px;position:relative;z-index:5}
+  nav .brand{display:flex;align-items:baseline;gap:14px}
+  nav .brand .mark{font-family:"Fraunces",serif;font-weight:600;font-size:1.4rem;letter-spacing:-.01em}
+  nav .brand .est{font-size:.68rem;letter-spacing:.3em;color:var(--mustard-deep);text-transform:uppercase}
+  nav .links{display:flex;gap:34px;align-items:center;font-size:.82rem;letter-spacing:.18em;text-transform:uppercase}
+  nav .links a{color:var(--ink);text-decoration:none;position:relative;padding:6px 0}
+  nav .links a.active::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--wine)}
+  nav .links a:hover{color:var(--wine)}
+  .cta{display:inline-flex;align-items:center;gap:10px;background:var(--ink);color:var(--cream);padding:13px 22px;border-radius:999px;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;text-decoration:none;transition:transform .25s ease, background .25s}
+  .cta:hover{background:var(--wine);transform:translateY(-1px)}
+  .cta .arrow{font-family:"Fraunces",serif;font-size:1.05rem}
+
+  /* Header */
+  .pageheader{padding:60px 40px 80px;position:relative}
+  .pageheader .inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.2fr .8fr;gap:80px;align-items:end}
+  .pageheader h1{font-family:"Fraunces",serif;font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1;font-weight:400;font-size:clamp(3rem,8vw,7rem);line-height:.92;letter-spacing:-.03em}
+  .pageheader h1 em{font-style:italic;color:var(--wine)}
+  .pageheader .right{padding-bottom:14px}
+  .pageheader .right p{color:var(--ink-soft);font-size:1.05rem;line-height:1.75;max-width:380px}
+  .pageheader .crumb{display:flex;gap:10px;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:32px}
+  .pageheader .crumb a{color:var(--ink-soft);text-decoration:none}
+  .pageheader .crumb a:hover{color:var(--wine)}
+
+  /* Photo banner */
+  .banner{padding:0 40px 0;position:relative}
+  .banner .frame{position:relative;max-width:1280px;margin:0 auto;aspect-ratio:21/9;border-radius:6px;overflow:hidden;box-shadow:0 28px 50px rgba(26,20,16,.18)}
+  .banner img{width:100%;height:100%;object-fit:cover;filter:contrast(1.03) saturate(.95)}
+  .banner .caption{position:absolute;bottom:24px;left:32px;background:var(--cream);padding:14px 18px;font-family:"Fraunces",serif;font-style:italic;font-size:.95rem;max-width:340px;border-left:3px solid var(--wine)}
+
+  /* Story */
+  .story-block{padding:120px 40px;position:relative}
+  .story-block .inner{max-width:960px;margin:0 auto}
+  .story-block p{font-family:"Fraunces",serif;font-size:1.4rem;line-height:1.65;color:var(--ink);margin-bottom:32px;font-weight:300;letter-spacing:-.005em}
+  .story-block p:first-of-type::first-letter{
+    font-family:"Fraunces",serif;font-weight:600;font-size:5.2rem;float:left;line-height:.85;padding:6px 14px 0 0;color:var(--wine);font-variation-settings:"opsz" 144,"SOFT" 100,"WONK" 1
+  }
+  .story-block .pullquote{font-family:"Fraunces",serif;font-style:italic;font-size:2.2rem;line-height:1.25;color:var(--wine);margin:50px 0;padding:0 40px;border-left:4px solid var(--mustard);font-weight:500}
+  .story-block .pullquote span{display:block;font-size:.78rem;font-style:normal;letter-spacing:.28em;text-transform:uppercase;color:var(--mustard-deep);margin-top:18px;font-family:"Manrope",sans-serif;font-weight:600}
+
+  /* Timeline */
+  .timeline{padding:80px 40px 120px;background:linear-gradient(180deg,transparent, rgba(229,184,92,.18) 30%, rgba(229,184,92,.05))}
+  .timeline .inner{max-width:1100px;margin:0 auto}
+  .timeline h2{font-family:"Fraunces",serif;font-size:clamp(2.4rem,5vw,4.4rem);font-weight:500;letter-spacing:-.025em;margin-bottom:60px;line-height:1}
+  .timeline h2 em{font-style:italic;color:var(--wine)}
+  .timeline-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--line)}
+  .tl-item{padding:32px 24px;border-right:1px solid var(--line);position:relative}
+  .tl-item:last-child{border-right:none}
+  .tl-item .year{font-family:"Fraunces",serif;font-size:2.6rem;font-weight:500;color:var(--wine);line-height:1;margin-bottom:14px;font-variation-settings:"opsz" 144,"SOFT" 100}
+  .tl-item h4{font-family:"Fraunces",serif;font-size:1.15rem;font-weight:500;margin-bottom:10px}
+  .tl-item p{font-size:.92rem;color:var(--ink-soft);line-height:1.6}
+  .tl-item::before{content:"";position:absolute;top:-7px;left:24px;width:13px;height:13px;background:var(--mustard);border-radius:999px;border:3px solid var(--parchment)}
+
+  /* Values */
+  .values{padding:120px 40px;position:relative}
+  .values .inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1fr 2fr;gap:80px}
+  .values h2{font-family:"Fraunces",serif;font-size:clamp(2.4rem,5vw,4rem);font-weight:500;letter-spacing:-.025em;line-height:1;margin-bottom:18px}
+  .values h2 em{font-style:italic;color:var(--wine)}
+  .values .left p{color:var(--ink-soft);line-height:1.75;font-size:1.02rem}
+  .values .vlist{display:flex;flex-direction:column;gap:28px}
+  .vlist .v{display:grid;grid-template-columns:80px 1fr;gap:20px;padding:24px 0;border-bottom:1px solid var(--line)}
+  .vlist .v:last-child{border-bottom:none}
+  .vlist .num{font-family:"Fraunces",serif;font-style:italic;font-size:2.4rem;color:var(--mustard);line-height:1}
+  .vlist h3{font-family:"Fraunces",serif;font-size:1.5rem;font-weight:500;margin-bottom:8px;letter-spacing:-.01em}
+  .vlist p{color:var(--ink-soft);line-height:1.7}
+
+  /* CTA strip */
+  .cta-strip{padding:90px 40px;background:var(--ink);color:var(--cream);position:relative;overflow:hidden;text-align:center}
+  .cta-strip::before{content:"·";position:absolute;font-family:"Fraunces",serif;font-size:18rem;color:rgba(194,128,40,.08);top:-90px;left:-30px;line-height:1}
+  .cta-strip h2{font-family:"Fraunces",serif;font-size:clamp(2.4rem,5vw,4.4rem);font-weight:500;line-height:1;letter-spacing:-.025em;margin-bottom:24px;position:relative}
+  .cta-strip h2 em{font-style:italic;color:var(--rind)}
+  .cta-strip p{color:rgba(251,243,222,.75);max-width:540px;margin:0 auto 36px;font-size:1.05rem;line-height:1.7;position:relative}
+  .cta-strip .actions{display:inline-flex;gap:16px;flex-wrap:wrap;justify-content:center;position:relative}
+  .cta-strip .actions .cta{background:var(--rind);color:var(--ink)}
+  .cta-strip .actions .cta:hover{background:var(--cream)}
+  .cta-strip .actions .cta.ghost{background:transparent;border:1px solid rgba(251,243,222,.4);color:var(--cream)}
+  .cta-strip .actions .cta.ghost:hover{background:rgba(251,243,222,.08);border-color:var(--rind)}
+
+  /* Footer (same) */
+  footer{background:var(--ink);color:var(--cream);padding:80px 40px 30px;position:relative;overflow:hidden;border-top:1px solid rgba(251,243,222,.08)}
+  footer::before{content:"OST · OST · OST · OST · OST · OST · OST · OST · OST";position:absolute;top:-30px;left:0;right:0;font-family:"Fraunces",serif;font-style:italic;font-size:9rem;line-height:1;color:rgba(194,128,40,.06);white-space:nowrap;letter-spacing:.1em;pointer-events:none}
+  .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:60px;max-width:1280px;margin:0 auto;position:relative;z-index:2}
+  .footer-grid h4{font-family:"Fraunces",serif;font-size:2rem;font-weight:500;margin-bottom:16px;letter-spacing:-.01em}
+  .footer-grid p{color:rgba(251,243,222,.7);line-height:1.7;margin-bottom:8px;font-size:.95rem}
+  .footer-grid ul{list-style:none;display:flex;flex-direction:column;gap:10px;margin-top:8px}
+  .footer-grid ul a{color:rgba(251,243,222,.75);text-decoration:none;font-size:.95rem;transition:color .2s}
+  .footer-grid ul a:hover{color:var(--rind)}
+  .footer-grid .eyebrow{color:var(--rind);margin-bottom:14px}
+  .footer-bot{display:flex;justify-content:space-between;align-items:center;max-width:1280px;margin:60px auto 0;padding-top:24px;border-top:1px solid rgba(251,243,222,.1);font-size:.78rem;color:rgba(251,243,222,.5);letter-spacing:.12em;text-transform:uppercase;position:relative;z-index:2}
+
+  @media (max-width:920px){
+    .topbar{display:none}
+    nav.main{padding:18px 22px}
+    nav .links{display:none}
+    .pageheader{padding:30px 22px 60px}
+    .pageheader .inner{grid-template-columns:1fr;gap:30px}
+    .banner{padding:0 22px}
+    .story-block,.timeline,.values,.cta-strip{padding:70px 22px}
+    .story-block p{font-size:1.15rem}
+    .story-block .pullquote{font-size:1.45rem;padding:0 18px}
+    .timeline-grid{grid-template-columns:1fr 1fr}
+    .tl-item{border-right:none;border-bottom:1px solid var(--line)}
+    .tl-item:nth-child(odd){border-right:1px solid var(--line)}
+    .values .inner{grid-template-columns:1fr;gap:40px}
+    .footer-grid{grid-template-columns:1fr;gap:34px}
+    footer{padding:60px 22px 22px}
+    .footer-bot{flex-direction:column;gap:12px;text-align:center}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div>Velkommen i butikken<span class="dot"></span>Gerritsgade 4-6, 5700 Svendborg</div>
+  <div>Tirsdag — fredag 09.30–17.30<span class="dot"></span>Lørdag 09.00–14.00</div>
+</div>
+
+<nav class="main">
+  <div class="brand">
+    <span class="mark">Malund Ost</span>
+    <span class="est">Est. 2007</span>
+  </div>
+  <div class="links">
+    <a href="index.html">Forside</a>
+    <a href="butikken.html" class="active">Butikken</a>
+    <a href="index.html#sortiment">Sortiment</a>
+    <a href="index.html#kontakt">Find os</a>
+  </div>
+  <a href="tel:26292576" class="cta">Ring 26 29 25 76 <span class="arrow">→</span></a>
+</nav>
+
+<!-- HEADER -->
+<section class="pageheader">
+  <div class="inner">
+    <div>
+      <div class="crumb"><a href="index.html">Forside</a> <span>/</span> <span>Butikken</span></div>
+      <h1>Fra ostebil<br>til strøget — <em>tyve år</em> i ost.</h1>
+    </div>
+    <div class="right">
+      <p>Vi har fundet et hjem til alt det, der ikke kunne være med i bilen. Et større udvalg, en længere snak — og stadig den samme passion for at finde den ost, der passer til dig.</p>
+    </div>
+  </div>
+</section>
+
+<!-- BANNER -->
+<section class="banner">
+  <div class="frame">
+    <img src="https://images.unsplash.com/photo-1452195100486-9cc805987862?auto=format&fit=crop&w=1600&q=80" alt="Inde i osteforretningen" onerror="this.style.background='linear-gradient(135deg,#E5B85C 0%,#C28028 40%,#8E5A18 100%)';this.removeAttribute('src')">
+    <div class="caption">Butikken på Gerritsgade 4-6 — en tidligere blomsterhandel, nu fyldt med oste, tapas og dufte fra vores rejser.</div>
+  </div>
+</section>
+
+<!-- STORY -->
+<section class="story-block">
+  <div class="inner">
+    <p>I tyve år havde Ulla og Preben Malund deres ostebil med ud til torvedage rundt om på Fyn. Hver lørdag igennem 18 år stod Preben på torvet i Svendborg, og kunderne kom — uanset om det blæste sidelæns eller solen bagte i toppen af bilen.</p>
+
+    <p>Det var en god tilværelse. Men en gammel drøm blev ved at melde sig: en rigtig butik, hvor der var plads til mere end det, en ostebil kan rumme. Et sted, hvor man kunne træde ind, blive lidt, smage på et par sager og gå hjem med en lille pose specialiteter under armen.</p>
+
+    <div class="pullquote">
+      “Vi har alle de oste vi havde i bilen — og så har vi fået plads til alt det vi længe har drømt om at sælge ved siden af.”
+      <span>— Ulla &amp; Preben Malund</span>
+    </div>
+
+    <p>I maj 2025 åbnede vi for første gang døren til Malund Ost &amp; Specialiteter i Gerritsgade 4-6. Den tidligere blomsterhandel havde stået tom et stykke tid, og det var som om lokalet bare ventede på en disk, en kølemontre og en god duft af modnet ost.</p>
+
+    <p>Vi tog det med, vi altid har solgt: hårde og bløde oste, vores faste favoritter og de små danske og europæiske skatte, vi finder undervejs. Og så har vi fyldt rummet op med tapas, charcuteri, syltede og marinerede sager, syltetøj med karakter, kiks og honning. Alt det, der gør en bid ost endnu bedre.</p>
+
+    <p>Tag forbi, når du har tid. Vi har altid en smagsprøve klar — og en mening om, hvilken vin den skal stå sammen med.</p>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline">
+  <div class="inner">
+    <h2>Et halvt liv <em>i ost</em>.</h2>
+    <div class="timeline-grid">
+      <div class="tl-item">
+        <div class="year">2007</div>
+        <h4>Malund Ost stiftes</h4>
+        <p>1. december grundlægger vi virksomheden — og fylder for første gang ostebilen.</p>
+      </div>
+      <div class="tl-item">
+        <div class="year">2007 →</div>
+        <h4>Torvedage på Fyn</h4>
+        <p>Vi pakker bilen og kører ud til markeder og torve over hele Sydfyn — ugentligt og uden pause.</p>
+      </div>
+      <div class="tl-item">
+        <div class="year">18 år</div>
+        <h4>Lørdag i Svendborg</h4>
+        <p>Hver eneste lørdag igennem 18 år står Preben på torvet i Svendborg med ostebilen.</p>
+      </div>
+      <div class="tl-item">
+        <div class="year">2025</div>
+        <h4>Strøgbutik på Gerritsgade</h4>
+        <p>I maj åbner vi vores første faste butik i den tidligere blomsterhandel midt på strøget.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES -->
+<section class="values">
+  <div class="inner">
+    <div class="left">
+      <span class="eyebrow">Sådan handler vi ost</span>
+      <h2 style="margin-top:18px">Tre ting,<br>vi <em>ikke</em><br>går på kompromis<br>med.</h2>
+      <p>Vi har bygget Malund Ost over tyve år — én torvedag ad gangen. De her tre ting er, dér hvor vi sætter foden ned.</p>
+    </div>
+    <div class="vlist">
+      <div class="v">
+        <div class="num">01</div>
+        <div>
+          <h3>Skåret efter ønske</h3>
+          <p>Stykvis, efter mål, så lille eller stor en bid du har brug for. Vi skærer det, du vil have — ikke det, der allerede ligger i en plasticbakke.</p>
+        </div>
+      </div>
+      <div class="v">
+        <div class="num">02</div>
+        <div>
+          <h3>Smag før du beslutter dig</h3>
+          <p>Du behøver ikke gætte. Vi har altid en lille smagsprøve klar — og hvis vi har en mening om, hvad den skal stå med, så får du den også.</p>
+        </div>
+      </div>
+      <div class="v">
+        <div class="num">03</div>
+        <div>
+          <h3>Ærlige varer, ærligt arbejde</h3>
+          <p>Vi har Fødevarestyrelsens Smiley-rapporter for både butik og lager åbent tilgængelige. Det skylder vi os selv og dig.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-strip">
+  <h2>Kig forbi <em>i butikken</em>.</h2>
+  <p>Vi står klar bag disken tirsdag til lørdag. Du skal ikke bestille tid, og du må gerne komme med spørgsmål — også de mærkelige.</p>
+  <div class="actions">
+    <a href="index.html#kontakt" class="cta">Find os på Gerritsgade <span class="arrow">→</span></a>
+    <a href="tel:26292576" class="cta ghost">Ring 26 29 25 76 <span class="arrow">→</span></a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <h4>Malund Ost <span style="font-style:italic;color:var(--mustard)">&amp; Specialiteter</span></h4>
+      <p>En lille, ærlig butik på strøget i Svendborg. Vi sælger den ost vi selv ville købe — og fortæller gerne historien bag.</p>
+      <p style="margin-top:18px;font-family:'Caveat',cursive;font-size:1.4rem;color:var(--rind)">— Ulla &amp; Preben Malund</p>
+    </div>
+    <div>
+      <span class="eyebrow">Besøg os</span>
+      <p>Gerritsgade 4-6<br>5700 Svendborg</p>
+      <ul>
+        <li><a href="tel:26292576">26 29 25 76</a></li>
+        <li><a href="tel:61261300">61 26 13 00</a></li>
+      </ul>
+    </div>
+    <div>
+      <span class="eyebrow">Naviger</span>
+      <ul>
+        <li><a href="index.html">Forside</a></li>
+        <li><a href="butikken.html">Vores historie</a></li>
+        <li><a href="index.html#sortiment">Sortiment</a></li>
+        <li><a href="index.html#kontakt">Åbningstider</a></li>
+        <li><a href="https://www.findsmiley.dk/1484416" target="_blank">FindSmiley</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bot">
+    <div>© Malund Ost · CVR 30938860</div>
+    <div>Svendborg · Sydfyn</div>
+  </div>
+</footer>
+
+</body>
+</html>

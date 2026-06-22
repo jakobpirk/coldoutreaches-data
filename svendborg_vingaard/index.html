@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Svendborg Vingaard — Dansk Vin fra Sydfyn</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --burgundy: #5B1A2E;
+  --burgundy-deep: #3D0F1E;
+  --wine-red: #8B2E4A;
+  --cream: #F5F0E8;
+  --cream-dark: #E8E0D2;
+  --warm-white: #FAF8F4;
+  --earth: #8B7355;
+  --earth-light: #A69279;
+  --charcoal: #2A2522;
+  --charcoal-soft: #4A4440;
+  --gold: #C4A265;
+  --gold-light: #D4B87A;
+  --sage: #7A8B6F;
+  --blush: #D4A0A0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  scrollbar-color: var(--burgundy) var(--cream);
+}
+
+body {
+  font-family: 'Jost', sans-serif;
+  font-weight: 300;
+  color: var(--charcoal);
+  background: var(--warm-white);
+  overflow-x: hidden;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+}
+
+::selection {
+  background: var(--burgundy);
+  color: var(--cream);
+}
+
+/* ─── GRAIN OVERLAY ─── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px;
+}
+
+/* ─── TYPOGRAPHY ─── */
+.serif { font-family: 'Cormorant Garamond', Georgia, serif; }
+.sans { font-family: 'Jost', sans-serif; }
+
+h1, h2, h3, h4 {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 400;
+  line-height: 1.15;
+}
+
+/* ─── NAV ─── */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 0 clamp(1.5rem, 4vw, 4rem);
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav.scrolled {
+  background: rgba(245, 240, 232, 0.92);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
+  box-shadow: 0 1px 0 rgba(91, 26, 46, 0.08);
+  height: 64px;
+}
+
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.35rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--cream);
+  text-decoration: none;
+  transition: color 0.4s;
+}
+
+.nav.scrolled .nav-logo { color: var(--burgundy-deep); }
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.85);
+  text-decoration: none;
+  position: relative;
+  padding-bottom: 2px;
+  transition: color 0.4s;
+}
+
+.nav.scrolled .nav-links a { color: var(--charcoal-soft); }
+.nav.scrolled .nav-links a:hover { color: var(--burgundy); }
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: currentColor;
+  transition: width 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-links a:hover::after { width: 100%; }
+.nav-links a:hover { color: #fff; }
+
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+
+.nav-burger span {
+  width: 24px;
+  height: 1.5px;
+  background: var(--cream);
+  transition: all 0.3s;
+}
+
+.nav.scrolled .nav-burger span { background: var(--charcoal); }
+
+/* ─── HERO ─── */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--burgundy-deep);
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(180deg,
+      rgba(61, 15, 30, 0.3) 0%,
+      rgba(61, 15, 30, 0.15) 40%,
+      rgba(61, 15, 30, 0.5) 80%,
+      rgba(61, 15, 30, 0.85) 100%
+    ),
+    url('hero.jpg') center/cover no-repeat;
+  transform: scale(1.05);
+  animation: heroZoom 20s ease-out forwards;
+}
+
+@keyframes heroZoom {
+  to { transform: scale(1); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 2rem;
+  max-width: 800px;
+}
+
+.hero-ornament {
+  width: 60px;
+  height: 1px;
+  background: var(--gold);
+  margin: 0 auto 2rem;
+  position: relative;
+}
+
+.hero-ornament::before {
+  content: '✦';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 0.6rem;
+  color: var(--gold);
+  background: transparent;
+  padding: 0 12px;
+}
+
+.hero-subtitle-top {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 1s 0.3s ease forwards;
+}
+
+.hero h1 {
+  font-size: clamp(3rem, 8vw, 6.5rem);
+  font-weight: 300;
+  color: var(--cream);
+  letter-spacing: 0.02em;
+  line-height: 1.05;
+  margin-bottom: 1.5rem;
+  opacity: 0;
+  animation: fadeUp 1s 0.5s ease forwards;
+}
+
+.hero h1 em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gold-light);
+}
+
+.hero-tagline {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(245, 240, 232, 0.8);
+  max-width: 480px;
+  margin: 0 auto 2.5rem;
+  opacity: 0;
+  animation: fadeUp 1s 0.7s ease forwards;
+}
+
+.hero-cta {
+  display: inline-block;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cream);
+  text-decoration: none;
+  border: 1px solid rgba(196, 162, 101, 0.5);
+  padding: 14px 40px;
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  opacity: 0;
+  animation: fadeUp 1s 0.9s ease forwards;
+}
+
+.hero-cta:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--burgundy-deep);
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: rgba(245,240,232,0.5);
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  animation: fadeUp 1s 1.2s ease forwards;
+  opacity: 0;
+}
+
+.hero-scroll-line {
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, rgba(196,162,101,0.6), transparent);
+  animation: scrollPulse 2s ease infinite;
+}
+
+@keyframes scrollPulse {
+  0%, 100% { opacity: 1; transform: scaleY(1); }
+  50% { opacity: 0.4; transform: scaleY(0.7); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(25px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── SECTION DEFAULTS ─── */
+section { padding: clamp(4rem, 10vw, 8rem) clamp(1.5rem, 5vw, 6rem); }
+
+.section-label {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--earth-light);
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
+  font-weight: 300;
+  color: var(--burgundy-deep);
+  margin-bottom: 2rem;
+}
+
+.section-divider {
+  width: 50px;
+  height: 1px;
+  background: var(--gold);
+  margin-bottom: 2rem;
+}
+
+/* ─── ABOUT ─── */
+.about {
+  background: var(--warm-white);
+  position: relative;
+}
+
+.about-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: center;
+}
+
+.about-image-wrap {
+  position: relative;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+}
+
+.about-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.85) contrast(1.05);
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.about-image-wrap:hover img { transform: scale(1.03); }
+
+.about-image-frame {
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(196, 162, 101, 0.3);
+  pointer-events: none;
+}
+
+.about-text p {
+  font-size: 1rem;
+  color: var(--charcoal-soft);
+  margin-bottom: 1.5rem;
+  max-width: 500px;
+}
+
+.about-text p:first-of-type::first-letter {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3.5rem;
+  float: left;
+  line-height: 0.85;
+  margin-right: 8px;
+  margin-top: 4px;
+  color: var(--burgundy);
+  font-weight: 500;
+}
+
+.about-stats {
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--cream-dark);
+}
+
+.about-stat-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--burgundy);
+  line-height: 1;
+}
+
+.about-stat-label {
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--earth-light);
+  margin-top: 4px;
+}
+
+/* ─── WINES ─── */
+.wines {
+  background: var(--burgundy-deep);
+  color: var(--cream);
+  position: relative;
+  overflow: hidden;
+}
+
+.wines::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  right: -200px;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(139, 46, 74, 0.2), transparent 70%);
+  pointer-events: none;
+}
+
+.wines .section-label { color: var(--gold); }
+.wines .section-title { color: var(--cream); }
+.wines .section-divider { background: var(--gold); }
+
+.wines-intro {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.wines-intro-text {
+  max-width: 550px;
+  font-size: 1.05rem;
+  color: rgba(245, 240, 232, 0.7);
+  margin-bottom: 3rem;
+}
+
+.wines-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: rgba(196, 162, 101, 0.15);
+}
+
+.wine-card {
+  background: var(--burgundy-deep);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  transition: background 0.5s;
+  cursor: default;
+}
+
+.wine-card:hover {
+  background: rgba(139, 46, 74, 0.25);
+}
+
+.wine-card-type {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.75rem;
+}
+
+.wine-card-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 400;
+  color: var(--cream);
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.wine-card-desc {
+  font-size: 0.9rem;
+  color: rgba(245, 240, 232, 0.6);
+  flex: 1;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.wine-card-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(196, 162, 101, 0.15);
+}
+
+.wine-card-vol {
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: rgba(245, 240, 232, 0.5);
+}
+
+.wine-card-abv {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  color: var(--gold);
+}
+
+.wines-note {
+  max-width: 1200px;
+  margin: 3rem auto 0;
+  padding: 2rem 0 0;
+  border-top: 1px solid rgba(196, 162, 101, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  color: rgba(245, 240, 232, 0.6);
+  font-size: 0.85rem;
+}
+
+.wines-note-icon {
+  font-size: 1.4rem;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+/* ─── TASTING ─── */
+.tasting {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--charcoal);
+}
+
+.tasting-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(135deg,
+      rgba(42, 37, 34, 0.85) 0%,
+      rgba(91, 26, 46, 0.7) 100%
+    ),
+    url('https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=1600&q=80') center/cover no-repeat;
+}
+
+.tasting-content {
+  position: relative;
+  z-index: 2;
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+  padding: clamp(3rem, 8vw, 6rem) 2rem;
+}
+
+.tasting .section-label { color: var(--gold); }
+
+.tasting-title {
+  font-size: clamp(2.5rem, 6vw, 4.2rem);
+  font-weight: 300;
+  color: var(--cream);
+  margin-bottom: 1.5rem;
+}
+
+.tasting-title em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+
+.tasting-desc {
+  font-size: 1.05rem;
+  color: rgba(245, 240, 232, 0.7);
+  margin-bottom: 2.5rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tasting-cta {
+  display: inline-block;
+  font-family: 'Jost', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--burgundy-deep);
+  background: var(--gold);
+  text-decoration: none;
+  padding: 16px 48px;
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.tasting-cta:hover {
+  background: var(--gold-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(196, 162, 101, 0.3);
+}
+
+/* ─── CONTACT ─── */
+.contact {
+  background: var(--cream);
+  position: relative;
+}
+
+.contact-grid {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 5rem);
+}
+
+.contact-info { max-width: 500px; }
+
+.contact-info p {
+  font-size: 0.95rem;
+  color: var(--charcoal-soft);
+  margin-bottom: 2rem;
+}
+
+.contact-detail {
+  margin-bottom: 2rem;
+}
+
+.contact-detail-label {
+  font-family: 'Jost', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--earth-light);
+  margin-bottom: 0.5rem;
+}
+
+.contact-detail-value {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  color: var(--charcoal);
+}
+
+.contact-detail-value a {
+  color: var(--burgundy);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(91, 26, 46, 0.2);
+  transition: border-color 0.3s;
+}
+
+.contact-detail-value a:hover { border-color: var(--burgundy); }
+
+.contact-order-box {
+  background: var(--warm-white);
+  padding: clamp(1.5rem, 3vw, 2.5rem);
+  border: 1px solid var(--cream-dark);
+  position: relative;
+}
+
+.contact-order-box::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: var(--gold);
+}
+
+.contact-order-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  color: var(--burgundy-deep);
+  margin-bottom: 1.2rem;
+}
+
+.contact-order-list {
+  list-style: none;
+}
+
+.contact-order-list li {
+  padding: 0.7rem 0;
+  border-bottom: 1px solid rgba(232, 224, 210, 0.7);
+  font-size: 0.9rem;
+  color: var(--charcoal-soft);
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.contact-order-list li:last-child { border-bottom: none; }
+
+.contact-order-list li::before {
+  content: '—';
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+/* ─── MAP PLACEHOLDER ─── */
+.contact-map {
+  position: relative;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+  background: var(--cream-dark);
+}
+
+.contact-map img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.5) contrast(1.1);
+  opacity: 0.9;
+}
+
+.contact-map-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(61, 15, 30, 0.6);
+  color: var(--cream);
+  text-align: center;
+  padding: 2rem;
+}
+
+.contact-map-overlay .pin {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--gold);
+}
+
+.contact-map-overlay .address {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* ─── FOOTER ─── */
+.footer {
+  background: var(--burgundy-deep);
+  color: rgba(245, 240, 232, 0.5);
+  padding: 3rem clamp(1.5rem, 5vw, 6rem);
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(245, 240, 232, 0.7);
+}
+
+.footer-copy {
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.footer-social a {
+  color: rgba(245, 240, 232, 0.5);
+  text-decoration: none;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.footer-social a:hover { color: var(--gold); }
+
+/* ─── SCROLL REVEAL ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+.reveal-delay-5 { transition-delay: 0.5s; }
+
+/* ─── MOBILE MENU ─── */
+.mobile-menu {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+  background: var(--burgundy-deep);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s;
+}
+
+.mobile-menu.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.mobile-menu a {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--cream);
+  text-decoration: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.4s;
+}
+
+.mobile-menu.open a {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobile-menu.open a:nth-child(1) { transition-delay: 0.1s; }
+.mobile-menu.open a:nth-child(2) { transition-delay: 0.15s; }
+.mobile-menu.open a:nth-child(3) { transition-delay: 0.2s; }
+.mobile-menu.open a:nth-child(4) { transition-delay: 0.25s; }
+
+.mobile-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: none;
+  border: none;
+  color: var(--cream);
+  font-size: 1.5rem;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 900px) {
+  .about-grid,
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-image-wrap {
+    aspect-ratio: 16/10;
+    max-height: 400px;
+  }
+
+  .wines-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .nav-links { display: none; }
+  .nav-burger { display: flex; }
+
+  .about-stats { gap: 1.5rem; }
+}
+
+@media (max-width: 600px) {
+  .wines-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .about-stats {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .footer-inner {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <a href="#hero" class="nav-logo">Svendborg Vingaard</a>
+  <ul class="nav-links">
+    <li><a href="#om-os">Om Os</a></li>
+    <li><a href="#vine">Vine</a></li>
+    <li><a href="#vinsmagning">Vinsmagning</a></li>
+    <li><a href="#kontakt">Kontakt</a></li>
+  </ul>
+  <button class="nav-burger" id="burger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" id="mobileClose" aria-label="Luk menu">✕</button>
+  <a href="#om-os" class="mobile-link">Om Os</a>
+  <a href="#vine" class="mobile-link">Vine</a>
+  <a href="#vinsmagning" class="mobile-link">Vinsmagning</a>
+  <a href="#kontakt" class="mobile-link">Kontakt</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-ornament"></div>
+    <p class="hero-subtitle-top">Sydfynsk Vingård · Etableret 2009</p>
+    <h1>Svendborg<br><em>Vingaard</em></h1>
+    <p class="hero-tagline">Håndlavet dansk vin fra de sydfynske bakker ved Svendborg Sund</p>
+    <a href="#vine" class="hero-cta">Udforsk Vores Vine</a>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="hero-scroll-line"></div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="om-os">
+  <div class="about-grid">
+    <div class="about-image-wrap reveal">
+      <img src="https://images.unsplash.com/photo-1560493676-04071c5f467b?w=800&q=80" alt="Vingård landskab">
+      <div class="about-image-frame"></div>
+    </div>
+    <div class="about-text">
+      <p class="section-label reveal">Om Os</p>
+      <h2 class="section-title reveal reveal-delay-1">En vingård<br>med sjæl</h2>
+      <div class="section-divider reveal reveal-delay-2"></div>
+      <p class="reveal reveal-delay-2">Svendborg Vingaard ligger lunt i læ af Troldeskoven mod vest og blot få kilometer fra Svendborg Sund. Ejendommen strækker sig over ca. 2 hektar med vinmark, birketræer, brombærhegn og have — et lille stykke sydfynsk natur, dedikeret til vinproduktion.</p>
+      <p class="reveal reveal-delay-3">Vinmarken blev anlagt i 2009 med ca. 2.200 vinstokke. I dag dyrker vi primært to druesorter: Solaris og Muscat Bleu. Solaris er en remarkabel sort, der trives uden sprøjtemidler og giver stabile, fyldige hvidvine. Vi tapper desuden birkesaft fra egne birketræer til vores unikke BirkeBobler.</p>
+      <p class="reveal reveal-delay-4">I 2022 overtog Christian og Sofie Jeppesen vingården med friske kræfter og en dyb respekt for traditionen — i samarbejde med de tidligere ejere videreføres mange års erfaring med dansk vinproduktion.</p>
+
+      <div class="about-stats reveal reveal-delay-5">
+        <div>
+          <div class="about-stat-num">2009</div>
+          <div class="about-stat-label">Etableret</div>
+        </div>
+        <div>
+          <div class="about-stat-num">2 ha</div>
+          <div class="about-stat-label">Vinmark</div>
+        </div>
+        <div>
+          <div class="about-stat-num">6</div>
+          <div class="about-stat-label">Unikke vine</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WINES -->
+<section class="wines" id="vine">
+  <div class="wines-intro">
+    <p class="section-label reveal">Vores Vine</p>
+    <h2 class="section-title reveal reveal-delay-1">Fra mark<br>til flaske</h2>
+    <div class="section-divider reveal reveal-delay-2"></div>
+    <p class="wines-intro-text reveal reveal-delay-2">Hver flaske fortæller historien om sydfynsk jord, danske årstider og tålmodig håndværk. Fra friske hvidvine til robuste dessertvine — vi lader naturen bestemme.</p>
+  </div>
+
+  <div class="wines-grid">
+    <div class="wine-card reveal">
+      <span class="wine-card-type">Rosévin</span>
+      <h3 class="wine-card-name">Rosévin 2022</h3>
+      <p class="wine-card-desc">Lavet på en kombination af Solaris og Muscat Bleu. En frisk sommervin med smagsnuancer af hindbær.</p>
+      <div class="wine-card-meta">
+        <span class="wine-card-vol">75 cl</span>
+        <span class="wine-card-abv">11%</span>
+      </div>
+    </div>
+
+    <div class="wine-card reveal reveal-delay-1">
+      <span class="wine-card-type">Hvidvin</span>
+      <h3 class="wine-card-name">Solaris 2022</h3>
+      <p class="wine-card-desc">Fyldig og frisk hvidvin. En god ledsager til fisk eller skaldyr.</p>
+      <div class="wine-card-meta">
+        <span class="wine-card-vol">75 cl</span>
+        <span class="wine-card-abv">11%</span>
+      </div>
+    </div>
+
+    <div class="wine-card reveal reveal-delay-2">
+      <span class="wine-card-type">Mousserende</span>
+      <h3 class="wine-card-name">BirkeBobler</h3>
+      <p class="wine-card-desc">Mousserende birkevin gæret af frisktappet saft fra egne birketræer. Med hindbær. Nydes iskold som aperitif.</p>
+      <div class="wine-card-meta">
+        <span class="wine-card-vol">75 cl</span>
+        <span class="wine-card-abv">10%</span>
+      </div>
+    </div>
+
+    <div class="wine-card reveal reveal-delay-1">
+      <span class="wine-card-type">Dessertvin</span>
+      <h3 class="wine-card-name">Kirsebærvin</h3>
+      <p class="wine-card-desc">Hedvin af sydfynske friske kirsebær. En lang kølig gæring giver vinen en let krydret aroma. God til desserter.</p>
+      <div class="wine-card-meta">
+        <span class="wine-card-vol">50 cl</span>
+        <span class="wine-card-abv">18%</span>
+      </div>
+    </div>
+
+    <div class="wine-card reveal reveal-delay-2">
+      <span class="wine-card-type">Brændevin</span>
+      <h3 class="wine-card-name">Svendborg Grappa</h3>
+      <p class="wine-card-desc">Brændevin på druer fra egen gård. Lagret i næsten 10 år for en dyb, kompleks karakter.</p>
+      <div class="wine-card-meta">
+        <span class="wine-card-vol">35 cl</span>
+        <span class="wine-card-abv">35%</span>
+      </div>
+    </div>
+
+    <div class="wine-card reveal reveal-delay-3">
+      <span class="wine-card-type">Dessertvin</span>
+      <h3 class="wine-card-name">Solbærrom</h3>
+      <p class="wine-card-desc">En solbærvin brygget på solbær fra Sydfyn, tilsat Havana rom for en afrundet smag. God til desserter.</p>
+      <div class="wine-card-meta">
+        <span class="wine-card-vol">50 cl</span>
+        <span class="wine-card-abv">18%</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="wines-note reveal">
+    <span class="wines-note-icon">📦</span>
+    <span>Bestil vine pr. e-mail eller telefonisk, betal med MobilePay — vi sender med PostNord for ca. 50 kr. i hele Danmark. Mængderabat muligt ved større bestillinger.</span>
+  </div>
+</section>
+
+<!-- TASTING -->
+<section class="tasting" id="vinsmagning">
+  <div class="tasting-bg"></div>
+  <div class="tasting-content">
+    <p class="section-label reveal">Oplevelser</p>
+    <h2 class="tasting-title reveal reveal-delay-1">Smag <em>Sydfyn</em><br>i glasset</h2>
+    <p class="tasting-desc reveal reveal-delay-2">Invitér venner, kollegaer eller familien til en uforglemmelig vinsmagning på vingården. Vi åbner dørene for grupper på 20+ personer og deler historien bag hver eneste flaske.</p>
+    <a href="#kontakt" class="tasting-cta reveal reveal-delay-3">Book en Smagning</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="kontakt">
+  <div class="contact-grid">
+    <div class="contact-info">
+      <p class="section-label reveal">Kontakt</p>
+      <h2 class="section-title reveal reveal-delay-1">Kom forbi<br>eller skriv</h2>
+      <div class="section-divider reveal reveal-delay-2"></div>
+      <p class="reveal reveal-delay-2">Gårdbutikken er lukket, men der er åbent for vinsmagninger for grupper på 20+ personer, og vin kan afhentes efter aftale eller forsendes direkte til din dør.</p>
+
+      <div class="contact-detail reveal reveal-delay-3">
+        <div class="contact-detail-label">Adresse</div>
+        <div class="contact-detail-value">Gammel Skårupvej 155<br>5700 Svendborg</div>
+      </div>
+
+      <div class="contact-detail reveal reveal-delay-4">
+        <div class="contact-detail-label">Email</div>
+        <div class="contact-detail-value"><a href="mailto:christiankaarejeppesen@gmail.com">christiankaarejeppesen@gmail.com</a></div>
+      </div>
+
+      <div class="contact-order-box reveal reveal-delay-5">
+        <h3 class="contact-order-title">Bestilling</h3>
+        <ul class="contact-order-list">
+          <li>Bestil via e-mail eller telefon</li>
+          <li>Betal nemt med MobilePay</li>
+          <li>Forsendelse med PostNord, ca. 50 kr.</li>
+          <li>Afhentning efter aftale på vingården</li>
+          <li>Mængderabat ved større ordrer</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="contact-map reveal">
+      <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?w=1800&q=80" alt="Sydfynsk landskab">
+      <div class="contact-map-overlay">
+        <div class="pin">◉</div>
+        <div class="address">Gammel Skårupvej 155<br>5700 Svendborg<br><em style="font-family: 'Cormorant Garamond', serif; font-size: 0.9rem; color: rgba(245,240,232,0.6);">Sydfyn, Danmark</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-logo">Svendborg Vingaard</div>
+    <div class="footer-copy">© 2024 Svendborg Vingård. Alle rettigheder forbeholdes.</div>
+    <div class="footer-social">
+      <a href="https://www.facebook.com" target="_blank" rel="noopener">Facebook →</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll effect
+const nav = document.getElementById('nav');
+let lastScroll = 0;
+
+window.addEventListener('scroll', () => {
+  const st = window.scrollY;
+  nav.classList.toggle('scrolled', st > 80);
+  lastScroll = st;
+}, { passive: true });
+
+// Mobile menu
+const burger = document.getElementById('burger');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileClose = document.getElementById('mobileClose');
+
+burger.addEventListener('click', () => mobileMenu.classList.add('open'));
+mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+
+document.querySelectorAll('.mobile-link').forEach(link => {
+  link.addEventListener('click', () => mobileMenu.classList.remove('open'));
+});
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+reveals.forEach(el => revealObserver.observe(el));
+</script>
+
+</body>
+</html>

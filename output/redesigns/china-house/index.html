@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>China House — Kinesisk restaurant i Marstal på Ærø</title>
+<meta name="description" content="China House byder velkommen til en smagsfuld kinesisk oplevelse i hyggelige lokaler midt i Marstal på Ærø. À la carte, menuer og eksotisk buffet hver fredag og lørdag.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Karla:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1c1512;
+  --paper:#f7efe2;
+  --paper-2:#efe3d0;
+  --lacquer:#8c1d1a;
+  --lacquer-dk:#5e1311;
+  --gold:#c19a4b;
+  --gold-soft:#d8b975;
+  --muted:#7a6a5c;
+  --line:rgba(28,21,18,.14);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Karla',system-ui,sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:500;line-height:1.08;letter-spacing:-.01em}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+
+/* paper grain texture */
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* ---- top bar ---- */
+.topbar{background:var(--lacquer-dk);color:#f3e7cf;font-size:.82rem;letter-spacing:.04em;position:relative;z-index:5}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:18px;padding-top:9px;padding-bottom:9px;flex-wrap:wrap}
+.topbar a{color:var(--gold-soft);font-weight:600}
+.topbar .sep{opacity:.4;margin:0 4px}
+
+/* ---- nav ---- */
+header.nav{position:sticky;top:0;z-index:20;background:rgba(247,239,226,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px}
+.brand{display:flex;align-items:baseline;gap:.5rem;font-family:'Fraunces',serif}
+.brand .cn{font-size:1.5rem;color:var(--lacquer);font-weight:600;letter-spacing:.02em}
+.brand .sub{font-size:.7rem;letter-spacing:.34em;text-transform:uppercase;color:var(--muted);font-family:'Karla',sans-serif}
+nav ul{list-style:none;display:flex;gap:30px;align-items:center}
+nav a{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;color:var(--ink);position:relative;padding:4px 0;transition:color .25s}
+nav a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--gold);transition:width .3s}
+nav a:hover{color:var(--lacquer)}nav a:hover::after{width:100%}
+nav a.active{color:var(--lacquer)}nav a.active::after{width:100%}
+.nav-cta{background:var(--lacquer);color:#fbf2df!important;padding:11px 20px;border-radius:2px;letter-spacing:.1em!important;transition:background .25s}
+.nav-cta:hover{background:var(--lacquer-dk)}.nav-cta::after{display:none}
+.menu-toggle{display:none;background:none;border:0;font-size:1.6rem;color:var(--lacquer);cursor:pointer}
+
+/* ---- hero ---- */
+.hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;color:#f6ecd9;overflow:hidden;z-index:2}
+.hero-bg{position:absolute;inset:0;background:#2a1411 url('http://chinahouse-marstal.dk/files/IMG_4419%203.JPG') center 38%/cover no-repeat;transform:scale(1.04);animation:slowzoom 18s ease-out forwards}
+@keyframes slowzoom{to{transform:scale(1)}}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,9,8,.55) 0%,rgba(20,9,8,.18) 35%,rgba(20,9,8,.72) 100%)}
+.hero-inner{position:relative;z-index:3;padding-bottom:74px;max-width:760px;animation:rise 1s cubic-bezier(.2,.8,.2,1) both}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-soft);font-weight:700;margin-bottom:20px}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--gold-soft)}
+.hero h1{font-size:clamp(2.9rem,6.5vw,5.4rem);color:#fdf6e8;text-shadow:0 2px 30px rgba(0,0,0,.35)}
+.hero h1 em{font-style:italic;color:var(--gold-soft)}
+.hero p.lead{margin-top:22px;font-size:1.18rem;max-width:540px;color:#f0e4d2;font-weight:300}
+.hero-actions{margin-top:34px;display:flex;gap:16px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 28px;border-radius:2px;font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;transition:transform .2s,background .25s,box-shadow .25s;cursor:pointer}
+.btn-gold{background:var(--gold);color:#241a09}
+.btn-gold:hover{background:var(--gold-soft);transform:translateY(-2px);box-shadow:0 12px 30px rgba(0,0,0,.3)}
+.btn-ghost{border:1px solid rgba(246,236,217,.55);color:#f6ecd9}
+.btn-ghost:hover{background:rgba(246,236,217,.12);transform:translateY(-2px)}
+.scroll-tag{position:absolute;right:28px;bottom:74px;z-index:3;writing-mode:vertical-rl;font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(246,236,217,.7)}
+
+/* ---- section base ---- */
+section{position:relative;z-index:2}
+.pad{padding:96px 0}
+.kicker{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--lacquer);font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.kicker::before{content:"";width:26px;height:1px;background:var(--gold)}
+.h-sec{font-size:clamp(2rem,4vw,3.1rem);max-width:18ch}
+.h-sec em{font-style:italic;color:var(--lacquer)}
+
+/* welcome / about */
+.about{background:var(--paper)}
+.about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:64px;align-items:center}
+.about p{color:#4a3d33;font-size:1.06rem;margin-top:18px}
+.about .signature{font-family:'Fraunces',serif;font-style:italic;font-size:1.3rem;color:var(--lacquer);margin-top:26px}
+.about-img{position:relative}
+.about-img img{width:100%;height:560px;object-fit:cover;border-radius:3px;box-shadow:0 30px 60px -28px rgba(40,15,12,.55)}
+.about-img .badge{position:absolute;bottom:-26px;left:-26px;background:var(--lacquer);color:#f6ecd9;padding:22px 26px;border-radius:3px;max-width:210px;box-shadow:0 20px 40px -18px rgba(0,0,0,.5)}
+.about-img .badge strong{font-family:'Fraunces',serif;font-size:1.05rem;display:block;color:var(--gold-soft);margin-bottom:4px}
+.about-img .badge span{font-size:.84rem;color:#e8dac3;line-height:1.5}
+
+/* feature strip */
+.strip{background:var(--lacquer-dk);color:#f3e7cf}
+.strip .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.strip .cell{padding:48px 34px;border-right:1px solid rgba(216,185,117,.2)}
+.strip .cell:last-child{border-right:0}
+.strip .num{font-family:'Fraunces',serif;font-size:2.6rem;color:var(--gold-soft);line-height:1}
+.strip h4{font-size:1.15rem;margin:14px 0 8px;color:#fbf2df}
+.strip p{font-size:.95rem;color:#decfb4}
+
+/* buffet feature */
+.buffet{background:var(--paper-2);overflow:hidden}
+.buffet-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:60px;align-items:center}
+.buffet-img img{width:100%;height:520px;object-fit:cover;border-radius:3px;box-shadow:0 30px 60px -30px rgba(40,15,12,.5)}
+.price-row{display:flex;gap:30px;margin-top:30px;flex-wrap:wrap}
+.price-row .p{border-left:2px solid var(--gold)}
+.price-row .p{padding-left:16px}
+.price-row .amt{font-family:'Fraunces',serif;font-size:2rem;color:var(--lacquer)}
+.price-row .lbl{font-size:.82rem;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+.note{margin-top:24px;font-size:.92rem;color:#5e4f43;font-style:italic}
+
+/* gallery preview */
+.gal{background:var(--ink);color:#f3e7cf}
+.gal .head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:40px;flex-wrap:wrap}
+.gal .h-sec{color:#fbf2df}
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:200px;gap:14px}
+.gal-grid a{overflow:hidden;border-radius:2px;position:relative}
+.gal-grid img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease;filter:saturate(.92)}
+.gal-grid a:hover img{transform:scale(1.08)}
+.gal-grid .tall{grid-row:span 2}
+.gal-grid .wide{grid-column:span 2}
+
+/* hours / contact band */
+.band{background:var(--lacquer);color:#f6ecd9}
+.band-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.hours-list{margin-top:22px;border-top:1px solid rgba(246,236,217,.22)}
+.hours-list .r{display:flex;justify-content:space-between;padding:13px 0;border-bottom:1px solid rgba(246,236,217,.18);font-size:1rem}
+.hours-list .r .d{color:#f0e2c9}
+.hours-list .r .t{color:var(--gold-soft);font-weight:600}
+.hours-list .r.closed .t{color:#e6b9a6}
+.season{margin-top:24px;background:rgba(0,0,0,.16);border-radius:3px;padding:18px 20px;font-size:.95rem}
+.season strong{color:var(--gold-soft)}
+.band .cta-card h3{font-size:clamp(1.8rem,3.5vw,2.6rem);color:#fdf6e8}
+.band .cta-card .phone{font-family:'Fraunces',serif;font-size:2.4rem;color:var(--gold-soft);display:inline-block;margin:14px 0 8px}
+.band .addr{font-size:1rem;color:#f0e2c9;line-height:1.7}
+.warn{margin-top:18px;font-size:.86rem;color:#f3d9cd;letter-spacing:.02em}
+
+/* footer */
+footer{background:var(--ink);color:#cdbca8;font-size:.9rem;padding:60px 0 30px;position:relative;z-index:2}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+footer .brand .cn{color:var(--gold-soft)}
+footer h5{font-family:'Karla',sans-serif;font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:14px}
+footer a:hover{color:var(--gold-soft)}
+footer ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.foot-bottom{margin-top:42px;padding-top:22px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.8rem;color:#8c7a68}
+
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+.reveal.in{opacity:1;transform:none}
+
+@media(max-width:900px){
+  nav ul{display:none}
+  .menu-toggle{display:block}
+  nav ul.open{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--paper);padding:22px 28px;gap:18px;border-bottom:1px solid var(--line);box-shadow:0 20px 30px -20px rgba(0,0,0,.3)}
+  .about-grid,.buffet-grid,.band-grid,.foot-grid{grid-template-columns:1fr;gap:40px}
+  .strip .wrap{grid-template-columns:1fr}
+  .strip .cell{border-right:0;border-bottom:1px solid rgba(216,185,117,.2)}
+  .gal-grid{grid-template-columns:repeat(2,1fr);grid-auto-rows:160px}
+  .about-img img,.buffet-img img{height:380px}
+  .about-img .badge{left:0}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="wrap">
+  <span>Kirkestræde 5-7 · 5960 Marstal · Ærø</span>
+  <span>Bordbestilling <a href="tel:+4540370311">+45 40 37 03 11</a><span class="sep">·</span>Tor–Lør 18–21</span>
+</div></div>
+
+<header class="nav"><div class="wrap">
+  <a class="brand" href="index.html">
+    <span class="cn">China House</span>
+    <span class="sub">Marstal · Ærø</span>
+  </a>
+  <button class="menu-toggle" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+  <nav><ul id="nav">
+    <li><a class="active" href="index.html">Forside</a></li>
+    <li><a href="menukort.html">Menukort</a></li>
+    <li><a href="vinkort.html">Vinkort</a></li>
+    <li><a href="selskaber.html">Selskaber</a></li>
+    <li><a href="galleri.html">Galleri</a></li>
+    <li><a href="kontakt.html">Kontakt</a></li>
+    <li><a class="nav-cta" href="tel:+4540370311">Bestil bord</a></li>
+  </ul></nav>
+</div></header>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="wrap hero-inner">
+    <span class="eyebrow">Kinesisk køkken midt i Marstal</span>
+    <h1>Spis kinesisk på <em>Ærø</em></h1>
+    <p class="lead">Velkommen til en smagsfuld oplevelse, serveret i hyggelige lokaler i varme kinesiske farver og ægte kinesisk stil.</p>
+    <div class="hero-actions">
+      <a class="btn btn-gold" href="tel:+4540370311">Ring og bestil bord</a>
+      <a class="btn btn-ghost" href="menukort.html">Se menukortet</a>
+    </div>
+  </div>
+  <span class="scroll-tag">Velkommen ind ↓</span>
+</section>
+
+<section class="about pad"><div class="wrap">
+  <div class="about-grid">
+    <div class="reveal">
+      <div class="kicker">Velkommen</div>
+      <h2 class="h-sec">En smagsfuld <em>oplevelse</em> i hjertet af byen</h2>
+      <p>Restaurant China House byder velkommen til en smagsfuld oplevelse, serveret i vores hyggelige lokaler i varme kinesiske farver og ægte kinesisk stil. Kom ind og prøv de mange forskellige retter.</p>
+      <p>Søndag til torsdag har vi et udvalg af à la carte-retter og 3-retters menuer, som hele familien kan nyde. Fredag og lørdag dækker vi op til vores eksotiske buffet.</p>
+      <p class="signature">— med venlig hilsen, China House</p>
+    </div>
+    <div class="about-img reveal">
+      <img src="http://chinahouse-marstal.dk/files/china%20house.jpg" alt="Restaurant China House i Marstal" loading="lazy">
+      <div class="badge"><strong>Kirkestræde 5-7</strong><span>5960 Marstal på Ærø — nemt at finde i centrum</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="strip"><div class="wrap">
+  <div class="cell reveal"><div class="num">À la carte</div><h4>Frokost & aften</h4><p>Alt fra pekingsuppe til and à la Peking — håndlavede retter både til frokost og aften.</p></div>
+  <div class="cell reveal"><div class="num">178,-</div><h4>Eksotisk buffet</h4><p>Hver fredag og lørdag fra kl. 18.00: dagens suppe og 10 varme retter — spis alt hvad hjertet begærer.</p></div>
+  <div class="cell reveal"><div class="num">Glassal</div><h4>Selskaber & fester</h4><p>Hold din fest i vores flotte glassal med overdækket terrasse — vi har pladsen og maden.</p></div>
+</div></section>
+
+<section class="buffet pad"><div class="wrap">
+  <div class="buffet-grid">
+    <div class="buffet-img reveal"><img src="http://chinahouse-marstal.dk/files/-%20aften/img_8617.jpg" alt="Retter fra China House" loading="lazy"></div>
+    <div class="reveal">
+      <div class="kicker">Hver fredag & lørdag</div>
+      <h2 class="h-sec">Eksotisk <em>buffet</em> for hele familien</h2>
+      <p style="margin-top:18px;color:#5e4f43;font-size:1.06rem">Som forret serverer vi dagens suppe, og derefter kan du vælge mellem 10 eksotiske varme retter. Spis alt hvad hjertet begærer — i hyggelige rammer fra kl. 18.00 til 21.00.</p>
+      <div class="price-row">
+        <div class="p"><div class="amt">178,-</div><div class="lbl">Pr. person</div></div>
+        <div class="p"><div class="amt">98,-</div><div class="lbl">Børn 4–10 år</div></div>
+        <div class="p"><div class="amt">40,-</div><div class="lbl">Børn 1–3 år</div></div>
+      </div>
+      <p class="note">Bemærk: vi har ikke take away. Ring venligst hvis du ankommer efter kl. 19.45.</p>
+      <a class="btn btn-gold" style="margin-top:26px" href="menukort.html#buffet">Se buffeten</a>
+    </div>
+  </div>
+</div></section>
+
+<section class="gal pad"><div class="wrap">
+  <div class="head">
+    <div>
+      <div class="kicker" style="color:var(--gold-soft)">Galleri</div>
+      <h2 class="h-sec">Et kig <em style="color:var(--gold-soft)">indenfor</em></h2>
+    </div>
+    <a class="btn btn-ghost" href="galleri.html">Se hele galleriet</a>
+  </div>
+  <div class="gal-grid">
+    <a class="wide tall" href="http://chinahouse-marstal.dk/files/billeder/IMGP1025.jpg" target="_blank"><img src="http://chinahouse-marstal.dk/files/billeder/IMGP1025.jpg" alt="China House lokale" loading="lazy"></a>
+    <a href="http://chinahouse-marstal.dk/files/billeder/IMGP1027.jpg" target="_blank"><img src="http://chinahouse-marstal.dk/files/billeder/IMGP1027.jpg" alt="China House lokale" loading="lazy"></a>
+    <a href="http://chinahouse-marstal.dk/files/billeder/IMGP1028.jpg" target="_blank"><img src="http://chinahouse-marstal.dk/files/billeder/IMGP1028.jpg" alt="China House lokale" loading="lazy"></a>
+    <a href="http://chinahouse-marstal.dk/files/billeder/IMGP1031.jpg" target="_blank"><img src="http://chinahouse-marstal.dk/files/billeder/IMGP1031.jpg" alt="China House lokale" loading="lazy"></a>
+    <a href="http://chinahouse-marstal.dk/files/billeder/IMGP1032.jpg" target="_blank"><img src="http://chinahouse-marstal.dk/files/billeder/IMGP1032.jpg" alt="China House lokale" loading="lazy"></a>
+    <a class="wide" href="http://chinahouse-marstal.dk/files/billeder/IMGP1034.jpg" target="_blank"><img src="http://chinahouse-marstal.dk/files/billeder/IMGP1034.jpg" alt="China House lokale" loading="lazy"></a>
+  </div>
+</div></section>
+
+<section class="band pad" id="kontakt"><div class="wrap">
+  <div class="band-grid">
+    <div class="reveal">
+      <div class="kicker" style="color:var(--gold-soft)">Åbningstider</div>
+      <h2 class="h-sec" style="color:#fdf6e8">Vi har <em style="color:var(--gold-soft)">åbent</em> for dig</h2>
+      <div class="hours-list">
+        <div class="r closed"><span class="d">Søndag – Onsdag</span><span class="t">Lukket</span></div>
+        <div class="r"><span class="d">Torsdag</span><span class="t">18.00 – 21.00</span></div>
+        <div class="r"><span class="d">Fredag</span><span class="t">18.00 – 21.00</span></div>
+        <div class="r"><span class="d">Lørdag</span><span class="t">18.00 – 21.00</span></div>
+      </div>
+      <p style="margin-top:10px;font-size:.86rem;color:#f0d9cd">Køkkenet lukker kl. 20.00.</p>
+      <div class="season">Sæson: sidste åbningsdag <strong>18/10 2025</strong> — vi åbner igen <strong>27/3 2026</strong>.</div>
+    </div>
+    <div class="cta-card reveal">
+      <h3>Bestil bord i dag</h3>
+      <a class="phone" href="tel:+4540370311">+45 40 37 03 11</a>
+      <p class="addr">Restaurant China House<br>Kirkestræde 5-7<br>5960 Marstal, Danmark</p>
+      <p class="warn">Ring venligst hvis du ankommer efter 19.45. · We don't have take away.</p>
+      <a class="btn btn-gold" style="margin-top:22px" href="kontakt.html">Find vej & kontakt</a>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="foot-grid">
+    <div>
+      <div class="brand"><span class="cn" style="font-family:'Fraunces',serif;font-size:1.4rem">China House</span></div>
+      <p style="margin-top:14px;max-width:34ch;color:#b6a48f">Kinesisk restaurant i hjertet af Marstal på Ærø. Hyggelige lokaler, varme farver og ægte kinesisk køkken.</p>
+    </div>
+    <div>
+      <h5>Restauranten</h5>
+      <ul>
+        <li><a href="menukort.html">Menukort</a></li>
+        <li><a href="vinkort.html">Vinkort</a></li>
+        <li><a href="selskaber.html">Selskaber</a></li>
+        <li><a href="galleri.html">Galleri</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Kontakt</h5>
+      <ul>
+        <li><a href="tel:+4540370311">+45 40 37 03 11</a></li>
+        <li>Kirkestræde 5-7, 5960 Marstal</li>
+        <li><a href="http://www.findsmiley.dk/da-DK/Searching/DetailsView.htm?virk=80301977" target="_blank">Se vores Smiley</a></li>
+        <li><a href="http://www.aeroe-ferry.dk" target="_blank">Ærøfærgerne</a> · <a href="http://www.arre.dk" target="_blank">Ærø Turistbureau</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© China House Marstal — alle rettigheder forbeholdes</span>
+    <span>Designforslag · WilbrandtWorks</span>
+  </div>
+</div></footer>
+
+<script>
+const obs=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}})},{threshold:.16});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

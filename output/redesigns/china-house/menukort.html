@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menukort — China House Marstal</title>
+<meta name="description" content="Menukort fra China House i Marstal: frokostretter, à la carte til aften og eksotisk buffet. Fra pekingsuppe til and à la Peking.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Karla:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#1c1512;--paper:#f7efe2;--paper-2:#efe3d0;--lacquer:#8c1d1a;--lacquer-dk:#5e1311;--gold:#c19a4b;--gold-soft:#d8b975;--muted:#7a6a5c;--line:rgba(28,21,18,.14)}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Karla',system-ui,sans-serif;color:var(--ink);background:var(--paper);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:500;line-height:1.1;letter-spacing:-.01em}
+a{color:inherit;text-decoration:none}img{display:block;max-width:100%}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;opacity:.5;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E")}
+.topbar{background:var(--lacquer-dk);color:#f3e7cf;font-size:.82rem;letter-spacing:.04em;position:relative;z-index:5}
+.topbar .wrap{display:flex;justify-content:space-between;align-items:center;gap:18px;padding:9px 28px;flex-wrap:wrap}
+.topbar a{color:var(--gold-soft);font-weight:600}.topbar .sep{opacity:.4;margin:0 4px}
+header.nav{position:sticky;top:0;z-index:20;background:rgba(247,239,226,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;padding:16px 28px}
+.brand{display:flex;align-items:baseline;gap:.5rem}
+.brand .cn{font-family:'Fraunces',serif;font-size:1.5rem;color:var(--lacquer);font-weight:600}
+.brand .sub{font-size:.7rem;letter-spacing:.34em;text-transform:uppercase;color:var(--muted)}
+nav ul{list-style:none;display:flex;gap:30px;align-items:center}
+nav a{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:600;position:relative;padding:4px 0;transition:color .25s}
+nav a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:2px;background:var(--gold);transition:width .3s}
+nav a:hover{color:var(--lacquer)}nav a:hover::after{width:100%}
+nav a.active{color:var(--lacquer)}nav a.active::after{width:100%}
+.nav-cta{background:var(--lacquer);color:#fbf2df!important;padding:11px 20px;border-radius:2px;letter-spacing:.1em!important}
+.nav-cta:hover{background:var(--lacquer-dk)}.nav-cta::after{display:none}
+.menu-toggle{display:none;background:none;border:0;font-size:1.6rem;color:var(--lacquer);cursor:pointer}
+.phero{position:relative;min-height:46vh;display:flex;align-items:flex-end;color:#f6ecd9;overflow:hidden;z-index:2}
+.phero-bg{position:absolute;inset:0;background:#2a1411 url('http://chinahouse-marstal.dk/files/-%20aften/img_8623.jpg') center 45%/cover no-repeat}
+.phero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,9,8,.5),rgba(20,9,8,.8))}
+.phero-inner{position:relative;z-index:3;padding:0 0 54px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-soft);font-weight:700;margin-bottom:16px}
+.eyebrow::before{content:"";width:34px;height:1px;background:var(--gold-soft)}
+.phero h1{font-size:clamp(2.4rem,5.5vw,4.2rem);color:#fdf6e8}
+.phero h1 em{font-style:italic;color:var(--gold-soft)}
+.phero p{margin-top:14px;max-width:540px;color:#f0e4d2;font-weight:300;font-size:1.08rem}
+section{position:relative;z-index:2}
+.pad{padding:80px 0}
+.kicker{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--lacquer);font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.kicker::before{content:"";width:26px;height:1px;background:var(--gold)}
+/* tabs */
+.tabs{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:56px}
+.tab{font-family:'Fraunces',serif;font-size:1.05rem;padding:12px 28px;border:1px solid var(--line);border-radius:2px;background:transparent;color:var(--ink);cursor:pointer;transition:all .25s;letter-spacing:.02em}
+.tab:hover{border-color:var(--lacquer);color:var(--lacquer)}
+.tab.active{background:var(--lacquer);color:#fbf2df;border-color:var(--lacquer)}
+.panel{display:none;animation:fade .5s ease}
+.panel.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.menu-head{text-align:center;max-width:620px;margin:0 auto 44px}
+.menu-head h2{font-size:clamp(1.8rem,4vw,2.8rem)}
+.menu-head h2 em{font-style:italic;color:var(--lacquer)}
+.menu-head p{margin-top:14px;color:#5e4f43}
+.mcat{margin:44px 0 18px;display:flex;align-items:center;gap:16px}
+.mcat h3{font-size:1.5rem;color:var(--lacquer);white-space:nowrap}
+.mcat::after{content:"";flex:1;height:1px;background:var(--line)}
+.items{display:grid;grid-template-columns:1fr 1fr;gap:6px 56px}
+.item{display:flex;align-items:baseline;gap:12px;padding:13px 0;border-bottom:1px dashed var(--line)}
+.item .nm{font-weight:600;font-size:1.04rem}
+.item .ds{display:block;font-size:.88rem;color:var(--muted);font-weight:400;margin-top:2px}
+.item .en{display:block;font-size:.82rem;color:#a08e7c;font-style:italic;font-weight:400}
+.item .dots{flex:1;border-bottom:1px dotted var(--line);transform:translateY(-4px);min-width:18px}
+.item .pr{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--lacquer);white-space:nowrap}
+.feature-box{background:var(--paper-2);border-radius:4px;padding:34px 36px;margin:30px 0;border-left:4px solid var(--gold)}
+.feature-box h3{color:var(--lacquer);font-size:1.5rem}
+.feature-box .big{font-family:'Fraunces',serif;font-size:2.6rem;color:var(--lacquer);margin-top:8px}
+.menus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:14px}
+.menu-card{background:#fff;border:1px solid var(--line);border-radius:4px;padding:30px 26px;transition:transform .25s,box-shadow .25s}
+.menu-card:hover{transform:translateY(-4px);box-shadow:0 24px 40px -26px rgba(40,15,12,.5)}
+.menu-card h4{font-size:1.3rem;color:var(--lacquer)}
+.menu-card .steps{list-style:none;margin:16px 0;display:flex;flex-direction:column;gap:12px}
+.menu-card .steps li{padding-left:24px;position:relative;font-size:.95rem;color:#4a3d33}
+.menu-card .steps li b{font-family:'Fraunces',serif;position:absolute;left:0;color:var(--gold);font-style:italic}
+.menu-card .price{font-family:'Fraunces',serif;font-size:1.6rem;color:var(--lacquer);border-top:1px solid var(--line);padding-top:14px}
+.menu-card .price small{display:block;font-family:'Karla',sans-serif;font-size:.78rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 28px;border-radius:2px;font-weight:700;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;transition:all .2s;cursor:pointer}
+.btn-gold{background:var(--gold);color:#241a09}.btn-gold:hover{background:var(--gold-soft);transform:translateY(-2px)}
+.cta-foot{text-align:center;background:var(--lacquer);color:#f6ecd9;border-radius:5px;padding:54px 30px;margin-top:30px}
+.cta-foot h3{font-size:clamp(1.8rem,3.6vw,2.6rem);color:#fdf6e8}
+.cta-foot .phone{font-family:'Fraunces',serif;font-size:2.2rem;color:var(--gold-soft);display:inline-block;margin:12px 0}
+footer{background:var(--ink);color:#cdbca8;font-size:.9rem;padding:60px 0 30px;position:relative;z-index:2}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+footer h5{font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:14px;font-family:'Karla',sans-serif}
+footer a:hover{color:var(--gold-soft)}footer ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.foot-bottom{margin-top:42px;padding-top:22px;border-top:1px solid rgba(255,255,255,.1);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.8rem;color:#8c7a68}
+@media(max-width:900px){
+ nav ul{display:none}.menu-toggle{display:block}
+ nav ul.open{display:flex;position:absolute;top:100%;left:0;right:0;flex-direction:column;background:var(--paper);padding:22px 28px;gap:18px;border-bottom:1px solid var(--line)}
+ .items{grid-template-columns:1fr;gap:0}.menus-grid{grid-template-columns:1fr}.foot-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="wrap">
+  <span>Kirkestræde 5-7 · 5960 Marstal · Ærø</span>
+  <span>Bordbestilling <a href="tel:+4540370311">+45 40 37 03 11</a><span class="sep">·</span>Tor–Lør 18–21</span>
+</div></div>
+
+<header class="nav"><div class="wrap">
+  <a class="brand" href="index.html"><span class="cn">China House</span><span class="sub">Marstal · Ærø</span></a>
+  <button class="menu-toggle" aria-label="Menu" onclick="document.getElementById('nav').classList.toggle('open')">☰</button>
+  <nav><ul id="nav">
+    <li><a href="index.html">Forside</a></li>
+    <li><a class="active" href="menukort.html">Menukort</a></li>
+    <li><a href="vinkort.html">Vinkort</a></li>
+    <li><a href="selskaber.html">Selskaber</a></li>
+    <li><a href="galleri.html">Galleri</a></li>
+    <li><a href="kontakt.html">Kontakt</a></li>
+    <li><a class="nav-cta" href="tel:+4540370311">Bestil bord</a></li>
+  </ul></nav>
+</div></header>
+
+<section class="phero"><div class="phero-bg"></div><div class="wrap phero-inner">
+  <span class="eyebrow">Menukort</span>
+  <h1>Fra pekingsuppe til <em>and à la Peking</em></h1>
+  <p>Vi tilbyder mange forskellige retter. Vælg mellem frokost, aften og vores eksotiske buffet.</p>
+</div></section>
+
+<section class="pad"><div class="wrap">
+  <div class="tabs">
+    <button class="tab active" data-t="frokost">Frokost</button>
+    <button class="tab" data-t="aften">Aften — à la carte</button>
+    <button class="tab" data-t="buffet">Buffet</button>
+  </div>
+
+  <!-- FROKOST -->
+  <div class="panel active" id="frokost">
+    <div class="menu-head"><div class="kicker" style="justify-content:center">Serveres 12.00 – 14.30</div><h2>Frokost<em>retter</em></h2><p>Klassiske platter og lette frokostretter — perfekt midt på dagen.</p></div>
+    <div class="mcat"><h3>Platter</h3></div>
+    <div class="items">
+      <div class="item"><div><span class="nm">Marstal Platte</span><span class="ds">Sild, varm fiskefilet, æg og tomat med rejer, dansk bøf med bløde løg, roastbeef og ost.</span></div><span class="dots"></span><span class="pr">179,-</span></div>
+      <div class="item"><div><span class="nm">China House Platte</span><span class="ds">Mini ruller, indbagte kina rejer, dumpling, tempura rejer, stegte ris, salat og sur-sød sauce.</span></div><span class="dots"></span><span class="pr">179,-</span></div>
+    </div>
+    <div class="mcat"><h3>Frokostretter</h3></div>
+    <div class="items">
+      <div class="item"><div><span class="nm">60. Stjernekaster</span></div><span class="dots"></span><span class="pr">169,-</span></div>
+      <div class="item"><div><span class="nm">61. Stjerneskud</span><span class="ds">Stegt og dampet fiskefilet, rejer, asparges, caviar på ristet brød.</span></div><span class="dots"></span><span class="pr">159,-</span></div>
+      <div class="item"><div><span class="nm">62. Rejer, tun og salat</span><span class="ds">Med flûte.</span></div><span class="dots"></span><span class="pr">139,-</span></div>
+      <div class="item"><div><span class="nm">63. Pariserbøf</span><span class="ds">Med rå æggeblomme, capers, løg, rødbeder og peberrod.</span></div><span class="dots"></span><span class="pr">159,-</span></div>
+      <div class="item"><div><span class="nm">64. Indbagte Kina rejer</span><span class="ds">Med stegte ris, sur-sød sauce og salat.</span></div><span class="dots"></span><span class="pr">149,-</span></div>
+      <div class="item"><div><span class="nm">66. Røget laks og rejer</span><span class="ds">Røget laks, rejer, salat, ristet brød og hjemmelavet dild-dressing.</span></div><span class="dots"></span><span class="pr">159,-</span></div>
+      <div class="item"><div><span class="nm">67. Rejecocktail</span><span class="ds">Med flûte.</span></div><span class="dots"></span><span class="pr">99,-</span></div>
+      <div class="item"><div><span class="nm">68. Hjemmelavet forårsrulle</span></div><span class="dots"></span><span class="pr">99,-</span></div>
+      <div class="item"><div><span class="nm">69. Burger med fritter</span><span class="ds">+ Bacon 8 kr · + Ost 8 kr.</span></div><span class="dots"></span><span class="pr">159,-</span></div>
+    </div>
+    <div class="mcat"><h3>Børneretter</h3></div>
+    <div class="items">
+      <div class="item"><div><span class="nm">70. Fiskefilet med pommes frites</span></div><span class="dots"></span><span class="pr">99,-</span></div>
+      <div class="item"><div><span class="nm">71. 5 stk. kylling nuggets med pommes frites</span></div><span class="dots"></span><span class="pr">99,-</span></div>
+    </div>
+  </div>
+
+  <!-- AFTEN -->
+  <div class="panel" id="aften">
+    <div class="menu-head"><div class="kicker" style="justify-content:center">Aften à la carte</div><h2>Menu'er & <em>à la carte</em></h2><p>Start med en af vores faste menuer — eller sammensæt din egen aften fra à la carte-kortet.</p></div>
+
+    <div class="menus-grid">
+      <div class="menu-card"><h4>Chopstick Menu</h4><ul class="steps">
+        <li><b>A.</b> Hønsekødssuppe</li><li><b>B.</b> Tempura rejer med stegte ris og salat</li><li><b>C.</b> Oksekød og kylling med barbecuesauce og grøntsager</li></ul>
+        <div class="price">189,-<small>Pr. person · min. 2 couverter</small></div></div>
+      <div class="menu-card"><h4>Canton Menu</h4><ul class="steps">
+        <li><b>A.</b> Wan-Tan suppe</li><li><b>B.</b> Store indbagte rejer med sur-sød sauce og stegte ris</li><li><b>C.</b> And à la Canton med grøntsager</li></ul>
+        <div class="price">199,-<small>Pr. person · min. 2 couverter</small></div></div>
+      <div class="menu-card"><h4>China House Menu</h4><ul class="steps">
+        <li><b>A.</b> Hønsekødssuppe</li><li><b>B.</b> Store indbagte rejer med sur-sød sauce og stegte ris</li><li><b>C.</b> And à la Peking</li></ul>
+        <div class="price">199,-<small>Pr. person · min. 2 couverter</small></div></div>
+    </div>
+
+    <div class="mcat"><h3>Supper</h3></div>
+    <div class="items">
+      <div class="item"><div><span class="nm">1. Hønsekødssuppe</span><span class="ds">Med bambusskud og champignons.</span><span class="en">Chicken soup with bamboo shoots and mushrooms</span></div><span class="dots"></span><span class="pr">55,-</span></div>
+      <div class="item"><div><span class="nm">3. Wan-Tan suppe</span><span class="ds">Indbagt svinekød, rejer og løg i pasta.</span><span class="en">Wan Tan soup with pork, shrimps and onions</span></div><span class="dots"></span><span class="pr">55,-</span></div>
+      <div class="item"><div><span class="nm">4. Peking suppe</span><span class="ds">Sur-sød-stærk suppe med oksekød, bambusskud og champignons.</span><span class="en">Sour-sweet-hot soup with beef</span></div><span class="dots"></span><span class="pr">55,-</span></div>
+    </div>
+    <div class="mcat"><h3>Forretter</h3></div>
+    <div class="items">
+      <div class="item"><div><span class="nm">6. Hjemmelavet forårsrulle</span><span class="ds">Med hakket oksekød.</span><span class="en">Homemade springroll with minced beef</span></div><span class="dots"></span><span class="pr">69,-</span></div>
+      <div class="item"><div><span class="nm">8. Indbagte store rejer</span><span class="ds">Med stegte ris, salat og sur-sød sauce.</span><span class="en">Big crispy shrimps with fried rice</span></div><span class="dots"></span><span class="pr">79,-</span></div>
+      <div class="item"><div><span class="nm">9. Tempura rejer</span><span class="ds">Med stegte ris, salat og chilimayo.</span></div><span class="dots"></span><span class="pr">79,-</span></div>
+    </div>
+    <div class="mcat"><h3>Fiskeretter</h3></div>
+    <div class="items">
+      <div class="item"><div><span class="nm">11. Indbagte store rejer</span><span class="ds">Med ris, salat og sur-sød sauce.</span></div><span class="dots"></span><span class="pr">149,-</span></div>
+      <div class="item"><div><span class="nm">12. Stegte store kina rejer</span><span class="ds">Med grøntsager og ris.</span></div><span class="dots"></span><span class="pr">149,-</span></div>
+      <div class="item"><div><span class="nm">13. Stegte store kina rejer i karry</span><span class="ds">Med bambusskud, champignon og babymajs.</span></div><span class="dots"></span><span class="pr">149,-</span></div>
+      <div class="item"><div><span class="nm">14. Stegte store kina rejer</span><span class="ds">Med kinesiske svampe.</span></div><span class="dots"></span><span class="pr">149,-</span></div>
+    </div>
+    <div class="mcat"><h3>Stegte ris & nudler</h3></div>
+    <div class="items">
+      <div class="item"><div><span class="nm">17. Stegte ris</span><span class="ds">Med store rejer, oksekød, kylling og grøntsager.</span></div><span class="dots"></span><span class="pr">149,-</span></div>
+      <div class="item"><div><span class="nm">18. Stegte nudler</span><span class="ds">Med store rejer, oksekød, kylling og grøntsager.</span></div><span class="dots"></span><span class="pr">149,-</span></div>
+    </div>
+    <div class="mcat"><h3>Svinekød</h3></div>
+    <div class="items">
+      <div class="item"><div><span class="nm">19. Indbagt svinekød</span><span class="ds">Med sur-sød sauce.</span></div><span class="dots"></span><span class="pr">139,-</span></div>
+      <div class="item"><div><span class="nm">20. Svinekød i karry</span><span class="ds">Med bambusskud, champignon og babymajs.</span></div><span class="dots"></span><span class="pr">139,-</span></div>
+      <div class="item"><div><span class="nm">21. Svinekød med kinesiske svampe</span></div><span class="dots"></span><span class="pr">139,-</span></div>
+    </div>
+    <div class="mcat"><h3>Oksekød</h3></div>
+    <div class="items">
+      <div class="item"><div><span class="nm">22. Oksekød med grøntsager</span></div><span class="dots"></span><span class="pr">149,-</span></div>
+      <div class="item"><div><span class="nm">23. Oksekød i karry</span><span class="ds">Med champignon, bambusskud og babymajs.</span></div><span class="dots"></span><span class="pr">149,-</span></div>
+      <div class="item"><div><span class="nm">24. Oksekød med barbecuesauce</span><span class="ds">Og grøntsager.</span></div><span class="dots"></span><span class="pr">149,-</span></div>
+    </div>
+    <div class="mcat"><h3>Kylling</h3></div>
+    <div class="items">
+      <div class="item"><div><span class="nm">26. Kylling med grøntsager</span></div><span class="dots"></span><span class="pr">139,-</span></div>
+      <div class="item"><div><span class="nm">27. Kylling i karry</span><span class="ds">Med champignon, bambusskud og babymajs.</span></div><span class="dots"></span><span class="pr">139,-</span></div>
+      <div class="item"><div><span class="nm">28. Kylling à la Shanghai</span><span class="ds">Med sød-stærk sauce.</span></div><span class="dots"></span><span class="pr">139,-</span></div>
+      <div class="item"><div><span class="nm">29. Indbagt kylling</span><span class="ds">Med sur-sød sauce.</span></div><span class="dots"></span><span class="pr">139,-</span></div>
+    </div>
+    <div class="mcat"><h3>And</h3></div>
+    <div class="items">
+      <div class="item"><div><span class="nm">30. And à la Peking</span><span class="ds">Med bambusskud og champignonsauce.</span></div><span class="dots"></span><span class="pr">159,-</span></div>
+      <div class="item"><div><span class="nm">31. And à la Shanghai</span><span class="ds">Med sød-stærk sauce.</span></div><span class="dots"></span><span class="pr">159,-</span></div>
+      <div class="item"><div><span class="nm">32. And med kinesiske svampe</span></div><span class="dots"></span><span class="pr">159,-</span></div>
+    </div>
+    <div class="mcat"><h3>Børneretter</h3></div>
+    <div class="items">
+      <div class="item"><div><span class="nm">33. Fiskefilet med pommes frites</span></div><span class="dots"></span><span class="pr">89,-</span></div>
+      <div class="item"><div><span class="nm">35. 5 stk. kylling nuggets med pommes frites</span></div><span class="dots"></span><span class="pr">89,-</span></div>
+    </div>
+    <div class="mcat"><h3>Desserter</h3></div>
+    <div class="items">
+      <div class="item"><div><span class="nm">42. Is med flødeskum</span></div><span class="dots"></span><span class="pr">59,-</span></div>
+      <div class="item"><div><span class="nm">43. Bananasplit</span></div><span class="dots"></span><span class="pr">79,-</span></div>
+    </div>
+  </div>
+
+  <!-- BUFFET -->
+  <div class="panel" id="buffet">
+    <div class="menu-head"><div class="kicker" style="justify-content:center">Hver fredag & lørdag · 18.00–21.00</div><h2>Eksotisk <em>buffet</em> for hele familien</h2><p>Kinesisk ta' selv-buffet med dagens suppe og 10 varme retter.</p></div>
+    <div class="feature-box">
+      <h3>Spis alt hvad hjertet begærer</h3>
+      <p style="margin-top:10px;color:#5e4f43">Som forret serveres dagens suppe, og derefter kan du vælge mellem 10 eksotiske varme retter. Hyggelige rammer, hele familien samlet.</p>
+      <div class="big">178,- <span style="font-size:1rem;color:var(--muted);font-family:'Karla',sans-serif">pr. person</span></div>
+      <div class="items" style="margin-top:18px">
+        <div class="item"><div><span class="nm">Børn 4 – 10 år</span></div><span class="dots"></span><span class="pr">98,-</span></div>
+        <div class="item"><div><span class="nm">Børn 1 – 3 år</span></div><span class="dots"></span><span class="pr">40,-</span></div>
+      </div>
+      <p style="margin-top:16px;font-style:italic;color:#5e4f43">Bemærk: vi har ikke take away. Ring venligst hvis du ankommer efter kl. 19.45.</p>
+    </div>
+  </div>
+
+  <div class="cta-foot">
+    <h3>Bestil bord til en smagsfuld aften</h3>
+    <a class="phone" href="tel:+4540370311">+45 40 37 03 11</a>
+    <div><a class="btn btn-gold" href="kontakt.html">Find vej & kontakt</a></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div class="foot-grid">
+    <div><div class="brand"><span class="cn" style="font-family:'Fraunces',serif;font-size:1.4rem;color:var(--gold-soft)">China House</span></div>
+      <p style="margin-top:14px;max-width:34ch;color:#b6a48f">Kinesisk restaurant i hjertet af Marstal på Ærø. Hyggelige lokaler, varme farver og ægte kinesisk køkken.</p></div>
+    <div><h5>Restauranten</h5><ul><li><a href="menukort.html">Menukort</a></li><li><a href="vinkort.html">Vinkort</a></li><li><a href="selskaber.html">Selskaber</a></li><li><a href="galleri.html">Galleri</a></li></ul></div>
+    <div><h5>Kontakt</h5><ul><li><a href="tel:+4540370311">+45 40 37 03 11</a></li><li>Kirkestræde 5-7, 5960 Marstal</li><li><a href="http://www.findsmiley.dk/da-DK/Searching/DetailsView.htm?virk=80301977" target="_blank">Se vores Smiley</a></li></ul></div>
+  </div>
+  <div class="foot-bottom"><span>© China House Marstal</span><span>Designforslag · WilbrandtWorks</span></div>
+</div></footer>
+
+<script>
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
+  document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(x=>x.classList.remove('active'));
+  t.classList.add('active');
+  document.getElementById(t.dataset.t).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}));
+if(location.hash==='#buffet'){document.querySelector('[data-t=buffet]').click()}
+</script>
+</body>
+</html>

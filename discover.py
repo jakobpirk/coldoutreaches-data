@@ -89,8 +89,10 @@ out tags center;
 
 
 def overpass_query_dk(bbox: tuple[float, float, float, float]) -> str:
-    """Smaller query for big regions — only entries with a website tag,
-    since we need website to score anyway and this cuts volume ~70%."""
+    """Nationwide region query — tradesmen (craft=*) with a website ONLY.
+    This is the segment we target, and dropping shops/offices/restaurants cuts
+    the query volume hugely, which avoids the 504/429 throttling on the public
+    Overpass servers."""
     s, w, n, e = bbox
     box = f"{s},{w},{n},{e}"
     return f"""
@@ -98,14 +100,6 @@ def overpass_query_dk(bbox: tuple[float, float, float, float]) -> str:
 (
   node["craft"]({box})["website"];
   way["craft"]({box})["website"];
-  node["shop"]({box})["website"];
-  way["shop"]({box})["website"];
-  node["office"]({box})["website"];
-  way["office"]({box})["website"];
-  node["healthcare"]({box})["website"];
-  way["healthcare"]({box})["website"];
-  node["amenity"~"^(dentist|veterinary|restaurant|cafe|pharmacy|fast_food|pub|bar|car_wash|car_rental|driving_school|fuel)$"]({box})["website"];
-  way["amenity"~"^(dentist|veterinary|restaurant|cafe|pharmacy|fast_food|pub|bar|car_wash|car_rental|driving_school|fuel)$"]({box})["website"];
 );
 out tags center;
 """.strip()
@@ -180,7 +174,7 @@ def discover(area: str = "svendborg", out_path: str = None) -> list[dict]:
                 elements += _fetch_one_bbox(bbox, overpass_query_dk, label, timeout=180)
             except Exception as e:
                 print(f"    region {label} FAILED: {e!r}", file=sys.stderr)
-            time.sleep(2)  # be polite to free Overpass server
+            time.sleep(6)  # be polite to the free Overpass servers (avoid 429)
     else:
         elements = _fetch_one_bbox(AREAS[area], overpass_query, area, timeout=120)
     print(f"  raw elements total: {len(elements)}", file=sys.stderr)

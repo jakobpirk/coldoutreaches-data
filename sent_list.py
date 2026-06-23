@@ -25,14 +25,12 @@ def main():
     M.starttls()
     M.login(USER, PASS)
 
-    # find the Sent folder (name + delimiter vary by provider)
-    import re
+    # find the Sent folder — the mailbox name is the last token on the LIST line
     sent, folders = None, M.list()[1]
     for raw in folders:
         line = raw.decode(errors="ignore")
-        names = re.findall(r'"([^"]*)"', line)        # last quoted token = folder name
-        folder = names[-1] if names else line.split()[-1]
-        if "\\Sent" in line or "sent" in folder.lower():
+        folder = line.rsplit(None, 1)[-1].strip('"')
+        if "\\Sent" in line or folder.lower() in ("sent", "sent items", "inbox.sent"):
             sent = folder
             break
     if not sent:
@@ -41,7 +39,10 @@ def main():
             print("  ", raw.decode(errors="ignore"))
         return
 
-    M.select(f'"{sent}"', readonly=True)
+    typ, _ = M.select(f'"{sent}"', readonly=True)
+    if typ != "OK":
+        print(f"could not select Sent folder '{sent}'")
+        return
     ids = M.search(None, "ALL")[1][0].split()
     print(f"# {len(ids)} messages in '{sent}'\n")
     seen = set()

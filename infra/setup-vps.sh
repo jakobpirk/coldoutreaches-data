@@ -36,6 +36,10 @@ mkdir -p "$APP_DIR" && cd "$APP_DIR"
 if [ -n "$REPO" ]; then git clone "$REPO" . ; else echo "  (copy your project files into $APP_DIR)"; fi
 mkdir -p data
 
+echo "==> install bundled Claude skills (frontend-design) for claude -p"
+mkdir -p /root/.claude/skills
+cp -r skills/* /root/.claude/skills/ 2>/dev/null || true
+
 cat <<'NEXT'
 
 ==> Done. Next steps:

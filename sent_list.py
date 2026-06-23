@@ -25,16 +25,19 @@ def main():
     M.starttls()
     M.login(USER, PASS)
 
-    # find the Sent folder (name varies by provider)
-    sent = None
-    for raw in M.list()[1]:
-        name = raw.decode(errors="ignore")
-        if "sent" in name.lower():
-            sent = name.split(' "/" ')[-1].strip().strip('"')
+    # find the Sent folder (name + delimiter vary by provider)
+    import re
+    sent, folders = None, M.list()[1]
+    for raw in folders:
+        line = raw.decode(errors="ignore")
+        names = re.findall(r'"([^"]*)"', line)        # last quoted token = folder name
+        folder = names[-1] if names else line.split()[-1]
+        if "\\Sent" in line or "sent" in folder.lower():
+            sent = folder
             break
     if not sent:
         print("Could not find a Sent folder. Folders are:")
-        for raw in M.list()[1]:
+        for raw in folders:
             print("  ", raw.decode(errors="ignore"))
         return
 

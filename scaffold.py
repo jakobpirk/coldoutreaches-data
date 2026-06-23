@@ -72,19 +72,28 @@ this demo is the pitch, so it must look clearly better than what they have.
 ## What's wrong with the current site (why we're pitching)
 Verdict: **{verdict}**. {reasons}
 
-## Source material
-- Current site: {site}  ← pull their real content from here: business name,
-  what they offer, opening hours, address, phone, and any usable photos.
-- `seed.json` in this folder has the structured contact data we already hold.
-- Keep all copy in **Danish**, matching the tone of a {cat} business.
+## Use THEIR content — this is a re-skin, not a rewrite
+The pitch is "your own content, finally looking good." So preserve what they have:
+- **Fetch their current site ({site})** and reuse their **real text** — services,
+  about, opening hours, prices, history. Tidy and re-typeset it; do NOT invent,
+  replace, or pad it with generic marketing copy.
+- **Reuse their real images.** Pull the actual photos from their current site and
+  use them (reference the original URLs, or save them into this folder). Only fall
+  back to tasteful placeholders where they genuinely have no usable image.
+- **Mirror their pages.** If the original has several pages (menu, about, gallery,
+  contact), recreate those same pages and keep the same information architecture.
+- `seed.json` has the structured contact data we already hold.
+- Keep all copy in **Danish**, in the tone of a {cat} business.
 
 ## Requirements
-- Mobile-first, fast, accessible; a single polished landing page is enough.
-- Sections to consider: hero, about, products/services, opening hours,
-  gallery, contact (phone/email/address + map link).
-- Use their real photos where available; otherwise tasteful placeholders.
-- Reflect the character of the business (e.g. warm/rustic for a farm shop,
-  elegant for a jeweller) — not a generic SaaS look.
+- Mobile-first, fast, accessible. Recreate their page structure (not just one
+  landing page) when the original has multiple pages.
+- Per page, keep the sections the original has: hero, about, products/services,
+  opening hours, gallery, contact (phone/email/address + map link).
+- Reflect the character of the business (warm/rustic for a farm shop, elegant for
+  a jeweller) — never a generic SaaS look.
+- **The test:** the owner should instantly recognise it as *their* site — same
+  content, same photos — just dramatically better designed.
 
 ## Output
 - Write the finished site into this folder (`index.html` + assets).

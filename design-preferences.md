@@ -8,8 +8,11 @@ keep vs. bin). Part of the learning loop.
 - Mobile-first, fast, accessible. A single polished landing page is usually enough.
 - Reflect the **character of the business** (rustic/warm for a farm shop, elegant
   for a jeweller, fresh for a café) — never a generic SaaS/startup look.
-- Use the business's **real content and photos** (from the seed / their old site);
-  tasteful placeholders only where nothing exists.
+- **Re-skin, don't rewrite.** Reuse their **real text, real images, and page
+  structure** from their current site — same content, just beautifully presented.
+  Fetch their site, pull their photos, recreate their pages. Placeholders only
+  where they genuinely have no usable content/image. The owner must recognise it
+  as *their* site.
 - Danish copy throughout.
 - Clearly better than the site we're replacing — this demo is the pitch.
 

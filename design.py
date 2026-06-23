@@ -21,11 +21,14 @@ DESIGN_TOOLS = os.environ.get("DESIGN_TOOLS", "Read Edit Write WebFetch")
 PROMPT = (
     "Design and build this business's website now. Read CLAUDE.md and seed.json "
     "in this folder for the brief, contact details and content. Use the "
-    "frontend-design skill. Pull the business's real content from the URL in the "
-    "brief where useful. Write the finished static site into this folder, "
-    "replacing the placeholder index.html (plus any CSS/JS/asset files you need). "
-    "All copy in Danish. Make it clearly better than their current site. Do not "
-    "run git or shell commands — only create/edit files."
+    "frontend-design skill. IMPORTANT: this is a re-skin of THEIR content, not a "
+    "rewrite — fetch their current site (URL in the brief), reuse their real text, "
+    "their real images, and their page structure; recreate their multiple pages if "
+    "they have them. Don't invent copy or swap in stock photos unless they have "
+    "none. Write the finished static site into this folder, replacing the "
+    "placeholder index.html (plus CSS/JS/asset/extra pages as needed). All copy in "
+    "Danish. The owner should recognise it as their own site, just far better "
+    "designed. Do not run git or shell commands — only create/edit files."
 )
 
 

@@ -11,6 +11,9 @@ PREP_LIMIT="${PREP_LIMIT:-12}"          # cap claude -p work to protect the week
 
 log(){ echo "[nightly $(date -Is)] $*"; }
 
+log "pull agent guidance from Notion"
+python3 pull_guidance.py || true
+
 log "scan area=$AREA"
 python3 run_scan.py --area "$AREA"
 
@@ -19,6 +22,14 @@ python3 prep.py --limit "$PREP_LIMIT"
 
 log "sync qualified leads to Notion"
 python3 notion_sync.py
+
+# auto-pick the top ugly/borderline leads and build their demos (opt-in: set DEMO_LIMIT>0 in .env)
+if [ "${DEMO_LIMIT:-0}" -gt 0 ]; then
+  log "auto-building up to ${DEMO_LIMIT} demos (deploy + design)"
+  python3 select_demos.py --limit "$DEMO_LIMIT" || true
+  python3 prep.py --stage draft || true      # draft outreach for the freshly built demos
+  python3 notion_sync.py
+fi
 
 # snapshot the DB into the private data repo so state persists across runs
 if [ -d .git ]; then

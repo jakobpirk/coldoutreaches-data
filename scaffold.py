@@ -58,6 +58,12 @@ def build_brief(lead: dict) -> str:
     city = lead.get("city") or "Sydfyn"
     verdict = lead.get("cls_verdict") or "?"
     reasons = lead.get("cls_reasons") or ""
+    prefs = ""
+    try:
+        prefs = ("\n\n## House design guidance (kept in sync from Notion)\n"
+                 + open("design-preferences.md", encoding="utf-8").read())
+    except FileNotFoundError:
+        pass
     return f"""# Design brief — {name}
 
 You are redesigning the website for **{name}**, a local Danish business
@@ -98,7 +104,7 @@ The pitch is "your own content, finally looking good." So preserve what they hav
 ## Output
 - Write the finished site into this folder (`index.html` + assets).
 - When you commit, Render auto-deploys the preview; review it as a live page.
-"""
+{prefs}"""
 
 
 def scaffold(lead_id: int, out_root: str) -> str:

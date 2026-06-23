@@ -14,11 +14,17 @@ log(){ echo "[nightly $(date -Is)] $*"; }
 log "pull agent guidance from Notion"
 python3 pull_guidance.py || true
 
+log "check inbox (replies, tickets, follow-ups) — only new mail"
+python3 inbox_poll.py || true
+
 log "scan area=$AREA"
 python3 run_scan.py --area "$AREA"
 
 log "prep (claude -p classify/research/draft), limit=$PREP_LIMIT"
 python3 prep.py --limit "$PREP_LIMIT"
+
+log "maintain follow-ups (10-day nudges + outbox drafts + 3-month expiry)"
+python3 followups.py || true
 
 log "sync qualified leads to Notion"
 python3 notion_sync.py
@@ -30,6 +36,9 @@ if [ "${DEMO_LIMIT:-0}" -gt 0 ]; then
   python3 prep.py --stage draft || true      # draft outreach for the freshly built demos
   python3 notion_sync.py
 fi
+
+log "send approved outbox emails (the 'Send now' ticks)"
+python3 send_outbox.py || true
 
 # snapshot the DB into the private data repo so state persists across runs
 if [ -d .git ]; then

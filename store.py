@@ -196,6 +196,16 @@ CREATE TABLE IF NOT EXISTS lead_events (
     note TEXT,
     FOREIGN KEY (lead_id) REFERENCES leads(id)
 );
+
+CREATE TABLE IF NOT EXISTS messages (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    lead_id INTEGER NOT NULL,
+    ts TEXT,
+    direction TEXT,   -- 'in' or 'out'
+    subject TEXT,
+    body TEXT,
+    synced INTEGER DEFAULT 0
+);
 """
 
 
@@ -209,6 +219,11 @@ def connect(path: str = DB_PATH) -> sqlite3.Connection:
 
 def init(con: sqlite3.Connection) -> None:
     con.executescript(SCHEMA)
+    for col in ("next_action TEXT", "followup_date TEXT", "nudged_at TEXT"):
+        try:
+            con.execute(f"ALTER TABLE leads ADD COLUMN {col}")
+        except sqlite3.OperationalError:
+            pass
     con.commit()
 
 
@@ -318,6 +333,13 @@ def _log(con, lead_id, src, dst, note):
     con.execute(
         "INSERT INTO lead_events (lead_id, ts, from_state, to_state, note) VALUES (?,?,?,?,?)",
         (lead_id, now(), src, dst, note))
+
+
+def log_message(con, lead_id, direction, subject, body):
+    """Record an email (in/out) against a lead — synced to its Notion page."""
+    con.execute("INSERT INTO messages (lead_id, ts, direction, subject, body) VALUES (?,?,?,?,?)",
+                (lead_id, now(), direction, subject, (body or "")[:4000]))
+    con.commit()
 
 
 def stats(con: sqlite3.Connection) -> None:

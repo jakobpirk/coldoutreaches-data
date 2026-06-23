@@ -80,6 +80,9 @@ def lead_to_properties(row: sqlite3.Row) -> dict:
         "Category": {"rich_text": _rt(f"{row['category']}/{row['subcategory']}")},
         "Email draft": {"rich_text": _rt(row["email_draft"])},
         "Reasons": {"rich_text": _rt(row["cls_reasons"])},
+        "Next action": {"rich_text": _rt(row["next_action"])},
+        "Follow-up date": ({"date": {"start": row["followup_date"]}}
+                           if row["followup_date"] else {"date": None}),
     }
 
 
@@ -117,9 +120,45 @@ def upsert(requests, row) -> str:
     return action
 
 
+def sync_messages(requests, con):
+    """Append new email messages (in/out) as blocks on each lead's Notion page,
+    so the full correspondence lives on the lead — no inbox needed."""
+    from collections import defaultdict
+    rows = con.execute("SELECT * FROM messages WHERE synced=0 ORDER BY id").fetchall()
+    if not rows:
+        return
+    by_lead = defaultdict(list)
+    for r in rows:
+        by_lead[r["lead_id"]].append(r)
+    pushed = 0
+    for lead_id, msgs in by_lead.items():
+        page_id = find_page(requests, lead_id)
+        if not page_id:
+            continue
+        children = []
+        for m in msgs:
+            head = ("📥 Modtaget" if m["direction"] == "in" else "📤 Sendt") + \
+                   f" · {(m['ts'] or '')[:16]} · {(m['subject'] or '')[:120]}"
+            children.append({"object": "block", "type": "heading_3",
+                             "heading_3": {"rich_text": [{"type": "text", "text": {"content": head[:200]}}]}})
+            body = m["body"] or "(tom)"
+            for i in range(0, len(body), 1900):
+                children.append({"object": "block", "type": "paragraph",
+                                 "paragraph": {"rich_text": [{"type": "text", "text": {"content": body[i:i+1900]}}]}})
+        for i in range(0, len(children), 100):
+            requests.patch(f"{API}/blocks/{page_id}/children", headers=HEADERS,
+                           json={"children": children[i:i+100]})
+        con.execute("UPDATE messages SET synced=1 WHERE id IN (%s)" %
+                    ",".join(str(m["id"]) for m in msgs))
+        pushed += len(msgs)
+    con.commit()
+    print(f"  appended {pushed} messages to lead pages")
+
+
 def sync(only_qualified=True):
     requests = _require_creds()
     con = store.connect()
+    store.init(con)
     sql = "SELECT * FROM leads WHERE state != 'rejected'"
     if only_qualified:
         sql += " AND qualified=1"
@@ -128,6 +167,7 @@ def sync(only_qualified=True):
     counts = {"created": 0, "updated": 0}
     for row in rows:
         counts[upsert(requests, row)] += 1
+    sync_messages(requests, con)
     print(f"synced {len(rows)} leads -> {counts}")
 
 

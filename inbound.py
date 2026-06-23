@@ -58,8 +58,11 @@ def classify_reply(email):
 Subject: {email.get('subject')}
 Body: \"\"\"{email.get('body','')[:1200]}\"\"\"
 Output JSON: {{"sentiment":"interested|not_interested|question|auto_reply",
-"summary":"<one sentence>"}}""")
+"summary":"<one sentence>",
+"followup_date":"<ISO date YYYY-MM-DD if a follow-up is warranted (e.g. they say they'll come back later), else empty>",
+"next_action":"<short Danish next step, or empty>"}}""")
     except Exception:
+        import datetime
         t = f"{email.get('subject','')} {email.get('body','')}".lower()
         if any(w in t for w in ("nej tak", "ikke interesseret", "ellers tak", "frabeder", "afmeld")):
             s = "not_interested"
@@ -67,7 +70,10 @@ Output JSON: {{"sentiment":"interested|not_interested|question|auto_reply",
             s = "question"
         else:
             s = "interested"
-        return {"sentiment": s, "summary": email.get("body", "")[:120].replace("\n", " ")}
+        fu = ((datetime.date.today() + datetime.timedelta(days=14)).isoformat()
+              if s in ("interested", "question") else "")
+        return {"sentiment": s, "summary": email.get("body", "")[:120].replace("\n", " "),
+                "followup_date": fu, "next_action": "Følg op" if fu else ""}
 
 
 def classify_ticket(email, customer):
@@ -111,8 +117,13 @@ def route(con, email):
                 store.move(con, lead["id"], "replied", note=f"reply: {c['sentiment']}")
             except SystemExit:
                 pass
+        if c.get("followup_date") or c.get("next_action"):
+            con.execute("UPDATE leads SET followup_date=COALESCE(?,followup_date), "
+                        "next_action=COALESCE(?,next_action) WHERE id=?",
+                        (c.get("followup_date") or None, c.get("next_action") or None, lead["id"]))
+            con.commit()
         print(f"[inbound] prospect_reply from {lead['name']} -> sentiment={c['sentiment']}; "
-              f"lead #{lead['id']} -> replied. (notion_sync pushes the new status.)")
+              f"lead #{lead['id']} -> replied; follow-up={c.get('followup_date') or '-'}.")
         return {"route": "prospect_reply", **c}
 
     # kind == customer

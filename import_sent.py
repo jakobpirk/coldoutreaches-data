@@ -88,6 +88,11 @@ def main():
         upsert(con, domain, email, "sent", "", ts)
     for domain, email, state, contact in GMAIL:
         upsert(con, domain, email, state, contact, ts)
+    # (follow-up nudges for sent no-reply leads are set by followups.py)
+    # warm lead: Svendborg Vingaard said he'd come back in July
+    con.execute("UPDATE leads SET followup_date=?, next_action=?, nudged_at=? WHERE dedup_key=?",
+                ("2026-07-31", "Følg op — Christian vender tilbage i juli", now(),
+                 "url:svendborgvingaard.dk"))
     con.commit()
     total = len(TRADES) + len(GMAIL)
     print(f"imported {total} contacted businesses "

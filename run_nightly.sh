@@ -37,6 +37,9 @@ if [ "${DEMO_LIMIT:-0}" -gt 0 ]; then
   python3 notion_sync.py
 fi
 
+log "auto-fix small support tickets (branch -> PR; never production)"
+python3 fix_agent.py --limit "${FIX_LIMIT:-2}" || true
+
 log "send approved outbox emails (the 'Send now' ticks)"
 python3 send_outbox.py || true
 

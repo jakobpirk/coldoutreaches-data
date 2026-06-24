@@ -159,10 +159,10 @@ def sync(only_qualified=True):
     requests = _require_creds()
     con = store.connect()
     store.init(con)
-    sql = "SELECT * FROM leads WHERE state != 'rejected'"
-    if only_qualified:
-        sql += " AND qualified=1"
-    sql += " ORDER BY score DESC"
+    # only the active pipeline goes to Notion — raw 'scored' leads stay in SQLite.
+    # Keeps the board to what you actually act on, and under Notion's free limit.
+    sql = ("SELECT * FROM leads WHERE state IN "
+           "('demo_live','drafted','sent','replied','won','lost') ORDER BY score DESC")
     rows = con.execute(sql).fetchall()
     counts = {"created": 0, "updated": 0}
     for row in rows:

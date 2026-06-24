@@ -46,10 +46,7 @@ python3 tickets_sync.py || true
 log "send approved outbox emails (the 'Send now' ticks)"
 python3 send_outbox.py || true
 
-# snapshot the DB into the private data repo so state persists across runs
-if [ -d .git ]; then
-  git add -A "$LEADS_DB" 2>/dev/null || true
-  git commit -m "nightly $(date -Is)" >/dev/null 2>&1 || true
-  git push >/dev/null 2>&1 || true
-fi
+# local backup of the DB only — do NOT push from the VPS (it diverges from your
+# code pushes). The live DB persists on the VPS disk regardless.
+cp -f "$LEADS_DB" "${LEADS_DB}.bak" 2>/dev/null || true
 log "done"

@@ -78,8 +78,22 @@ def main():
                          int(lead_id)))
         n += 1
         print(f"  sent to {to}")
+
+    # rejected: tick 'Reject' -> mark the lead rejected, nothing sent
+    rej = 0
+    rr = requests.post(f"{API}/databases/{DB}/query", headers=H,
+                       json={"filter": {"property": "Reject", "checkbox": {"equals": True}}})
+    if rr.ok:
+        for p in rr.json()["results"]:
+            lead_id = (p["properties"].get("Lead ID") or {}).get("number")
+            requests.patch(f"{API}/pages/{p['id']}", headers=H, json={"properties": {
+                "Reject": {"checkbox": False}, "State": {"select": {"name": "rejected"}}}})
+            if lead_id:
+                con.execute("UPDATE leads SET state='rejected', followup_date=NULL, "
+                            "next_action=NULL WHERE id=?", (int(lead_id),))
+            rej += 1
     con.commit()
-    print(f"[outbox] sent {n}")
+    print(f"[outbox] sent {n}, rejected {rej}")
 
 
 if __name__ == "__main__":

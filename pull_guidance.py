@@ -17,6 +17,7 @@ H = {"Authorization": f"Bearer {TOKEN}", "Notion-Version": "2022-06-28"}
 PAGES = {
     "3889aedb-43b4-8155-b223-fcef90bfc570": "classification-feedback.md",  # scoring/selection
     "3889aedb-43b4-8148-b3e1-e91cb6a8c793": "design-preferences.md",        # design
+    "3899aedb-43b4-81c9-b399-dc2e917e25a0": "email-style.md",               # email/outreach
 }
 
 PREFIX = {"heading_1": "# ", "heading_2": "## ", "heading_3": "### ",

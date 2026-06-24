@@ -96,10 +96,11 @@ def overpass_query_dk(bbox: tuple[float, float, float, float]) -> str:
     s, w, n, e = bbox
     box = f"{s},{w},{n},{e}"
     return f"""
-[out:json][timeout:90];
+[out:json][timeout:120];
+area["ISO3166-1"="DK"][admin_level=2]->.dk;
 (
-  node["craft"]({box})["website"];
-  way["craft"]({box})["website"];
+  node["craft"]["website"](area.dk)({box});
+  way["craft"]["website"](area.dk)({box});
 );
 out tags center;
 """.strip()

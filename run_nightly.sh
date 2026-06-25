@@ -17,8 +17,11 @@ python3 pull_guidance.py || true
 log "check inbox (replies, tickets, follow-ups) — only new mail"
 python3 inbox_poll.py || true
 
-log "scan area=$AREA"
-python3 run_scan.py --area "$AREA"
+# Re-query Overpass only once a week (Sunday); other nights reuse the cached lead
+# pool, so we don't hit the public Overpass servers nightly (no more 429s).
+if [ "$(date +%u)" = "7" ]; then DISC=""; else DISC="--skip-discover"; fi
+log "scan area=$AREA ${DISC:-(full discovery)}"
+python3 run_scan.py --area "$AREA" $DISC || true
 
 log "prep (claude -p classify/draft), limit=$PREP_LIMIT"
 python3 prep.py --limit "$PREP_LIMIT" || true

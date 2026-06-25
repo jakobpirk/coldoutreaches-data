@@ -149,10 +149,14 @@ def _fetch_one_bbox(bbox, query_fn, label, timeout):
     q = query_fn(bbox)
     last = None
     for url in OVERPASS_MIRRORS:
-        for attempt in range(2):
+        for attempt in range(3):
             try:
                 r = requests.post(url, data={"data": q}, timeout=timeout,
                                   headers={"User-Agent": USER_AGENT})
+                if r.status_code == 429:
+                    print(f"    429 rate-limited by {url}; waiting 30s", file=sys.stderr)
+                    time.sleep(30)
+                    continue
                 r.raise_for_status()
                 elements = r.json().get("elements", [])
                 print(f"    -> {len(elements)} elements (via {url})", file=sys.stderr)
@@ -161,7 +165,7 @@ def _fetch_one_bbox(bbox, query_fn, label, timeout):
                 last = e
                 print(f"    overpass {url} attempt {attempt+1} failed: {e!r}",
                       file=sys.stderr)
-                time.sleep(3)
+                time.sleep(5)
     raise RuntimeError(f"all Overpass mirrors failed: {last!r}")
 
 

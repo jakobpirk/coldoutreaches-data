@@ -13,6 +13,7 @@ Writes: output/companies.json, output/results.json, and the SQLite store
 """
 from __future__ import annotations
 import sys
+import os
 import json
 import time
 import argparse
@@ -113,7 +114,8 @@ def run(area, workers, top, limit, skip_discover, no_screens, out_dir: Path):
     if not no_screens:
         import screenshot
         screenshot.run(str(out_dir / "results.json"), out_dir / "screenshots",
-                       top=top, workers=6, all_live=False, include_hijacked=False)
+                       top=int(os.environ.get("SHOT_LIMIT", "200")), workers=6,
+                       all_live=False, include_hijacked=False)
         print(f"[scan] linked {store.link_screenshots(con, str(out_dir / 'screenshots'))} screenshots")
 
     store.stats(con)

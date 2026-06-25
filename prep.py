@@ -35,7 +35,12 @@ def claude(prompt: str, timeout: int = 300) -> str:
 
 def _json(text: str) -> dict:
     m = re.search(r"\{.*\}", text, re.S)
-    return json.loads(m.group(0)) if m else {}
+    if not m:
+        return {}
+    try:
+        return json.loads(m.group(0))
+    except Exception:
+        return {}
 
 
 def _read(p: pathlib.Path) -> str:
@@ -117,7 +122,8 @@ def run(stage: str, limit: int):
                         (d.get("verdict"), d.get("confidence"), d.get("reasons"), lead["id"]))
             lead.update(cls_verdict=d.get("verdict"), cls_reasons=d.get("reasons"))
             touched = True
-        if stage in ("all", "research") and not lead.get("contact_person") \
+        if stage in ("all", "research") and os.environ.get("ENABLE_RESEARCH") \
+                and not lead.get("contact_person") \
                 and (lead.get("cls_verdict") in ("ugly", "borderline")):
             d = research(lead)
             con.execute("UPDATE leads SET contact_person=? WHERE id=?",

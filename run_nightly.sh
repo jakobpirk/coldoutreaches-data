@@ -20,14 +20,14 @@ python3 inbox_poll.py || true
 log "scan area=$AREA"
 python3 run_scan.py --area "$AREA"
 
-log "prep (claude -p classify/research/draft), limit=$PREP_LIMIT"
-python3 prep.py --limit "$PREP_LIMIT"
+log "prep (claude -p classify/draft), limit=$PREP_LIMIT"
+python3 prep.py --limit "$PREP_LIMIT" || true
 
 log "maintain follow-ups (10-day nudges + outbox drafts + 3-month expiry)"
 python3 followups.py || true
 
 log "sync qualified leads to Notion"
-python3 notion_sync.py
+python3 notion_sync.py || true
 
 # auto-pick the top ugly/borderline leads and build their demos (opt-in: set DEMO_LIMIT>0 in .env)
 if [ "${DEMO_LIMIT:-0}" -gt 0 ]; then

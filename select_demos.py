@@ -8,7 +8,7 @@ highest score first. Throttle hard — each demo is a full site build.
 
 Called by run_nightly.sh when DEMO_LIMIT > 0.
 """
-import os, argparse
+import os, time, argparse
 import store, deploy, design
 
 
@@ -27,6 +27,7 @@ def run(limit: int):
             deploy.deploy(r["id"])          # -> demo_building (repo + Render)
         except Exception as e:
             print(f"[select] deploy #{r['id']} failed: {e}")
+        time.sleep(8)                       # space out GitHub/Render API calls
     design.run(limit)                       # designs all demo_building leads
 
 

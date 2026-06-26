@@ -11,7 +11,7 @@ requests are bounced to 'needs_you'. Env: GITHUB_TOKEN, GITHUB_ORG.
 """
 import os, subprocess, argparse
 import requests
-import store
+import store, tickets
 
 CLAUDE_CMD = os.environ.get("CLAUDE_CMD", "claude")
 FIX_TOOLS = os.environ.get("FIX_TOOLS", "Read Edit Write")
@@ -71,7 +71,7 @@ def bounce(con, tid, why):
 
 def main(limit):
     con = store.connect()
-    store.init(con)
+    tickets.init(con)   # ensures the tickets table exists (else first-ever run crashes)
     rows = con.execute("SELECT * FROM tickets WHERE auto_fixable=1 AND status='new' "
                        "ORDER BY id LIMIT ?", (limit,)).fetchall()
     for t in rows:

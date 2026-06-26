@@ -29,6 +29,9 @@ python3 prep.py --limit "$PREP_LIMIT" || true
 log "maintain follow-ups (10-day nudges + outbox drafts + 3-month expiry)"
 python3 followups.py || true
 
+log "harvest missing contact emails from lead websites"
+python3 harvest_emails.py --limit "${HARVEST_LIMIT:-40}" || true
+
 log "sync qualified leads to Notion"
 python3 notion_sync.py || true
 

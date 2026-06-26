@@ -11,7 +11,7 @@ Render must have access to your GitHub repos: connect Render <-> GitHub once and
 grant it access to *all* repos (so newly created ones are reachable).
 """
 from __future__ import annotations
-import os, sys, subprocess
+import os, sys, subprocess, time
 import requests
 import store, scaffold
 
@@ -66,11 +66,18 @@ def create_render_site(name: str, repo_url: str, owner: str) -> str:
     body = {"type": "static_site", "name": name, "ownerId": owner, "repo": repo_url,
             "branch": "main", "autoDeploy": "yes",
             "serviceDetails": {"buildCommand": "", "publishPath": "."}}
-    r = requests.post(f"{RENDER}/services", headers=_rh(), json=body)
-    if not r.ok:
-        raise RuntimeError(f"Render create {r.status_code}: {r.text[:300]}")
-    svc = r.json().get("service", r.json())
-    return (svc.get("serviceDetails") or {}).get("url") or f"https://{name}.onrender.com"
+    for attempt in range(6):
+        r = requests.post(f"{RENDER}/services", headers=_rh(), json=body)
+        if r.status_code == 429:
+            wait = 15 * (attempt + 1)
+            print(f"  Render 429 (rate limit); waiting {wait}s", flush=True)
+            time.sleep(wait)
+            continue
+        if not r.ok:
+            raise RuntimeError(f"Render create {r.status_code}: {r.text[:300]}")
+        svc = r.json().get("service", r.json())
+        return (svc.get("serviceDetails") or {}).get("url") or f"https://{name}.onrender.com"
+    raise RuntimeError("Render create failed after retries (persistent 429)")
 
 
 def deploy(lead_id: int) -> str:

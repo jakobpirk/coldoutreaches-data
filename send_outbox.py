@@ -28,7 +28,7 @@ def rt(prop):
 
 
 def parse(draft):
-    subj, body = "Opfølgning", draft or ""
+    subj, body = "Opfolgning", draft or ""
     if body.lower().startswith("subject:"):
         line, _, rest = body.partition("\n")
         subj = line.split(":", 1)[1].strip()
@@ -41,8 +41,6 @@ def send(to, subj, body):
     msg["From"] = USER
     msg["To"] = to
     msg["Subject"] = subj
-    # Date + Message-ID matter for deliverability — without them some receiving
-    # servers silently drop the mail or route it straight to spam.
     msg["Date"] = formatdate(localtime=True)
     msg["Message-ID"] = make_msgid(domain="wilbrandtworks.dk")
     msg.set_content(body)
@@ -53,26 +51,34 @@ def send(to, subj, body):
     return msg
 
 
+def _folder_name(line):
+    line = line.rstrip()
+    if line.endswith('"'):
+        return line.rsplit('"', 2)[-2]
+    return line.rsplit(None, 1)[-1]
+
+
 def save_to_sent(msg):
-    """APPEND a copy to the Simply 'Sent' folder so it shows in webmail.
-    Best-effort — never let a Sent-copy failure look like a send failure."""
     try:
         m = imaplib.IMAP4(IMAP_HOST, IMAP_PORT)
         m.starttls(ssl_context=ssl.create_default_context())
         m.login(USER, PASS)
-        # Find the Sent folder (Dovecot naming varies between hosts).
         target = None
         typ, boxes = m.list()
-        if typ == "OK":
+        if typ == "OK" and boxes:
             for b in boxes:
-                line = b.decode(errors="ignore")
-                name = line.split(' "')[-1].strip().strip('"')
-                if name.lower().split("/")[-1].split(".")[-1] in ("sent", "sent messages", "sent items"):
-                    target = name
+                if "\\Sent" in b.decode(errors="ignore"):
+                    target = _folder_name(b.decode(errors="ignore"))
                     break
+            if not target:
+                for b in boxes:
+                    nm = _folder_name(b.decode(errors="ignore"))
+                    if nm.lower().split(".")[-1] in ("sent", "sendt", "sent messages", "sent items"):
+                        target = nm
+                        break
         target = target or "Sent"
-        m.append(target, "(\\Seen)", imaplib.Time2Internaldate(datetime.datetime.now()),
-                 msg.as_bytes())
+        when = imaplib.Time2Internaldate(datetime.datetime.now(datetime.timezone.utc))
+        m.append(target, "(\\Seen)", when, msg.as_bytes())
         m.logout()
         return True
     except Exception as e:
@@ -98,7 +104,7 @@ def main():
             print(f"  skip {name or p['id'][:8]} (no email AND no draft)")
             continue
         if not to:
-            print(f"  skip {name or p['id'][:8]} (no email address on file — can't send)")
+            print(f"  skip {name or p['id'][:8]} (no email address on file - can't send)")
             continue
         if not draft:
             print(f"  skip {name or p['id'][:8]} (no Email draft)")
@@ -122,7 +128,6 @@ def main():
         n += 1
         print(f"  sent to {to}")
 
-    # rejected: tick 'Reject' -> mark the lead rejected, nothing sent
     rej = 0
     rr = requests.post(f"{API}/databases/{DB}/query", headers=H,
                        json={"filter": {"property": "Reject", "checkbox": {"equals": True}}})

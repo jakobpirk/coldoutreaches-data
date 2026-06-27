@@ -6,7 +6,7 @@ act like an editable CLAUDE.md for the agents.
 Runs at the start of the nightly job (before scoring) and before designing.
 Env: NOTION_TOKEN.
 """
-import os, pathlib
+import os, json, pathlib
 import requests
 
 TOKEN = os.environ["NOTION_TOKEN"]
@@ -48,8 +48,19 @@ def page_text(page_id: str) -> str:
     return ("\n".join(out)).strip()
 
 
+def _extra_pages():
+    """The reply-templates page id is created at runtime (setup_replies.py) and
+    stored in data/reply_ids.json, so merge it in if present."""
+    ids = pathlib.Path("data/reply_ids.json")
+    if ids.exists():
+        tp = json.loads(ids.read_text()).get("templates_page")
+        if tp:
+            return {tp: "reply-templates.md"}
+    return {}
+
+
 def main():
-    for pid, fname in PAGES.items():
+    for pid, fname in {**PAGES, **_extra_pages()}.items():
         try:
             txt = page_text(pid)
         except Exception as e:

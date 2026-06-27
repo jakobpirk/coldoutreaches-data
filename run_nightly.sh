@@ -32,6 +32,9 @@ python3 followups.py || true
 log "harvest missing contact emails from lead websites"
 python3 harvest_emails.py --limit "${HARVEST_LIMIT:-40}" || true
 
+log "check demo liveness (heal blank demo_url + flag dead previews)"
+python3 check_demos.py || true
+
 log "sync qualified leads to Notion"
 python3 notion_sync.py || true
 

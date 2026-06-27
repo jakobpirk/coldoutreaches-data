@@ -219,7 +219,8 @@ def connect(path: str = DB_PATH) -> sqlite3.Connection:
 
 def init(con: sqlite3.Connection) -> None:
     con.executescript(SCHEMA)
-    for col in ("next_action TEXT", "followup_date TEXT", "nudged_at TEXT"):
+    for col in ("next_action TEXT", "followup_date TEXT", "nudged_at TEXT",
+                "demo_status TEXT", "demo_checked_at TEXT"):
         try:
             con.execute(f"ALTER TABLE leads ADD COLUMN {col}")
         except sqlite3.OperationalError:
@@ -335,10 +336,34 @@ def _log(con, lead_id, src, dst, note):
         (lead_id, now(), src, dst, note))
 
 
+# Hosts we deploy demo previews on. A non-WW link to one of these inside an
+# outgoing mail IS the demo we pitched, so we can recover demo_url from the body.
+DEMO_HOSTS = ("pages.dev", "onrender.com", "netlify.app", "vercel.app", "github.io")
+
+
+def extract_demo_url(body: str) -> str | None:
+    """First demo-preview link in an email body (not our own site), or None."""
+    for u in re.findall(r"https?://[^\s>)\]\"']+", body or ""):
+        u = u.rstrip(".,) ")
+        if "wilbrandtworks" in u:
+            continue
+        if any(h in u for h in DEMO_HOSTS):
+            return u
+    return None
+
+
 def log_message(con, lead_id, direction, subject, body):
-    """Record an email (in/out) against a lead — synced to its Notion page."""
+    """Record an email (in/out) against a lead — synced to its Notion page.
+    Self-heals demo_url: if an outgoing mail carries a demo link and the lead has
+    none on file, capture it — so the structured field never goes blank again
+    regardless of how the lead was onboarded (manual/backfill/automated)."""
     con.execute("INSERT INTO messages (lead_id, ts, direction, subject, body) VALUES (?,?,?,?,?)",
                 (lead_id, now(), direction, subject, (body or "")[:4000]))
+    if direction == "out":
+        u = extract_demo_url(body)
+        if u:
+            con.execute("UPDATE leads SET demo_url=COALESCE(NULLIF(demo_url,''),?) WHERE id=?",
+                        (u, lead_id))
     con.commit()
 
 

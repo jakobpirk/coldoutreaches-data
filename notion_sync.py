@@ -46,6 +46,8 @@ PROPERTY_SCHEMA = {
     "Confidence": {"number": {}},
     "Original site": {"url": {}},
     "Demo site": {"url": {}},
+    "Demo status": {"select": {"options": [
+        {"name": "live"}, {"name": "offline"}, {"name": "none"}]}},
     "Screenshot": {"url": {}},
     "Contact person": {"rich_text": {}},
     "Email address": {"email": {}},
@@ -73,6 +75,8 @@ def lead_to_properties(row: sqlite3.Row) -> dict:
         "Confidence": {"number": row["cls_confidence"]},
         "Original site": {"url": row["final_url"] or row["website"] or None},
         "Demo site": {"url": row["demo_url"] or None},
+        "Demo status": ({"select": {"name": row["demo_status"]}}
+                        if row["demo_status"] else {"select": None}),
         "Contact person": {"rich_text": _rt(row["contact_person"])},
         "Email address": {"email": row["email"] or None},
         "Phone": {"phone_number": row["phone"] or None},

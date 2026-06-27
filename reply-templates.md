@@ -18,6 +18,18 @@ Skabelon: Vær varm og konkret. Peg på demoen hvis der findes en. Foreslå et k
 Beskrivelse: Kunden takker nej, er ikke interesseret, eller vil beholde deres nuværende løsning.
 Skabelon: Anerkend pænt og uden pres. Tak for svaret, lad døren stå på klem hvis de skulle ombestemme sig. Kort.
 
+## aftale_accepteret
+Beskrivelse: Kunden ACCEPTERER tilbuddet / siger ja til at vi går i gang (fx "ja tak", "lad os køre", "det lyder godt, kom i gang", "vi tager imod tilbuddet"). En aftale lukkes.
+Skabelon: Tak varmt for accepten. Bed kunden beskrive de ønskede ændringer ift. demoen så udførligt som muligt — farver, tekster, rækkefølge på afsnit, billeder, kontaktinfo. Bed dem gerne tage screenshots af demoen og tegne pile/markeringer på det, der skal ændres. Fortæl at de bare kan svare på denne mail, og at jeg går i gang, så snart jeg har deres ønsker.
+
+## ændringsønsker
+Beskrivelse: En KENDT kunde (aftale lukket / i gang) beskriver konkrete ændringer de vil have lavet på demoen/siden.
+Skabelon: Kvittér kort for ændringerne, bekræft at du går i gang med at rette demoen, og at du sender et opdateret link, når det er klart. Lov ikke en præcis deadline.
+
+## design_godkendt
+Beskrivelse: Kunden GODKENDER designet / siger det er færdigt og godt (fx "det ser perfekt ud", "det er godkendt", "sådan skal det være", "ikke flere ændringer").
+Skabelon: Tak for godkendelsen. Bekræft at designet er godkendt, og fortæl kort hvad næste skridt er (at få siden gjort klar/sat live). Hold det kort og positivt.
+
 ## andet
 Beskrivelse: En mail der kræver et menneskeligt svar, men ikke passer i de andre kategorier (generelt spørgsmål, tak, praktisk osv.).
 Skabelon: Skriv et kort, hjælpsomt og venligt svar der passer til indholdet. Lov ikke noget konkret du ikke kan holde.

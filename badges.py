@@ -22,7 +22,8 @@ API = "https://api.notion.com/v1"
 H = {"Authorization": f"Bearer {os.environ.get('NOTION_TOKEN','')}",
      "Notion-Version": "2022-06-28", "Content-Type": "application/json"}
 DB = os.environ.get("NOTION_DB_ID")
-ACTIVE = ("demo_live", "drafted", "sent", "replied", "won", "lost")
+ACTIVE = ("demo_live", "drafted", "sent", "replied", "won",
+          "iterating", "impl_approved", "lost")
 
 # canonical badges (names must not contain commas — Notion multi-select rule)
 BADGE_COLORS = {
@@ -31,13 +32,14 @@ BADGE_COLORS = {
     "Tilbud sendt": "purple", "Mangler opfølgning": "orange",
     "Demo klar": "green", "Mangler email": "orange", "Demo offline": "red",
     "Interesseret": "blue", "Ikke interesseret": "brown",
+    # delivery / iteration loop
+    "Afventer ændringsønsker": "yellow", "Ændringer modtaget": "blue",
+    "Review-iteration": "purple", "Implementation godkendt": "green",
 }
 
 
 def compute_badges(con, lead) -> list[str]:
     state = lead["state"]
-    if state == "won":
-        return ["Aftale lukket"]
     if state == "lost":
         return ["Tabt"]
     if state == "rejected":
@@ -49,6 +51,19 @@ def compute_badges(con, lead) -> list[str]:
     has_in = "in" in dirs
     last_dir = dirs[0] if dirs else None
     today = dt.date.today().isoformat()
+
+    # post-close delivery loop
+    if state == "impl_approved":
+        return ["Implementation godkendt"]
+    if state == "won":
+        out = ["Aftale lukket"]
+        out.append("Ændringer modtaget" if (lead["change_requests"] or "").strip()
+                   else "Afventer ændringsønsker")
+        return out
+    if state == "iterating":
+        out = ["Review-iteration"]
+        out.append("Kunde svarede – din tur" if last_dir == "in" else "Afventer kunde")
+        return out
 
     # pre-send readiness
     if state in ("demo_live", "drafted"):

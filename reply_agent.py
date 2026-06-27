@@ -177,6 +177,28 @@ def create_row(db, mail, result, lead):
         raise RuntimeError(f"Notion row create {r.status_code}: {r.text[:300]}")
 
 
+# reply types that advance the post-close delivery loop (Claude judges the type
+# from the mail content; the state move is what "Claude closed the deal" means).
+def apply_state_effects(con, lead, mail, rtype):
+    if not lead:
+        return None
+    lid = lead["id"]
+    try:
+        if rtype == "aftale_accepteret":
+            store.move(con, lid, "won", note="aftale accepteret (auto)")
+            return "won"
+        if rtype == "ændringsønsker":
+            store.add_change_request(con, lid, mail.get("body", ""))
+            store.move(con, lid, "iterating", note="ændringsønsker modtaget (auto)")
+            return "iterating"
+        if rtype == "design_godkendt":
+            store.move(con, lid, "impl_approved", note="design godkendt (auto)")
+            return "impl_approved"
+    except SystemExit as e:
+        print(f"    (state effect skipped for #{lid}: {e})")
+    return None
+
+
 def main():
     if not IDS.exists():
         raise SystemExit("data/reply_ids.json missing — run setup_replies.py first")
@@ -224,8 +246,10 @@ def main():
         if result.get("type") == "ignorer" and not lead:
             ignored += 1; print(f"  ignore (classified, unknown): {frm} — {mail['subject'][:50]}"); continue
         create_row(db, mail, result, lead)
+        moved = apply_state_effects(con, lead, mail, result.get("type"))
         drafted += 1
-        print(f"  drafted [{result['type']}] for {frm} — {mail['subject'][:50]}")
+        tag = f" -> {moved}" if moved else ""
+        print(f"  drafted [{result['type']}] for {frm} — {mail['subject'][:50]}{tag}")
     WATERMARK.write_text(str(maxuid))
     M.logout()
     print(f"[reply] done: {drafted} drafted, {ignored} ignored")

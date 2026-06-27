@@ -36,10 +36,14 @@ DB_PATH = os.environ.get("LEADS_DB", "output/leads.db")
 
 STATES = [
     "discovered", "scored", "queued", "demo_building", "demo_live",
-    "drafted", "sent", "replied", "won", "lost", "rejected",
+    "drafted", "sent", "replied", "won", "iterating", "impl_approved",
+    "lost", "rejected",
 ]
 
 # Allowed forward transitions. `rejected` is reachable from anywhere.
+# Post-close delivery loop: won -> iterating (customer sends change requests,
+# we edit the demo) -> impl_approved (customer signs off the design). A deal can
+# also jump straight to impl_approved if there's no feedback.
 TRANSITIONS = {
     "discovered": {"scored", "rejected"},
     "scored": {"queued", "rejected"},
@@ -49,12 +53,14 @@ TRANSITIONS = {
     "drafted": {"sent", "rejected"},
     "sent": {"replied", "won", "lost"},
     "replied": {"won", "lost"},
-    "won": set(),
+    "won": {"iterating", "impl_approved", "lost"},
+    "iterating": {"iterating", "impl_approved", "lost"},
+    "impl_approved": set(),
     "lost": set(),
     "rejected": set(),
 }
 # A lead at or beyond this point must never re-enter the outreach queue.
-CONTACTED_STATES = {"sent", "replied", "won", "lost"}
+CONTACTED_STATES = {"sent", "replied", "won", "iterating", "impl_approved", "lost"}
 
 
 def can_transition(src: str, dst: str) -> bool:
@@ -233,7 +239,9 @@ def init(con: sqlite3.Connection) -> None:
     con.executescript(SCHEMA)
     for col in ("next_action TEXT", "followup_date TEXT", "nudged_at TEXT",
                 "demo_status TEXT", "demo_checked_at TEXT",
-                "badges TEXT", "last_reply_sentiment TEXT"):
+                "badges TEXT", "last_reply_sentiment TEXT",
+                "change_requests TEXT", "iteration_round INTEGER DEFAULT 0",
+                "change_requests_seen TEXT"):
         try:
             con.execute(f"ALTER TABLE leads ADD COLUMN {col}")
         except sqlite3.OperationalError:
@@ -378,6 +386,22 @@ def log_message(con, lead_id, direction, subject, body):
             con.execute("UPDATE leads SET demo_url=COALESCE(NULLIF(demo_url,''),?) WHERE id=?",
                         (u, lead_id))
     con.commit()
+
+
+def add_change_request(con, lead_id, text, round_no=None):
+    """Append a customer's desired-changes-vs-demo message to the lead, with a
+    round header, so the accumulated brief lives in one field (synced to the
+    Notion 'Ønskede ændringer kontra demo'). Returns the new round number."""
+    row = con.execute("SELECT change_requests, iteration_round FROM leads WHERE id=?",
+                      (lead_id,)).fetchone()
+    prev = (row["change_requests"] or "") if row else ""
+    rnd = round_no if round_no is not None else ((row["iteration_round"] or 0) + 1 if row else 1)
+    header = f"--- Runde {rnd} · {now()[:16]} ---"
+    merged = (prev + ("\n\n" if prev else "") + header + "\n" + (text or "").strip())[:8000]
+    con.execute("UPDATE leads SET change_requests=?, iteration_round=? WHERE id=?",
+                (merged, rnd, lead_id))
+    con.commit()
+    return rnd
 
 
 def add_reply_to_bank(con, rtype, question, answer, lead_id=None):

@@ -57,6 +57,7 @@ PROPERTY_SCHEMA = {
     "Category": {"rich_text": {}},
     "Email draft": {"rich_text": {}},
     "Reasons": {"rich_text": {}},
+    "Ønskede ændringer kontra demo": {"rich_text": {}},
 }
 
 
@@ -89,6 +90,7 @@ def lead_to_properties(row: sqlite3.Row) -> dict:
         "Next action": {"rich_text": _rt(row["next_action"])},
         "Follow-up date": ({"date": {"start": row["followup_date"]}}
                            if row["followup_date"] else {"date": None}),
+        "Ønskede ændringer kontra demo": {"rich_text": _rt(row["change_requests"])},
     }
 
 
@@ -161,14 +163,38 @@ def sync_messages(requests, con):
     print(f"  appended {pushed} messages to lead pages")
 
 
+def ensure_schema(requests):
+    """Make the Notion board match new states/properties without a manual edit:
+    add any missing State select options and the change-requests field. Notion
+    keeps existing options; we only append. Idempotent."""
+    r = requests.get(f"{API}/databases/{NOTION_DB_ID}", headers=HEADERS)
+    if not r.ok:
+        return
+    props = r.json().get("properties", {})
+    patch = {}
+    have = {o["name"] for o in props.get("State", {}).get("select", {}).get("options", [])}
+    missing = [s for s in store.STATES if s not in have]
+    if missing:
+        patch["State"] = {"select": {"options":
+            props["State"]["select"]["options"] + [{"name": s} for s in missing]}}
+    if "Ønskede ændringer kontra demo" not in props:
+        patch["Ønskede ændringer kontra demo"] = {"rich_text": {}}
+    if patch:
+        requests.patch(f"{API}/databases/{NOTION_DB_ID}", headers=HEADERS,
+                       json={"properties": patch})
+        print(f"  ensured Notion schema: {', '.join(patch)}")
+
+
 def sync(only_qualified=True):
     requests = _require_creds()
     con = store.connect()
     store.init(con)
+    ensure_schema(requests)
     # only the active pipeline goes to Notion — raw 'scored' leads stay in SQLite.
     # Keeps the board to what you actually act on, and under Notion's free limit.
     sql = ("SELECT * FROM leads WHERE state IN "
-           "('demo_live','drafted','sent','replied','won','lost') ORDER BY score DESC")
+           "('demo_live','drafted','sent','replied','won','iterating',"
+           "'impl_approved','lost') ORDER BY score DESC")
     rows = con.execute(sql).fetchall()
     counts = {"created": 0, "updated": 0}
     for row in rows:

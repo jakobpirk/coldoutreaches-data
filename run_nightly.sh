@@ -34,6 +34,7 @@ step run_scan        python3 run_scan.py --area "$AREA" $DISC
 step prep            python3 prep.py --limit "$PREP_LIMIT"
 step followups       python3 followups.py
 step harvest_emails  python3 harvest_emails.py --limit "${HARVEST_LIMIT:-40}"
+step harvest_ai      python3 harvest_ai.py --limit "${HARVEST_AI_LIMIT:-20}"
 step check_demos     python3 check_demos.py
 step render_usage    python3 render_usage.py
 step badges          python3 badges.py --no-push

@@ -229,9 +229,10 @@ CREATE TABLE IF NOT EXISTS reply_bank (
 
 def connect(path: str = DB_PATH) -> sqlite3.Connection:
     os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
-    con = sqlite3.connect(path)
+    con = sqlite3.connect(path, timeout=30)
     con.row_factory = sqlite3.Row
     con.execute("PRAGMA foreign_keys=ON")
+    con.execute("PRAGMA busy_timeout=15000")   # wait out concurrent writers, don't crash
     return con
 
 

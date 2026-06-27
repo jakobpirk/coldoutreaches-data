@@ -19,7 +19,7 @@ Logging never raises — a logging failure must not take down a run. Set LOG_DIR
 relocate. Keep the last N days only via obs.rotate() (called on run start).
 """
 from __future__ import annotations
-import os, re, json, time, traceback, subprocess, datetime, pathlib, contextlib
+import os, re, sys, json, time, traceback, subprocess, datetime, pathlib, contextlib
 
 LOG_DIR = pathlib.Path(os.environ.get("LOG_DIR", "data/logs"))
 RUNS = LOG_DIR / "runs.jsonl"
@@ -49,7 +49,7 @@ def event(kind: str, **fields) -> dict:
     keys = ("name", "ok", "error", "lead_id", "label", "secs", "type", "state")
     extra = " ".join(f"{k}={fields[k]}" for k in keys if k in fields)
     try:
-        print(f"[obs] {kind} {extra}".rstrip(), flush=True)
+        print(f"[obs] {kind} {extra}".rstrip(), file=sys.stderr, flush=True)
     except Exception:
         pass
     return rec
@@ -120,7 +120,8 @@ def claude(cmd: str, prompt: str, label: str = "claude", timeout: int = 180,
     _write(CLAUDE, rec)
     tail = f" rationale={rec['rationale'][:90]}" if rec.get("rationale") else ""
     try:
-        print(f"[obs] claude {label} ok={rec['ok']} secs={rec['secs']}{tail}", flush=True)
+        print(f"[obs] claude {label} ok={rec['ok']} secs={rec['secs']}{tail}",
+              file=sys.stderr, flush=True)
     except Exception:
         pass
     if r.returncode != 0:

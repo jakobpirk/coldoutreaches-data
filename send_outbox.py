@@ -36,6 +36,20 @@ def parse(draft):
     return subj, body
 
 
+# Mandatory note on every FIRST/cold offer mail: it's a demo, so minor glitches
+# are expected. Appended at send so it's guaranteed regardless of the draft text.
+DEMO_NB = ("\n\nNB: Det her er et uforpligtende udkast/demoside, så der kan "
+           "forekomme små fejl eller pladsholdere hist og her — dem retter jeg "
+           "naturligvis til, hvis du er interesseret i at gå videre.")
+
+
+def with_demo_nb(body):
+    b = body or ""
+    if "NB:" in b and ("demo" in b.lower() or "udkast" in b.lower()):
+        return b  # a demo NB is already there — don't duplicate
+    return b.rstrip() + DEMO_NB
+
+
 def send(to, subj, body):
     msg = EmailMessage()
     msg["From"] = USER
@@ -120,6 +134,7 @@ def main():
             print(f"  skip {name or p['id'][:8]} — {reason}")
             continue
         subj, body = parse(draft)
+        body = with_demo_nb(body)   # guarantee the demo NB on the cold offer
         try:
             msg = send(to, subj, body)
         except Exception as e:

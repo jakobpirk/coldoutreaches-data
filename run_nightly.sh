@@ -46,10 +46,18 @@ if [ "${DEMO_LIMIT:-0}" -gt 0 ]; then
   step notion_sync2  python3 notion_sync.py
 fi
 
+# auto-release finished demos: validate (Playwright: responsive + burger + overflow)
+# then send the offer. Live sending only when AUTO_SEND_DEMOS=1 (else dry/validate).
+step release_demos   python3 release_demos.py --limit "${RELEASE_LIMIT:-10}"
+
 step fix_agent       python3 fix_agent.py --limit "${FIX_LIMIT:-2}"
 step iterate_demo    python3 iterate_demo.py --limit "${ITERATE_LIMIT:-2}"
 step tickets_sync    python3 tickets_sync.py
 step send_outbox     python3 send_outbox.py
+
+# reflect all late state changes (release/iterate/outbox) on the board
+step notion_sync_final python3 notion_sync.py
+step badges_final      python3 badges.py
 
 # local backup of the DB only — do NOT push from the VPS (it diverges from your
 # code pushes). The live DB persists on the VPS disk regardless.

@@ -179,6 +179,10 @@ def ensure_schema(requests):
             props["State"]["select"]["options"] + [{"name": s} for s in missing]}}
     if "Ønskede ændringer kontra demo" not in props:
         patch["Ønskede ændringer kontra demo"] = {"rich_text": {}}
+    if "Manuelt issue" not in props:
+        patch["Manuelt issue"] = {"rich_text": {}}
+    if "Start issue" not in props:
+        patch["Start issue"] = {"checkbox": {}}
     if patch:
         requests.patch(f"{API}/databases/{NOTION_DB_ID}", headers=HEADERS,
                        json={"properties": patch})

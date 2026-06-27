@@ -4,11 +4,14 @@ infra/.env
 .netlify-token
 *.token
 
-# auto-generated on the server (learn_style.py / setup_replies.py)
+# auto-generated on the server (learn_style.py / setup_replies.py / iterate_demo.py)
 email-examples.md
 reply-corrections.md
+iteration-corrections.md
 data/reply_ids.json
 data/reply_uid.txt
+data/logs/
+output/verify/
 
 # python / node junk
 __pycache__/

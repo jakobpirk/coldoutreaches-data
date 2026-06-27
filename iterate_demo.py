@@ -26,6 +26,9 @@ CLAUDE_CMD = os.environ.get("CLAUDE_CMD", "claude")
 EDIT_TOOLS = os.environ.get("ITERATE_TOOLS", "Read Edit Write")
 GH_TOKEN = os.environ.get("GITHUB_TOKEN", "")
 GH = "https://api.github.com"
+RENDER = "https://api.render.com/v1"
+RENDER_KEY = os.environ.get("RENDER_API_KEY", "")
+RH = {"Authorization": f"Bearer {RENDER_KEY}", "Accept": "application/json"}
 NOTION = "https://api.notion.com/v1"
 NH = {"Authorization": f"Bearer {os.environ.get('NOTION_TOKEN','')}",
       "Notion-Version": "2022-06-28", "Content-Type": "application/json"}
@@ -55,6 +58,40 @@ Rules:
 
 def _lessons() -> str:
     return CORRECTIONS.read_text(encoding="utf-8")[:1800] if CORRECTIONS.exists() else "(ingen endnu)"
+
+
+def wait_for_deploy(repo, timeout=480, poll=15):
+    """Wait until Render has the new push LIVE before we screenshot — a fixed
+    sleep is unreliable (free static builds can take minutes), which would make
+    verification screenshot the OLD page and false-fail. Returns True if live.
+    Falls back to a plain delay if the Render service can't be resolved (e.g. a
+    non-Render demo)."""
+    name = repo.split("/")[-1]
+    try:
+        r = requests.get(f"{RENDER}/services?name={name}&limit=1", headers=RH, timeout=20)
+        arr = r.json() if r.ok else []
+        sid = arr[0]["service"]["id"] if arr else None
+    except Exception:
+        sid = None
+    if not sid:
+        time.sleep(VERIFY_DELAY)
+        return False
+    deadline = time.time() + timeout
+    while time.time() < deadline:
+        try:
+            d = requests.get(f"{RENDER}/services/{sid}/deploys?limit=1", headers=RH, timeout=20)
+            st = d.json()[0]["deploy"]["status"] if d.ok and d.json() else ""
+        except Exception:
+            st = ""
+        if st == "live":
+            time.sleep(8)   # small CDN settle
+            return True
+        if st in ("build_failed", "update_failed", "canceled", "deactivated"):
+            obs.event("deploy_failed", error=st)
+            return False
+        time.sleep(poll)
+    obs.event("deploy_timeout", error=f"still {st} after {timeout}s")
+    return False
 
 
 def git(repo_dir, *a, check=True):
@@ -178,8 +215,8 @@ def handle(con, db, lead) -> str:
     con.execute("UPDATE leads SET change_requests_seen=? WHERE id=?", (str(round_no), lid))
     con.commit()
 
-    # let the preview redeploy, then verify with Playwright + Claude vision
-    time.sleep(VERIFY_DELAY)
+    # wait until Render has the new build LIVE (not a fixed sleep), then verify
+    wait_for_deploy(repo)
     verdict = verify_demo.run(lead["demo_url"], lead["name"], request,
                               prefix=f"lead{lid}-r{round_no}")
     obs.event("iterate_verified", lead_id=lid,

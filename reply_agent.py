@@ -32,6 +32,7 @@ WATERMARK = pathlib.Path("data/reply_uid.txt")
 IDS = pathlib.Path("data/reply_ids.json")
 TEMPLATES = pathlib.Path("reply-templates.md")
 EMAIL_STYLE = pathlib.Path("email-style.md")
+EMAIL_EXAMPLES = pathlib.Path("email-examples.md")   # learned from your sent mails
 NO_REPLY = ("noreply", "no-reply", "no_reply", "mailer-daemon", "postmaster",
             "donotreply", "bounce", "notifications@", "newsletter")
 
@@ -88,6 +89,7 @@ def classify_and_draft(types: dict, mail: dict, lead: dict | None) -> dict:
     type_block = "\n".join(
         f"- {k}: {v['desc']}\n    skabelon-retning: {v['template']}" for k, v in types.items())
     style = EMAIL_STYLE.read_text(encoding="utf-8")[:1200] if EMAIL_STYLE.exists() else ""
+    examples = EMAIL_EXAMPLES.read_text(encoding="utf-8")[:2200] if EMAIL_EXAMPLES.exists() else ""
     ctx = (f"Afsender er et kendt lead: {lead['name']}. "
            f"Demo: {lead.get('demo_url') or '(ingen)'}." if lead else
            "Afsenderen er ikke et kendt lead.")
@@ -106,6 +108,9 @@ Kontekst: {ctx}
 
 Stilregler for svaret — følg dem:
 {style}
+
+Sådan skriver Jakob i virkeligheden (efterlign tone og opbygning i disse rigtige eksempler):
+{examples or '(ingen eksempler endnu)'}
 
 Hvis typen er "ignorer", så skriv intet udkast.
 Output KUN JSON: {{"type":"<en af typerne>","subject":"SV: ...","body":"<svaret, underskrevet Jakob, Wilbrandt Works>"}}

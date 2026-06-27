@@ -20,6 +20,7 @@ import store
 CLAUDE_CMD = os.environ.get("CLAUDE_CMD", "claude")
 FEEDBACK = pathlib.Path("classification-feedback.md")
 EMAIL_STYLE = pathlib.Path("email-style.md")
+EMAIL_EXAMPLES = pathlib.Path("email-examples.md")   # learned from your sent mails
 
 
 def claude(prompt: str, timeout: int = 300) -> str:
@@ -93,6 +94,9 @@ offering a redesigned website. A live demo already exists at: {lead.get('demo_ur
 
 Voice and rules — follow exactly:
 {_read(EMAIL_STYLE)[:1500]}
+
+How Jakob really writes (mimic the tone/structure of these real examples):
+{_read(EMAIL_EXAMPLES)[:2000] or '(none yet)'}
 
 Context you may use:
 - Contact person: {lead.get('contact_person') or '(unknown — keep it general)'}

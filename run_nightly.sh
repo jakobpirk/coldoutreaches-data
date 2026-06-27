@@ -14,6 +14,9 @@ log(){ echo "[nightly $(date -Is)] $*"; }
 log "pull agent guidance from Notion"
 python3 pull_guidance.py || true
 
+log "learn email voice from sent mails -> email-examples.md"
+python3 learn_style.py || true
+
 log "check inbox (replies, tickets, follow-ups) — only new mail"
 python3 inbox_poll.py || true
 

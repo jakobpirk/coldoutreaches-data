@@ -4,6 +4,11 @@ infra/.env
 .netlify-token
 *.token
 
+# auto-generated on the server (learn_style.py / setup_replies.py)
+email-examples.md
+data/reply_ids.json
+data/reply_uid.txt
+
 # python / node junk
 __pycache__/
 *.pyc

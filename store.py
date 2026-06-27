@@ -206,6 +206,18 @@ CREATE TABLE IF NOT EXISTS messages (
     body TEXT,
     synced INTEGER DEFAULT 0
 );
+
+-- Answer bank: every reply you APPROVE is stored under its type, so the next
+-- mail of the same type reuses your proven answer instead of being written from
+-- scratch. You answer each kind of question once; the system reuses it after.
+CREATE TABLE IF NOT EXISTS reply_bank (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    lead_id INTEGER,
+    type TEXT,
+    question TEXT,
+    answer TEXT,
+    ts TEXT
+);
 """
 
 
@@ -366,6 +378,26 @@ def log_message(con, lead_id, direction, subject, body):
             con.execute("UPDATE leads SET demo_url=COALESCE(NULLIF(demo_url,''),?) WHERE id=?",
                         (u, lead_id))
     con.commit()
+
+
+def add_reply_to_bank(con, rtype, question, answer, lead_id=None):
+    """Record an approved reply so the next mail of this type reuses it."""
+    if not (rtype and answer):
+        return
+    con.execute("INSERT INTO reply_bank (lead_id, type, question, answer, ts) "
+                "VALUES (?,?,?,?,?)",
+                (lead_id, rtype, (question or "")[:1000], (answer or "")[:3000], now()))
+    con.commit()
+
+
+def recent_bank(con, per_type: int = 1) -> dict:
+    """Latest approved answer(s) per reply type: {type: [{question, answer}, ...]}."""
+    out: dict = {}
+    for r in con.execute("SELECT type, question, answer FROM reply_bank ORDER BY id DESC"):
+        out.setdefault(r["type"], [])
+        if len(out[r["type"]]) < per_type:
+            out[r["type"]].append({"question": r["question"], "answer": r["answer"]})
+    return out
 
 
 def stats(con: sqlite3.Connection) -> None:

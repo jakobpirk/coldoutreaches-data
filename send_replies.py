@@ -77,6 +77,8 @@ def main():
         draft = rt(pr.get("Reply draft"))
         irt = rt(pr.get("Message-ID")) or None
         lead_id = (pr.get("Lead ID") or {}).get("number")
+        rtype = ((pr.get("Reply type") or {}).get("select") or {}).get("name")
+        question = rt(pr.get("Original"))
         if not (to and draft):
             requests.patch(f"{API}/pages/{p['id']}", headers=H, json={"properties": {
                 "Send svar": {"checkbox": False},
@@ -96,6 +98,8 @@ def main():
             "Send svar": {"checkbox": False}, "Status": {"select": {"name": "sent"}}}})
         if lead_id:
             store.log_message(con, int(lead_id), "out", subj, body)
+        # remember this approved answer so the next mail of this type reuses it
+        store.add_reply_to_bank(con, rtype, question, body, int(lead_id) if lead_id else None)
         sent += 1
         print(f"  sent reply to {to}")
 

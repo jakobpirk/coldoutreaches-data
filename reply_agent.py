@@ -85,11 +85,15 @@ def claude_json(prompt, timeout=180):
     return json.loads(m.group(0))
 
 
-def classify_and_draft(types: dict, mail: dict, lead: dict | None) -> dict:
+def classify_and_draft(types: dict, mail: dict, lead: dict | None, bank: dict | None = None) -> dict:
     type_block = "\n".join(
         f"- {k}: {v['desc']}\n    skabelon-retning: {v['template']}" for k, v in types.items())
     style = EMAIL_STYLE.read_text(encoding="utf-8")[:1200] if EMAIL_STYLE.exists() else ""
     examples = EMAIL_EXAMPLES.read_text(encoding="utf-8")[:2200] if EMAIL_EXAMPLES.exists() else ""
+    prior = ""
+    for t, items in (bank or {}).items():
+        if items and items[0].get("answer"):
+            prior += f"\n[{t}]\n{items[0]['answer'][:900]}\n"
     ctx = (f"Afsender er et kendt lead: {lead['name']}. "
            f"Demo: {lead.get('demo_url') or '(ingen)'}." if lead else
            "Afsenderen er ikke et kendt lead.")
@@ -111,6 +115,10 @@ Stilregler for svaret — følg dem:
 
 Sådan skriver Jakob i virkeligheden (efterlign tone og opbygning i disse rigtige eksempler):
 {examples or '(ingen eksempler endnu)'}
+
+Tidligere GODKENDTE svar pr. type — hvis den type du vælger står herunder, så GENBRUG
+det svar og tilpas kun navn og konkrete detaljer (skriv IKKE et nyt fra bunden):
+{prior or '(ingen endnu)'}
 
 Hvis typen er "ignorer", så skriv intet udkast.
 Output KUN JSON: {{"type":"<en af typerne>","subject":"SV: ...","body":"<svaret, underskrevet Jakob, Wilbrandt Works>"}}
@@ -168,6 +176,7 @@ def main():
     db = json.loads(IDS.read_text())["inbox_db"]
     types = parse_templates()
     con = store.connect(); store.init(con)
+    bank = store.recent_bank(con)
 
     M = imaplib.IMAP4(IMAP_HOST, IMAP_PORT)
     M.starttls(ssl_context=ssl.create_default_context())
@@ -202,7 +211,7 @@ def main():
             ignored += 1; print(f"  ignore (no-reply): {frm}"); continue
         lead_row = con.execute("SELECT * FROM leads WHERE lower(email)=?", (frm.lower(),)).fetchone()
         lead = dict(lead_row) if lead_row else None
-        result = classify_and_draft(types, mail, lead)
+        result = classify_and_draft(types, mail, lead, bank)
         if result.get("type") == "ignorer":
             ignored += 1; print(f"  ignore (classified): {frm} — {mail['subject'][:50]}"); continue
         create_row(db, mail, result, lead)

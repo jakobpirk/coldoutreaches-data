@@ -18,7 +18,7 @@ from __future__ import annotations
 import os, re, json, ssl, imaplib, email, email.utils, pathlib, subprocess
 from email.header import decode_header
 import requests
-import store
+import store, obs
 
 API = "https://api.notion.com/v1"
 H = {"Authorization": f"Bearer {os.environ.get('NOTION_TOKEN','')}",
@@ -76,14 +76,11 @@ def parse_templates() -> dict:
     return out
 
 
-def claude_json(prompt, timeout=180):
-    r = subprocess.run([CLAUDE_CMD, "-p"], input=prompt, capture_output=True, text=True, timeout=timeout)
-    if r.returncode != 0:
-        raise RuntimeError(r.stderr[:200])
-    m = re.search(r"\{.*\}", r.stdout, re.S)
-    if not m:
+def claude_json(prompt, timeout=180, label="reply:classify_draft"):
+    _, parsed = obs.claude(CLAUDE_CMD, prompt, label=label, timeout=timeout, expect_json=True)
+    if parsed is None:
         raise RuntimeError("no json in claude output")
-    return json.loads(m.group(0))
+    return parsed
 
 
 def classify_and_draft(types: dict, mail: dict, lead: dict | None, bank: dict | None = None) -> dict:
@@ -127,8 +124,8 @@ Lektier fra Jakobs tidligere rettelser — undgå disse fejl:
 {corrections or '(ingen endnu)'}
 
 {"VIGTIGT: Afsenderen er en kendt kunde — skriv ALTID et svar-udkast. Brug ALDRIG 'ignorer'; vælg 'andet' hvis intet andet passer." if known else "Hvis typen er ren spam/auto/no-reply, så brug 'ignorer'."}
-Output KUN JSON: {{"type":"<en af typerne>","subject":"SV: ...","body":"<svaret, underskrevet Jakob, Wilbrandt Works>"}}
-For "ignorer": {{"type":"ignorer"}}"""
+Output KUN JSON: {{"type":"<en af typerne>","subject":"SV: ...","body":"<svaret, underskrevet Jakob, Wilbrandt Works>","rationale":"<kort dansk: hvorfor denne type og denne vinkel>"}}
+For "ignorer": {{"type":"ignorer","rationale":"<hvorfor ignoreret>"}}"""
     try:
         return claude_json(prompt)
     except Exception as e:

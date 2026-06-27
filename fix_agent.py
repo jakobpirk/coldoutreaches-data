@@ -11,7 +11,7 @@ requests are bounced to 'needs_you'. Env: GITHUB_TOKEN, GITHUB_ORG.
 """
 import os, subprocess, argparse
 import requests
-import store, tickets
+import store, tickets, obs
 
 CLAUDE_CMD = os.environ.get("CLAUDE_CMD", "claude")
 FIX_TOOLS = os.environ.get("FIX_TOOLS", "Read Edit Write")
@@ -47,12 +47,9 @@ def ensure_repo(repo, repo_dir):
     subprocess.run(["git", "clone", url, repo_dir], check=True, capture_output=True, text=True)
 
 
-def run_claude(repo_dir, prompt):
-    r = subprocess.run([CLAUDE_CMD, "-p", "--allowedTools", FIX_TOOLS],
-                       input=prompt, cwd=repo_dir, capture_output=True, text=True, timeout=1200)
-    if r.returncode != 0:
-        raise RuntimeError(f"claude -p failed: {r.stderr[:400]}")
-    return r.stdout
+def run_claude(repo_dir, prompt, label="fix_agent"):
+    return obs.claude(CLAUDE_CMD, prompt, label=label, timeout=1200,
+                      allowed_tools=FIX_TOOLS, cwd=repo_dir)
 
 
 def open_pr(repo, branch, title, body):

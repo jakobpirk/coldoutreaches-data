@@ -20,18 +20,17 @@ Uses `claude -p`; falls back to a heuristic offline so it still runs in tests.
 """
 from __future__ import annotations
 import os, re, sys, json, subprocess, datetime as dt
-import store, tickets
+import store, tickets, obs
 
 AUTO_FIX_MIN_CONFIDENCE = float(os.environ.get("AUTO_FIX_MIN_CONFIDENCE", "0.7"))
 CLAUDE_CMD = os.environ.get("CLAUDE_CMD", "claude")
 
 
-def _claude(prompt, timeout=180):
-    r = subprocess.run([CLAUDE_CMD, "-p", prompt], capture_output=True, text=True, timeout=timeout)
-    if r.returncode != 0:
-        raise RuntimeError(r.stderr[:200])
-    m = re.search(r"\{.*\}", r.stdout, re.S)
-    return json.loads(m.group(0))
+def _claude(prompt, timeout=180, label="inbound"):
+    _, parsed = obs.claude(CLAUDE_CMD, prompt, label=label, timeout=timeout, expect_json=True)
+    if parsed is None:
+        raise RuntimeError("no json in claude output")
+    return parsed
 
 
 def sender_kind(con, sender: str):
@@ -43,7 +42,7 @@ def sender_kind(con, sender: str):
     if not row:
         return "unknown", None
     lead = dict(row)
-    if lead["state"] in ("won", "live"):
+    if lead["state"] in ("won", "live", "iterating", "impl_approved"):
         return "customer", lead
     if lead["state"] in ("drafted", "sent", "replied", "demo_live"):
         return "prospect", lead
@@ -60,7 +59,8 @@ Body: \"\"\"{email.get('body','')[:1200]}\"\"\"
 Output JSON: {{"sentiment":"interested|not_interested|question|auto_reply",
 "summary":"<one sentence>",
 "followup_date":"<ISO date YYYY-MM-DD if a follow-up is warranted (e.g. they say they'll come back later), else empty>",
-"next_action":"<short Danish next step, or empty>"}}""")
+"next_action":"<short Danish next step, or empty>",
+"rationale":"<one sentence: why this sentiment>"}}""", label="inbound:reply")
     except Exception:
         import datetime
         t = f"{email.get('subject','')} {email.get('body','')}".lower()

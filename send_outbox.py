@@ -100,14 +100,24 @@ def main():
         draft = rt(pr.get("Email draft"))
         name = "".join(x.get("plain_text", "") for x in (pr.get("Name") or {}).get("title", []))
         lead_id = (pr.get("Lead ID") or {}).get("number")
+        reason = None
         if not to and not draft:
-            print(f"  skip {name or p['id'][:8]} (no email AND no draft)")
-            continue
-        if not to:
-            print(f"  skip {name or p['id'][:8]} (no email address on file - can't send)")
-            continue
-        if not draft:
-            print(f"  skip {name or p['id'][:8]} (no Email draft)")
+            reason = "⚠️ Mangler email-adresse og udkast — kan ikke sende"
+        elif not to:
+            reason = "⚠️ Mangler email-adresse — kan ikke sende"
+        elif not draft:
+            reason = "⚠️ Mangler email-udkast — kan ikke sende"
+        if reason:
+            # Don't leave it silently armed in the queue: untick 'Send now' and
+            # surface WHY in Notion + SQLite, so it's obvious it needs attention.
+            requests.patch(f"{API}/pages/{p['id']}", headers=H, json={"properties": {
+                "Send now": {"checkbox": False},
+                "Next action": {"rich_text": [{"type": "text", "text": {"content": reason}}]}}})
+            lid = (pr.get("Lead ID") or {}).get("number")
+            if lid:
+                con.execute("UPDATE leads SET next_action=? WHERE id=?", (reason, int(lid)))
+                con.commit()
+            print(f"  skip {name or p['id'][:8]} — {reason}")
             continue
         subj, body = parse(draft)
         try:

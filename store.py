@@ -220,7 +220,8 @@ def connect(path: str = DB_PATH) -> sqlite3.Connection:
 def init(con: sqlite3.Connection) -> None:
     con.executescript(SCHEMA)
     for col in ("next_action TEXT", "followup_date TEXT", "nudged_at TEXT",
-                "demo_status TEXT", "demo_checked_at TEXT"):
+                "demo_status TEXT", "demo_checked_at TEXT",
+                "badges TEXT", "last_reply_sentiment TEXT"):
         try:
             con.execute(f"ALTER TABLE leads ADD COLUMN {col}")
         except sqlite3.OperationalError:

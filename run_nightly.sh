@@ -35,6 +35,9 @@ python3 harvest_emails.py --limit "${HARVEST_LIMIT:-40}" || true
 log "check demo liveness (heal blank demo_url + flag dead previews)"
 python3 check_demos.py || true
 
+log "recompute process badges (DB only; notion_sync pushes them)"
+python3 badges.py --no-push || true
+
 log "sync qualified leads to Notion"
 python3 notion_sync.py || true
 

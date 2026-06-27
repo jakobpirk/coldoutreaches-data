@@ -25,4 +25,7 @@ python3 reply_agent.py || true
 echo "[$(ts)] send approved replies (the 'Send svar' ticks)"
 python3 send_replies.py || true
 
+echo "[$(ts)] recompute process badges + push to Notion"
+python3 badges.py || true
+
 echo "[$(ts)] done"

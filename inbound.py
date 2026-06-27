@@ -117,11 +117,13 @@ def route(con, email):
                 store.move(con, lead["id"], "replied", note=f"reply: {c['sentiment']}")
             except SystemExit:
                 pass
+        con.execute("UPDATE leads SET last_reply_sentiment=? WHERE id=?",
+                    (c.get("sentiment"), lead["id"]))
         if c.get("followup_date") or c.get("next_action"):
             con.execute("UPDATE leads SET followup_date=COALESCE(?,followup_date), "
                         "next_action=COALESCE(?,next_action) WHERE id=?",
                         (c.get("followup_date") or None, c.get("next_action") or None, lead["id"]))
-            con.commit()
+        con.commit()
         print(f"[inbound] prospect_reply from {lead['name']} -> sentiment={c['sentiment']}; "
               f"lead #{lead['id']} -> replied; follow-up={c.get('followup_date') or '-'}.")
         return {"route": "prospect_reply", **c}

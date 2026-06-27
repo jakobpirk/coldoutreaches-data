@@ -82,15 +82,18 @@ def _extract_json(raw: str):
 
 def claude(cmd: str, prompt: str, label: str = "claude", timeout: int = 180,
            expect_json: bool = False, allowed_tools: str | None = None,
-           cwd: str | None = None, log_prompt: bool = True):
+           cwd: str | None = None, model: str | None = None, log_prompt: bool = True):
     """Run `claude -p` and log everything. Returns raw str, or (raw, parsed) when
     expect_json. Raises on non-zero exit (after logging). Captures Claude's own
-    `rationale` field if the JSON includes one."""
+    `rationale` field if the JSON includes one. `model` pins a specific model
+    (e.g. so an evaluator runs on a different model than the implementer)."""
     t0 = time.time()
-    rec = {"ts": _ts(), "label": label, "expect_json": expect_json, "cwd": cwd}
+    rec = {"ts": _ts(), "label": label, "expect_json": expect_json, "cwd": cwd, "model": model}
     if log_prompt:
         rec["prompt"] = (prompt or "")[:6000]
     args = [cmd, "-p"]
+    if model:
+        args += ["--model", model]
     if allowed_tools:
         args += ["--allowedTools", allowed_tools]
     try:

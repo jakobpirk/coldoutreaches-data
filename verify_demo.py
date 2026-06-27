@@ -17,6 +17,11 @@ import os, sys, argparse, pathlib
 import obs
 
 CLAUDE_CMD = os.environ.get("CLAUDE_CMD", "claude")
+# Independent evaluator: a DIFFERENT model than the implementer (iterate_demo uses
+# EDIT_MODEL=opus), and a separate `claude -p` process with no shared context — it
+# never sees the edit/diff, only the rendered screenshots + the requirement. So the
+# agent that built the change is not the one grading it.
+VERIFY_MODEL = os.environ.get("VERIFY_MODEL", "claude-sonnet-4-6")
 VIEWPORTS = {"desktop": (1280, 900), "mobile": (390, 844)}
 OUT = pathlib.Path("output/verify")
 
@@ -57,7 +62,9 @@ def verify(lead_name: str, change_text: str, cap: dict) -> dict:
                 "issues": ["ingen screenshots — siden kunne ikke renderes"] + cap["page_errors"],
                 "rationale": "Playwright kunne ikke hente siden."}
     refs = "\n".join(f"- {s}" for s in cap["shots"])
-    prompt = f"""Du verificerer en webdesign-iteration for "{lead_name}". Læs screenshot-filerne (desktop + mobil):
+    prompt = f"""Du er en UAFHÆNGIG kvalitetskontrollør. Du har IKKE selv lavet ændringerne — antag
+intet om at de er udført korrekt; vurdér kun kritisk ud fra det, billederne faktisk viser.
+Du verificerer en webdesign-iteration for "{lead_name}". Læs screenshot-filerne (desktop + mobil):
 {refs}
 
 Kundens ønskede ændringer, som SKULLE være implementeret nu:
@@ -72,7 +79,8 @@ Vurdér ud fra billederne:
 Output KUN JSON: {{"meets":true/false,"broken":true/false,"issues":["konkret hvad mangler/er brudt"],"rationale":"<kort dansk begrundelse>"}}"""
     try:
         _, parsed = obs.claude(CLAUDE_CMD, prompt, label=f"verify:{lead_name}",
-                               expect_json=True, allowed_tools="Read", timeout=180)
+                               expect_json=True, allowed_tools="Read", timeout=180,
+                               model=VERIFY_MODEL)
         if parsed:
             return parsed
     except Exception as e:

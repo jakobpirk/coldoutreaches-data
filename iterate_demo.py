@@ -24,6 +24,7 @@ import store, obs, verify_demo
 
 CLAUDE_CMD = os.environ.get("CLAUDE_CMD", "claude")
 EDIT_TOOLS = os.environ.get("ITERATE_TOOLS", "Read Edit Write")
+EDIT_MODEL = os.environ.get("EDIT_MODEL", "claude-opus-4-8")   # implementer
 GH_TOKEN = os.environ.get("GITHUB_TOKEN", "")
 GH = "https://api.github.com"
 RENDER = "https://api.render.com/v1"
@@ -193,7 +194,7 @@ def handle(con, db, lead) -> str:
     git(repo_dir, "pull", "--ff-only", check=False)
     out = obs.claude(CLAUDE_CMD, EDIT_PROMPT.format(request=request, lessons=_lessons()),
                      label=f"iterate:edit:{lid}", timeout=1200,
-                     allowed_tools=EDIT_TOOLS, cwd=repo_dir)
+                     allowed_tools=EDIT_TOOLS, cwd=repo_dir, model=EDIT_MODEL)
     if "NEEDS_HUMAN:" in out:
         why = out.split("NEEDS_HUMAN:")[1].strip()[:200]
         con.execute("UPDATE leads SET next_action=? WHERE id=?",

@@ -35,6 +35,7 @@ step prep            python3 prep.py --limit "$PREP_LIMIT"
 step followups       python3 followups.py
 step harvest_emails  python3 harvest_emails.py --limit "${HARVEST_LIMIT:-40}"
 step check_demos     python3 check_demos.py
+step render_usage    python3 render_usage.py
 step badges          python3 badges.py --no-push
 step notion_sync     python3 notion_sync.py
 

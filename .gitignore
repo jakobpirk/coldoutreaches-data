@@ -6,6 +6,7 @@ infra/.env
 
 # auto-generated on the server (learn_style.py / setup_replies.py)
 email-examples.md
+reply-corrections.md
 data/reply_ids.json
 data/reply_uid.txt
 

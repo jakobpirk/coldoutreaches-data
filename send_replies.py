@@ -7,12 +7,15 @@ anything you didn't tick. Runs right after reply_agent.py (every ~30 min).
 
 Env: NOTION_TOKEN, SIMPLY_SMTP_HOST/PORT, SIMPLY_IMAP_HOST/PORT, SIMPLY_MAIL_USER/PASS.
 """
-import os, ssl, json, smtplib, imaplib, datetime, pathlib
+import os, ssl, json, smtplib, imaplib, datetime, pathlib, difflib, subprocess
 from email.message import EmailMessage
 from email.utils import formatdate, make_msgid
 import requests
 import store
 from send_outbox import save_to_sent   # reuse the Sent-folder copier
+
+CLAUDE_CMD = os.environ.get("CLAUDE_CMD", "claude")
+CORRECTIONS = pathlib.Path("reply-corrections.md")   # lessons fed back to reply_agent
 
 API = "https://api.notion.com/v1"
 H = {"Authorization": f"Bearer {os.environ['NOTION_TOKEN']}",
@@ -55,6 +58,37 @@ def send(to, subj, body, in_reply_to=None):
         s.login(USER, PASS)
         s.send_message(msg)
     return msg
+
+
+def record_correction(rtype, original, edited):
+    """Diff the AI draft vs what Jakob actually sent; distil a one-line lesson into
+    reply-corrections.md so the same edit isn't needed next time. Returns the diff
+    (for display in Notion) or None if he didn't change anything."""
+    original, edited = (original or "").strip(), (edited or "").strip()
+    if not original or original == edited:
+        return None
+    diff = "\n".join(difflib.unified_diff(
+        original.splitlines(), edited.splitlines(),
+        fromfile="AI-udkast", tofile="Sendt", lineterm="", n=1))[:1800]
+    try:
+        prompt = (f"Jakob redigerede et AI-genereret svar-udkast (type: {rtype}) før "
+                  f"afsendelse.\nORIGINAL:\n\"\"\"{original[:1200]}\"\"\"\n"
+                  f"JAKOBS ENDELIGE:\n\"\"\"{edited[:1200]}\"\"\"\n"
+                  "Skriv ÉN kort dansk lektie (max én linje) til fremtidige udkast af "
+                  "denne type, der fanger hvad han ændrede. Skriv kun linjen.")
+        r = subprocess.run([CLAUDE_CMD, "-p"], input=prompt, capture_output=True,
+                           text=True, timeout=120)
+        lesson = r.stdout.strip().splitlines()[0][:200] if (r.returncode == 0 and r.stdout.strip()) else ""
+    except Exception:
+        lesson = ""
+    if lesson:
+        head = "# Lektier fra dine rettelser (auto-genereret — fodres til reply_agent)\n\n"
+        prev = CORRECTIONS.read_text(encoding="utf-8") if CORRECTIONS.exists() else head
+        body_lines = [l for l in prev.splitlines() if l.startswith("- ")]
+        body_lines.append(f"- [{rtype}] {lesson}")
+        CORRECTIONS.write_text(head + "\n".join(body_lines[-80:]) + "\n", encoding="utf-8")
+        print(f"    learned: [{rtype}] {lesson}")
+    return diff
 
 
 def query(db, prop):
@@ -100,6 +134,11 @@ def main():
             store.log_message(con, int(lead_id), "out", subj, body)
         # remember this approved answer so the next mail of this type reuses it
         store.add_reply_to_bank(con, rtype, question, body, int(lead_id) if lead_id else None)
+        # learn from your edits: diff the AI draft vs what you sent
+        diff = record_correction(rtype, rt(pr.get("AI-udkast")), draft)
+        if diff:
+            requests.patch(f"{API}/pages/{p['id']}", headers=H, json={"properties": {
+                "Dine rettelser": {"rich_text": [{"type": "text", "text": {"content": diff[:1900]}}]}}})
         sent += 1
         print(f"  sent reply to {to}")
 

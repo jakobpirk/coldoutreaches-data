@@ -33,6 +33,7 @@ IDS = pathlib.Path("data/reply_ids.json")
 TEMPLATES = pathlib.Path("reply-templates.md")
 EMAIL_STYLE = pathlib.Path("email-style.md")
 EMAIL_EXAMPLES = pathlib.Path("email-examples.md")   # learned from your sent mails
+CORRECTIONS = pathlib.Path("reply-corrections.md")   # lessons from your edits (diff)
 NO_REPLY = ("noreply", "no-reply", "no_reply", "mailer-daemon", "postmaster",
             "donotreply", "bounce", "notifications@", "newsletter")
 
@@ -94,7 +95,9 @@ def classify_and_draft(types: dict, mail: dict, lead: dict | None, bank: dict | 
     for t, items in (bank or {}).items():
         if items and items[0].get("answer"):
             prior += f"\n[{t}]\n{items[0]['answer'][:900]}\n"
-    ctx = (f"Afsender er et kendt lead: {lead['name']}. "
+    corrections = CORRECTIONS.read_text(encoding="utf-8")[:1800] if CORRECTIONS.exists() else ""
+    known = lead is not None
+    ctx = (f"Afsender er en KENDT kunde/lead: {lead['name']}. "
            f"Demo: {lead.get('demo_url') or '(ingen)'}." if lead else
            "Afsenderen er ikke et kendt lead.")
     prompt = f"""Du er assistent for Jakob, Wilbrandt Works (webdesign). En mail er kommet ind.
@@ -120,7 +123,10 @@ Tidligere GODKENDTE svar pr. type — hvis den type du vælger står herunder, s
 det svar og tilpas kun navn og konkrete detaljer (skriv IKKE et nyt fra bunden):
 {prior or '(ingen endnu)'}
 
-Hvis typen er "ignorer", så skriv intet udkast.
+Lektier fra Jakobs tidligere rettelser — undgå disse fejl:
+{corrections or '(ingen endnu)'}
+
+{"VIGTIGT: Afsenderen er en kendt kunde — skriv ALTID et svar-udkast. Brug ALDRIG 'ignorer'; vælg 'andet' hvis intet andet passer." if known else "Hvis typen er ren spam/auto/no-reply, så brug 'ignorer'."}
 Output KUN JSON: {{"type":"<en af typerne>","subject":"SV: ...","body":"<svaret, underskrevet Jakob, Wilbrandt Works>"}}
 For "ignorer": {{"type":"ignorer"}}"""
     try:
@@ -157,6 +163,7 @@ def create_row(db, mail, result, lead):
         "Reply type": {"select": {"name": result["type"]}},
         "Status": {"select": {"name": "drafted"}},
         "Reply draft": {"rich_text": rt(f"{result.get('subject','')}\n\n{result.get('body','')}")},
+        "AI-udkast": {"rich_text": rt(f"{result.get('subject','')}\n\n{result.get('body','')}")},
         "Send svar": {"checkbox": False},
         "Afvis": {"checkbox": False},
         "Original": {"rich_text": rt(mail["body"])},
@@ -207,13 +214,15 @@ def main():
             mail["date"] = dtup.isoformat()
         except Exception:
             pass
-        if any(n in (frm or "").lower() for n in NO_REPLY):
-            ignored += 1; print(f"  ignore (no-reply): {frm}"); continue
         lead_row = con.execute("SELECT * FROM leads WHERE lower(email)=?", (frm.lower(),)).fetchone()
         lead = dict(lead_row) if lead_row else None
+        # spam/no-reply filter applies ONLY to unknown senders; a known customer
+        # always gets a draft, no matter what.
+        if not lead and any(n in (frm or "").lower() for n in NO_REPLY):
+            ignored += 1; print(f"  ignore (no-reply, unknown): {frm}"); continue
         result = classify_and_draft(types, mail, lead, bank)
-        if result.get("type") == "ignorer":
-            ignored += 1; print(f"  ignore (classified): {frm} — {mail['subject'][:50]}"); continue
+        if result.get("type") == "ignorer" and not lead:
+            ignored += 1; print(f"  ignore (classified, unknown): {frm} — {mail['subject'][:50]}"); continue
         create_row(db, mail, result, lead)
         drafted += 1
         print(f"  drafted [{result['type']}] for {frm} — {mail['subject'][:50]}")

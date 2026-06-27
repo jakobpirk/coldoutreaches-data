@@ -35,6 +35,8 @@ DB_PROPS = {
         {"name": "drafted", "color": "yellow"}, {"name": "sent", "color": "green"},
         {"name": "rejected", "color": "gray"}, {"name": "error", "color": "red"}]}},
     "Reply draft": {"rich_text": {}},
+    "AI-udkast": {"rich_text": {}},
+    "Dine rettelser": {"rich_text": {}},
     "Send svar": {"checkbox": {}},
     "Afvis": {"checkbox": {}},
     "Lead ID": {"number": {}},
@@ -102,7 +104,7 @@ def main():
         ids["templates_page"] = r.json()["id"]
         print("created Svar-skabeloner page (seeded)")
 
-    # 3. Svar – Inbox database
+    # 3. Svar – Inbox database (create, or add any newly-introduced properties)
     if not db_exists(ids.get("inbox_db")):
         r = requests.post(f"{API}/databases", headers=H, json={
             "parent": {"type": "page_id", "page_id": container},
@@ -111,6 +113,13 @@ def main():
         r.raise_for_status()
         ids["inbox_db"] = r.json()["id"]
         print("created Svar – Inbox database")
+    else:
+        cur = requests.get(f"{API}/databases/{ids['inbox_db']}", headers=H).json()
+        missing = {k: v for k, v in DB_PROPS.items() if k not in cur.get("properties", {})}
+        if missing:
+            requests.patch(f"{API}/databases/{ids['inbox_db']}", headers=H,
+                           json={"properties": missing})
+            print(f"added missing properties: {', '.join(missing)}")
 
     save_ids(ids)
     print("\nreply_ids.json:")

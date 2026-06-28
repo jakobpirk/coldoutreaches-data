@@ -16,6 +16,7 @@ output/verify/
 # python / node junk
 __pycache__/
 *.pyc
+.venv-crawl/
 node_modules/
 .npm-cache/
 .npm-global/

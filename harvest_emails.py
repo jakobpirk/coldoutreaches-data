@@ -14,10 +14,34 @@ be sent. Two sources, most-reliable first:
 Wired into run_nightly.sh before notion_sync. Best-effort and polite.
 """
 from __future__ import annotations
-import os, re, time, json, argparse, html as htmllib
+import os, re, time, json, subprocess, argparse, html as htmllib
 from urllib.parse import urljoin, urlparse, quote
 import requests
 import store
+
+# crawl4ai (isolated venv) renders JS + tolerates awkward TLS, so we read pages
+# plain `requests` can't. Falls back to requests when the venv/bridge is absent.
+CRAWL_PY = os.environ.get("CRAWL_PY", ".venv-crawl/bin/python")
+USE_CRAWL = os.environ.get("USE_CRAWL4AI", "1") == "1"
+
+
+def crawl_render(urls: list[str]) -> dict:
+    """{url: rendered_html} via crawl_fetch.py in the crawl venv; {} if unavailable."""
+    if not (USE_CRAWL and urls and os.path.exists(CRAWL_PY)):
+        return {}
+    try:
+        r = subprocess.run([CRAWL_PY, "crawl_fetch.py", *urls],
+                           capture_output=True, text=True, timeout=150)
+        line = (r.stdout or "").strip().splitlines()[-1] if r.stdout.strip() else "[]"
+        out = {}
+        for d in json.loads(line):
+            h = d.get("html") or ""
+            if d.get("mailto"):   # fold mailto hrefs in so emails_from_html sees them
+                h += " " + " ".join("mailto:" + m for m in d["mailto"])
+            out[d["url"]] = h
+        return out
+    except Exception:
+        return {}
 
 UA = "ColdOutreaches-LeadScout/0.2 (jakobwilbrandt@gmail.com)"
 EMAIL_RE = re.compile(r"[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}")
@@ -109,17 +133,22 @@ def cvr_lookup(name: str, domain: str) -> str | None:
 def harvest_one(name: str, url: str) -> tuple[str | None, str]:
     base = url if url.startswith("http") else "http://" + url
     domain = urlparse(base).netloc.lower().removeprefix("www.")
-    html = fetch(base)
+    # front page first (crawl4ai render, else requests)
+    rendered = crawl_render([base])
+    html = rendered.get(base) or fetch(base)
     cands = emails_from_html(html) if html else []
+    src = "site"
     if not cands:
-        for path in CONTACT_PATHS:
-            html = fetch(urljoin(base + "/", path))
+        paths = [urljoin(base + "/", p) for p in CONTACT_PATHS]
+        rendered = crawl_render(paths)        # one browser session for all contact pages
+        for u in paths:
+            html = rendered.get(u) or fetch(u)
             if html:
                 cands = emails_from_html(html)
                 if cands:
                     break
     if cands:
-        return best_email(cands, domain), "site"
+        return best_email(cands, domain), src
     cvr = cvr_lookup(name, domain)
     if cvr:
         return cvr, "cvr"
